@@ -1,0 +1,52 @@
+//base styles
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  color: $black;
+  font: normal 14px/16px $font-regular;
+  padding: 0 $global-spacing $global-spacing 0;
+}
+
+h1 {
+  @extend .h1;
+}
+
+h3 {
+  @extend .h3;
+}
+
+p {
+  font-size: 1em;
+  line-height: 1.25em;
+}
+
+a {
+	color: inherit;
+}
+
+img {
+  height: auto;
+	max-width: 100%;
+}
+
+.wrap {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1600px; // change to whatever 
+  position: relative;
+  @include clearfix();
+  padding: 0 $global-spacing;
+  @include min-screen($bpMd) {
+    // set breakpoints on a per-module basis when possible
+  }
+}
+
+main {
+  background: $gray-light;
+}
