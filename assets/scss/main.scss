@@ -12,9 +12,13 @@
 // Vendor
 
 // Components
+@import "components/color-scheme";
 @import "components/base";
+@import "components/buttons";
+@import "components/blocks";
 @import "components/header";
 @import "components/footer";
 
 // Pages
 @import "pages/home";
+@import "pages/component-library";

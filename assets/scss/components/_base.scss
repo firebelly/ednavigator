@@ -9,21 +9,29 @@ html {
 
 body {
   color: $black;
-  font: normal 14px/16px $font-regular;
-  padding: 0 $global-spacing $global-spacing 0;
+  font-size: 14px;
+  font-family: $font-regular;
+  
+  @include media-md {
+    padding: 0 $global-spacing $global-spacing 0;
+  }
 }
 
 h1 {
-  @extend .h1;
+  @include headline-one;
+}
+
+h2 {
+  @extend .headline-two;
 }
 
 h3 {
-  @extend .h3;
+  @extend .headline-three;
 }
 
 p {
   font-size: 1em;
-  line-height: 1.25em;
+  line-height: 1.428571429;
 }
 
 a {
@@ -42,11 +50,4 @@ img {
   position: relative;
   @include clearfix();
   padding: 0 $global-spacing;
-  @include min-screen($bpMd) {
-    // set breakpoints on a per-module basis when possible
-  }
-}
-
-main {
-  background: $gray-light;
 }

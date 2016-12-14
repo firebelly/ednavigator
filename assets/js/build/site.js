@@ -943,7 +943,7 @@ var FB = (function($) {
 })(jQuery);
 
 // Fire up the mothership
-jQuery(document).ready(Main.init);
+jQuery(document).ready(FB.init);
 
 // Zig-zag the mothership
-jQuery(window).resize(Main.resize);
+jQuery(window).resize(FB.resize);

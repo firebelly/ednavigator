@@ -1,5 +1,59 @@
 // Footer
 
 .site-footer {
-  
+  color: $gray-dark;
+  background: $black;
+  padding: $global-spacing;
+
+  @include media-md {
+    padding: $global-spacing * 2;
+  }
+
+  h5 {
+    margin-bottom: 30px;
+    @extend .headline-descriptor;
+  }
+
+  .newsletter {
+    margin-bottom: $global-spacing;
+    @include media-md {
+      margin-bottom: 0;
+    }
+  }
+
+  .contact-info {
+    a {
+      @extend .headline-three;
+      transition: color .2s ease-out;
+      &:hover {
+        color: $brand-primary;
+      }
+    }
+    p {
+      margin-top: 20px;
+    }
+  }
+
+  .connect {
+    > div {
+      margin-bottom: 30px;
+    }
+  }
+
+  .social {
+    margin: 0;
+    padding: 0;
+    @include clearfix;
+
+    li {
+      float: left;
+      list-style: none;
+    }
+  }
+
+  .address {
+    span {
+      display: block;
+    }
+  }
 }

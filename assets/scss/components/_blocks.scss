@@ -1,0 +1,51 @@
+// Blocks
+
+// Block grid
+.block-grid {
+  display: flex;
+  flex-direction: column;
+  @include media-md {
+    flex-direction: row;
+  }
+}
+
+.block {
+  padding: $global-spacing;
+
+  .block-descriptor {
+    margin: 0 0 20px;
+    @extend .headline-descriptor;
+  }
+
+  .block-title {
+    @include headline-one;
+    margin: 0 0 $global-spacing;
+  }
+
+  @include media-md {
+    padding: #{$global-spacing * 2};
+  }
+}
+
+.image-block {
+  height: 200px;
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  &::before {
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    content: '';
+    height: 180px;
+    position: absolute;
+    background-image: linear-gradient(rgba($black,.75), rgba($black,0));
+  }
+  @include max-screen($breakpoint-md) {
+    order: -1;
+  }
+  @include media-md {
+    height: auto;
+  }
+}

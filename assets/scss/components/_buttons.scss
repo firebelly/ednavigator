@@ -1,0 +1,30 @@
+// Buttons
+
+.button {
+  border-radius: 5px;
+  display: inline-block;
+  text-decoration: none;
+  padding: 15px 25px 13px;
+  @extend .headline-inline;
+  border: 1px solid $black;
+  transition: background .2s ease-out, border-color .2s ease-out;
+  &:hover {
+    background: $brand-primary;
+    border-color: $brand-primary;
+  }
+}
+
+// Scroll button
+.scroll-button {
+  width: 80px;
+  height: 80px;
+  background: none;
+  border-radius: 50%;
+  border: 2px solid $brand-primary;
+  .icon {
+    width: 15px;
+    height: 15px;
+    fill: $brand-primary;
+    transform: rotate(90deg);
+  }
+}

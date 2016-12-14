@@ -1,5 +1,144 @@
 // Header
 
 .site-header {
-  
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: 100%;
+  position: fixed;
+  padding: #{$global-spacing / 2} $global-spacing;
+
+  @include media-md {
+    padding: $global-spacing #{$global-spacing * 2};
+  }  
+
+  h1 {
+    margin: 0 0 0 -50px;
+
+    a {
+      height: 33px;
+      display: inline-block;
+    }
+
+    svg {
+      height: 33px;
+      vertical-align: top;
+    }
+  }
+}
+
+// Navigation
+.site-nav {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  color: $black;
+  position: fixed;
+  will-change: transform;
+  padding: $global-spacing;
+  background: $brand-primary;
+  transform: translateX(100%);
+  transition: transform .3s ease-out;
+  width: calc(100% - #{$global-spacing});
+  &.-active {
+    transform: translateX(0);
+  }
+
+  @include media-md {
+    padding: 0;
+    width: 100%;
+    transform: none;
+    background: none;
+    text-align: right;
+    position: relative;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    @include clearfix;
+    display: inline-block;
+
+    li {
+      list-style: none;
+      @include media-md {
+        float: left;
+        margin-left: 13px;
+      }
+    }
+  }
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .locale {
+    @extend .headline-descriptor;
+    margin-top: #{$global-spacing * 2};
+
+    @include media-md {
+      right: 0;
+      margin-top: 0;
+      position: absolute;
+      top: -#{$global-spacing / 2};
+    }
+
+    li {
+      float: none;
+      margin-left: 0;
+      display: inline-block;
+      
+      a {
+        transition: color .2s ease-out;
+
+       &:hover {
+        color: $brand-primary;
+        text-decoration: underline;
+       }
+      }
+
+      &.-active {
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .pages {
+    li {
+      margin-bottom: 2em;    
+      a {
+        @extend .headline-two;
+      }
+    }
+
+    @include media-md {
+      margin-right: -12px;
+
+      li {
+        a {
+          border-radius: 5px;
+          padding: 10px 12px 8px;
+          font: 14px/1 $font-regular;
+          background: rgba($white,0);
+          transition: color .2s ease-out, background .2s ease-out;
+          &:hover {
+            color: $brand-primary;
+          }
+        }
+
+        &.-active {
+          a {
+            color: $white;
+            background: $brand-primary;
+            &:hover {
+              color: $black;
+            }
+          }
+        }
+      }
+    }
+  }
 }

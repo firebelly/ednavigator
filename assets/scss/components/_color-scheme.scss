@@ -1,0 +1,8 @@
+// Colors
+
+// Background colors
+@each $color, $bgcolor in $colors {
+  .background-#{$color} {
+    background-color: $bgcolor;
+  }
+}

@@ -16,19 +16,67 @@ $font-regular: 'DINNextLTPro-Regular', sans-serif;
 $font-bold: 'DINNextLTPro-Medium', sans-serif;
 $font-slab: 'DINNextSlabPro-Light', serif;
 
-// Font Classes
-.h1 {
+// Font mixins
+@mixin headline-one {
   letter-spacing: -.01em;
-  font: normal 56px/60px $font-bold;
+  font: normal 42px/40px $font-bold;
+  @include media-md {
+    font-size: 56px;
+    line-height: 60px;
+  }
 }
 
-.h3 {
+// Font Classes
+.body-copy {
+  font: normal 14px/20px $font-regular;
+}
+
+.headline-one {
+  @include headline-one;
+}
+
+.headline-two {
+  letter-spacing: -.01em;
+  font: normal 28px/30px $font-bold;
+}
+
+.headline-three {
+  letter-spacing: .025em;
   font: normal 21px/30px $font-slab;
 }
 
-.font-sc {
+.headline-inline {
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  font: normal 14px/20px $font-bold;
+}
+
+.headline-descriptor {
   margin: 0;
   letter-spacing: .1em;
   text-transform: uppercase;
-  font: normal 10px/2em $font-regular;
+  font: normal 10px/1 $font-bold;
+}
+
+// Headline with trailing rule
+@mixin headline-rule($color, $background) {
+  color: $color;
+  position: relative;
+  @extend .headline-three;
+  span {
+    z-index: 1;
+    position: relative;
+    padding-right: 16px;
+    display: inline-block;
+    background: $background;
+  }
+  &::after {
+    right: 0;
+    top: 13px;
+    width: 100%;
+    content: '';
+    height: 1px;
+    background: $color;
+    position: absolute;
+  }
 }

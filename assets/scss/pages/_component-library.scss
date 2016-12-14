@@ -1,0 +1,5 @@
+// Component Library
+
+.headline-rule {
+  @include headline-rule($black, $offwhite);
+}
