@@ -5,7 +5,7 @@
   background: $black;
   padding: $global-spacing;
 
-  @include media-md {
+  @include media-lg {
     padding: $global-spacing * 2;
   }
 
@@ -16,12 +16,37 @@
 
   .newsletter {
     margin-bottom: $global-spacing;
-    @include media-md {
+    @include media-lg {
       margin-bottom: 0;
+    }
+
+    form {
+      max-width: 400px;
+    }
+  }
+
+  .links-section {
+    @include media-md {
+      display: flex;
+      
+      > div {
+        width: 50%;
+      }
+    }
+    @include media-lg {
+      padding-left: #{$global-spacing * 2};
+
+      > div {
+        width: auto;
+      }
     }
   }
 
   .contact-info {
+    @include media-md {
+      padding-right: $global-spacing;
+    }
+
     a {
       @extend .headline-three;
       transition: color .2s ease-out;
@@ -48,6 +73,53 @@
     li {
       float: left;
       list-style: none;
+      margin-left: 10px;
+      &:first-of-type {
+        margin-left: 0;
+      }
+    }
+    
+    a {
+      display: inline-block;
+      &:hover {
+        .icon {
+          fill: $brand-primary;
+        }
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .icon {
+      width: 15px;
+      height: 15px;
+      fill: $gray-dark;
+      vertical-align: top;
+      transition: fill .2s ease-out;
+      &.icon-twitter,
+      &.icon-medium {
+        width: 18px;
+      }
+    }
+
+    &.app-links {
+      li {
+        margin-left: 20px;
+        &:first-of-type {
+          margin-left: 0;
+        }
+      }
+      .icon {
+        &.icon-apple {
+          width: 18px;
+          height: 22px;
+        }
+        &.icon-android {
+          width: 18px;
+          height: 22px;
+        }
+      }
     }
   }
 

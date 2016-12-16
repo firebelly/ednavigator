@@ -27,6 +27,15 @@
   }
 }
 
+// Body with left sidebard
+body.sidebar-left {
+  .site-header {
+    @include media-md {
+      padding-left: #{$global-spacing * 3};
+    }
+  }
+}
+
 // Navigation
 .site-nav {
   top: 0;

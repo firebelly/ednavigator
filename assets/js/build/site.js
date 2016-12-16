@@ -871,7 +871,8 @@ var FB = (function($) {
     _resize();
 
     // Init functions
-    _testInit();
+    _initSvgIcons();
+    _initNav();
 
     // Esc handlers
     $(document).keyup(function(e) {
@@ -909,8 +910,14 @@ var FB = (function($) {
     }, "easeOutSine");
   }
 
-  function _testInit() {
-    console.log('Testing testing...is this thing on?');
+  function _initSvgIcons() {
+    // Inject dotted arrow svgs for .inline-link elements
+    $('a.inline-link span').append('<span class="icon"><svg class="icon-arrow-dotted" role="img"><use xlink:href="#icon-arrow-dotted" /></svg></span>');
+  }
+
+  function _initNav() {
+    // Inject SEO-useless mobile nav toggle
+    $('.site-nav').closest('div').append('<button class="menu-toggle" aria-hidden="true"><span class="lines"></span></button>');
   }
 
   // Track ajax pages in Analytics

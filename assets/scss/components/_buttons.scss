@@ -12,19 +12,93 @@
     background: $brand-primary;
     border-color: $brand-primary;
   }
+  &:focus {
+    outline: none;
+  }
+}
+
+// 'Inline-link' style button
+a.inline-link {
+  color: $black;
+  position: relative;
+  @extend .headline-three;
+  transition: color .2s ease-out;
+  span {
+    color: $black;
+    transition: color .2s ease-out;
+  }
+  .icon {
+    position: relative;
+    &::after {
+      top: 10px;
+      left: 10px;
+      width: 42px;
+      height: 2px;
+      content: '';
+      position: absolute;
+      transform: scaleX(0);
+      transform-origin: left;
+      background: $brand-primary;
+      transition: transform .2s ease-out;
+    }
+  }
+  svg {
+    width: 50px;
+    fill: $black;
+    height: 10px;
+    margin-left: 10px;
+    transition: fill .2s ease-out;
+  }
+  &:hover {
+    color: $brand-primary;
+    span {
+      color: $black;
+    }
+    .icon {
+      &::after {
+        transform: scaleX(1);
+      }
+      svg {
+        fill: $brand-primary;
+      }
+    }
+  }
 }
 
 // Scroll button
 .scroll-button {
+  padding: 0;
   width: 80px;
   height: 80px;
   background: none;
   border-radius: 50%;
   border: 2px solid $brand-primary;
   .icon {
+    top: 3px;
     width: 15px;
     height: 15px;
+    position: relative;
     fill: $brand-primary;
     transform: rotate(90deg);
+  }
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    .icon {
+      animation: scrollHover 1s linear infinite;
+    }
+  }
+}
+
+@keyframes scrollHover {
+  0%, 50%, 100% {
+    transform: translate3d(0,0,0) rotate(90deg);
+  }
+  25% {
+    transform: translate3d(0,5px,0) rotate(90deg);
+  }
+  75% {
+    transform: translate3d(0,-5px,0) rotate(90deg);
   }
 }

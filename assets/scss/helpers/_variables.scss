@@ -18,18 +18,18 @@ $brand-primary: $yellow;
 
 // Color map for use in functions
 $colors: (
-  black: $black,
-  white: $white,
-  offwhite: $offwhite,
-  blue: $blue,
-  gray: $gray,
-  gray-light: $gray-light,
-  gray-dark: $gray-dark,
-  yellow: $yellow,
-  gold: $gold,
-  orange: $orange,
-  green: $green,
-  primary: $brand-primary
+  'black': $black,
+  'white': $white,
+  'offwhite': $offwhite,
+  'blue': $blue,
+  'gray': $gray,
+  'gray-light': $gray-light,
+  'gray-dark': $gray-dark,
+  'yellow': $yellow,
+  'gold': $gold,
+  'orange': $orange,
+  'green': $green,
+  'primary': $brand-primary
 );
 
 // Breakpoints
