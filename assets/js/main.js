@@ -70,7 +70,10 @@ var FB = (function($) {
 
   function _initNav() {
     // Inject SEO-useless mobile nav toggle
-    $('.site-nav').closest('div').append('<button class="menu-toggle" aria-hidden="true"><span class="lines"></span></button>');
+    $('.site-nav').closest('div').append('<button class="menu-toggle" aria-hidden="true"><span class="lines"></span></button>').on('click', function() {
+      $('.site-nav').toggleClass('-active');
+      $('body, .menu-toggle').toggleClass('nav-open');
+    });
   }
 
   // Track ajax pages in Analytics
