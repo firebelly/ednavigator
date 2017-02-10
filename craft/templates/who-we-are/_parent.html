@@ -1,0 +1,44 @@
+{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set title = entry.title %}
+{% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
+{% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
+
+{% set bodyClass = 'single page who-we-are' %}
+{% set bodyId = 'who-we-are-page' %}
+
+{% block content %}
+
+  {% include 'partials/_intro-section.html' %}
+
+  <section class="operating-principles">
+    <h3 class="headline-rule"><span>Our Operating Principles</span></h3>
+    <div class="principles grid spaced">
+      {% for principle in entry.principles.principle %}
+        <div class="principle col-1-3">
+          <div class="principle-icon">
+            <img src="{{ principle.principleIcon.last().getUrl() }}">
+          </div>
+          <h4>{{ principle.principleLabel }}</h4>
+          <div class="principle-content user-content">
+            {{ principle.principleDescription }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    
+    {% set pages = craft.entries.section(entry.section) %}
+    {% if pages %}
+      <div class="section-links">
+        <h5>Learn more about</h5>
+        <ul class="section-links">
+          {% for page in pages %}
+            {% if page.slug != entry.slug %}
+              <li><a href="{{ page.url }}" class="inline-link"><span>{{ page.title }}</span></a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </section>
+{% endblock %}

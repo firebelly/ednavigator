@@ -1,0 +1,58 @@
+{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% block content %}
+<div class="grid block-grid">
+
+  <div class="block col-1-2 background-gray-light">
+    <h4 class="block-descriptor">Block Descriptor</h4>
+    <h2 class="block-title">Block Title - H1</h2>
+    <h3>h3 Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae soluta accusantium beatae esse maiores, numquam deserunt ab repellat natus, eius pariatur adipisci saepe unde aspernatur ex, possimus ea reprehenderit nostrum.</p>
+    <p><a href="#" class="button">Learn More</a></p>
+  </div>
+  <div class="block col-1-2 background-blue">
+    <h4 class="block-descriptor">Block Descriptor</h4>
+    <h2 class="block-title">Block Title - H1</h2>
+    <h3>h3 Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae soluta accusantium beatae esse maiores, numquam deserunt ab repellat natus, eius pariatur adipisci saepe unde aspernatur ex, possimus ea reprehenderit nostrum.</p>
+    <p><a href="#" class="button">Learn More</a></p>
+  </div>
+
+</div>
+
+<div class="grid background-offwhite">
+
+  <div class="block col-1">
+    <h3 class="headline-rule"><span>Headline with Rule</span></h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab soluta enim pariatur repudiandae, beatae deleniti quas eveniet sed accusamus, voluptate deserunt obcaecati molestias ratione sunt harum quibusdam aspernatur minus? Veritatis.</p>
+  </div>
+
+</div>
+
+<div class="grid block-grid">
+  <div class="block col-1-2 background-orange">
+    <h4 class="block-descriptor">For Employers</h4>
+    <h2 class="block-title">Give back with outstanding support.</h2>
+    <p>Our Employer Partners bring EdNavigator support to the workplace as a benefit for employees. Our expert Navigators help parents keep students on track in school and adult learners in pursuit of their own educational dreams.</p>
+    <p><a href="#" class="inline-link"><span>Invest in your greatest asset—your people.</span></a></p>
+  </div>
+  <div class="image-block col-1-2" style="background-image: url('assets/images/UOregon0473.jpg')"></div>
+</div>
+
+<div class="grid">
+  <div class="block col-1 background-offwhite">
+    <h3 class="headline-rule"><span>Buttons & Stuff</span></h3>
+    <div class="grid">
+      <div class="col-1-4">
+        <h5 class="headline-inline">Scroll-down button</h5>
+        <a class="scroll-button" href="#"><svg class="icon icon-arrow" role="img"><use xlink:href="#icon-arrow" /></svg></a>
+      </div>
+      <div class="col-1-4">
+        
+      </div>
+      <div class="col-1-4"></div>
+      <div class="col-1-4"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

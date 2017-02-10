@@ -1,0 +1,43 @@
+{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set title = entry.title %}
+{% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
+{% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
+
+{% set bodyClass = 'single page people' %}
+
+{% block content %}
+<section class="content interior grid">
+
+  {% for block in entry.people %}
+    {% set image = block.photo.last() %}
+    <li class="page user-content clearfix person" id="{{ block.personName|kebab }}">
+      <div class="bio -left">
+        <header>
+          <h1>{{ block.personName }}</h1>
+          {% if block.personTitle %}
+            <h2>{{ block.personTitle }}</h2>
+          {% endif %}
+          <div class="links">{{ block.socialLinks }}</div>
+        </header>
+        {{ block.bio }}
+      </div>
+      {% if image|length %}
+        <div class="portrait -right" style="background-image: url('{{ craft.config.cdnUrl }}{{ image.getUrl('hero') }}');"></div>
+      {% endif %}
+   </li>
+  {% endfor %}
+
+</section>
+{% endblock %}
+
+{% block aside %}
+  <section id="filters" class="divider section-nav">
+    <h1>{{ entry.title }}</h1>
+    <ul class="option-set clearfix smoothscroll">
+      {% for block in entry.people %}
+        <li><a href="#{{ block.personName|kebab }}">{{ block.personName }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endblock aside %}

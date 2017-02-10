@@ -1,0 +1,65 @@
+// Common Page Styles
+
+.page-header {
+  background-size: cover;
+
+  @include media-lg {
+    padding-top: 150px;
+    min-height: calc(100vh - #{$global-spacing});
+  }
+}
+
+body.page {
+  .site-logo {
+    .mark {
+      fill: $yellow;
+    }
+    .words {
+      fill: $black;
+    }
+  }
+
+  section {
+    padding: $global-spacing;
+
+    @include media-md {
+      padding: #{$global-spacing * 2};
+    }
+  }
+
+  .intro-section {
+    padding-top: #{$global-spacing * 2};
+
+    @include media-md {
+      padding-top: #{$global-spacing * 3};
+    }
+
+    .page-description {
+      margin: 0;
+      @include headline-one;
+      @include media-md {
+        min-width: 500px;
+        max-width: 1100px;
+        width: #{$col * 14};
+      }
+    }
+
+    .intro-sections {
+      margin-top: $global-spacing;
+
+      h4 {
+        color: $yellow;
+        @extend .headline-two;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .intro-section-content {
+        max-width: 600px;
+        p:first-of-type {
+          margin-top: 0;
+        }
+      }
+    }
+
+  }
+}

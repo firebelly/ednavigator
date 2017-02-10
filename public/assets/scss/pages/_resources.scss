@@ -1,0 +1,106 @@
+// Resources
+
+body.page-resources {
+  @include media-lg {
+    padding-right: $global-spacing;
+  }
+
+  .intro-section {
+    background: $offwhite;
+  }
+  
+  .tools-and-bundles {
+
+    h3 {
+      @extend .headline-two;
+      margin: $vertical-beat 0 #{$vertical-beat * 3};
+    }
+
+    h4 {
+      margin: 0;
+      @extend .headline-descriptor;
+    }
+
+    .tool {
+      background: $yellow;
+      padding: $global-spacing;
+
+      @include media-lg {
+        padding: #{$global-spacing * 2};
+      }
+    }
+
+    .bundle {
+      position: relative;
+      padding: $global-spacing;
+
+      .bundle-content {
+        z-index: 1;
+        position: relative;
+      }
+
+      .bundle-image {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        position: absolute;
+        background-size: cover;
+        background-color: $gray;
+
+        &::after {
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          opacity: .8;
+          content: '';
+          background: $gray;
+          position: absolute;
+          transition: .5s ease-out;
+        }
+      }
+
+      &:nth-of-type(odd) {
+        background-color: $gray-light;
+
+        .bundle-image {          
+          &::after {
+            background: $gray-light;
+          }
+        }
+      }
+
+      @include media-md {
+        .bundle-image {        
+          &::after {
+            opacity: 1;
+          }
+        }
+        &:hover {
+          .bundle-image {
+            &::after {
+              opacity: .8;
+            }
+          }
+        }
+      }
+
+      @include media-lg {
+        padding: #{$global-spacing * 2};
+      }
+
+    }
+  }
+
+  .filter-section {
+    background: $offwhite;
+    padding: $global-spacing;
+
+    @include media-lg {
+      padding: #{$global-spacing * 2};
+    }
+  }
+
+}

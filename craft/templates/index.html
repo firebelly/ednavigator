@@ -1,0 +1,34 @@
+{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set bodyClass = 'home' %}
+
+{% block content %}
+<div class="page-header grid block-grid align-right" style="background-image:url({{ entry.bannerImage.last().getUrl('hero') }});">
+
+  <div class="block col-1-2 background-gray-light">
+    <h2 class="block-title">{{ entry.pageDescription }}</h2>
+    <h3>{{ entry.body }}</h3>
+  </div>
+
+  <a class="scroll-button smoothscroll" href="#pageContent"><svg class="icon icon-arrow" role="img"><use xlink:href="#icon-arrow" /></svg></a>
+
+</div>
+
+<div id="pageContent" class="user-paths grid block-grid">
+
+  {% for userPath in entry.userPaths %}
+    
+    <div class="block col-1-2" style="background-image:url({{ userPath.pathImage.last().getUrl('hero') }});">
+      
+      <div class="-inner">      
+        <h2 class="block-title">{{ userPath.pathTitle|nl2br }}</h2>
+        <p><a href="{{ userPath.pathPage.last().url }}" class="inline-link"><span>{{ userPath.pathLinkText|nl2br }}</span></a></p>
+        <a href="{{ userPath.pathPage.last().url }}" class="button">Learn more</a>
+      </div>
+
+    </div>
+
+  {% endfor %}
+
+</div>
+{% endblock %}

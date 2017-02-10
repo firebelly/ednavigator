@@ -1,0 +1,97 @@
+//base styles
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  color: $black;
+  font-size: 14px;
+  box-sizing: border-box;
+  font-family: $font-regular;
+  
+  @include media-md {
+    padding-bottom: $global-spacing;
+
+    &.sidebar-left {
+      padding-left: $global-spacing;
+    }
+    &.sidebar-right {
+      padding-right: $global-spacing;
+    }
+  }
+}
+
+h1 {
+  @include headline-one;
+}
+
+h2 {
+  @extend .headline-two;
+}
+
+h3 {
+  @extend .headline-three;
+}
+
+p {
+  font-size: 1em;
+  line-height: 1.428571429;
+}
+
+a {
+	color: inherit;
+}
+
+img {
+  height: auto;
+	max-width: 100%;
+}
+
+.wrap {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1600px; // change to whatever 
+  position: relative;
+  @include clearfix();
+  padding: 0 $global-spacing;
+}
+
+.svgs-defs {
+  display: none;
+}
+
+// Load more
+.loading {
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  &::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    border-radius: 50%;
+    position: absolute;
+    border-style: solid;
+    border-top-width: 2px;
+    border-width: 2px 2px 0 0;
+    border-color: $brand-primary;
+    animation: spinLeft 1.25s linear infinite;
+  }
+  .ednavigator-mark {
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    fill: $brand-primary;
+    display: inline-block;
+    animation: spinRight 1.6s cubic-bezier(0.68,-0.55,0.27,1.5) infinite;
+  }
+}

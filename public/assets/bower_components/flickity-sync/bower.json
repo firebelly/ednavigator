@@ -1,0 +1,32 @@
+{
+  "name": "flickity-sync",
+  "description": "Enable sync for Flickity",
+  "main": "flickity-sync.js",
+  "dependencies": {
+    "flickity": "^2.0.0",
+    "fizzy-ui-utils": "^2.0.0"
+  },
+  "devDependencies": {
+    "qunit": "~1.17.1"
+  },
+  "authors": [
+    "David DeSandro"
+  ],
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "flickity"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "package.json"
+  ]
+}

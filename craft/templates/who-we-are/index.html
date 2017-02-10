@@ -1,0 +1,6 @@
+{# Parent or child? #}
+{% if entry.children|length %}
+  {% include 'who-we-are/_parent.html' %}
+{% else %}
+  {% include 'who-we-are/_child.html' %}
+{% endif %}

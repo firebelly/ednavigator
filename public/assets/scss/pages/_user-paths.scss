@@ -1,0 +1,54 @@
+// User Path Pages (Families/Employers)
+
+body.page-user-path {
+  .site-header {
+    svg {
+      fill: $white;
+    }
+  }
+  
+  .site-nav {
+    a {
+      color: $white;
+    }
+  }
+
+  .page-section {
+
+    .page-section-content {
+      width: 100%;
+    }
+  }
+}
+
+// Families/Familias
+body.page-families,
+body.page-familias {
+  .page-section {
+    @include media-lg {
+
+      &:nth-of-type(odd) {
+        .image-block,
+        .page-section-image-carousel {
+          order: 1;
+        }
+      }
+    }
+  }
+}
+
+// Employers
+body.page-employers,
+body.page-empleyadores {
+  .page-section {
+    @include media-lg {
+
+      &:nth-of-type(even) {
+        .image-block,
+        .page-section-image-carousel {
+          order: 1;
+        }
+      }
+    }
+  }
+}

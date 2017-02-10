@@ -1,0 +1,17 @@
+<section class="intro-section">
+  <h2 class="page-description">
+    {{ entry.pageDescription }}
+  </h2>
+  {% if entry.introSections.introSection|length %}
+    <div class="intro-sections grid spaced">
+      {% for introSection in entry.introSections.introSection %}
+        <div class="col-1-2">
+          <h4>{{ introSection.sectionTitle }}</h4>
+          <div class="intro-section-content user-content">
+            {{ introSection.sectionContent }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>

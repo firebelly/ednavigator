@@ -1,0 +1,44 @@
+// Variables
+
+// Colors
+$black      : #1c1e21;
+$white      : #fff;
+$offwhite   : #f0f1f2;
+$blue       : #4d7dee;
+$gray       : #a3b0b2;
+$gray-light : #d0d6d8;
+$gray-dark  : #70797b;
+$yellow     : #f7cc0c;
+$gold       : #f7bf11;
+$orange     : #f9a01c;
+$green      : #728256;
+
+// Brand Swatches
+$brand-primary: $yellow;
+
+// Color map for use in functions
+$colors: (
+  'black'      : $black,
+  'white'      : $white,
+  'offwhite'   : $offwhite,
+  'blue'       : $blue,
+  'gray'       : $gray,
+  'gray-light' : $gray-light,
+  'gray-dark'  : $gray-dark,
+  'yellow'     : $yellow,
+  'gold'       : $gold,
+  'orange'     : $orange,
+  'green'      : $green,
+  'primary'    : $brand-primary
+);
+
+// Breakpoints
+$breakpoint-sm  : 480px;
+$breakpoint-md  : 700px;
+$breakpoint-nav : 760px;
+$breakpoint-lg  : 900px;
+$breakpoint-xl  : 1200px;
+
+// Spacing
+$global-spacing : 50px;
+$vertical-beat  : 10px;

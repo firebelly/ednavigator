@@ -1,0 +1,108 @@
+// Forms
+
+form {
+  input {
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 0;
+    background: none;
+    color: $gray-dark;
+    @extend .headline-three;
+    border-width: 0 0 1px 0;
+    border-color: $gray-dark;
+    -webkit-appearence: none;
+    transition: border-color .2s ease-out;
+    &:focus {
+      outline: none;
+      border-color: $brand-primary;
+    }
+    &::-webkit-input-placeholder {
+       color: $gray-dark;
+    }
+    &::-moz-placeholder {  /* Firefox 19+ */
+       color: $gray-dark;  
+    }
+    &:-ms-input-placeholder {  
+       color: $gray-dark;  
+    }
+  }
+
+  .form-group {
+    margin-top: 10px;
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  button[type=submit] {
+    padding: 0;
+    width: 15px;
+    border: none;
+    height: 50px;
+    background: none;
+    svg {
+      width: 15px;
+      height: 15px;
+      fill: $black;
+      vertical-align: top;
+      transition: fill .2s ease-out;
+    }
+
+    &:hover {
+      svg {
+        fill: $brand-primary;
+      }
+    }
+  }
+}
+
+.search-wrap {
+  position: relative;
+
+  input[type=search] {
+    box-sizing: border-box;
+    padding-right: $global-spacing;
+  }
+
+  button[type=submit] {
+    top: 0;
+    right: 0;
+    position: absolute;
+  }
+}
+
+// Custom select styles
+.select-wrap {
+  margin: 0;
+  padding: 0;
+  display: block;
+  position: relative;
+  &:after {
+    right: 0;
+    top: 18px;
+    content: '';
+    width: 10px;
+    height: 10px;
+    font-size: 14px;
+    position: absolute;
+    pointer-events: none;
+    transform: rotate(90deg);
+    background: url('../../svgs/icon-arrow.svg');
+  }
+
+  select {
+    width: 100%;
+    padding: 10px 0;
+    appearance: none;
+    box-shadow: none;
+    border-radius: 0;
+    background: none;
+    border-style: solid;
+    @extend .headline-three;
+    border-width: 0 0 1px 0;
+    border-bottom-color: $gray-dark;
+    &:focus {
+      outline: none;
+    }
+  }
+}

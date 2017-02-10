@@ -1,0 +1,56 @@
+// User Content
+
+.user-content {
+  ul, ol {
+    padding: 0;
+    margin: #{$vertical-beat * 3} 0;
+    li {
+      font-size: 1em;
+      list-style: none;
+      position: relative;
+      line-height: 1.428571429;
+      &::before {
+        position: absolute;
+      }
+    }    
+  }
+
+  ul {
+    li {
+      font-size: 1em;
+      list-style: none;
+      position: relative;
+      line-height: 1.428571429;
+      &::before {
+        top: .35em;
+        width: 5px;
+        height: 5px;
+        content: '';
+        left: -22px;
+        background: url('../../svgs/icon-arrow.svg');
+      }
+    }
+  }
+
+  ol {
+    counter-reset: listItem;
+    li {
+      counter-increment: listItem;
+      &::before {
+        left: -24px;
+        content: counter(listItem) ".";
+      }
+    }
+  }
+
+  blockquote {
+    @extend .headline-inline;
+    margin: #{$vertical-beat * 3} 0;
+  }
+
+  hr {
+    border: none; // cancel out defaults
+    margin: $global-spacing 0;
+    border-top: 1px solid $black;
+  }
+}

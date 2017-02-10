@@ -1,0 +1,101 @@
+{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set limit = 1 %}
+{% set params = { section: 'resourcesEntries', limit: limit} %}
+
+{% set title = "Resrouces" %}
+{% set bodyClass = 'page page-' ~ entry.slug %}
+
+{% block content %}
+
+  {% if not craft.request.isAjax %}
+
+    <section class="intro-section">
+      <h2 class="page-description">
+        {{ entry.pageDescription }}
+      </h2>
+    </section>
+
+    <div class="tools-and-bundles flex-grid">
+      <div class="tool col-1-3">
+        <h4>Tool</h4>
+        <h3>Download <br>Our App</h3>
+        <p><a href="#" class="inline-link"><span>Free educational resources on your mobile device</span></a></p>
+      </div>
+
+      {% set bundles = craft.categories.group('resourceBundle') %}
+      {% for bundle in bundles %}
+        {% set bundleImage = craft.imager.transformImage(bundle.bannerImage.first(), { effects: { grayscale: true } }) %}
+        <div class="bundle col-1-3">
+          <div class="bundle-content">        
+            <h4>Resource Bundle</h4>
+            <h3>{{ bundle.title }}</h3>
+            <p><a href="{{ bundle.url }}" class="inline-link"><span>{{ bundle.pageDescription }}</span></a></p>
+          </div>
+          {% if bundle.bannerImage|length %}
+            <div class="bundle-image" style="background-image:url({{ bundleImage.url }})"></div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="filter-section grid">
+
+      <div class="search col-1-2">
+        <form action="{{ url('search/results') }}">
+          <div class="search-wrap">          
+            <input type="search" name="q" placeholder="Search Posts">
+            <button type="submit" class="svg-inject" data-icon="icon-search"><span class="visually-hidden">Search Resources</span></button>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-1-2 grid">
+        <div class="filter topic col-1-2">
+          <div class="select-wrap">        
+            <select name="topic" id="topic">
+              <option value="null">Topic</option>
+              {% for topic in craft.categories.group('resourcesTopics') %}
+                <option value="{{ topic.title }}">{{ topic.title }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        {% set entries = craft.entries.section('resourcesEntries').limit(null) %}
+        <div class="filter location col-1-2">
+          <div class="select-wrap">
+            <select name="location" id="location">
+              <option value="null">Locations</option>
+              {% for location in craft.tags.group('resourcesLocations').relatedTo(entries) %}
+                <option value="{{ location.title }}">{{ location.title }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  {% endif %}
+
+  {% paginate craft.entries(params) as pageInfo, entries %}
+
+    {% if not craft.request.isAjax %}
+    <div class="article-list">
+    {% endif %}
+
+      {% for entry in entries %}
+        {% include "resources/_article" %}
+      {% endfor %}
+
+    {% if not craft.request.isAjax %}
+      </div>
+      <div class="load-more-section">
+        <button id="load-more" class="load-more" data-collection="resources" data-page="{{ pageInfo.currentPage + 1 }}" data-total-pages="{{ pageInfo.totalPages }}">Load More<span class="icon"><svg class="icon-arrow" role="img"><use xlink:href="#icon-arrow" /></span></button>
+      </div>
+    {% endif %}
+
+  {% endpaginate %}
+
+{% endblock %}

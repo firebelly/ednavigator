@@ -1,0 +1,74 @@
+// Section Carousels
+
+.page-section-carousel {
+
+  .page-section {
+    width: 100%;
+  }
+  .page-section-image-carousel,
+  .page-section-content-carousel {
+
+    @include media-lg {
+      width: 50%;
+    }
+
+    .image-block {
+      width: 100%;
+      @include media-lg {
+        height: 100%;
+      }
+    }
+
+    .block {
+      width: 100%;
+      padding-bottom: $global-spacing * 2;
+      @include media-lg {
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  // Image Carousels
+  .page-section-image-carousel {
+    height: 200px;
+    @include media-lg {
+      height: auto;
+    }
+  }
+
+}
+
+// Flickity style overrides
+.flickity-prev-next-button {
+  top: auto;
+  bottom: 0;
+  background: none;
+  @include media-md {
+    top: auto;
+    bottom: $global-spacing * 2;
+  }
+
+  &:hover {
+    background: none;
+  }
+  &:focus {
+    box-shadow: none;
+  }
+
+  &.next {
+    left: 86px;
+    @include media-md {
+      left: 122px;
+    }
+  }
+  &.previous {
+    left: 46px;
+    @include media-md {
+      left: 86px;
+    }
+  }
+}
+
+.flickity-viewport {
+  transition: height .2s ease-out;
+}

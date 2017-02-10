@@ -1,0 +1,50 @@
+// Entry Navigation (templats/partials/_entry-nav.html)
+
+.entry-nav {
+  margin-top: #{$global-spacing * 2};
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li + li {
+      margin-top: #{$vertical-beat * 3};
+    }
+  }
+
+  p {
+    @extend .headline-descriptor;
+    margin: 0 0 #{$vertical-beat * 3};
+  }
+
+  .previous {
+    text-align: right;
+
+  }
+
+  @include media-md {
+    ul {
+      @include clearfix;
+
+      li {
+        width: 50%;
+        &.previous {
+          float: left;
+          padding-right: #{$global-spacing * 2};
+        }
+        &.next {
+          float: right;
+          padding-left: #{$global-spacing * 2};
+        }
+
+        + li {
+          margin: 0;
+        }
+      }
+    }
+
+    p {
+      display: block;
+    }
+  }
+}

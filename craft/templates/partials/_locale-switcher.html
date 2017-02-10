@@ -1,0 +1,24 @@
+<ul class="locale">
+  {% block locale__switch %}
+    {# Loop through all of the site locales, except the current one #}
+    {% set siteLocales = craft.i18n.getSiteLocales() %}
+    {% for locale in siteLocales %}
+      
+      {# Find the current entry in the other locale #}
+      {% set localeEntry = craft.entries.id(entry.id).locale(locale.id).first %}
+
+      {# Make sure that it's actually localized to this locale #}
+      {% if locale == craft.locale %}
+        {# Output a link to it #}
+          <li class="-active"><a href="{{ localeEntry.getUrl() }}">{{ locale.nativeName }}</a></li>
+        {% else %}
+          <li><a href="{{ localeEntry.getUrl() }}">{{ locale.nativeName }}</a></li>
+      {% endif %}
+
+      {% if not loop.last %}
+        <span>/</span> 
+      {% endif %}
+
+    {% endfor %}
+  {% endblock %}
+</ul>

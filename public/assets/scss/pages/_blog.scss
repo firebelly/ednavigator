@@ -1,0 +1,240 @@
+// Blog Page
+
+body.page-blog {
+  @include media-lg {
+    padding-right: $global-spacing;
+  }
+  
+  .intro-section {
+    background: $offwhite;
+
+    .page-description {
+      @include media-lg {
+        float: left;
+      }
+    }
+
+    .subscribe {
+      h4 {
+        color: $yellow;
+        margin: 22px 0 30px;
+        @extend .headline-two;
+      }
+
+      @include media-lg {
+        float: right;
+        width: #{$col * 4};
+      }
+    }
+  }
+
+}
+
+.article-list {
+  article {
+
+    .article-image {
+      height: 200px;
+      position: relative;
+      background-size: cover;
+      background-position: top center;
+
+      .icon {
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+      }
+
+      iframe, object, embed {
+        top: 0;
+        left: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      }
+
+      // Ones with videos
+      &.has-video {
+        iframe {
+          display: none;
+        }
+
+        .icon {
+          top: 50%;
+          left: 50%;
+          z-index: 2;
+          width: 50px;
+          height: 50px;
+          stroke: $white;
+          cursor: pointer;
+          stroke-width: .5;
+          position: absolute;
+          transform: translate(-25px, -25px);
+        }
+
+        .image {
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          opacity: 1;
+          z-index: 1;
+          position: absolute;
+          background-size: cover;
+          background-position: top center;
+          transition: opacity .35s ease-out;
+        }
+
+        &.-active {
+          iframe {
+            display: block;
+          }
+
+          .image {
+            opacity: 0;
+            pointer-events: none;
+          }
+
+          .icon {
+            display: none;
+          }
+        }
+      }
+
+      @include media-lg {
+        height: auto;
+      }
+    }
+
+    .article-content {
+      position: relative;
+      padding: #{$global-spacing * 1.5} $global-spacing;
+
+      @include media-md {
+        padding: #{$global-spacing * 2};
+      }
+    }
+
+    .article-category {
+      @extend .headline-descriptor;
+    }
+
+    .article-title {
+      color: $yellow;
+      @extend .headline-two;
+      margin-top: $vertical-beat;
+      a {
+        text-decoration: none;
+      }
+    }
+
+    .article-excerpt {
+      margin: #{$vertical-beat * 3} 0 $global-spacing;
+    }
+
+    @include media-md {
+      background: $offwhite;
+
+      &:nth-of-type(odd) {
+        .article-image {
+          order: 1;
+        }
+        .article-content {
+          order: 0;
+          background: $white;
+        }
+      }
+    }
+  }
+}
+
+.article-date {
+  top: 0;
+  height: 20px;
+  color: $white;
+  background: $black;
+  position: absolute;
+  padding: 6px 0 2px 8px;
+  right: $global-spacing;
+  transform-origin: top right;
+  @extend .headline-descriptor;
+  transform: rotate(90deg) translateX(100%);
+  &::before,
+  &::after {
+    width: 8px;
+    left: 100%;
+    content: '';
+    height: 10px;
+    position: absolute;
+  }
+  &::before {
+    top: 0;;
+    border-left: 8px solid $black;
+    border-top: 10px solid $black;
+    border-right: 8px solid transparent;
+    border-bottom: 10px solid transparent;
+  }
+  &::after {
+    bottom: 0;
+    border-left: 8px solid $black;
+    border-bottom: 10px solid $black;
+    border-top: 10px solid transparent;
+    border-right: 8px solid transparent;
+  }
+
+  @include media-md {
+    right: #{$global-spacing * 2};
+  }
+}
+
+// Load More Section
+.load-more-section {
+  text-align: center;
+  position: relative;
+  background: $offwhite;
+  padding: $global-spacing;
+
+  @include media-lg {
+    padding: #{$global-spacing * 2};
+  }
+
+  .load-more {
+    padding: 0;
+    border: none;
+    margin: 0 auto;
+    background: none;
+    display: inline-block;
+    @extend .headline-descriptor;
+
+    .icon {
+      width: 80px;
+      height: 80px;
+      display: block;
+      position: relative;
+      border-radius: 50%;
+      border: 1px solid $black;
+      margin-top: $vertical-beat;
+
+      .icon-arrow {
+        left: 0;
+        top: 31px;
+        width: 15px;
+        height: 15px;
+        fill: $black;
+        position: relative;
+        transform: rotate(90deg);
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      .icon-arrow {
+        animation: scrollHover 1s linear infinite;
+      }
+    }
+  }
+}

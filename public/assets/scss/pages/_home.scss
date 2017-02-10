@@ -1,0 +1,97 @@
+// Home page
+
+body.home {
+  @include media-lg {
+    padding-right: $global-spacing;
+  }
+
+  .site-header {
+    svg {
+      fill: $white;
+    }
+  }
+  
+  .site-nav {
+    a {
+      color: $white;
+    }
+  }
+
+  .page-header {
+    position: relative;
+
+    .block {
+      align-self: flex-end;
+
+      p {
+        margin-bottom: 0;
+      }
+
+      @include media-lg {
+        padding-bottom: 190px;
+      }
+    }
+
+    .scroll-button {
+      left: 50%;
+      position: absolute;
+      bottom: $global-spacing;
+      transform: translateX(-40px);
+    }
+  }
+
+  .user-paths {
+
+    .block {
+  
+      &::before,
+      &::after {
+        top: 0;
+        left: 0;
+        opacity: 0;
+        bottom: 0;
+        z-index: 0;
+        width: 100%;
+        content: '';
+        background: $blue;
+        position: absolute;
+      }
+      &::before {
+        opacity: .75;
+      }
+
+      &:first-of-type {
+        &::before,
+        &::after {
+          background: $gray;
+        }
+      }
+
+      .-inner {
+        z-index: 1;
+        position: relative;
+
+        p {
+          margin: 0;
+        }
+
+        @include media-lg {
+          height: 100%;
+          padding-bottom: #{$global-spacing * 2};
+        }
+      }
+
+      .button {
+        margin-top: $global-spacing;
+
+        @include media-lg {
+          left: 0;
+          bottom: 0;
+          position: absolute;
+        }
+      }
+    }
+
+  }
+
+}

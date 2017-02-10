@@ -1,0 +1,226 @@
+// Who We Are
+
+body.who-we-are {
+  
+  .operating-principles {
+    background: $yellow;
+
+    .headline-rule span {
+      background: $yellow;
+    }
+
+    .principles {
+      @include media-sm {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-left: -#{$global-spacing / 2};
+        width: calc(100% + #{$global-spacing});
+      }
+
+      .principle {
+        text-align: center;
+        position: relative;
+        margin-top: $global-spacing;
+
+        .principle-icon {
+          img {
+            max-width: 100px;
+          }
+        }
+
+        h4 {
+          font-size: 14px;
+          @extend .headline-descriptor;
+          margin: #{$global-spacing / 2} 0;
+        }
+
+        .principle-content {
+          p:first-of-type {
+            margin-top: 0;
+          }
+        }
+
+        @include media-sm {
+          max-width: 50%;
+          flex-basis: 50%;
+          padding: 0 #{$global-spacing / 2};
+        }
+
+        @include media-lg {
+          max-width: 33.3333%;
+          flex-basis: 33.3333%;
+        }
+      }
+    }
+
+    .section-links {
+      margin-top: $global-spacing * 2;
+      
+      h5 {
+        @extend .headline-descriptor;
+      }
+
+      ul {
+        padding: 0;
+        list-style: none;
+        margin: #{$global-spacing / 2} 0 0;
+        li {
+          line-height: 3;
+        }
+      }
+    }
+  }
+
+}
+
+// Child Pages
+body.who-we-are-child {
+  .intro-section {
+    background: $offwhite;
+  }
+
+  .people-section {
+    background: $offwhite;
+
+    .headline-rule span {
+      background: $offwhite;
+    }
+
+    .people-grid {
+      padding-top: #{$global-spacing * 2};
+      @include media-lg {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+
+    .person {
+      @include clearfix;
+      margin-bottom: #{$global-spacing * 2};
+
+      @include media-lg {
+        max-width: 50%;
+        flex-basis: 50%;
+      }
+
+      .person-image {
+        overflow: hidden;
+        position: relative;
+        border-radius: 50%;
+        width: #{$global-spacing * 3};
+        height: #{$global-spacing * 3};
+        margin-bottom: #{$vertical-beat * 3};
+
+        &::after {
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          content: '';
+          position: absolute;
+          background: $yellow;
+        }
+
+        img {
+          z-index: 1;
+          opacity: .5;
+          max-width: 100%;
+          position: relative;
+          vertical-align: top;
+        }
+
+        @include media-xl {
+          float: left;
+        }
+      }
+
+      .person-content {
+        @include media-xl {
+          float: right;
+          width: calc(100% - #{$global-spacing * 4});
+        }
+      }
+
+      h4 {
+        color: $yellow;
+        @extend .headline-two;
+        margin: 0 0 $vertical-beat;
+      }
+
+      h5 {
+        @extend .headline-descriptor;
+        max-width: #{$global-spacing * 5};
+        margin-bottom: #{$vertical-beat * 3};
+      }
+
+      .person-description {
+        max-width: 600px;
+
+        p:first-of-type {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  // Partners Page
+  &.page-our-partners {
+    .people-section {
+      .person {
+
+        .person-image {
+          height: 70px;
+          border-radius: 0;
+          width: #{$global-spacing * 2};
+
+          &::after {
+            display: none;
+          }
+
+          img {
+            opacity: 1;
+            max-height: 70px;
+          }
+        }
+
+        .person-content {
+          @include media-xl {
+            width: calc(100% - #{$global-spacing * 3});
+          }
+        }
+  
+        h4 {
+          color: $black;
+          @extend .headline-descriptor;
+          font-size: 14px;
+          margin-bottom: $vertical-beat;
+        }
+
+        h5 {
+          color: $yellow;
+        }
+        
+        .person-description {
+          max-width: 400px;
+        }
+      }
+    }
+  }
+}
+
+// Mix Blend Mode Support
+html.backgroundblendmode {
+  body.who-we-are-child:not(.page-our-partners) {  
+    .people-section {
+      .person {
+        .person-image {
+          img {
+            opacity: 1;
+            mix-blend-mode: multiply;
+          }
+        }
+      }
+    }
+  }
+}

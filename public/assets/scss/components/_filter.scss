@@ -1,0 +1,17 @@
+// Filter (Used on blog and resources pages)
+
+.filter-section {
+  padding-top: $global-spacing;
+
+  .search {
+    @include media-lg {
+      padding-right: #{$col * 2};
+    }
+  }
+
+  .filter:first-of-type {
+    @include media-lg {
+      padding-right: #{$col * 4};
+    }
+  }
+}
