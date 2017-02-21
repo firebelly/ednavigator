@@ -5,12 +5,12 @@ form {
     width: 100%;
     padding: 10px 0;
     border-radius: 0;
+    appearance: none;
     background: none;
     color: $gray-dark;
     @extend .headline-three;
     border-width: 0 0 1px 0;
     border-color: $gray-dark;
-    -webkit-appearence: none;
     transition: border-color .2s ease-out;
     &:focus {
       outline: none;
@@ -34,7 +34,12 @@ form {
     }
   }
 
-  button[type=submit] {
+  input[type="search"] {
+    border-radius: 0;
+    appearance: none;
+  }
+
+  button[type="submit"] {
     padding: 0;
     width: 15px;
     border: none;
@@ -53,6 +58,63 @@ form {
         fill: $brand-primary;
       }
     }
+  }
+
+  .submit {
+    margin-top: $global-spacing;
+  }
+
+  // Checkboxes
+  .checkbox-list {
+    li {
+      margin-top: $vertical-beat;
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+  }
+  .checkbox {
+    position: relative;
+
+    input {
+      @extend .sr-only;
+    }
+
+    input:checked ~ .check-indicator::after {
+      opacity: 1;
+    }
+    input:focus ~ .check-indicator {
+      border-color: $brand-primary;
+    }
+
+    .check-indicator {
+      width: 8px;
+      height: 8px;
+      bottom: 1px;
+      overflow: hidden;
+      border-radius: 50%;
+      position: relative;
+      display: inline-block;
+      margin-right: $vertical-beat;
+      border: 1px solid $gray-dark;
+      &::after {
+        top: 0;
+        left: 0;
+        opacity: 0;
+        content: '';
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        will-change: opacity;
+        background: $gray-dark;
+        transition: opacity .15s ease-out;
+      }
+    }
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
   }
 }
 
@@ -103,6 +165,28 @@ form {
     border-bottom-color: $gray-dark;
     &:focus {
       outline: none;
+    }
+  }
+}
+
+// Newsletter signup for
+.newsletter-form {
+
+  .hidden-group {
+    margin-top: $vertical-beat;
+  }
+
+  strong {
+    display: block;
+    font-weight: normal;
+    @extend .headline-three;
+    padding: $vertical-beat 0;
+  }
+
+  .submit {
+    &:focus {
+      color: $black;
+      background: $brand-primary;
     }
   }
 }

@@ -3,13 +3,19 @@
 .site-header {
   top: 0;
   left: 0;
+  right: 0;
   z-index: 20;
-  width: 100%;
   position: fixed;
-  padding: #{$global-spacing / 2} $global-spacing;
+  background: $offwhite;
+  height: $header-height-small;
+  padding: 18px $global-spacing;
+
+  &.-sticky {
+  }
 
   @include media-md {
-    padding: $global-spacing #{$global-spacing * 2};
+    height: $header-height;
+    padding: $global-spacing #{$global-spacing * 2} 0;
   }
 }
 
@@ -17,7 +23,17 @@
 body.sidebar-left {
   .site-header {
     @include media-md {
-      padding-left: #{$global-spacing * 3};
+      left: $global-spacing;
+      padding-left: #{$global-spacing * 2};
+    }
+  }
+}
+// Body with right sidebard
+body.sidebar-right {
+  .site-header {
+    @include media-md {
+      right: $global-spacing;
+      padding-right: $global-spacing;
     }
   }
 }
@@ -38,7 +54,7 @@ body.sidebar-left {
     vertical-align: top;
   }
 
-  @include media-lg {
+  @include media-md {
     margin-left: -#{$global-spacing};
   }
 }
@@ -61,7 +77,7 @@ body.sidebar-left {
   }
 
   @include min-screen($breakpoint-nav) {
-    width: 50%;
+    width: auto;
     float: right;
     transform: none;
     padding: 6px 0 0;
@@ -74,11 +90,10 @@ body.sidebar-left {
     margin: 0;
     padding: 0;
     @include clearfix;
-    display: inline-block;
 
     li {
       list-style: none;
-      @include media-md {
+      @include min-screen($breakpoint-nav) {
         float: left;
         margin-left: 13px;
       }
@@ -170,6 +185,10 @@ body.sidebar-left {
   position: absolute;
   top: #{$global-spacing / 2};
   right: #{$global-spacing / 2};
+  @include media-md {
+    right: $global-spacing;
+    top: $global-spacing;
+  }
   @include min-screen($breakpoint-nav) {
     display: none;
   }
@@ -179,7 +198,7 @@ body.sidebar-left {
     top: 10px;
     height: 2px;
     width: 25px;
-    background: $white;
+    background: $black;
     position: absolute;
     &::before,
     &::after {

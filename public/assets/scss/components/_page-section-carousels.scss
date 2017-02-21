@@ -39,6 +39,9 @@
 }
 
 // Flickity style overrides
+.flickity-viewport:focus {
+  outline: 20px solid red;
+}
 .flickity-prev-next-button {
   top: auto;
   bottom: 0;

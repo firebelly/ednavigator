@@ -5,10 +5,10 @@ body.single-post {
 
   .entry {
     background: $gray-light;
-    margin-top: #{$global-spacing * 2};
+    margin-top: $header-height-small;
 
     @include media-lg {
-      margin-top: #{$global-spacing * 4};
+      margin-top: $header-height;
     }
 
     .entry-body {
@@ -62,7 +62,11 @@ body.single-post {
           cursor: pointer;
           stroke-width: .5;
           position: absolute;
+          transition: stroke .2s ease-out;
           transform: translate(-25px, -25px);
+          &:hover {
+            stroke: $brand-primary;
+          }
         }
 
         .image {

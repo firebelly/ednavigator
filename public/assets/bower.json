@@ -25,6 +25,9 @@
     "waypoints": "^4.0.1",
     "jquery_lazyload": "jquery.lazyload#^1.9.7",
     "flickity": "~2.0.5",
-    "flickity-sync": "~2.0.0"
+    "flickity-sync": "~2.0.0",
+    "Scrollify": "~1.0.12",
+    "panelsnap": "~0.15.1",
+    "history.js": "~1.8.0"
   }
 }

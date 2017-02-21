@@ -1,0 +1,38 @@
+<div class="filter-section grid">
+
+  <div class="search col-1-2">
+    <form action="{{ url('resources/search') }}" class="search-filter">
+      <div class="search-wrap">          
+        <input type="search" name="q" placeholder="Search Resources">
+        <button type="submit" class="svg-inject" data-icon="icon-search"><span class="visually-hidden">Search Resources</span></button>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-1-2 grid">
+    <div class="filter topic col-1-2">
+      <div class="select-wrap">        
+        <select name="topic" id="topic">
+          <option value="null">Topic</option>
+          {% for topic in craft.categories.group('resourcesTopics') %}
+            <option value="{{ topic.url }}">{{ topic.title }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    {% set locationEntries = craft.entries.section('resourcesEntries').limit(null) %}
+    {% set locations = craft.tags.group('resourcesLocations').relatedTo(locationEntries).indexBy('title')|unique %}
+    <div class="filter location col-1-2">
+      <div class="select-wrap">
+        <select name="location" id="location">
+          <option value="null">Locations</option>
+          {% for location in locations %}
+            <option value="{{ url('resources/location/'~location.slug) }}">{{ location.title }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+  </div>
+
+</div>

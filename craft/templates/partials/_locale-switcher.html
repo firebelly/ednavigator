@@ -1,24 +1,29 @@
-<ul class="locale">
-  {% block locale__switch %}
-    {# Loop through all of the site locales, except the current one #}
-    {% set siteLocales = craft.i18n.getSiteLocales() %}
-    {% for locale in siteLocales %}
+{% if entry is defined %}
+  <ul class="locale">
+    {% block locale__switch %}
+
+      {% set siteLocales = craft.i18n.getSiteLocales() %}
+      {% for locale in siteLocales %}
       
-      {# Find the current entry in the other locale #}
-      {% set localeEntry = craft.entries.id(entry.id).locale(locale.id).first %}
+        {% if locale.id == "en_us" %}
+          {% set localeName = "English" %}
+        {% elseif locale.id == "es_us" %}
+          {% set localeName = "Español" %}
+        {% endif %}
 
-      {# Make sure that it's actually localized to this locale #}
-      {% if locale == craft.locale %}
-        {# Output a link to it #}
-          <li class="-active"><a href="{{ localeEntry.getUrl() }}">{{ locale.nativeName }}</a></li>
-        {% else %}
-          <li><a href="{{ localeEntry.getUrl() }}">{{ locale.nativeName }}</a></li>
-      {% endif %}
+        {% set localeEntry = craft.entries.id(entry.id).locale(locale.id).first %}
 
-      {% if not loop.last %}
-        <span>/</span> 
-      {% endif %}
+        {% if locale == craft.locale %}
+            <li class="-active"><a href="{{ localeEntry.getUrl() }}">{{ localeName }}</a></li>
+          {% else %}
+            <li><a href="{{ localeEntry.getUrl() }}">{{ localeName }}</a></li>
+        {% endif %}
 
-    {% endfor %}
-  {% endblock %}
-</ul>
+        {% if not loop.last %}
+          <span>/</span> 
+        {% endif %}
+
+      {% endfor %}
+    {% endblock %}
+  </ul>
+{% endif %}

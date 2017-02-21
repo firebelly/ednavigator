@@ -3,18 +3,17 @@
 {% set bodyClass = 'home' %}
 
 {% block content %}
-<div class="page-header grid block-grid align-right" style="background-image:url({{ entry.bannerImage.last().getUrl('hero') }});">
+<div class="page-header snap-section grid block-grid align-right" style="background-image:url({{ entry.bannerImage.last().getUrl('hero') }});">
 
+  <div class="page-header-image" style="background-image:url({{ entry.bannerImage.last().getUrl('hero') }});"></div>
   <div class="block col-1-2 background-gray-light">
     <h2 class="block-title">{{ entry.pageDescription }}</h2>
     <h3>{{ entry.body }}</h3>
   </div>
 
-  <a class="scroll-button smoothscroll" href="#pageContent"><svg class="icon icon-arrow" role="img"><use xlink:href="#icon-arrow" /></svg></a>
-
 </div>
 
-<div id="pageContent" class="user-paths grid block-grid">
+<div id="pageContent" class="user-paths snap-section grid block-grid">
 
   {% for userPath in entry.userPaths %}
     

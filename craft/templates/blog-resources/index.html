@@ -1,0 +1,7 @@
+{% if entry is defined %}
+  {% include '_layout' with { object: entry, isEntry: true } %}
+{% else if category is defined %}
+  {% include '_layout' with { object: category, isCategory: true } %}
+{% else if tag is defined %}
+  {% include '_layout' with { object: tag, isTag: true } %}
+{% endif %}

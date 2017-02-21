@@ -1,15 +1,13 @@
 // Resources
 
 body.page-resources {
-  @include media-lg {
-    padding-right: $global-spacing;
-  }
 
   .intro-section {
     background: $offwhite;
   }
   
   .tools-and-bundles {
+    background: $offwhite;
 
     h3 {
       @extend .headline-two;

@@ -6,6 +6,8 @@ body.home {
   }
 
   .site-header {
+    background: none;
+    
     svg {
       fill: $white;
     }
@@ -17,10 +19,25 @@ body.home {
     }
   }
 
+  .menu-toggle {
+    .lines {
+      background: $white;
+    }
+  }
+
   .page-header {
     position: relative;
+  
+    .page-header-image {
+      height: 200px;
+      background-size: cover;
+      @include media-lg {
+        display: none;
+      }
+    }
 
     .block {
+      min-height: 1px;
       align-self: flex-end;
 
       p {
@@ -29,6 +46,7 @@ body.home {
 
       @include media-lg {
         padding-bottom: 190px;
+        padding-top: #{$global-spacing * 2};
       }
     }
 
@@ -48,8 +66,8 @@ body.home {
       &::after {
         top: 0;
         left: 0;
-        opacity: 0;
         bottom: 0;
+        opacity: 0;
         z-index: 0;
         width: 100%;
         content: '';
@@ -57,13 +75,21 @@ body.home {
         position: absolute;
       }
       &::before {
-        opacity: .75;
+        opacity: 1;
+        will-change: opacity;
+        transition: opacity .5s ease-out;
       }
 
       &:first-of-type {
         &::before,
         &::after {
           background: $gray;
+        }
+      }
+
+      &:hover {
+        &::before {
+          opacity: .75;
         }
       }
 

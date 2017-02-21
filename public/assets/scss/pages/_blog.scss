@@ -71,7 +71,11 @@ body.page-blog {
           cursor: pointer;
           stroke-width: .5;
           position: absolute;
+          transition: stroke .2s ease-out;
           transform: translate(-25px, -25px);
+          &:hover {
+            stroke: $brand-primary;
+          }
         }
 
         .image {
@@ -127,6 +131,15 @@ body.page-blog {
       margin-top: $vertical-beat;
       a {
         text-decoration: none;
+        span {
+          border-bottom: 2px solid rgba($brand-primary,0);
+          transition: border-color .2s ease-out;
+        }
+        &:hover {
+          span {
+            border-color: rgba($brand-primary,1);
+          }
+        }
       }
     }
 

@@ -1,4 +1,4 @@
-<footer class="site-footer" role="contentinfo">
+<footer class="site-footer no-snap" role="contentinfo">
   <div class="grid">
     <div class="col-1-2 newsletter">
       <h5>Newsletter Signup</h5>
@@ -15,20 +15,34 @@
         </p>
       </div>
       <div class="connect">
+        {% if appInformation.appAppleStoreLink or appInformation.appAndroidStoreLink %}
         <div>  
           <h5>Get the app</h5>
           <ul class="social app-links">
-            <li><a href="#"><svg class="icon icon-apple" role="img" title="Apple App Store"><use xlink:href="#icon-apple" /></svg></a></li>
-            <li><a href="#"><svg class="icon icon-android" role="img" title="Android App Store"><use xlink:href="#icon-android" /></svg></a></li>
+            {% if appInformation.appAppleStoreLink %}
+            <li><a href="{{ appInformation.appAppleStoreLink }}"><svg class="icon icon-apple" role="img" title="Apple App Store"><use xlink:href="#icon-apple" /></svg></a></li>
+            {% endif %}
+            {% if appInformation.appAndroidStoreLink %}
+            <li><a href="{{ appInformation.appAndroidStoreLink }}"><svg class="icon icon-android" role="img" title="Android App Store"><use xlink:href="#icon-android" /></svg></a></li>
+            {% endif %}
           </ul>
         </div>
+        {% endif %}
         <div>
           <h5>Stay connected</h5>
           <ul class="social">
-            <li><a href="https://www.facebook.com/ednavigate" target="_blank"><svg class="icon icon-facebook" role="img" title="Facebook"><use xlink:href="#icon-facebook" /></svg></a></li>
-            <li><a href="https://twitter.com/ednavigate" target="_blank"><svg class="icon icon-twitter" role="img" title="Twitter"><use xlink:href="#icon-twitter" /></svg></a></li>
-            <li><a href="https://www.linkedin.com/company/ednavigator" target="_blank"><svg class="icon icon-linkedin" role="img" title="LinkedIn"><use xlink:href="#icon-linkedin" /></svg></a></li>
-            <li><a href="https://medium.com/@ednavigate" target="_blank"><svg class="icon icon-medium" role="img" title="Medium"><use xlink:href="#icon-medium" /></svg></a></li>
+            {% if socialMediaLinks.facebookUrl %}
+            <li><a href="{{ socialMediaLinks.facebookUrl }}" target="_blank"><svg class="icon icon-facebook" role="img" title="Facebook"><use xlink:href="#icon-facebook" /></svg></a></li>
+            {% endif %}
+            {% if socialMediaLinks.twitterUrl %}
+            <li><a href="{{ socialMediaLinks.twitterUrl }}" target="_blank"><svg class="icon icon-twitter" role="img" title="Twitter"><use xlink:href="#icon-twitter" /></svg></a></li>
+            {% endif %}
+            {% if socialMediaLinks.linkedinUrl %}
+            <li><a href="{{ socialMediaLinks.linkedinUrl }}" target="_blank"><svg class="icon icon-linkedin" role="img" title="LinkedIn"><use xlink:href="#icon-linkedin" /></svg></a></li>
+            {% endif %}
+            {% if socialMediaLinks.mediumUrl %}
+            <li><a href="{{ socialMediaLinks.mediumUrl }}" target="_blank"><svg class="icon icon-medium" role="img" title="Medium"><use xlink:href="#icon-medium" /></svg></a></li>
+            {% endif %}
           </ul>
         </div>
       </div>

@@ -2,8 +2,13 @@
 
 body.page-user-path {
   .site-header {
-    svg {
-      fill: $white;
+    background: none;
+
+    .site-logo {    
+      .mark,
+      .words {
+        fill: $white;
+      }
     }
   }
   
@@ -13,7 +18,14 @@ body.page-user-path {
     }
   }
 
+  .menu-toggle {
+    .lines {
+      background: $white;
+    }
+  }
+
   .page-section {
+    position: relative;
 
     .page-section-content {
       width: 100%;
@@ -24,6 +36,7 @@ body.page-user-path {
 // Families/Familias
 body.page-families,
 body.page-familias {
+
   .page-section {
     @include media-lg {
 
@@ -40,6 +53,7 @@ body.page-familias {
 // Employers
 body.page-employers,
 body.page-empleyadores {
+
   .page-section {
     @include media-lg {
 
@@ -50,5 +64,19 @@ body.page-empleyadores {
         }
       }
     }
+  }
+}
+
+// Section advance button
+.section-advance {
+  left: 50%;
+  z-index: 1;
+  display: none;
+  position: absolute;
+  bottom: $global-spacing;
+  transform: translate(-40px);
+
+  @include media-lg {
+    display: block;
   }
 }

@@ -1,0 +1,3 @@
+[submodule "craft/plugins/arrayunique"]
+	path = craft/plugins/arrayunique
+	url = git@github.com:AugustMiller/craft-twig-array-unique.git

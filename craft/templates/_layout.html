@@ -21,19 +21,6 @@
   <link rel="shortcut icon" type="image/ico" href="assets/images/favicon.png">
   <script src="/assets/js/modernizr-min.js"></script>
 
-  {#
-  todo: fb meta tags
-  <%= display_meta_tags image: @page_image, og: {
-      title: raw(browser_title_custom(yield(:title))),
-      description: :description,
-      image: request.protocol + request.host_with_port + @page_image,
-      url: request.url,
-    }, fb: {
-      app_id: '1675583716017779'
-    }
-  -%>
-   #}
-
   <!-- Inject SVGs Defs for SVG icon use -->
   <script>
     var ajax = new XMLHttpRequest();
@@ -61,7 +48,7 @@
 
       <nav class="site-nav" role="navigation">
         {% include 'partials/_navigation.html' %}
-        {# {% include 'partials/_locale-switcher.html' %} #}
+        {% include 'partials/_locale-switcher.html' %}
       </div>
 
     </div>

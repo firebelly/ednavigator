@@ -4,10 +4,12 @@
 {% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
 {% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
 
-{% set bodyClass = 'single page who-we-are-child page-' ~ entry.slug %}
+{% set bodyClass = 'single sidebar-left page who-we-are-child page-' ~ entry.slug %}
 {% set bodyId = 'page-' ~ entry.slug %}
 
 {% block content %}
+
+  {% include "partials/_page-sidebar" with { 'parent' : entry.parent} %}
 
   {% include 'partials/_intro-section.html' %}
 
@@ -15,7 +17,7 @@
     <h3 class="headline-rule"><span>{{ entry.peopleSectionLabel }}</span></h3>
     <div class="people-grid grid spaced">
       {% for person in entry.people.person %}
-      {% set image = person.personImage.first() %}
+      {% set image = person.personImage.first().getUrl() %}
       {% if 'partners' in bodyId %}
         {% set transformedImage = craft.imager.transformImage(image, { effects: { colorize: '#a3b0b2' } }) %}
       {% else %}

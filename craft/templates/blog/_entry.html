@@ -1,7 +1,7 @@
 {% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
 {% set title = entry.title %}
-{% set bodyClass = 'page single-post' %}
+{% set bodyClass = 'page sidebar-left single-post' %}
 
 {% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
 {% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
@@ -13,8 +13,10 @@
 {% endif %}
 
 {% block content %}
-  {% set bannerImage = entry.bannerImage.last() %}
+  {% set bannerImage = entry.blogBannerImage.last() %}
   <article class="entry grid">
+
+    {% include "partials/_page-sidebar" with { 'parent' : craft.entries.section('blog').first()} %}
 
     <div class="entry-body col-2-3">    
       {% if entry.videoId|length %}
@@ -60,7 +62,7 @@
               <h5>Tags:</h5>
               <ul>
                 {% for tag in entry.blogTags %}
-                  <li><a href="{{ siteUrl }}tags/{{ tag.title|url_encode }}">{{ tag.title }}</a></li>
+                  <li><a href="{{ url('blog/tag/'~tag.slug) }}">{{ tag.title }}</a></li>
                 {% endfor %}
               </ul>
             </div>

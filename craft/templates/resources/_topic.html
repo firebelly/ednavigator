@@ -1,0 +1,32 @@
+{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set limit = null %}
+{% set params = { limit: limit, relatedTo: category } %}
+
+{% set title = "Resources: "~category.title %}
+{% set bodyClass = 'page sidebar-right page-resources page-topic' %}
+
+{% block content %}
+
+  {% include "partials/_page-sidebar" with { 'parent' : craft.entries.section('resources').first()} %}
+
+  <section class="intro-section">
+    <h2 class="page-description">
+      Topic:<br> {{ category.title }}
+    </h2>
+
+  </section>
+
+  {% include "resources/_filter" %}
+
+  {% set articles = craft.entries(params) %}
+
+  <div class="article-list">
+    
+    {% for article in articles %}
+      {% include "resources/_article" %}
+    {% endfor %}
+
+  </div>
+
+{% endblock %}

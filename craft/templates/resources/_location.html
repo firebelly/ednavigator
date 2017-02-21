@@ -1,0 +1,34 @@
+{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set tag = craft.tags.slug(tag).first() %}
+
+{% set title = "Resources: "~tag.title %}
+{% set bodyClass = 'page sidebar-right page-resources page-location page-' ~ tag.slug %}
+
+{% block content %}
+
+  {% include "partials/_page-sidebar" with { 'parent' : craft.entries.section('resources').first()} %}
+
+  <section class="intro-section">
+    <h2 class="page-description">
+      Location:<br> {{ tag.title }}
+    </h2>
+  </section>
+
+  {% include "resources/_filter" %}
+
+  {% set articles = craft.entries.relatedTo(tag).order('title') %}
+
+  <div class="article-list">
+    
+    {% if articles | length %}
+      {% for article in articles %}
+        {% include "resources/_article" %}
+      {% endfor %}
+    {% else %}
+      <p>No entries could be found with that tag.</p>
+    {% endif %}
+
+  </div>
+
+{% endblock %}
