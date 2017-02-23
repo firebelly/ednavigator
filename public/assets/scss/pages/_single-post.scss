@@ -240,6 +240,52 @@ body.single-post {
 
   }
 
+  .resource-downloads {
+    border-top: 1px solid $gray;
+    margin-top: $global-spacing;
+    padding-top: $global-spacing;
+
+    .resource-download {
+      @include clearfix;
+      margin-top: $global-spacing;
+      padding-top: $global-spacing;
+      border-top: 1px solid $gray-light;
+      &:first-of-type {
+        margin-top: 0;
+        border-top: 0;
+        padding-top: 0;
+      }
+    }
+
+    h3 {
+      margin-top: 0;
+    }
+
+    .download-thumb {
+      display: inline-block;
+      margin-bottom: #{$vertical-beat * 3};
+    }
+
+    @include media-md {    
+      .download-thumb {
+        float: left;
+        width: 200px;
+        margin-bottom: 0;
+        img {
+          max-width: 100%;
+          vertical-align: top;
+        }
+      }
+
+      .resource-info {
+        float: right;
+        width: calc(100% - 200px - #{$global-spacing});
+      }
+    }
+
+
+  }
+
   // Sharing links
   .share-section {
     padding: 0 $global-spacing;

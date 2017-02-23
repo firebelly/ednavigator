@@ -77,6 +77,31 @@
 
       <div class="entry-content user-content">
         {{ entry.body }}
+
+        {% if entry.resourceDownloads|length %}
+          
+          <hr>
+
+          {% for block in entry.resourceDownloads %}
+            <div class="resource-download">
+              {% if block.resourceThumbnail|length %}
+                <div class="download-thumb">
+                  <img src="{{ block.resourceThumbnail.first().getUrl('thumbnail') }}" alt="{{ block.resourceTtitle }}">
+                </div>
+              {% endif %}
+              <div class="resource-info">
+                <h3>{{ block.resourceTitle }}</h3>
+                {% if block.resourceDescription %}
+                  {{ block.resourceDescription }}
+                {% endif %}
+
+                <div class="resource-link">
+                  <a href="{{ block.resourceFile }}" class="inline-link" target="_blank"><span>Download resource</span> <span class="icon"><svg class="icon-arrow-dotted" role="img"><use xlink:href="#icon-arrow-dotted" /></svg></span></a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
       </div>
 
       <div class="share-section">

@@ -15,6 +15,12 @@
       Resource Bundle:<br> {{ category.title }}
     </h2>
 
+    {% if category.longDescription %}
+      <h3>{{ category.longDescription }}</h3>
+    {% elseif category.shortDescription %}
+      <h3>{{ category.shortDescription }}</h3>
+    {% else %}
+    {% endif %}
   </section>
 
   {% include "resources/_filter" %}

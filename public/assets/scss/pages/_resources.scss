@@ -7,6 +7,7 @@ body.page-resources {
   }
   
   .tools-and-bundles {
+    flex-wrap: wrap;
     background: $offwhite;
 
     h3 {

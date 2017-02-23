@@ -17,7 +17,7 @@
           <div class="bundle-content">        
             <h4>Resource Bundle</h4>
             <h3>{{ bundle.title }}</h3>
-            <p><a href="{{ bundle.url }}" class="inline-link"><span>{{ bundle.pageDescription }}</span></a></p>
+            <p><a href="{{ bundle.url }}" class="inline-link"><span>{{ bundle.shortDescription }}</span></a></p>
           </div>
           {% if bundle.bannerImage|length %}
         {% set bundleImage = bundle.bannerImage.first().getUrl() %}

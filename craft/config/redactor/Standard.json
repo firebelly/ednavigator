@@ -2,5 +2,10 @@
 	"buttons": ["format","bold","italic","lists","link","image","file","horizontalrule"],
 	"plugins": ["source","fullscreen"],
   "formatting": ["p", "blockquote", "h2", "h3"],
-  "minHeight": 400
+  "formattingAdd": {
+    "special-link": {
+      title: 'Special Link',
+      args: ['p', 'class', 'inline-links-container']
+    }
+  }
 }

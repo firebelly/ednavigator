@@ -78,6 +78,32 @@
 
       <div class="entry-content user-content">
         {{ entry.body }}
+
+        {% if entry.resourceDownloads|length %}
+          <div class="resource-downloads">
+
+            {% for resource in entry.resourceDownloads.resource %}
+              <div class="resource-download">
+                {% if resource.resourceThumbnail|length %}
+                  <a class="download-thumb" href="{{ resource.resourceFile.first().getUrl() }}">
+                    <img src="{{ resource.resourceThumbnail.first().getUrl('thumbnail') }}" alt="{{ resource.resourceTitle }}">
+                  </a>
+                {% endif %}
+                <div class="resource-info">
+                  <h3>{{ resource.resourceTitle }}</h3>
+                  {% if resource.resourceDescription %}
+                    {{ resource.resourceDescription }}
+                  {% endif %}
+
+                  <div class="resource-link">
+                    <a href="{{ resource.resourceFile.first().getUrl() }}" class="inline-link" target="_blank"><span>Download resource</span></a>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+
+          </div>
+        {% endif %}
       </div>
 
       <div class="share-section">
