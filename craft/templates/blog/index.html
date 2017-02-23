@@ -36,7 +36,7 @@
   			{% include "blog/_article" %}
   		{% endfor %}
 
-    {% if not craft.request.isAjax and articles|length > limit %}
+    {% if not craft.request.isAjax and articles|length >= limit %}
       </div>
       <div class="load-more-section">
         <button id="load-more" class="load-more" data-collection="blog" data-page="{{ pageInfo.currentPage + 1 }}" data-total-pages="{{ pageInfo.totalPages }}">Load More<span class="icon"><svg class="icon-arrow" role="img"><use xlink:href="#icon-arrow" /></span></button>

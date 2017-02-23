@@ -216,6 +216,10 @@ body.single-post {
 
     p {
       margin: #{$vertical-beat * 3} 0;
+
+      + figcaption {
+        margin-top: -#{$vertical-beat * 2};
+      }
     }
 
     strong {
@@ -228,6 +232,10 @@ body.single-post {
       &:hover {
         color: $brand-primary;
       }
+    }
+
+    figcaption {
+      font-size: 10px;
     }
 
   }
