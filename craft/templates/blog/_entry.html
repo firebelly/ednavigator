@@ -79,28 +79,29 @@
         {{ entry.body }}
 
         {% if entry.resourceDownloads|length %}
-          
-          <hr>
+          <div class="resource-downloads">
 
-          {% for block in entry.resourceDownloads %}
-            <div class="resource-download">
-              {% if block.resourceThumbnail|length %}
-                <div class="download-thumb">
-                  <img src="{{ block.resourceThumbnail.first().getUrl('thumbnail') }}" alt="{{ block.resourceTtitle }}">
-                </div>
-              {% endif %}
-              <div class="resource-info">
-                <h3>{{ block.resourceTitle }}</h3>
-                {% if block.resourceDescription %}
-                  {{ block.resourceDescription }}
+            {% for resource in entry.resourceDownloads.resource %}
+              <div class="resource-download">
+                {% if resource.resourceThumbnail|length %}
+                  <a class="download-thumb" href="{{ resource.resourceFile.first().getUrl() }}">
+                    <img src="{{ resource.resourceThumbnail.first().getUrl('thumbnail') }}" alt="{{ resource.resourceTitle }}">
+                  </a>
                 {% endif %}
+                <div class="resource-info">
+                  <h3>{{ resource.resourceTitle }}</h3>
+                  {% if resource.resourceDescription %}
+                    {{ resource.resourceDescription }}
+                  {% endif %}
 
-                <div class="resource-link">
-                  <a href="{{ block.resourceFile }}" class="inline-link" target="_blank"><span>Download resource</span> <span class="icon"><svg class="icon-arrow-dotted" role="img"><use xlink:href="#icon-arrow-dotted" /></svg></span></a>
+                  <div class="resource-link">
+                    <a href="{{ resource.resourceFile.first().getUrl() }}" class="inline-link" target="_blank"><span>Download resource</span></a>
+                  </div>
                 </div>
               </div>
-            </div>
-          {% endfor %}
+            {% endfor %}
+
+          </div>
         {% endif %}
       </div>
 

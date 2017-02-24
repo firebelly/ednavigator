@@ -116,6 +116,12 @@ body.sidebar-right {
       top: -#{$global-spacing / 2};
     }
 
+    span {
+      color: $white;
+      margin: 0 5px;
+      display: inline-block;
+    }
+
     li {
       float: none;
       margin-left: 0;

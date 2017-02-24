@@ -41,9 +41,14 @@
     {% else %}
 
       {% for block in section.pathPageSections %}
+        {% if loop.last and block.sectionColor == 'background-yellow' %}
+          {% set sectionColor = 'background-orange' %}
+        {% else %}
+          {% set sectionColor = block.sectionColor %}
+        {% endif %}
         <div class="page-section-content grid block-grid">
           <div class="image-block col-1-2" style="background-image: url({{ block.sectionImage.last().getUrl('hero') }})"></div>
-          <div class="page-section-content-carousel block col-1-2 {{ block.sectionColor }}">
+          <div class="page-section-content-carousel block col-1-2 {{ sectionColor }}">
             <div class="-inner">
               <h4 class="block-descriptor">{{ entry.userPathTagline }}</h4>
               <h2 class="block-title {{ block.sectionTitleStyle }}">{{ block.sectionTitle|nl2br }}</h2>

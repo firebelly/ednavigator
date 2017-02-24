@@ -318,8 +318,8 @@ var FB = (function($) {
       $('body').panelSnap({
         panelSelector: '.snap-section',
         easing: 'swing',
-        slideSpeed: 500,
-        directionThreshold: 10,
+        slideSpeed: 350,
+        directionThreshold: 1,
         onActivate: function(panel) {
           if ($(panel).is('.page-section-carousel')) {
             $(panel).find('.page-section-content-carousel').first().focus();
