@@ -40,7 +40,7 @@ body.page-familias {
   .page-section {
     @include media-lg {
 
-      &:nth-of-type(odd) {
+      &:nth-of-type(even) {
         .image-block,
         .page-section-image-carousel {
           order: 1;
@@ -57,7 +57,7 @@ body.page-empleyadores {
   .page-section {
     @include media-lg {
 
-      &:nth-of-type(even) {
+      &:nth-of-type(odd) {
         .image-block,
         .page-section-image-carousel {
           order: 1;
