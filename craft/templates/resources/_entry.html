@@ -83,7 +83,7 @@
           <div class="resource-downloads">
 
             {% for resource in entry.resourceDownloads.resource %}
-              <div class="resource-download">
+              <div class="resource-download{{ resource.resourceThumbnail|length ? ' has-thumb' : '' }}">
                 {% if resource.resourceThumbnail|length %}
                   <a class="download-thumb" href="{{ resource.resourceFile.first().getUrl() }}">
                     <img src="{{ resource.resourceThumbnail.first().getUrl('thumbnail') }}" alt="{{ resource.resourceTitle }}">

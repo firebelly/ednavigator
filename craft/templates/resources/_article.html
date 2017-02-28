@@ -31,7 +31,7 @@
     <h4 class="article-category">{{ postType }}</h4>
     <h1 class="article-title"><a href="{{ article.url }}"><span>{{ article.title }}</span></a></h1>
     <div class="article-excerpt user-content">
-      {{ article.excerpt }}
+      {{ article.excerpt|raw }}
     </div>
     <p><a href="{{ article.url }}" class="inline-link"><span>{{ linkText }}</span></a></p>
   </div>

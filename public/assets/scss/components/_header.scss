@@ -42,6 +42,7 @@ body.sidebar-right {
 .site-logo {
   float: left;
   width: 203px;
+  position: relative;
   margin: 0 0 0 -#{$global-spacing / 2};
 
   a {

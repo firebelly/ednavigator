@@ -266,7 +266,7 @@ body.single-post {
       margin-bottom: #{$vertical-beat * 3};
     }
 
-    @include media-md {    
+    @include media-md {
       .download-thumb {
         float: left;
         width: 200px;
@@ -277,9 +277,11 @@ body.single-post {
         }
       }
 
-      .resource-info {
-        float: right;
-        width: calc(100% - 200px - #{$global-spacing});
+      .resource-download.has-thumb {      
+        .resource-info {
+          float: right;
+          width: calc(100% - 200px - #{$global-spacing});
+        }
       }
     }
 
