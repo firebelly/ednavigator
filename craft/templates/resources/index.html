@@ -3,7 +3,7 @@
 {% set limit = 10 %}
 {% set params = { section: 'resourcesEntries', limit: limit} %}
 
-{% set title = "Resrouces" %}
+{% set title = "Resources" %}
 {% set bodyClass = 'page sidebar-right page-' ~ entry.slug %}
 
 {% block content %}
@@ -42,4 +42,5 @@
 
   {% endpaginate %}
 
+  {% include 'partials/_googletranslate.html' %}
 {% endblock %}
