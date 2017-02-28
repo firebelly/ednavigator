@@ -36,6 +36,7 @@ body.page-user-path {
 // Families/Familias
 body.page-families,
 body.page-familias {
+  @extend .sidebar-left;
 
   .page-section {
     @include media-lg {
@@ -53,6 +54,7 @@ body.page-familias {
 // Employers
 body.page-employers,
 body.page-empleyadores {
+  @extend .sidebar-right;
 
   .page-section {
     @include media-lg {

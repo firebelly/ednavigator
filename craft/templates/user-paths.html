@@ -4,10 +4,8 @@
 {% set userPaths = craft.entries.type('userPathLandingPage') %}
 {% if entry.getPrev(userPaths) %}
   {% set sibling = entry.getPrev(userPaths) %}
-  {% set bodyClass = bodyClass ~ ' sidebar-left' %}
 {% elseif entry.getNext(userPaths) %}
   {% set sibling = entry.getNext(userPaths) %}
-  {% set bodyClass = bodyClass ~ ' sidebar-right' %}
 {% endif %}
 
 {% block content %}
