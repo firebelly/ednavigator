@@ -38,6 +38,16 @@ body.page-blog {
       position: relative;
       background-size: cover;
       background-position: top center;
+      &::before {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: '';
+        position: absolute;
+        pointer-events: none;
+        background: rgba($black,.05);
+      }
 
       .icon {
         top: 50%;
