@@ -16,7 +16,7 @@ body.how-we-help {
 
     .navigator-section {
       h4 {
-        color: $yellow;
+        color: $yellow-text;
         @extend .headline-two;
         -webkit-font-smoothing: antialiased;
       }
@@ -126,7 +126,7 @@ body.how-we-help {
 
     .knowledge-section {
       h4 {
-        color: $yellow;
+        color: $yellow-text;
         @extend .headline-two;
         -webkit-font-smoothing: antialiased;
       }
