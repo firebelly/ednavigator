@@ -11,7 +11,15 @@
 body.page {
   .site-logo {
     .mark {
-      fill: $yellow;
+      .c1 {
+        fill: #faa11c;
+      }
+      .c2 {
+        fill: #f7cc0d;
+      }
+      .c3 {
+        fill: #f7bf12;
+      }
     }
     .words {
       fill: $black;

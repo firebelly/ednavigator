@@ -65,6 +65,8 @@ gulp.task('svgs', function() {
             removeViewBox: false
         }, {
             removeEmptyAttrs: false
+        },{
+            mergePaths: false
         }]
     }))
     .pipe(gulp.dest('public/assets/svgs'))
