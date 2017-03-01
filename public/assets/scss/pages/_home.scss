@@ -58,8 +58,7 @@ body.home {
       }
 
       @include media-lg {
-        padding-bottom: 190px;
-        padding-top: #{$global-spacing * 2};
+        margin-top: #{$global-spacing * 3};
       }
     }
 

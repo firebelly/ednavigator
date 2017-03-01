@@ -4,8 +4,7 @@
   background-size: cover;
 
   @include media-lg {
-    padding-top: 150px;
-    height: calc(100vh - #{$global-spacing});
+    min-height: calc(100vh - #{$global-spacing});
   }
 }
 
