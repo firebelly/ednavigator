@@ -22,7 +22,7 @@
         {% if 'partners' in bodyId %}
           {% set transformedImage = craft.imager.transformImage(image, { effects: { colorize: '#a3b0b2' } }) %}
         {% else %}
-          {% set transformedImage = craft.imager.transformImage(image, { effects: { grayscale: true, modulate: [180, 90, 0] } }) %}
+          {% set transformedImage = craft.imager.transformImage(image, { effects: { grayscale: true, modulate: [120, 90, 0] } }) %}
         {% endif %}
       {% endif %}
         <div class="person col-1-2">
