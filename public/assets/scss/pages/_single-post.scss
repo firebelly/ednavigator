@@ -149,17 +149,16 @@ body.single-post {
 
         span {
           display: block;
-          line-height: 1.75;
+          line-height: 2;
           @extend .headline-descriptor;
         }
       }
     }
 
     .entry-cats-tags {
+      padding-top: 6px;
       > div {
         display: table;
-        padding-top: 6px;
-        margin-bottom: $vertical-beat;
       }
 
       h5 {
@@ -179,6 +178,9 @@ body.single-post {
         padding: 0;
         list-style: none;
         display: table-cell;
+        li {
+          line-height: 20px;
+        }
       }
 
       a {
