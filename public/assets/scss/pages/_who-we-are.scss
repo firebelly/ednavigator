@@ -14,6 +14,7 @@ body.who-we-are {
     }
 
     .principles {
+      margin-top: #{$vertical-beat * 6};
       @include media-sm {
         display: flex;
         flex-wrap: wrap;
@@ -25,7 +26,7 @@ body.who-we-are {
       .principle {
         text-align: center;
         position: relative;
-        margin-top: $global-spacing;
+        margin-bottom: #{$vertical-beat * 8};
 
         .principle-icon {
           img {
@@ -59,7 +60,7 @@ body.who-we-are {
     }
 
     .section-links {
-      margin-top: $global-spacing * 2;
+      margin-top: #{$vertical-beat * 8};
       
       h5 {
         @extend .headline-descriptor;
