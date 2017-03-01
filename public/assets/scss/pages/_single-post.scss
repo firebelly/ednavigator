@@ -143,9 +143,9 @@ body.single-post {
       }
 
       .author-content {
-        margin: 0;
         float: left;
         @extend .headline-four;
+        margin: .5em 0 0 0;
 
         span {
           display: block;
@@ -158,6 +158,7 @@ body.single-post {
     .entry-cats-tags {
       > div {
         display: table;
+        padding-top: 6px;
         margin-bottom: $vertical-beat;
       }
 
