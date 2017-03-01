@@ -48,7 +48,11 @@
   background: none;
   @include media-md {
     top: auto;
-    bottom: $global-spacing * 2;
+    bottom: $global-spacing;
+  }
+
+  .arrow {
+    fill: $black;
   }
 
   &:hover {
