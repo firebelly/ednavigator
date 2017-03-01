@@ -172,6 +172,20 @@ form {
 // Newsletter signup for
 .newsletter-form {
 
+  input {
+    color: $gray-dark;
+    border-color: $gray-dark;
+    &::-webkit-input-placeholder {
+       color: $gray-dark;
+    }
+    &::-moz-placeholder {  /* Firefox 19+ */
+       color: $gray-dark;  
+    }
+    &:-ms-input-placeholder {  
+       color: $gray-dark;  
+    }
+  }
+
   .hidden-group {
     margin-top: $vertical-beat;
   }
