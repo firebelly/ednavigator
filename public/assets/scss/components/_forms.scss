@@ -3,27 +3,27 @@
 form {
   input {
     width: 100%;
+    color: $black;
     padding: 10px 0;
     border-radius: 0;
     appearance: none;
     background: none;
-    color: $gray-dark;
+    border-color: $black;
     @extend .headline-three;
     border-width: 0 0 1px 0;
-    border-color: $gray-dark;
     transition: border-color .2s ease-out;
     &:focus {
       outline: none;
       border-color: $brand-primary;
     }
     &::-webkit-input-placeholder {
-       color: $gray-dark;
+       color: $black;
     }
     &::-moz-placeholder {  /* Firefox 19+ */
-       color: $gray-dark;  
+       color: $black;  
     }
     &:-ms-input-placeholder {  
-       color: $gray-dark;  
+       color: $black;  
     }
   }
 
