@@ -38,11 +38,11 @@ $col: 100% * 1 / $columns;
   //   </div>
   // </div>
   .grid.spaced {
-    margin-left: -#{$global-spacing / 2};
-    width: calc(100% + #{$global-spacing});
+    margin-left: -#{$global-spacing};
+    width: calc(100% + #{$global-spacing * 2});
 
     [class*='col-'] {
-      padding: 0 #{$global-spacing / 2};
+      padding: 0 #{$global-spacing};
     }
   }
   // If you need the grid to have a gutter,

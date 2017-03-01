@@ -34,7 +34,6 @@
       }
     }
     @include media-lg {
-      padding-left: #{$global-spacing * 2};
 
       > div {
         width: auto;
