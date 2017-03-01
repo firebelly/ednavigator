@@ -40,6 +40,13 @@
     }
   }
 
+  .inline-links-container {
+    margin-top: $global-spacing;
+    p {
+      margin: 0;
+    }
+  }
+
   @include media-md {
     padding: #{$global-spacing * 3} #{$global-spacing * 2} #{$global-spacing * 2};
   }
