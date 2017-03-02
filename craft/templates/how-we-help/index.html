@@ -18,7 +18,7 @@
   </section>
 
   <section class="our-navigators">
-    <h3 class="headline-rule"><span>{{ introSectionLabel }}</span></h3>
+    <h3 class="headline-rule"><span>{{ entry.introSectionLabel }}</span></h3>
     <div class="grid spaced">
       {% for navigatorSection in entry.ourNavigators.navigatorsInfoSection %}
         <div class="navigator-section col-1-2">
@@ -29,12 +29,12 @@
         </div>
       {% endfor %}
     </div>
-    <p class="navigators-link"><a href="who-we-are/navigators" class="button">{{ navigatorsButtonText }}</a></p>
+    <p class="navigators-link"><a href="who-we-are/navigators" class="button">{{ entry.navigatorsButtonText }}</a></p>
     <div class="navigators-image"><img src="/assets/images/navigators.png" alt="Navigators Team Photo"></div>
   </section>
 
   <section class="our-approach">
-    <h3 class="headline-rule"><span>{{ approachSectionLabel }}</span></h3>
+    <h3 class="headline-rule"><span>{{ entry.approachSectionLabel }}</span></h3>
     <div class="steps grid spaced">
       {% for step in entry.ourApproach.step %}
         <div class="step col-1-5">
@@ -52,7 +52,7 @@
   </section>
 
   <section class="our-knowledge">
-    <h3 class="headline-rule"><span>{{ knowledgeSectionLabel }}</span></h3>
+    <h3 class="headline-rule"><span>{{ entry.knowledgeSectionLabel }}</span></h3>
     <div class="grid spaced">
       {% for knowledgeSection in entry.knowledge.contentSection %}
         <div class="knowledge-section col-1-2">
