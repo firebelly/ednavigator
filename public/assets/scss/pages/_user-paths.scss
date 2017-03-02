@@ -13,8 +13,10 @@ body.page-user-path {
       }
     }
 
-    &.-sticky {
-      @extend .sticky-header;
+    @include max-screen($breakpoint-lg) {    
+      &.-sticky {
+        @include sticky-header;
+      }
     }
   }
   

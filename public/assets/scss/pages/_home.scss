@@ -12,8 +12,10 @@ body.home {
       fill: $white;
     }
 
-    &.-sticky {
-      @extend .sticky-header;
+    @include max-screen($breakpoint-lg) {    
+      &.-sticky {
+        @include sticky-header;
+      }
     }
   }
   

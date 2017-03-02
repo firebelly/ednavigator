@@ -17,7 +17,7 @@
   }
 }
 
-.sticky-header {
+@mixin sticky-header {
   background: $offwhite;
   .site-logo {
     .mark {
