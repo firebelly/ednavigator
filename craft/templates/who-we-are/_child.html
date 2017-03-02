@@ -19,7 +19,7 @@
       {% for person in entry.people.person %}
       {% if person.personImage|length %}
         {% set image = person.personImage.first().getUrl() %}
-        {% if 'partners' in bodyId %}
+        {% if 'partners' in bodyId or 'socios-empresariales' in bodyId %}
           {% set transformedImage = craft.imager.transformImage(image, { effects: { colorize: '#a3b0b2' } }) %}
         {% else %}
           {% set transformedImage = craft.imager.transformImage(image, { effects: { grayscale: true, modulate: [120, 90, 0] } }) %}

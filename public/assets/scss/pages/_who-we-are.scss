@@ -204,7 +204,8 @@ body.who-we-are-child {
   }
 
   // Partners Page
-  &.page-our-partners {
+  &.page-our-partners,
+  &.page-socios-empresariales {
     .people-section {
       .person {
 
@@ -251,7 +252,7 @@ body.who-we-are-child {
 
 // Mix Blend Mode Support
 html.backgroundblendmode {
-  body.who-we-are-child:not(.page-our-partners) {  
+  body.who-we-are-child:not(.page-our-partners, .page-socios-empresariales) {  
     .people-section {
       .person {
         .person-image {
