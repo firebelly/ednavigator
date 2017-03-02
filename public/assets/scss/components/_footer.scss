@@ -60,6 +60,9 @@
       margin: 0;
       @extend .headline-three;
     }
+    .phone-number a {
+      text-decoration: none;
+    }
     .address {
       margin-top: 20px;
     }

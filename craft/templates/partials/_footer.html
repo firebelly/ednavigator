@@ -10,8 +10,8 @@
         {% if generalSiteInformation.contactEmailAddress %}
           <p class="email-address"><a href="mailto:{{ generalSiteInformation.contactEmailAddress }}">{{ generalSiteInformation.contactEmailAddress }}</a></p>
         {% endif %}
-        {% if generalSiteInformation.phoneNumber %}
-          <p class="phone-number">{{ generalSiteInformation.phoneNumber }}</p>
+        {% if generalSiteInformation.phoneNumber and generalSiteInformation.phoneNumberDisplay %}
+          <p class="phone-number"><a href="tel:{{ generalSiteInformation.phoneNumber }}">{{ generalSiteInformation.phoneNumberDisplay }}</a></p>
         {% endif %}
         {% if generalSiteInformation.physicalAddress %}
         <p class="address">
