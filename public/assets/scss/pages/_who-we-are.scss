@@ -74,6 +74,19 @@ body.who-we-are {
           line-height: 3;
         }
       }
+
+      .inline-link {
+        &:hover {
+          .icon svg {
+            fill: $black;
+          }
+        }
+        .icon {
+          &::after {
+            background: $black;
+          }
+        }
+      }
     }
   }
 
