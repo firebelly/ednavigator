@@ -142,7 +142,7 @@ body.who-we-are-child {
 
         img {
           z-index: 1;
-          opacity: .5;
+          opacity: .75;
           max-width: 100%;
           position: relative;
           vertical-align: top;
@@ -254,7 +254,6 @@ html.backgroundblendmode {
       .person {
         .person-image {
           img {
-            opacity: 1;
             mix-blend-mode: multiply;
           }
         }
