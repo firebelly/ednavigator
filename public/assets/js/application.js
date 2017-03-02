@@ -51,6 +51,7 @@ var FB = (function($) {
     _initNewsletterForm();
     _snapScrolling();
     _initBlogFilter();
+    _initGAEventTracking();
 
     // Esc handlers
     $(document).keyup(function(e) {
@@ -357,6 +358,14 @@ var FB = (function($) {
   function _initBlogFilter() {
     $document.on('change', '.filter select', function(e) {
       window.location.replace(this.value);
+    });
+  }
+
+  function _initGAEventTracking() {
+    // Track resource downloads
+    $('.ga-download').on('click', function(e) {
+      var resourceTitle = $(this).attr('data-resourceTitle');
+      ga('send', 'event', 'Resources', 'Downloaded', resourceTitle);
     });
   }
 
