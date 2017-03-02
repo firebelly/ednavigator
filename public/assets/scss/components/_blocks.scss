@@ -61,15 +61,17 @@
   background-size: cover;
   padding-bottom: 57.1428571%;
   background-position: center center;
-  &::before {
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    content: '';
-    height: 180px;
-    position: absolute;
-    background-image: linear-gradient(rgba($black,.75), rgba($black,0));
+  @include min-screen($breakpoint-nav) {
+    &::before {
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      content: '';
+      height: 180px;
+      position: absolute;
+      background-image: linear-gradient(rgba($black,.75), rgba($black,0));
+    }
   }
   @include max-screen($breakpoint-lg) {
     order: -1;

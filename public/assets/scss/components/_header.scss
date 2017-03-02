@@ -115,7 +115,7 @@ body.sidebar-right {
     transform: translateX(0);
   }
 
-  @include min-screen($breakpoint-nav) {
+  @include min-screen($breakpoint-lg) {
     width: auto;
     float: right;
     transform: none;
@@ -137,7 +137,7 @@ body.sidebar-right {
           text-decoration: underline;
         }
       }
-      @include min-screen($breakpoint-nav) {
+      @include min-screen($breakpoint-lg) {
         float: left;
         margin-left: 13px;
         &.-active {
@@ -158,7 +158,7 @@ body.sidebar-right {
     @extend .headline-descriptor;
     margin-top: #{$global-spacing * 2};
 
-    @include min-screen($breakpoint-nav) {
+    @include min-screen($breakpoint-lg) {
       right: 0;
       margin-top: 0;
       position: absolute;
@@ -200,7 +200,7 @@ body.sidebar-right {
       }
     }
 
-    @include min-screen($breakpoint-nav) {
+    @include min-screen($breakpoint-lg) {
       margin-right: -12px;
 
       li {
@@ -243,7 +243,7 @@ body.sidebar-right {
     right: $global-spacing;
     top: $global-spacing;
   }
-  @include min-screen($breakpoint-nav) {
+  @include min-screen($breakpoint-lg) {
     display: none;
   }
 
