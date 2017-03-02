@@ -47,20 +47,32 @@
     }
 
     a {
-      @extend .headline-three;
       transition: color .2s ease-out;
       &:hover {
         color: $brand-primary;
       }
     }
-    p {
+    .email-address,
+    .phone-number {
+      margin: 0;
+      @extend .headline-three;
+    }
+    .address {
       margin-top: 20px;
     }
   }
 
   .connect {
-    > div {
-      margin-bottom: 30px;
+    h5 {
+      margin-bottom: 22px;
+    }
+
+    > div:first-of-type {
+      margin-bottom: $global-spacing;
+
+      h5 {
+        margin-bottom: 34px;
+      }
     }
   }
 
