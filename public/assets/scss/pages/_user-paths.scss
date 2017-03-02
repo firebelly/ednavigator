@@ -12,10 +12,17 @@ body.page-user-path {
         fill: $white;
       }
     }
+
+    &.-sticky {
+      @extend .sticky-header;
+    }
   }
   
   .site-nav {
     color: $white;
+    &.-active {
+      color: $black;
+    }
   }
 
   .menu-toggle {

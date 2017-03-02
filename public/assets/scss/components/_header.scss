@@ -9,13 +9,40 @@
   background: $offwhite;
   height: $header-height-small;
   padding: 18px $global-spacing;
-
-  &.-sticky {
-  }
+  transition: background .2s ease-out;
 
   @include media-md {
     height: $header-height;
     padding: $global-spacing #{$global-spacing * 2} 0;
+  }
+}
+
+.sticky-header {
+  background: $offwhite;
+  .site-logo {
+    .mark {
+      .c1 {
+        fill: #faa11c;
+      }
+      .c2 {
+        fill: #f7cc0d;
+      }
+      .c3 {
+        fill: #f7bf12;
+      }
+    }
+    .words {
+      fill: $black;
+    }
+  }
+
+  .menu-toggle {
+    .lines {
+      background: $black;
+    }
+    &.nav-open .lines {
+      background: rgba($white, 0);
+    }
   }
 }
 
@@ -62,6 +89,10 @@ body.sidebar-right {
     vertical-align: top;
   }
 
+  path {
+    transition: fill .2s ease-out;
+  }
+
   @include media-md {
     margin-left: -#{$global-spacing};
   }
@@ -101,9 +132,19 @@ body.sidebar-right {
 
     li {
       list-style: none;
+      &.-active {
+        a {
+          text-decoration: underline;
+        }
+      }
       @include min-screen($breakpoint-nav) {
         float: left;
         margin-left: 13px;
+        &.-active {
+          a {
+            text-decoration: none;
+          }
+        } 
       }
     }
   }
@@ -213,6 +254,7 @@ body.sidebar-right {
     width: 25px;
     background: $black;
     position: absolute;
+    transition: background .2s ease-out;
     &::before,
     &::after {
       top: 0;
@@ -241,6 +283,7 @@ body.sidebar-right {
   &.nav-open {
     .lines {
       background: rgba($white, 0);
+      transition: background .2s ease-out;
       &::before,
       &::after {
         background: $black;

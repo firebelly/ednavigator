@@ -11,15 +11,25 @@ body.home {
     svg {
       fill: $white;
     }
+
+    &.-sticky {
+      @extend .sticky-header;
+    }
   }
   
   .site-nav {
     color: $white;
+    &.-active {
+      color: $black;
+    }
   }
 
   .menu-toggle {
     .lines {
       background: $white;
+    }
+    &.nav-open .lines {
+      background: rgba($white, 0);
     }
   }
 
@@ -42,8 +52,9 @@ body.home {
     }
   
     .page-header-image {
-      height: 200px;
+      height: 0;
       background-size: cover;
+      padding-bottom: 57.1428571%;
       @include media-lg {
         display: none;
       }
