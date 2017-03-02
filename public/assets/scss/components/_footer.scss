@@ -45,6 +45,9 @@
     @include media-md {
       padding-right: $global-spacing;
     }
+    @include media-xl {
+      padding-right: #{$global-spacing * 2};
+    }
 
     a {
       transition: color .2s ease-out;
