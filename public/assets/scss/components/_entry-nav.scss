@@ -7,6 +7,21 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    li {
+      position: relative;
+      &.previous {
+        padding-left: $global-spacing;
+        .icon {
+          left: 0;
+        }
+      }
+      &.next {
+        padding-right: $global-spacing;
+        .icon {
+          right: 0;
+        }
+      }
+    }
     li + li {
       margin-top: #{$vertical-beat * 3};
     }
@@ -17,9 +32,21 @@
     margin: 0 0 #{$vertical-beat * 3};
   }
 
+  .inline-link {
+    position: static;
+
+    .icon {
+      bottom: 0;
+      margin: 0;
+      position: absolute;
+      &::after {
+        top: 13px;
+      }
+    }
+  }
+
   .previous {
     text-align: right;
-
   }
 
   @include media-md {
@@ -28,13 +55,13 @@
 
       li {
         width: 50%;
+        padding: 0 $global-spacing;
+        
         &.previous {
           float: left;
-          padding-right: #{$global-spacing};
         }
         &.next {
           float: right;
-          padding-left: #{$global-spacing};
         }
 
         + li {

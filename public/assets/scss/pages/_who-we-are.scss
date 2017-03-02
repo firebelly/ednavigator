@@ -167,6 +167,26 @@ body.who-we-are-child {
         }
       }
     }
+
+    // Entry Nav
+    .entry-nav {
+      @include media-md {
+        ul {
+          li {
+            .inline-link {
+              position: relative;
+
+              .icon {
+                position: relative;
+                &::after {
+                  top: 9px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   // Partners Page
