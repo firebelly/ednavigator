@@ -329,7 +329,7 @@ var FB = (function($) {
       });
 
       function enableDisable() {
-        if (breakpoint_lg === true) {
+        if (breakpoint_xl === true) {
           $('body').panelSnap('enable');
         } else {
           $('body').panelSnap('disable');
