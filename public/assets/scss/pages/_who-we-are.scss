@@ -144,6 +144,7 @@ body.who-we-are-child {
           z-index: 1;
           opacity: .75;
           max-width: 100%;
+          border-radius: 50%;
           position: relative;
           vertical-align: top;
         }
@@ -218,6 +219,7 @@ body.who-we-are-child {
 
           img {
             opacity: 1;
+            border-radius: 0;
             max-height: 70px;
           }
         }
