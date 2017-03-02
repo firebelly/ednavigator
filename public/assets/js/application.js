@@ -358,7 +358,7 @@ var FB = (function($) {
 
   function _initBlogFilter() {
     $document.on('change', '.filter select', function(e) {
-      window.location.replace(this.value);
+      window.location.href = this.value;
     });
   }
 
