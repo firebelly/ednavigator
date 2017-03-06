@@ -28,9 +28,29 @@ form {
   }
 
   .form-group {
-    margin-top: 10px;
+    margin-top: #{$vertical-beat * 2};
     &:first-of-type {
       margin-top: 0;
+    }
+
+    [class*='col-'] {
+      margin-top: #{$vertical-beat * 2};
+      &:first-of-type {
+        margin-top: 0;
+      }
+
+      @include media-lg {
+        margin-top: 0;
+      }
+    }
+
+    &.grid.spaced {
+      @include media-lg {
+        padding: 0 #{$global-spacing / 2};
+        [class*='col-'] {
+          padding: 0 #{$global-spacing / 2};
+        }
+      }
     }
   }
 
@@ -187,7 +207,7 @@ form {
   }
 
   .hidden-group {
-    margin-top: $vertical-beat;
+    margin-top: #{$vertical-beat * 2};
   }
 
   strong {

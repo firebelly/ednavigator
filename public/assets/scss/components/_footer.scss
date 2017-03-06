@@ -3,9 +3,10 @@
 .site-footer {
   color: $gray-dark;
   background: $black;
+  position: relative;
   padding: $global-spacing;
 
-  @include media-lg {
+  @include media-md {
     padding: $global-spacing * 2;
   }
 
@@ -18,22 +19,29 @@
     margin-bottom: $global-spacing;
     @include media-lg {
       margin-bottom: 0;
+
+      form {
+        margin-right: $global-spacing;
+      }
     }
 
-    form {
-      max-width: 400px;
+    h5 {
+      margin-bottom: 20px;
     }
   }
 
   .links-section {
-    @include media-md {
+    @include media-xl {
       display: flex;
-      
+
       > div {
         width: 50%;
       }
     }
     @include media-lg {
+      &.col-1-2 {
+        padding-left: #{$global-spacing * 2};
+      }
 
       > div {
         width: auto;
@@ -45,7 +53,7 @@
     @include media-md {
       padding-right: $global-spacing;
     }
-    @include media-xl {
+    @include min-screen(1400px) {
       padding-right: #{$global-spacing * 2};
     }
 
@@ -69,15 +77,34 @@
   }
 
   .connect {
-    h5 {
-      margin-bottom: 22px;
+    margin-top: $global-spacing;
+    @include media-xl {
+      margin-top: 0;
     }
 
-    > div:first-of-type {
-      margin-bottom: $global-spacing;
+    > div {
+      vertical-align: top;
+      display: inline-block;
 
-      h5 {
-        margin-bottom: 34px;
+      &:first-of-type {
+        margin-right: $global-spacing;
+      }
+
+      @include media-xl {
+        display: block;
+
+        h5 {
+          margin-bottom: 22px;
+        }
+
+        &:first-of-type {
+          margin-right: 0;
+          margin-bottom: 60px;
+
+          h5 {
+            margin-bottom: 34px;
+          }
+        }
       }
     }
   }
@@ -85,13 +112,22 @@
   .social {
     margin: 0;
     padding: 0;
+    display: flex;
+    height: 22px;
     @include clearfix;
+    align-items: center;
+    @include media-md {
+      display: block;
+    }
 
     li {
       float: left;
       list-style: none;
       margin-right: $vertical-beat;
-      margin-bottom: $vertical-beat;
+
+      @include media-md {
+        margin-bottom: $vertical-beat;
+      }
     }
     
     a {
@@ -138,6 +174,53 @@
   .address {
     span {
       display: block;
+    }
+  }
+
+  .post-footer {
+    left: 0;
+    top: 100%;
+    width: 100%;
+    color: $gray-light;
+    position: absolute;
+    font-smoothing: antialiased;
+    @extend .headline-descriptor;
+    padding: #{$vertical-beat * 2} $global-spacing;
+
+    @include media-md {
+      height: $global-spacing;
+      padding: #{$vertical-beat * 2} #{$global-spacing * 2};
+    }
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      transition: color .2s ease-out;
+      &:hover {
+        color: $black;
+      }
+    }
+  
+    nav {
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+          display: inline-block;
+          margin-right: #{$vertical-beat * 2};
+        }
+      }
+    }
+
+    .-right {
+      margin-top: #{$vertical-beat * 2};
+      @include media-lg {
+        margin-top: 0;
+        padding-left: #{$global-spacing * 2};
+      }
     }
   }
 }

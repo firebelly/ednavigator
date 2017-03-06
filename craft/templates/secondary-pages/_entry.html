@@ -1,0 +1,21 @@
+{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set title = entry.title %}
+{% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
+{% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
+
+{% set bodyClass = 'single page how-we-help sidebar-right' %}
+{% set bodyId = 'how-we-help-page' %}
+
+{% block content %}
+  
+  {% include 'partials/_intro-section.html' %}
+
+  {% if entry.body %}
+  <section class="main-content">
+    {{ entry.body }}
+  </section>
+  {% endif %}
+
+
+{% endblock %}

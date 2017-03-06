@@ -60,4 +60,23 @@
     </div>
   </div>
 
+  <div class="post-footer grid">
+    <div class="col-1-2 -left">
+      <p class="copyright">© {{ "now"|date("Y") }} EdNavigator. All rights reserved.</p>
+    </div>
+
+    {% set pages = craft.entries.section('secondaryPages') %}
+    {% if pages|length %}
+      <div class="col-1-2 -right">
+        <nav class="footer-nav">
+          <ul>
+          {% for page in pages %} 
+            <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+          {% endfor %}
+          </ul>
+        </nav>
+      </div>
+    {% endif %}
+  </div>
+  
 </footer>
