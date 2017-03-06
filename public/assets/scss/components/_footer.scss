@@ -188,7 +188,7 @@
     padding: #{$vertical-beat * 2} $global-spacing;
 
     @include media-md {
-      height: $global-spacing;
+      min-height: $global-spacing;
       padding: #{$vertical-beat * 2} #{$global-spacing * 2};
     }
 
@@ -205,11 +205,12 @@
   
     nav {
       ul {
-        margin: 0;
         padding: 0;
+        margin: 0 0 -#{$vertical-beat};
         list-style: none;
         li {
           display: inline-block;
+          margin-bottom: $vertical-beat;
           margin-right: #{$vertical-beat * 2};
         }
       }
