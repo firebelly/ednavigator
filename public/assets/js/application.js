@@ -52,6 +52,7 @@ var FB = (function($) {
     _snapScrolling();
     _initBlogFilter();
     _initGAEventTracking();
+    _initStripeCheckout();
 
     // Esc handlers
     $(document).keyup(function(e) {
@@ -378,6 +379,54 @@ var FB = (function($) {
   // Track events in Analytics
   function _trackEvent(category, action) {
     if (typeof ga !== 'undefined') { ga('send', 'event', category, action); }
+  }
+
+  function _initStripeCheckout() {
+
+    function _stripeCheckout(container, planId) {
+      var stripeCheckout = StripeCheckout.configure({
+        key: $('form.stripe-checkout').attr('data-key'),
+        image: '/assets/images/marketplace.png',
+        locale: 'auto',
+        token: function(token, args) {
+          data = $('form.stripe-checkout').serialize() + '&token=' + JSON.stringify(token) + '&customer=' + JSON.stringify(args) + '&plan=' + JSON.stringify(planId);
+          $.post('/', data, function(response) {
+            if (response.success) {
+              container.find('.checkout-feedback').html('<h3>Success!</h3><p>Your payment will be processed shortly.</p>').slideDown('fast');
+            } else {
+              container.find('.checkout-feedback').html('<h3>Uh oh!</h3><p>There was a transaction error: ' + response.error + '</p>').slideDown('fast');
+            }
+          }).fail(function() {
+            container.find('.checkout-feedback').html('<h3>Uh oh!</h3><p>There was a transaction error. Please contact us at <a href="mailto:info@ednavigator.com?subject=stripe%20error">info@ednavigator.com</a>.</p>').slideDown('fast');
+          });
+        }
+      });
+      return stripeCheckout;
+    }
+
+    $('.payment-link button').on('click', function(e) {
+      e.preventDefault();
+      var $container = $(this).closest('.payment-option'),
+          price = $(this).attr('data-price'),
+          planId = $(this).attr('data-plan'),
+          description = $(this).attr('data-description');
+      
+      // Open Checkout with further options:
+      stripeCheckout = _stripeCheckout($container, planId);
+      stripeCheckout.open({
+        panelLabel: 'pay and subscribe',
+        description: description,
+        name: 'EdNavigator Payment',
+        billingAddress: true,
+        zipCode: true,
+        amount: price * 100
+      });
+    });
+
+    // Close Checkout on page navigation:
+    window.addEventListener('popstate', function() {
+      stripeCehckout.close();
+    });
   }
 
   // Called in quick succession as window is resized
