@@ -12,11 +12,12 @@
   {% set entryDate = entry.postDate.format('m/d/y') %}
 {% endif %}
 
+{% set bannerImage = entry.resourcesBannerImage.last() %}
+
 {% block content %}
 
   {% include "partials/_page-sidebar" with { 'parent' : craft.entries.section('resources').first()} %}
 
-  {% set bannerImage = entry.resourcesBannerImage.last() %}
   <article class="entry grid">
 
     <div class="entry-body col-2-3">    

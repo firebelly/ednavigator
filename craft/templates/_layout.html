@@ -7,12 +7,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <title>{% if globalSeo.seoTitle is defined %}{{ globalSeo.seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}</title>
+  <title>{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}</title>
   <link rel="canonical" href="{{ siteUrl }}">
   {% if globalSeo.seoDescription is defined %}
   <meta name="description" content="{{ globalSeo.seoDescription }}">
   {% endif %}
   <meta property="og:title" content="{% if globalSeo.seoTitle is defined %}{{ globalSeo.seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}" />
+  {% if bannerImage is defined %}
+    <meta property="og:image" content="{{ bannerImage.getUrl('hero') }}" />
+  {% elseif globalSeo.seoImage is defined %}
+    <meta property="og:image" content="{{ globalSeo.seoImage.first().getUrl('hero') }}" />
+  {% endif %}
   {% if globalSeo.seoDescription is defined %}
   <meta property="og:description" content="{{ globalSeo.seoDescription }}" />
   {% endif %}
