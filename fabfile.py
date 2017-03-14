@@ -5,18 +5,18 @@ from dotenv import load_dotenv
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
-env.hosts = ['ednavigator.com']
-env.user = 'ednavigator'
+env.hosts = ['ednavigator.firebelly.co']
+env.user = 'firebelly'
 
 env.path = '/Users/matt/Sites/ednavigator'
-env.remotepath = '/home/ednavigator/webapps/ednavigator'
+env.remotepath = '/home/firebelly/webapps/ednavigator'
 env.git_branch = 'master'
 env.warn_only = True
 
 def production():
-  env.hosts = ['www.ednavigator.com']
-  env.user = 'ednavigator'
-  env.remotepath = '/home/ednavigator/webapps/ednavigator'
+  env.hosts = ['ednavigator.firebelly.co']
+  env.user = 'firebelly'
+  env.remotepath = '/home/firebelly/webapps/ednavigator'
 
 def assets():
   local('node_modules/.bin/gulp --production')
@@ -32,8 +32,7 @@ def update():
 
 def composer_install():
   with cd(env.remotepath):
-    run('~/bin/composer install')
-    # run('php70 ~/bin/composer.phar install')
+    run('php70 ~/bin/composer.phar install')
 
 # def clear_cache():
 #   with cd(env.remotepath):
