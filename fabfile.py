@@ -15,7 +15,7 @@ env.warn_only = True
 
 def production():
   env.hosts = ['www.ednavigator.com']
-  env.user = 'firebelly'
+  env.user = 'ednavigator'
   env.remotepath = '/home/ednavigator/webapps/ednavigator'
 
 def assets():
