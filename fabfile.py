@@ -14,9 +14,9 @@ env.git_branch = 'master'
 env.warn_only = True
 
 def production():
-  env.hosts = ['ednavigator.firebelly.co']
+  env.hosts = ['www.ednavigator.com']
   env.user = 'firebelly'
-  env.remotepath = '/home/firebelly/webapps/ednavigator'
+  env.remotepath = '/home/ednavigator/webapps/ednavigator'
 
 def assets():
   local('node_modules/.bin/gulp --production')
