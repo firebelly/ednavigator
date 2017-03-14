@@ -7,16 +7,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <title>{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}</title>
+  <title>{% if globalSeo.seoTitle is defined %}{{ globalSeo.seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}</title>
   <link rel="canonical" href="{{ siteUrl }}">
-  {% if seoDescription is defined %}
-  <meta name="description" content="{{ seoDescription }}">
+  {% if globalSeo.seoDescription is defined %}
+  <meta name="description" content="{{ globalSeo.seoDescription }}">
   {% endif %}
-  <meta property="og:title" content="{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}" />
-  <meta property="og:image" content="" />
-  <meta property="og:url" content="{{ siteUrl }}" />
-  {% if seoDescription is defined %}
-  <meta property="og:description" content="{{ seoDescription }}" />
+  <meta property="og:title" content="{% if globalSeo.seoTitle is defined %}{{ globalSeo.seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}" />
+  {% if globalSeo.seoDescription is defined %}
+  <meta property="og:description" content="{{ globalSeo.seoDescription }}" />
   {% endif %}
   <link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.png">
   <script src="/assets/js/modernizr-min.js"></script>
