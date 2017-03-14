@@ -57,7 +57,6 @@ var FB = (function($) {
     // Esc handlers
     $(document).keyup(function(e) {
       if (e.keyCode === 27) {
-
       }
     });
 

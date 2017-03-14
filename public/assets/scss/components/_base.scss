@@ -74,7 +74,7 @@ img {
 .wrap {
   width: 100%;
   margin: 0 auto;
-  max-width: 1600px; // change to whatever 
+  max-width: 1600px;
   position: relative;
   @include clearfix();
   padding: 0 $global-spacing;
