@@ -8,7 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <title>{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}</title>
-  <link rel="canonical" href="{{ siteUrl }}">
   {% if globalSeo.seoDescription is defined %}
   <meta name="description" content="{{ globalSeo.seoDescription }}">
   {% endif %}
