@@ -8,26 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <title>{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}</title>
-  {% if excerpt is defined %}
-  <meta name="description" content="{{ excerpt }}">
-  {% elseif seoDescription is defined %}
-  <meta name="description" content="{{ seoDescription }}">
-  {% elseif globalSeo.seoDescription|length %}
-  <meta name="description" content="{{ globalSeo.seoDescription }}">
-  {% endif %}
-  <meta property="og:title" content="{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}" />
-  {% if bannerImage is defined %}
-    <meta property="og:image" content="{{ url(siteUrl ~ bannerImage.getUrl()|trim('/')) }}" />
-  {% elseif globalSeo.seoImage is defined %}
-    <meta property="og:image" content="{{ url(siteUrl ~ globalSeo.seoImage.first().getUrl('hero')|trim('/')) }}" />
-  {% endif %}
-  {% if excerpt is defined %}
-  <meta property="og:description" content="{{ excerpt }}">
-  {% elseif seoDescription is defined %}
-  <meta property="og:description" content="{{ seoDescription }}">
-  {% elseif globalSeo.seoDescription|length %}
-  <meta property="og:description" content="{{ globalSeo.seoDescription }}">
-  {% endif %}
+
+  {% include 'partials/_head-meta.html' %}
+  
   <link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.png">
   <script src="/assets/js/modernizr-min.js"></script>
 
