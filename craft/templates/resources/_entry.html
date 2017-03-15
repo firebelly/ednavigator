@@ -12,6 +12,7 @@
   {% set entryDate = entry.postDate.format('m/d/y') %}
 {% endif %}
 
+{% set excerpt = entry.excerpt|raw %}
 {% set bannerImage = entry.resourcesBannerImage.last() %}
 
 {% block content %}

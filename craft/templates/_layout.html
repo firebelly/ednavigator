@@ -8,14 +8,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <title>{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}</title>
-  {% if globalSeo.seoDescription is defined %}
+  {% if excerpt is defined %}
+  <meta name="description" content="{{ excerpt }}">
+  {% elseif seoDescription is defined %}
+  <meta name="description" content="{{ seoDescription }}">
+  {% elseif globalSeo.seoDescription|length %}
   <meta name="description" content="{{ globalSeo.seoDescription }}">
   {% endif %}
   <meta property="og:title" content="{% if globalSeo.seoTitle is defined %}{{ globalSeo.seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}" />
   {% if bannerImage is defined %}
-    <meta property="og:image" content="{{ bannerImage.getUrl('hero') }}" />
+    <meta property="og:image" content="{{ url(siteUrl ~ bannerImage.getUrl()|trim('/')) }}" />
   {% elseif globalSeo.seoImage is defined %}
-    <meta property="og:image" content="{{ globalSeo.seoImage.first().getUrl('hero') }}" />
+    <meta property="og:image" content="{{ url(siteUrl ~ globalSeo.seoImage.first().getUrl('hero')|trim('/')) }}" />
   {% endif %}
   {% if globalSeo.seoDescription is defined %}
   <meta property="og:description" content="{{ globalSeo.seoDescription }}" />
