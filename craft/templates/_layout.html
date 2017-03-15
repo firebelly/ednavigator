@@ -15,7 +15,7 @@
   {% elseif globalSeo.seoDescription|length %}
   <meta name="description" content="{{ globalSeo.seoDescription }}">
   {% endif %}
-  <meta property="og:title" content="{% if globalSeo.seoTitle is defined %}{{ globalSeo.seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}" />
+  <meta property="og:title" content="{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}" />
   {% if bannerImage is defined %}
     <meta property="og:image" content="{{ url(siteUrl ~ bannerImage.getUrl()|trim('/')) }}" />
   {% elseif globalSeo.seoImage is defined %}
