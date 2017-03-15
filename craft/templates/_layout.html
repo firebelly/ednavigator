@@ -21,8 +21,12 @@
   {% elseif globalSeo.seoImage is defined %}
     <meta property="og:image" content="{{ url(siteUrl ~ globalSeo.seoImage.first().getUrl('hero')|trim('/')) }}" />
   {% endif %}
-  {% if globalSeo.seoDescription is defined %}
-  <meta property="og:description" content="{{ globalSeo.seoDescription }}" />
+  {% if excerpt is defined %}
+  <meta property="og:description" content="{{ excerpt }}">
+  {% elseif seoDescription is defined %}
+  <meta property="og:description" content="{{ seoDescription }}">
+  {% elseif globalSeo.seoDescription|length %}
+  <meta property="og:description" content="{{ globalSeo.seoDescription }}">
   {% endif %}
   <link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.png">
   <script src="/assets/js/modernizr-min.js"></script>
