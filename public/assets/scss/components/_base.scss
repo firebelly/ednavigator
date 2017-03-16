@@ -107,7 +107,7 @@ img {
   left: 50%;
   width: 80px;
   height: 80px;
-  overflow: hidden;
+  // overflow: hidden;
   border-radius: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
@@ -126,12 +126,11 @@ img {
     animation: spinLeft 1.25s linear infinite;
   }
   .ednavigator-mark {
-    top: 20px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
+    top: 24px;
+    left: 24px;
+    width: 33px;
+    height: 33px;
     position: absolute;
-    fill: $brand-primary;
     animation: spinRight 1.6s cubic-bezier(0.68,-0.55,0.27,1.5) infinite;
   }
 }
