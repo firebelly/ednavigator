@@ -4,8 +4,8 @@
     <form action="{{ url('blog/search') }}" class="search-filter">
 
       <div class="search-wrap">          
-        <input type="search" name="q" placeholder="Search Posts">
-        <button type="submit" class="svg-inject" data-icon="icon-search"><span class="visually-hidden">Search Posts</span></button>
+        <input type="search" name="q" placeholder="{{'Search Posts'|t}}">
+        <button type="submit" class="svg-inject" data-icon="icon-search"><span class="visually-hidden">{{"Search Posts"|t}}</span></button>
       </div>
 
     </form>
@@ -26,7 +26,7 @@
     </div>
 
     {% set tagEntries = craft.entries.section('blogEntries').limit(null) %}
-    {% set tags = craft.tags.relatedTo(tagEntries).indexBy('title')|unique %}
+    {% set tags = craft.tags.relatedTo(tagEntries).indexBy('title') %}
     <div class="filter tag col-1-2">
       <div class="select-wrap">
         <select name="tag" id="tag">

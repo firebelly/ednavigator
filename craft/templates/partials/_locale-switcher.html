@@ -1,30 +1,25 @@
-{% set googleTranslateString = '/#googtrans(en|es)' %}
 
 {% if entry is defined %}
   <ul class="locale">
     {% block locale__switch %}
-
-      {% if entry.slug == 'blog' or entry.slug == 'resources' or entry.getType() == 'blogEntry' or entry.getType() == 'resources' %}
-        <li><a href="{{ entry.getUrl() }}">English</a></li>
-        <span>/</span>
-        <li><a href="{{ entry.getUrl() ~ googleTranslateString }}">Español</a></li>      
-      {% else %}
 
         {% set siteLocales = craft.i18n.getSiteLocales() %}
         {% for locale in siteLocales %}
         
           {% if locale.id == "en_us" %}
             {% set localeName = "English" %}
+            {% set translateString = '' %}
           {% elseif locale.id == "es_us" %}
             {% set localeName = "Español" %}
+            {% set translateString = '#googtrans(en|es)' %}
           {% endif %}
 
           {% set localeEntry = craft.entries.id(entry.id).locale(locale.id).first %}
 
           {% if locale == craft.locale %}
-              <li class="-active"><a href="{{ localeEntry.getUrl() }}">{{ localeName }}</a></li>
+              <li class="-active"><a href="{{ localeEntry.getUrl() }}{{ translateString }}">{{ localeName }}</a></li>
             {% else %}
-              <li><a href="{{ localeEntry.getUrl() }}">{{ localeName }}</a></li>
+              <li><a href="{{ localeEntry.getUrl() }}{{ translateString }}">{{ localeName }}</a></li>
           {% endif %}
 
           {% if not loop.last %}
@@ -33,7 +28,6 @@
 
         {% endfor %}
 
-      {% endif %}
 
     {% endblock %}
   </ul>

@@ -13,7 +13,12 @@
     <section class="intro-section">
       <div class="grid">
         <h2 class="page-description">
-          {{ entry.pageDescription }}
+          {% if craft.locale != "en_us" and entry.pageDescription is empty %}
+            {% set enDescription = craft.entries.id(entry.id).locale("en_us").first().pageDescription %}
+            {{ enDescription }}
+          {% else %}
+            {{ entry.pageDescription }}
+          {% endif %}
         </h2>
 
         {% include "blog/_subscribe" %}
