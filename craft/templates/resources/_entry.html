@@ -114,5 +114,7 @@
 
   </article>
 
-  {% include 'partials/_googletranslate.html' %}
+  {% if craft.locale != "en_us"%}
+    {% include 'partials/_googletranslate.html' %}
+  {% endif %}
 {% endblock %}
