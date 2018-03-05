@@ -3,6 +3,7 @@ craft/storage/backups/*
 public/assets/bower_components/*
 public/uploads/*
 public/downloads/*
+craft/app
 
 .DS_Store
 .scss-cache/*
