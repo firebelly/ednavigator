@@ -1,5 +1,6 @@
 craft/storage/runtime/*
 craft/storage/backups/*
+craft/storage/userphotos/*
 public/assets/bower_components/*
 public/uploads/*
 public/downloads/*
