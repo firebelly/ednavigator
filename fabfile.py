@@ -18,6 +18,11 @@ def production():
   env.user = 'ednavigator'
   env.remotepath = '/home/ednavigator/webapps/ednavigator'
 
+def testing():
+  env.hosts = ['testing.ednavigator.com']
+  env.user = 'ednavigator'
+  env.remotepath = '/home/ednavigator/webapps/ednavigator_testing'
+
 def assets():
   local('node_modules/.bin/gulp --production')
 
