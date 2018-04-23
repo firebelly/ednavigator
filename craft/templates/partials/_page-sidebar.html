@@ -1,6 +1,8 @@
-<a class="page-back" href="{{ parent.url }}">
-  <svg class="icon icon-arrow-dotted" role="img"><use xlink:href="#icon-arrow-dotted" /></svg>
-  <div>
-    <span>{{ parent.title }}</span>
-  </div>
-</a>
+
+{% if entry.level > 1 %}
+    <ul class="crumbs">
+        {% for crumb in entry.getAncestors() %}
+            <li>{{ crumb.getLink() }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}

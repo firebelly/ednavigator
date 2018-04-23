@@ -84,6 +84,7 @@ body.home {
   }
 
   .user-paths {
+    position: relative;
 
     .block {
   
@@ -122,6 +123,10 @@ body.home {
         z-index: 1;
         position: relative;
 
+        .block-title a {
+          text-decoration: none;
+        }
+
         p {
           margin: 0;
         }
@@ -143,6 +148,27 @@ body.home {
       }
     }
 
+  }
+
+  .featured-news {
+
+    .page-section-content-carousel {
+      background: $yellow;
+    }
+
+    @include media-md {
+      .block {
+        min-height: 0;
+      }
+
+      .page-section-content-carousel {
+        padding-bottom: 150px;
+      }
+
+      .block-title {
+        font: normal 42px/40px $font-bold;
+      }      
+    }
   }
 
 }

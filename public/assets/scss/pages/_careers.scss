@@ -1,0 +1,15 @@
+// Careers Page
+
+body.page-careers {
+  .site-main {
+    background-color: $offwhite;
+  }
+
+  .positions {
+    background-color: $yellow;
+
+    .headline-rule span {
+      background-color: $yellow; 
+    }
+  }
+}

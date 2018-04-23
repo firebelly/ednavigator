@@ -90,13 +90,12 @@ a.inline-link {
   padding: 0;
   width: 80px;
   height: 80px;
+  line-height: 0;
   display: block;
   background: none;
   border-radius: 50%;
   border: 2px solid $brand-primary;
   .icon {
-    top: 31px;
-    left: 31px;
     width: 15px;
     height: 15px;
     position: relative;

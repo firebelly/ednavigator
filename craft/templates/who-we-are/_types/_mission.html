@@ -26,19 +26,9 @@
         </div>
       {% endfor %}
     </div>
-    
-    {% set pages = craft.entries.section(entry.section) %}
-    {% if pages %}
-      <div class="section-links">
-        <h5>{{ entry.learnMoreLabel }}</h5>
-        <ul class="section-links">
-          {% for page in pages %}
-            {% if page.slug != entry.slug %}
-              <li><a href="{{ page.url }}" class="inline-link"><span>{{ page.title }}</span></a></li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-      </div>
-    {% endif %}
+  </section>
+
+  <section class="section-links">
+    {% include 'partials/_entry-nav.html' %}
   </section>
 {% endblock %}
