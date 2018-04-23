@@ -1,9 +1,9 @@
 from fabric.api import *
 import os
-from os.path import join,dirname
-from dotenv import load_dotenv
-dotenv_path = join(dirname(__file__), '.env')
-load_dotenv(dotenv_path)
+# from os.path import join,dirname
+# from dotenv import load_dotenv
+# dotenv_path = join(dirname(__file__), '.env')
+# load_dotenv(dotenv_path)
 
 env.hosts = ['ednavigator.firebelly.co']
 env.user = 'firebelly'
@@ -19,9 +19,10 @@ def production():
   env.remotepath = '/home/ednavigator/webapps/ednavigator'
 
 def testing():
-  env.hosts = ['testing.ednavigator.com']
+  env.hosts = ['www.ednavigator.com']
   env.user = 'ednavigator'
   env.remotepath = '/home/ednavigator/webapps/ednavigator_testing'
+  env.git_branch = 'phase-1-updates'
 
 def assets():
   local('node_modules/.bin/gulp --production')
