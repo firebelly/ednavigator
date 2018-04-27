@@ -21,14 +21,19 @@ body.page {
   .two-column-section,
   .single-column-section,
   .call-to-action-section {
-    + .call-to-action-section,
-    + .section-links {
-      padding-top: 0;
+    + .call-to-action-section {
+      padding-top: 100px;
     }
+  }
+
+  .call-to-action-section + .section-links {
+    padding-top: 0;
   }
 
   .call-to-action-section {
     background: $offwhite;
+    padding-top: #{$global-spacing * 4};
+    padding-bottom: #{$global-spacing * 4};
 
     h4 {
       margin-top: 0;
