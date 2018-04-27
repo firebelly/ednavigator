@@ -13,17 +13,35 @@ body.page {
       h4 {
         color: $yellow-text;
         @extend .headline-two;
-        -webkit-font-smoothing: antialiased;
       }
+    }
+  }
+
+  .intro-section,
+  .two-column-section,
+  .single-column-section,
+  .call-to-action-section {
+    + .call-to-action-section,
+    + .section-links {
+      padding-top: 0;
     }
   }
 
   .call-to-action-section {
     background: $offwhite;
 
-    .intro-text {
+    h4 {
+      margin-top: 0;
       text-align: center;
-      margin-bottom: #{$global-spacing / 2};
+      color: $yellow-text;
+      @extend .headline-two;
+      margin-bottom: #{$vertical-beat * 3};
+    }
+
+    .intro-text {
+      margin-top: 0;
+      text-align: center;
+      margin-bottom: #{$vertical-beat * 3};
     }
 
     .call-to-action {

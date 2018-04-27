@@ -112,10 +112,13 @@
 
     {% if block.type == "callToAction" %}
       <section class="call-to-action-section page-block">
+        {% if block.sectionTitle %}
+          <h4>{{ block.sectionTitle }}</h4>
+        {% endif %}
         {% if block.introText %}
           <p class="intro-text">{{ block.introText }}</p>
         {% endif %}
-        <p class="call-to-action"><a href="{{ block.actionLink.first().url }}" class="button">{{ block.actionText }}</a></p>
+        <p class="call-to-action"><a href="{{ block.actionLinkInternal ? block.actionLinkInternal.first().url : block.actionLinkExternal }}" class="button"{{ block.actionLinkExternal ? ' target="_blank"' }}>{{ block.actionText }}</a></p>
       </section>
     {% endif %}
 
