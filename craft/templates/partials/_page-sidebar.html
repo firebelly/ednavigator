@@ -1,8 +1,0 @@
-
-{% if entry.level > 1 %}
-    <ul class="crumbs">
-        {% for crumb in entry.getAncestors() %}
-            <li>{{ crumb.getLink() }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}

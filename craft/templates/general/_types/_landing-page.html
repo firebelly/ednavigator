@@ -9,8 +9,6 @@
 
 {% block content %}
 
-  {% include "partials/_page-sidebar" %}
-
   {% for section in craft.entries.section(entry.section).level(2) %}
     {% set colorIndex = loop.index - 1 %}
     {% if colorIndex > colors|length - 1 %} 

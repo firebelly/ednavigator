@@ -59,8 +59,11 @@
   </header>
 
   <main class="site-main" role="main">
+    {% include 'partials/_breadcrumbs.html' %}
+    
     {% block content %}{% endblock %}
   </main>
+
 
   {% include 'partials/_footer.html' %}
 

@@ -1,3 +1,6 @@
+{% set entryIds = craft.entries.section('blogEntries').ids() %}
+{% set categories = craft.categories.relatedTo({ sourceElement: entryIds }).group('blogCetegories').find() %}
+
 <div class="filter-section grid">
 
   <div class="search col-1-2">
@@ -17,7 +20,7 @@
     <div class="filter category col-1-2">
       <div class="select-wrap">
         <select name="category" id="category">
-          <option value="-1">Category</option>
+          <option value="-1">{{ 'category' | t | capitalize }}</option>
           {% for category in craft.categories.group('blogCategories') %}
             <option value="{{ category.url }}">{{ category.title }}</option>
           {% endfor %}
@@ -30,9 +33,9 @@
     <div class="filter tag col-1-2">
       <div class="select-wrap">
         <select name="tag" id="tag">
-          <option value="-1">Tag</option>
+          <option value="-1">{{ 'tag' | t | capitalize }}</option>
           {% for tag in tags %}
-            <option value="{{ url('blog/tag/'~tag.slug) }}">{{ tag.title }}</option>
+            <option value="{{ siteUrl }}blog/{{ 'tag' | t }}/{{ tag.slug }}">{{ tag.title }}</option>
           {% endfor %}
         </select>
       </div>

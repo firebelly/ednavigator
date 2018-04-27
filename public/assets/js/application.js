@@ -280,8 +280,8 @@ var FB = (function($) {
   function _initPageTransitions() {
     $('.page-back').on('mouseenter', _showPageOverlay).on('mouseleave', _hidePageOverlay);
 
-    $('.page-back').on('click', function() {
-      $(this).addClass('-clicked');
+    $('.breadcrumbs a').on('click', function() {
+      $('.breadcrumbs').addClass('-clicked');
     });
   }
 

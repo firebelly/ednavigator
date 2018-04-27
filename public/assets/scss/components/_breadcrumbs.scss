@@ -1,0 +1,67 @@
+// Breadcrumbs
+
+// Page back button: left/right
+.breadcrumbs {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  display: none;
+  position: fixed;
+  overflow: hidden;
+  background: $white;
+  will-change: width;
+  text-decoration: none;
+  width: $global-spacing;
+  padding-top: $header-height;
+  transition: width .2s ease-out;
+  @include media-md {
+    display: block;
+  }
+
+  p {
+    left: 50%;
+    margin: 0;
+    padding: 0;
+    opacity: 1;
+    line-height: 1;
+    position: absolute;
+    white-space: nowrap;
+    will-change: opacity;
+    display: inline-block;
+    @extend .headline-descriptor;
+    transform-origin: bottom left;
+    transition: opacity .2s ease-out;
+    transform: rotate(90deg) translate(0, 50%);
+  }
+
+  .icon {
+    right: 0;
+    width: 50px;
+    height: 10px;
+    position: absolute;
+    will-change: transform;
+    transform: translateX(-40%);
+    transition: transform .2s ease-out;
+  }
+
+  &:hover {
+    width: #{$global-spacing * 2};
+
+    .icon {
+      transform: translateX(0);
+    }
+
+    span {
+      transform: rotate(-90deg) translate(-100%, 0);
+    }
+  }
+
+  &.-clicked {
+    width: 100%;
+
+    p {
+      opacity: 0;
+    }
+  }
+}

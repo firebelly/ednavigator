@@ -2,16 +2,14 @@
 
 {% set tag = craft.tags.slug(tag).first() %}
 
-{% set title = "Resources: "~tag.title %}
+{% set title = "Family Resources: "~tag.title %}
 {% set bodyClass = 'page sidebar-right page-resources page-location page-' ~ tag.slug %}
 
 {% block content %}
 
-  {% include "partials/_page-sidebar" with { 'parent' : craft.entries.section('resources').first()} %}
-
   <section class="intro-section">
     <h2 class="page-description">
-      Location:<br> {{ tag.title }}
+      {{ 'Location' | t }}:<br> {{ tag.title }}
     </h2>
   </section>
 
