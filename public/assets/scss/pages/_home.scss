@@ -12,14 +12,12 @@ body.home {
       fill: $white;
     }
 
-    @include max-screen($breakpoint-lg) {    
-      &.-sticky {
-        @include sticky-header;
-      }
+    &.-sticky {
+      @include sticky-header;
     }
   }
   
-  .site-nav {
+  .site-header:not(.-sticky) .site-nav {
     color: $white;
     &.-active {
       color: $black;

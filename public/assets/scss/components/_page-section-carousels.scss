@@ -74,10 +74,26 @@
 .flickity-prev-next-button {
   top: auto;
   bottom: 0;
+  width: 78px;
   background: none;
   @include media-md {
     top: auto;
     bottom: 10px;
+  }
+
+  svg {
+    top: auto;
+    left: auto;
+    width: 30px;
+    height: 30px;
+    position: relative;
+  }
+
+  span {
+    line-height: 30px;
+    vertical-align: top;
+    display: inline-block;
+    @extend .headline-descriptor;
   }
 
   .arrow {
@@ -92,15 +108,15 @@
   }
 
   &.next {
-    left: 86px;
+    left: 138px;
     @include media-md {
-      left: 122px;
+      left: 189px;
     }
   }
   &.previous {
-    left: 46px;
+    left: 30px;
     @include media-md {
-      left: 86px;
+      left: 81px;
     }
   }
 }

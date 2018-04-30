@@ -155,6 +155,9 @@ var FB = (function($) {
       if ($contentCarousel.find('.block').length === 1) {
         $contentCarousel.find('.flickity-prev-next-button').hide();
       }
+
+      $contentCarousel.find('button.previous').append('<span>Prev</span>');
+      $contentCarousel.find('button.next').prepend('<span>Next</span>');
     });
 
   }
