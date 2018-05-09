@@ -110,6 +110,13 @@ a.inline-link {
       animation: scrollHover 1s linear infinite;
     }
   }
+
+  &.-orange {
+    border-color: $orange;
+    .icon {
+      fill: $orange;
+    }
+  }
 }
 
 @keyframes scrollHover {

@@ -354,6 +354,10 @@ var FB = (function($) {
       $('.snap-section').each(function(i) {
         if (i < $('.snap-section').length - 1) {
           $(this).append('<button class="section-advance scroll-button smoothscroll" href="#"><svg class="icon icon-arrow" role="img"><use xlink:href="#icon-arrow" /></svg></button>');
+          // If The contenct section is yellow, add a class to change the color of the section-advance button
+          if ($(this).find('.background-yellow').length !== 0) {
+            $(this).find('.section-advance').addClass('-orange');
+          }
           $(this).find('.section-advance').on('click', function(e) {
             e.preventDefault();
             _scrollBody($(this).closest('.snap-section').next('.snap-section'), 350, 0, $('.site-header').outerHeight());
