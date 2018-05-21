@@ -36,10 +36,10 @@ body.page {
     padding-bottom: #{$global-spacing * 4};
 
     h4 {
+      color: $black;
       margin-top: 0;
       text-align: center;
-      color: $yellow-text;
-      @extend .headline-two;
+      @extend .headline-one;
       margin-bottom: #{$vertical-beat * 3};
     }
 
