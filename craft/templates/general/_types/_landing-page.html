@@ -23,7 +23,7 @@
         <div class="image-block col-1-2" style="background-image: url({{ section.bannerImage.last().getUrl('hero') }})"></div>
         <div class="page-section-content-carousel block col-1-2 background-{{ colors[colorIndex] }}">
           <div class="-inner">
-            <h2 class="block-title">{{ section.Title|nl2br }}</h2>
+            <h2 class="block-title">{% if section.subpageDescriptiveHeadline %}{{ section.subpageDescriptiveHeadline }}{% else %}{{ section.Title|nl2br }}{% endif %}</h2>
             <p>{{ section.pageDescription }}</p>
             <div class="inline-links-container">
               <p><a href="{{ section.url }}">{{ section.linkToPageText ? section.linkToPageText : "Learn more" }}</a></p>
