@@ -70,7 +70,7 @@
             <h5 class="step-number">{{ loop.index }}</h5>
             <h4>{{ step.stepLabel }}</h4>
             <div class="step-content user-content">
-              {{ step.stepContent|slice(0, 250) ~ '...' }}
+              {{ step.stepContent|slice(0, 250) }}
             </div>
           </div>
         {% endfor %}
