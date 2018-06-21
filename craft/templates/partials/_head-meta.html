@@ -18,5 +18,5 @@
   {% elseif globalSeo.seoDescription|length %}
   <meta property="og:description" content="{{ globalSeo.seoDescription }}">
   {% endif %}
-  <meta property="og:url" content="{{ entry.url }}">
+  <meta property="og:url" content="{{ craft.request.getUrl() }}">
   <meta property="fb:app_id" content="1675583716017779">

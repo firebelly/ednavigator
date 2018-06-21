@@ -1,0 +1,74 @@
+{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set title = entry.title %}
+{% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
+{% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
+
+{% set bodyClass = 'single page how-we-help sidebar-right' %}
+{% set bodyId = 'how-we-help-page' %}
+
+{% block content %}
+  
+  <section class="intro-section">    
+  {% if entry.pageDescription|length %}
+    <h2 class="page-description">
+      {{ entry.pageDescription }}
+    </h2>
+  {% endif %}
+  </section>
+
+  <section class="our-navigators">
+    <h3 class="headline-rule"><span>{{ entry.introSectionLabel }}</span></h3>
+    <div class="grid spaced">
+      {% for navigatorSection in entry.ourNavigators.navigatorsInfoSection %}
+        <div class="navigator-section col-1-2">
+          <h4>{{ navigatorSection.sectionTitle }}</h4>
+          <div class="navigator-section-content user-content">
+            {{ navigatorSection.sectionContent }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <p class="navigators-link"><a href="{{ entry.navigatorsButtonLink.first().url }}" class="button">{{ entry.navigatorsButtonText }}</a></p>
+    <div class="navigators-image"><img src="/assets/images/navigators.png" alt="Navigators Team Photo"></div>
+  </section>
+
+  <section class="our-approach">
+    <h3 class="headline-rule"><span>{{ entry.approachSectionLabel }}</span></h3>
+    <div class="steps grid spaced">
+      {% for step in entry.ourApproach.step %}
+        <div class="step col-1-5">
+          {% if not loop.last %}
+            <svg class="icon-arrow-dotted" role="img"><use xlink:href="#icon-arrow-dotted" /></svg>
+          {% endif %}
+          <h5 class="step-number">{{ loop.index }}</h5>
+          <h4>{{ step.stepTitle }}</h4>
+          <div class="step-content user-content">
+            {{ step.stepContent }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="our-knowledge">
+    <h3 class="headline-rule"><span>{{ entry.knowledgeSectionLabel }}</span></h3>
+    <div class="grid spaced">
+      {% for knowledgeSection in entry.knowledge.contentSection %}
+        <div class="knowledge-section col-1-2">
+          <h4>{{ knowledgeSection.sectionTitle|nl2br }}</h4>
+          <div class="knowledge-section-content user-content">
+            {{ knowledgeSection.sectionContent }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    {% if entry.learnMoreLinks %}
+      <div class="knowledge-links inline-links-container">
+        <h5>Learn more about</h5>
+        {{ entry.learnMoreLinks }}
+      </div>
+    {% endif %}
+  </section>
+
+{% endblock %}

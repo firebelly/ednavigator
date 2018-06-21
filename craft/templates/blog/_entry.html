@@ -1,7 +1,7 @@
 {% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
 {% set title = entry.title %}
-{% set bodyClass = 'page sidebar-left single-post' %}
+{% set bodyClass = 'page sidebar-right single-post' %}
 
 {% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
 {% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
@@ -17,8 +17,6 @@
 
 {% block content %}
   <article class="entry grid">
-
-    {% include "partials/_page-sidebar" with { 'parent' : craft.entries.section('blog').first()} %}
 
     <div class="entry-body col-2-3">    
       {% if entry.videoId|length %}
@@ -113,7 +111,4 @@
 
   </article>
 
-  {% if craft.locale != "en_us"%}
-    {% include 'partials/_googletranslate.html' %}
-  {% endif %}
 {% endblock %}

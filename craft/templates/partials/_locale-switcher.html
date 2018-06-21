@@ -8,18 +8,16 @@
         
           {% if locale.id == "en_us" %}
             {% set localeName = "English" %}
-            {% set translateString = '' %}
           {% elseif locale.id == "es_us" %}
             {% set localeName = "Español" %}
-            {% set translateString = '#googtrans(en|es)' %}
           {% endif %}
 
           {% set localeEntry = craft.entries.id(entry.id).locale(locale.id).first %}
 
           {% if locale == craft.locale %}
-              <li class="-active"><a href="{{ localeEntry.getUrl() }}{{ translateString }}">{{ localeName }}</a></li>
+              <li class="-active"><a href="{{ localeEntry.getUrl() }}">{{ localeName }}</a></li>
             {% else %}
-              <li><a href="{{ localeEntry.getUrl() }}{{ translateString }}">{{ localeName }}</a></li>
+              <li><a href="{{ localeEntry.getUrl() }}">{{ localeName }}</a></li>
           {% endif %}
 
           {% if not loop.last %}

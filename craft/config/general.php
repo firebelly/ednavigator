@@ -24,7 +24,7 @@ return array(
         )
     ),
 
-    'ednavigator.dev' => array(
+    'ednavigator.craft' => array(
         'devMode' => true,
     ),
 

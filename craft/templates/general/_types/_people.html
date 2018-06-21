@@ -1,0 +1,104 @@
+{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set title = entry.title %}
+{% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
+{% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
+
+{% set bodyClass = 'single sidebar-right page people-page-template page-' ~ entry.slug %}
+{% set bodyId = 'page-' ~ entry.slug %}
+
+{% block content %}
+
+  {% include 'partials/_intro-section.html' %}
+
+  {% if entry.slug == 'staff' or entry.slug == 'our-partners' %}
+
+    {% set staffLocations = locations.locations %}
+
+    <section class="people-section">
+
+      {% for location in staffLocations %}
+
+        <h3 class="headline-rule"><span>{{ location.locationName }}</span></h3>
+
+        <div class="people-grid grid spaced">
+          
+          {% for person in entry.people.person %}
+
+            {% if location.locationName in person.locations %}
+
+              {% if person.personImage|length %}
+                {% set image = person.personImage.first().getUrl() %}
+                {% if 'partners' in bodyId or 'socios-empresariales' in bodyId %}
+                  {% set transformedImage = craft.imager.transformImage(image, { effects: { colorize: '#a3b0b2' } }) %}
+                {% else %}
+                  {% set transformedImage = craft.imager.transformImage(image, { effects: { grayscale: true, modulate: [120, 90, 0] } }) %}
+                {% endif %}
+              {% endif %}
+                <div class="person col-1-2">
+                  {% if person.personImage|length %}
+                  <div class="person-image">
+                    <img src="{{ transformedImage.getUrl() }}">
+                  </div>
+                  {% endif %}
+                  <div class="person-content">
+                    <h4>{{ person.personName }}</h4>
+
+                    <h5>{{ person.personTitle }}</h5>
+                    {% if person.personDescription %}
+                      <div class="person-description user-content">
+                        {{ person.personDescription }}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+
+            {% endif %}
+
+          {% endfor %}
+
+        </div>
+
+      {% endfor %}
+
+  {% else %}
+
+    <section class="people-section">
+      <h3 class="headline-rule"><span>{{ entry.peopleSectionLabel }}</span></h3>
+      <div class="people-grid grid spaced">
+        {% for person in entry.people.person %}
+        {% if person.personImage|length %}
+          {% set image = person.personImage.first().getUrl() %}
+          {% if 'partners' in bodyId or 'socios-empresariales' in bodyId %}
+            {% set transformedImage = craft.imager.transformImage(image, { effects: { colorize: '#a3b0b2' } }) %}
+          {% else %}
+            {% set transformedImage = craft.imager.transformImage(image, { effects: { grayscale: true, modulate: [120, 90, 0] } }) %}
+          {% endif %}
+        {% endif %}
+          <div class="person col-1-2">
+            {% if person.personImage|length %}
+            <div class="person-image">
+              <img src="{{ transformedImage.getUrl() }}">
+            </div>
+            {% endif %}
+            <div class="person-content">
+              <h4>{{ person.personName }}</h4>
+
+              <h5>{{ person.personTitle }}</h5>
+              {% if person.personDescription %}
+                <div class="person-description user-content">
+                  {{ person.personDescription }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+    {% endif %}
+    
+    <div class="section-links">
+      {% include 'partials/_entry-nav.html' %}
+    </div>
+  </section>
+{% endblock %}

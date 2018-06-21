@@ -1,0 +1,54 @@
+{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set title = entry.title %}
+{% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
+{% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
+
+{% set bodyClass = 'single page page-payment sidebar-right page-' ~ entry.slug %}
+{% set bodyId = 'payment' %}
+
+{% block content %}
+  
+  {% include 'partials/_intro-section.html' %}
+
+  <section class="main-content">
+    
+    <form class="stripe-checkout" method="POST" data-key="{{ craft.config.stripePublishableKey }}">
+      <input type="hidden" name="action" value="edNavPayment/payments/charge">
+      <script src="https://checkout.stripe.com/checkout.js"></script>
+
+      <ul class="payment-table">
+
+        {% for paymentOption in entry.paymentOptions %}
+        <li class="payment-option{{ paymentOption.yearlyPayment ? '' : ' no-yearly-option' }}">
+          <h3>{{ paymentOption.paymentTitle }}</h3>
+          <p>{{ paymentOption.description }}</p>
+          <div class="payment-link">
+            <button type="submit" class="-primary" data-plan="{{ paymentOption.monthlyPaymentStripePlanId }}" data-description="{{ paymentOption.paymentTitle }} - ${{ paymentOption.monthlyPayment }}/mo"><span>${{ paymentOption.monthlyPayment }}</span> / Month {{ paymentOption.monthlyPaymentByline ? ('<br>' ~ paymentOption.monthlyPaymentByline)|raw : '' }} {% if paymentOption.yearlyPayment %}<svg class="icon icon-arrow-dotted" role="img"><use xlink:href="#icon-arrow-dotted" /></svg>{% endif %}</button>
+          </div>
+          {% if paymentOption.yearlyPayment %}
+          <div class="payment-link">
+            <button type="submit" data-plan="{{ paymentOption.yearlyPaymentStripePlanId }}" data-description="{{ paymentOption.paymentTitle }} - ${{ paymentOption.yearlyPayment }}/yr"><span>${{ paymentOption.yearlyPayment }}</span> / Year <br>{{ paymentOption.yearlyPaymentDiscount }} <svg class="icon icon-arrow-dotted" role="img"><use xlink:href="#icon-arrow-dotted" /></svg></button>
+          </div>
+          {% endif %}
+          <div class="user-content">
+            {{ paymentOption.features }}
+          </div>
+          {{ getCsrfInput() }}
+          <div class="checkout-feedback user-content"></div>
+        </li>
+        {% endfor %}
+      </ul>
+
+    </form>
+
+    {% if entry.body|length %}
+    <div class="entry-body">
+      {{ entry.body }}
+    </div>
+    {% endif %}
+
+  </section>
+
+
+{% endblock %}

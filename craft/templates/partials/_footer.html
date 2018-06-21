@@ -14,7 +14,7 @@
           <p class="phone-number"><a href="tel:{{ generalSiteInformation.phoneNumber }}">{{ generalSiteInformation.phoneNumberDisplay }}</a></p>
         {% endif %}
         {% if generalSiteInformation.physicalAddress %}
-        <p class="address">
+        <p class="address notranslate">
           <span>{{ generalSiteInformation.physicalAddress.address.first().streetLine1 }}</span>
           {% if generalSiteInformation.physicalAddress.address.first().streetLine2 %}
           <span>{{ generalSiteInformation.physicalAddress.address.first().streetLine2 }}</span>

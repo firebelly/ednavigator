@@ -1,0 +1,19 @@
+{% if craft.request.getUrl() != siteUrl %}
+  <nav class="breadcrumbs">
+    <p>
+      <a href="{{ siteUrl }}">{{"Home"|t}}</a> <svg class="icon-arrow-dotted-short" role="img"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-dotted-short"></use></svg>
+      {% if entry is defined and entry.getAncestors | length %}
+        {% for crumb in entry.getAncestors() %}
+          {{ crumb.getLink() }} <svg class="icon-arrow-dotted-short" role="img"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-dotted-short"></use></svg> 
+        {% endfor %}
+      {% endif %}
+      {% if entry is defined and entry.getSection().handle == 'resourcesEntries' or category is defined and category.group.handle == 'resourcesTopics' or category is defined and category.group.handle == 'resourceBundle' or tag is defined and tag.group.handle == 'resourcesLocations' %}
+        <a href="{{ siteUrl }}{{ 'family-resources'|t }}">{{"Family Resources"|t}}</a>
+      {% elseif entry is defined and entry.getSection().handle == 'blogEntries'  or category is defined and category.group.handle == 'blogCategories' or tag is defined and tag.group.handle == 'blogTags' %}
+        <a href="{{ siteUrl }}blog">Blog</a>
+      {% elseif entry is defined %}
+        {{ entry.title }}
+      {% endif %}
+    </p>
+  </nav>
+{% endif %}

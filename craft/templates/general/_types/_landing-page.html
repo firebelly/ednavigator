@@ -1,0 +1,37 @@
+{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set title = entry.title %}
+{% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
+{% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
+
+{% set bodyClass = 'single page landing-page-template page-' ~ entry.slug %}
+{% set bodyId = 'page-' ~ entry.slug %}
+
+{% set pages = craft.entries.section(entry.section) %}
+
+{% set colors = ['blue', 'gray', 'yellow', 'green'] %}
+
+{% block content %}
+
+  {% for section in craft.entries.section(entry.section).level(2) %}
+    {% set colorIndex = loop.index - 1 %}
+    {% if colorIndex > colors|length - 1 %} 
+      {% set colorIndex = colorIndex % colors|length %}
+    {% endif %}
+    <div class="page-section snap-section grid block-grid" id="pageSection{{ loop.index }}">
+      <div class="page-section-content grid block-grid">
+        <div class="image-block col-1-2" style="background-image: url({{ section.bannerImage.last().getUrl('hero') }})"></div>
+        <div class="page-section-content-carousel block col-1-2 background-{{ colors[colorIndex] }}">
+          <div class="-inner">
+            <h2 class="block-title">{% if section.subpageDescriptiveHeadline %}{{ section.subpageDescriptiveHeadline }}{% else %}{{ section.Title|nl2br }}{% endif %}</h2>
+            <p>{{ section.pageDescription }}</p>
+            <div class="inline-links-container">
+              <p><a href="{{ section.url }}">{{ section.linkToPageText ? section.linkToPageText : "Learn more" }}</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  {% endfor %}
+{% endblock %}

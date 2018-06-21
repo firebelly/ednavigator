@@ -17,9 +17,11 @@
 // Components
 @import "components/color-scheme";
 @import "components/base";
+@import "components/breadcrumbs";
 @import "components/user-content";
 @import "components/buttons";
 @import "components/blocks";
+@import "components/page-blocks";
 @import "components/entry-nav";
 @import "components/page-section-carousels";
 @import "components/forms";
@@ -31,7 +33,10 @@
 @import "pages/page";
 @import "pages/home";
 @import "pages/user-paths";
+@import "pages/landing-page";
 @import "pages/who-we-are";
+@import "pages/careers";
+@import "pages/people-pages";
 @import "pages/how-we-help";
 @import "pages/blog";
 @import "pages/single-post";

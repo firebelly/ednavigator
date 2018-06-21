@@ -8,12 +8,10 @@
 
 {% block content %}
 
-  {% include "partials/_page-sidebar" with { 'parent' : craft.entries.section('blog').first()} %}
-
   <section class="intro-section">
     <div class="grid">
       <h2 class="page-description">
-        Category:<br> {{ category.title }}
+        {{ 'category' | t | capitalize }}:<br> {{ category.title }}
       </h2>
 
       {% include "blog/_subscribe" %}

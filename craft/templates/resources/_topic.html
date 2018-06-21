@@ -8,11 +8,9 @@
 
 {% block content %}
 
-  {% include "partials/_page-sidebar" with { 'parent' : craft.entries.section('resources').first()} %}
-
   <section class="intro-section">
     <h2 class="page-description">
-      Topic:<br> {{ category.title }}
+      {{ 'topic' | t | capitalize }}:<br> {{ category.title }}
     </h2>
 
   </section>

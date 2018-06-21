@@ -1,6 +1,7 @@
 {% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
 {% set bodyClass = 'home' %}
+{% set featuredPosts = craft.entries.section('blogEntries').search('featuredBlogPost:1') %}
 
 {% block content %}
 <div class="page-header snap-section grid block-grid align-right" style="background-image:url({{ entry.bannerImage.last().getUrl('hero') }});">
@@ -13,21 +14,45 @@
 
 </div>
 
-<div id="pageContent" class="user-paths snap-section grid block-grid">
-
+<div class="user-paths grid block-grid snap-section" id="user-paths">
+  
   {% for userPath in entry.userPaths %}
     
     <div class="block col-1-2" style="background-image:url({{ userPath.pathImage.last().getUrl('hero') }});">
       
       <div class="-inner">      
-        <h2 class="block-title">{{ userPath.pathTitle|nl2br }}</h2>
+        <h2 class="block-title"><a href="{{ userPath.pathPage.last().url }}">{{ userPath.pathTitle|nl2br }}</a></h2>
         <p><a href="{{ userPath.pathPage.last().url }}" class="inline-link"><span>{{ userPath.pathLinkText|nl2br }}</span></a></p>
-        <a href="{{ userPath.pathPage.last().url }}" class="button">{{"Learn more"|t}}</a>
       </div>
 
     </div>
 
   {% endfor %}
-
+  
 </div>
+
+{% if featuredPosts|length %}
+
+<div class="featured-news page-section grid block-grid page-section-carousel snap-section" id="">
+  <div class="page-section-image-carousel" id="pageSectionImageCarousel">
+    {% for featuredPost in featuredPosts %}
+      <div class="image-block col-1-2" style="background-image: url({{ featuredPost.blogBannerImage.first().getUrl('hero') }})"></div>
+    {% endfor %}    
+  </div>
+  <div class="page-section-content-carousel" id="pageSectionContentCarousel">
+    {% for featuredPost in featuredPosts %}
+      <div class="block col-1-2">
+        <div class="-inner">
+          <h4 class="block-descriptor">News + Announcements</h4>
+          <h2 class="block-title">{{ featuredPost.title|nl2br }}</h2>
+          <p>{{ featuredPost.excerpt|raw }}</p>
+          <p><a href="{{ featuredPost.url }}" class="inline-link"><span>Read More</span></a></p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endif %}
+
 {% endblock %}

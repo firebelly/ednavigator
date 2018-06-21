@@ -51,7 +51,7 @@
     padding: #{$global-spacing * 3} #{$global-spacing * 2} #{$global-spacing * 2};
   }
   @include media-lg {
-    min-height: calc(100vh - #{$global-spacing});
+    min-height: calc(100vh - #{$global-spacing + $header-height});
   }
 }
 
@@ -78,5 +78,6 @@
   }
   @include media-lg {
     height: auto;
+    padding-bottom: 0;
   }
 }

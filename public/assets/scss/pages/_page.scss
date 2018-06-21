@@ -46,8 +46,7 @@ body.page {
       @include headline-one;
       @include media-md {
         min-width: 500px;
-        max-width: 1100px;
-        width: #{$col * 14};
+        max-width: 750px;
       }
     }
 
@@ -71,67 +70,36 @@ body.page {
   }
 }
 
-// Page back button: left/right
-.page-back {
-  top: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 30;
-  display: none;
-  position: fixed;
-  overflow: hidden;
-  background: $white;
-  padding-top: 250px;
-  will-change: width;
-  text-decoration: none;
-  width: $global-spacing;
-  transition: width .2s ease-out;
-  @include media-md {
-    display: block;
+// General Page Template
+body.general-page-template {
+  .site-main {
+    background-color: $offwhite;
+  }
+}
+
+// Sub-page template
+body.sub-page-template {
+  .site-main {
+    background-color: $offwhite;
   }
 
-  .icon {
-    left: 0;
-    width: 50px;
-    height: 10px;
-    position: absolute;
-    will-change: transform;
-    transform: translateX(-40%);
-    transition: transform .2s ease-out;
-  }
+  // Entry Nav
+  .entry-nav {
+    @include media-md {
+      ul {
+        li {
+          .inline-link {
+            position: relative;
 
-  span {
-    left: 50%;
-    opacity: 1;
-    line-height: 1;
-    position: absolute;
-    white-space: nowrap;
-    display: inline-block;
-    margin-top: $vertical-beat;
-    @extend .headline-descriptor;
-    transform-origin: bottom left;
-    will-change: opacity, transform;
-    transform: rotate(-90deg) translate(-100%, 50%);
-    transition: transform .2s ease-out, opacity .2s ease-out;
-  }
-
-  &:hover {
-    width: #{$global-spacing * 2};
-
-    .icon {
-      transform: translateX(0);
-    }
-
-    span {
-      transform: rotate(-90deg) translate(-100%, 0);
-    }
-  }
-
-  &.-clicked {
-    width: 100%;
-
-    span {
-      opacity: 0;
+            .icon {
+              position: relative;
+              &::after {
+                top: 9px;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

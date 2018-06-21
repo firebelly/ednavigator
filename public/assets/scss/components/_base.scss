@@ -17,30 +17,6 @@ body {
     }
     &.sidebar-right {
       padding-right: $global-spacing;
-
-      // Page Back Button
-      .page-back {
-        right: 0;
-        left: auto;
-
-        .icon {
-          right: 0;
-          left: auto;
-          position: absolute;
-          transform: rotate(180deg) translateX(-40%);
-        }
-
-        span {
-          transform-origin: bottom left;
-          transform: rotate(90deg) translate(0, 50%);
-        }
-
-        &:hover {
-          .icon {
-            transform: rotate(180deg) translateX(0%);
-          }
-        }
-      }
     }
   }
 }
@@ -78,6 +54,10 @@ img {
   position: relative;
   @include clearfix();
   padding: 0 $global-spacing;
+}
+
+.site-main {
+  background-color: $offwhite;
 }
 
 .svgs-defs {

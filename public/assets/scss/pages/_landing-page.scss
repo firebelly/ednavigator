@@ -1,0 +1,37 @@
+// Landing Page Template
+
+body.landing-page-template {
+  @extend .sidebar-right;
+
+  .site-header {
+
+    @include max-screen($breakpoint-lg) {    
+      &.-sticky {
+        @include sticky-header;
+      }
+    }
+  }
+
+  .page-section {
+    position: relative;
+
+    @include media-lg {
+      &:nth-of-type(even) {
+        .image-block,
+        .page-section-image-carousel {
+          order: 1;
+        }
+      }
+    }
+
+    &:first-of-type {
+      @include media-md {
+        padding-top: $header-height;
+      }
+    }
+
+    .page-section-content {
+      width: 100%;
+    }
+  }
+}

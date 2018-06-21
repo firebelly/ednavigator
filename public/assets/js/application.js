@@ -69,11 +69,11 @@ var FB = (function($) {
 
   } // end init()
 
-  function _scrollBody(element, duration, delay) {
+  function _scrollBody(element, duration, delay, offset) {
     element.velocity("scroll", {
       duration: duration,
       delay: delay,
-      offset: 0
+      offset: -offset
     }, "easeOutSine");
   }
 
@@ -151,6 +151,13 @@ var FB = (function($) {
         sync: imageCarouselSelector,
         arrowShape: 'M33.4 47.7l30.8-15.4c2.1-1.1 4.7 1.1 3.6 3.6l-6.4 12.9c-.7.7-.7 1.4-.4 2.1l6.4 13.2c1.1 2.1-1.1 4.7-3.6 3.6L33 52.3c-1.4-1-1.4-3.9.4-4.6'
       });
+
+      if ($contentCarousel.find('.block').length === 1) {
+        $contentCarousel.find('.flickity-prev-next-button').hide();
+      }
+
+      $contentCarousel.find('button.previous').append('<span>Prev</span>');
+      $contentCarousel.find('button.next').prepend('<span>Next</span>');
     });
 
   }
@@ -276,8 +283,8 @@ var FB = (function($) {
   function _initPageTransitions() {
     $('.page-back').on('mouseenter', _showPageOverlay).on('mouseleave', _hidePageOverlay);
 
-    $('.page-back').on('click', function() {
-      $(this).addClass('-clicked');
+    $('.breadcrumbs a').on('click', function() {
+      $('.breadcrumbs').addClass('-clicked');
     });
   }
 
@@ -317,17 +324,17 @@ var FB = (function($) {
   function _snapScrolling() {
     if ($('.snap-section').length) {
 
-      $('body').panelSnap({
-        panelSelector: '.snap-section',
-        easing: 'swing',
-        slideSpeed: 350,
-        directionThreshold: 1,
-        onActivate: function(panel) {
-          if ($(panel).is('.page-section-carousel')) {
-            $(panel).find('.page-section-content-carousel').first().focus();
-          }
-        }
-      });
+      // $('body').panelSnap({
+      //   panelSelector: '.snap-section',
+      //   easing: 'swing',
+      //   slideSpeed: 350,
+      //   directionThreshold: 1,
+      //   onActivate: function(panel) {
+      //     if ($(panel).is('.page-section-carousel')) {
+      //       $(panel).find('.page-section-content-carousel').first().focus();
+      //     }
+      //   }
+      // });
 
       function enableDisable() {
         if (breakpoint_xl === true) {
@@ -338,17 +345,22 @@ var FB = (function($) {
       }
 
       // Disable on single-column view
-      enableDisable();
-      $(window).resize(function() {
-        enableDisable();
-      });
+      // enableDisable();
+      // $(window).resize(function() {
+      //   enableDisable();
+      // });
 
       // Add Scroll to next section nav
       $('.snap-section').each(function(i) {
         if (i < $('.snap-section').length - 1) {
-          $(this).append('<a class="section-advance scroll-button smoothscroll" href="#pageContent"><svg class="icon icon-arrow" role="img"><use xlink:href="#icon-arrow" /></svg></a>');
-          $(this).find('.section-advance').on('click', function() {
-            $('body').panelSnap('snapTo', 'next');
+          $(this).append('<button class="section-advance scroll-button smoothscroll" href="#"><svg class="icon icon-arrow" role="img"><use xlink:href="#icon-arrow" /></svg></button>');
+          // If The contenct section is yellow, add a class to change the color of the section-advance button
+          if ($(this).find('.background-yellow').length !== 0) {
+            $(this).find('.section-advance').addClass('-orange');
+          }
+          $(this).find('.section-advance').on('click', function(e) {
+            e.preventDefault();
+            _scrollBody($(this).closest('.snap-section').next('.snap-section'), 350, 0, $('.site-header').outerHeight());
           });
         }
       });

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <title>{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}</title>
+  <title>{% if seoTitle is defined %}{{ seoTitle }} | {{ siteName }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}</title>
 
   {% include 'partials/_head-meta.html' %}
   
@@ -59,10 +59,17 @@
   </header>
 
   <main class="site-main" role="main">
+    {% include 'partials/_breadcrumbs.html' %}
+    
     {% block content %}{% endblock %}
   </main>
 
+
   {% include 'partials/_footer.html' %}
+
+  {% if craft.locale != "en_us"%}
+    {% include 'partials/_googletranslate.html' %}
+  {% endif %}
 
 </body>
 </html>

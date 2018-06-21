@@ -2,16 +2,6 @@
 
 body.page-user-path {
   .site-header {
-    background: none;
-
-    .site-logo {    
-      .mark .c1,
-      .mark .c2,
-      .mark .c3, 
-      .words {
-        fill: $white;
-      }
-    }
 
     @include max-screen($breakpoint-lg) {    
       &.-sticky {
@@ -19,22 +9,15 @@ body.page-user-path {
       }
     }
   }
-  
-  .site-nav {
-    color: $white;
-    &.-active {
-      color: $black;
-    }
-  }
-
-  .menu-toggle {
-    .lines {
-      background: $white;
-    }
-  }
 
   .page-section {
     position: relative;
+
+    &:first-of-type {
+      @include media-md {
+        padding-top: $header-height;
+      }
+    }
 
     .page-section-content {
       width: 100%;
