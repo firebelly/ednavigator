@@ -4,7 +4,7 @@ import os
 env.hosts = ['ednavigator.firebelly.co']
 env.user = 'firebelly'
 
-env.path = '/Users/matt/Sites/ednavigator'
+env.path = '/Users/developer/Sites/ednavigator'
 env.remotepath = '/home/firebelly/webapps/ednavigator'
 env.git_branch = 'master'
 env.warn_only = True
@@ -15,9 +15,6 @@ def production():
   env.remotepath = '/home/ednavigator/webapps/ednavigator'
 
 def testing():
-  env.hosts = ['www.ednavigator.com']
-  env.user = 'ednavigator'
-  env.remotepath = '/home/ednavigator/webapps/ednavigator_testing'
   env.git_branch = 'phase-1-updates'
 
 def assets():
