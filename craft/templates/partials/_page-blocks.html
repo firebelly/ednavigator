@@ -99,7 +99,7 @@
           <p>{{ block.description }}</p>
           {% if block.linkText and (block.internalLink or block.externalLink) %}
             <p class="inline-links-container">
-              <a href="{{ block.internalLink ? block.internalLink.first().url : block.externalLink }}" class="inline-link"><span>{{ block.linkText }}<span class="icon"><svg class="icon-arrow-dotted" role="img"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-dotted"></use></svg></span></span></a>
+              <a href="{{ block.internalLink is not empty ? block.internalLink.first().url : block.externalLink }}" class="inline-link"{{ block.internalLink is empty ? ' target="_blank"' : ''}}><span>{{ block.linkText }}<span class="icon"><svg class="icon-arrow-dotted" role="img"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-dotted"></use></svg></span></span></a>
             </p>
           {% endif %}
         </div>
