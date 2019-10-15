@@ -15,11 +15,15 @@
 {% set excerpt = entry.excerpt|raw %}
 {% set bannerImage = entry.resourcesBannerImage.last() %}
 
+{% if entry.locale != 'en_us' %}
+  {% set localizedEntry = craft.entries.id(entry.id).locale('en_us') %}
+{% endif %}
+
 {% block content %}
 
   <article class="entry grid">
 
-    <div class="entry-body col-2-3">    
+    <div class="entry-body col-2-3">
       {% if entry.videoId|length %}
         <div class="featured-image has-video">
           <svg class="play icon icon-arrow-stroke" role="img"><use xlink:href="#icon-arrow-stroke" /></svg>
@@ -33,7 +37,16 @@
       <header class="entry-header">
         <h3 class="article-date">{{ entryDate }}</h3>
         <p class="category">{{ entry.resourcePostType.first() }}</p>
-        <h1>{{ entry.title }}</h1>
+
+        {% if entry.locale != 'en_us' %}
+          {% if localizedEntry[0].title == entry.title %}
+            <h1>{{ entry.title }}</h1>
+          {% else %}
+            <h1 class="notranslate">{{ entry.title }}</h1>
+          {% endif %}
+        {% else %}
+            <h1>{{ entry.title }}</h1>
+        {% endif %}
 
         <div class="entry-meta grid">
           <div class="entry-author col-1-2">
@@ -69,7 +82,7 @@
             </div>
             {% endif %}
           </div>
-          
+
         </div>
 
 
@@ -77,7 +90,17 @@
       </header>
 
       <div class="entry-content user-content">
-        {{ entry.body }}
+        {% if entry.locale != 'en_us' %}
+          {% if localizedEntry[0].body == entry.body %}
+            {{ entry.body }}
+          {% else %}
+            <div class="notranslate">
+              {{ entry.body }}
+            </div>
+          {% endif %}
+        {% else %}
+          {{ entry.body }}
+        {% endif %}
 
         {% include 'partials/_resources-downloads.html' %}
       </div>
@@ -88,7 +111,7 @@
           <li><a class="share" href="https://www.facebook.com/sharer/sharer.php?u={{ entry.url }}"><span class="visually-hidden">facebook</span><svg class="icon icon-facebook" role="img"><use xlink:href="#icon-facebook" /></svg></a></li>
           <li><a class="share" href="http://twitter.com/share?url=http://{{ entry.url }}&amp;text={{ entry.title }} via @ednavigate" target="_blank"><span class="visually-hidden">Twitter</span><svg class="icon icon-twitter" role="img"><use xlink:href="#icon-twitter" /></svg></a></li>
         </ul>
-      </div>          
+      </div>
 
       <div class="section-links">
         {% include 'partials/_entry-nav.html' %}

@@ -15,6 +15,10 @@
 {% set excerpt = entry.excerpt|raw %}
 {% set bannerImage = entry.blogBannerImage.last() %}
 
+{% if entry.locale != 'en_us' %}
+  {% set localizedEntry = craft.entries.id(entry.id).locale('en_us') %}
+{% endif %}
+
 {% block content %}
   <article class="entry grid">
 
@@ -32,10 +36,15 @@
       <header class="entry-header">
         <h3 class="article-date">{{ entryDate }}</h3>
         <p class="category">{{ entry.blogPostType.first() }}</p>
-        {% if entry.locale != 'en' %}
-          <h1 class="notranslate">{{ entry.title }}</h1>
+
+        {% if entry.locale != 'en_us' %}
+          {% if localizedEntry[0].title == entry.title %}
+            <h1>{{ entry.title }}</h1>
+          {% else %}
+            <h1 class="notranslate">{{ entry.title }}</h1>
+          {% endif %}
         {% else %}
-          <h1>{{ entry.title }}</h1>
+            <h1>{{ entry.title }}</h1>
         {% endif %}
 
         <div class="entry-meta grid">
@@ -80,10 +89,14 @@
       </header>
 
       <div class="entry-content user-content">
-        {% if entry.locale != 'en' %}
-          <div class="notranslate">
+        {% if entry.locale != 'en_us' %}
+          {% if localizedEntry[0].body == entry.body %}
             {{ entry.body }}
-          </div>
+          {% else %}
+            <div class="notranslate">
+              {{ entry.body }}
+            </div>
+          {% endif %}
         {% else %}
           {{ entry.body }}
         {% endif %}
