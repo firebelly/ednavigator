@@ -13,41 +13,48 @@
 // Good Design for Good Reason for Good Namespace
 var FB = (function($) {
 
-  var screen_width = 0,
-      breakpoint_sm = false,
-      breakpoint_md = false,
-      breakpoint_lg = false,
-      breakpoint_xl = false,
-      breakpoint_nav = 760,
-      breakpoint_array = [480,700,900,1200],
-      $siteHeader = $('.site-header'),
+  var breakpointIndicatorString,
+      breakpoint_xl,
+      breakpoint_nav,
+      breakpoint_lg,
+      breakpoint_md,
+      breakpoint_sm,
+      breakpoint_xs,
+      resizeTimer,
+      slideEasing = [0.65, 0, 0.35, 1],
       $document,
-      History = window.History,
-      State,
-      root_url = History.getRootUrl(),
-      relative_url,
-      original_url,
-      original_page_title = document.title,
+      $body,
+      $siteHeader,
+      $siteNav,
+      $siteOverlay,
       overlayTimer,
-      loadingTimer;
+      loadingTimer,
+      transitionElements;
 
   function _init() {
     // Cache some common DOM queries
     $document = $(document);
+    $body = $('body');
+    $siteHeader = $('.site-header');
+    $siteNav = $('.site-nav');
+    $siteOverlay = '<div id="site-overlay"></div>';
 
     $('body').addClass('loaded');
 
     // Set screen size vars
     _resize();
 
+    // Transition elements to enable/disable on resize
+    transitionElements = [$siteNav];
+
     // Init functions
+    _initActiveToggle();
     _injectSvgIcons();
-    _initNav();
+    _initSiteNav();
     _initCarousels();
     _initLoadMore();
     _initShareLinks();
     _initVideoPlayers();
-    _initPageTransitions();
     _initNewsletterForm();
     _snapScrolling();
     _initBlogFilter();
@@ -57,6 +64,7 @@ var FB = (function($) {
     // Esc handlers
     $(document).keyup(function(e) {
       if (e.keyCode === 27) {
+        _closeSiteNav();
       }
     });
 
@@ -77,6 +85,55 @@ var FB = (function($) {
     }, "easeOutSine");
   }
 
+  function _initActiveToggle() {
+    $(document).on('click', '[data-active-toggle]', function(e) {
+      $(this).toggleClass('-active');
+      if ($(this).attr('data-active-toggle') !== '') {
+        $($(this).attr('data-active-toggle')).toggleClass('-active');
+      }
+    });
+  }
+
+  function _showSiteOverlay(callback) {
+    // Check if there is already an overlay on the page
+    if (!$('#site-overlay').length) {
+      $siteHeader.append($siteOverlay);
+    }
+
+    // Check if it's already active, if not animate showing it
+    if (!$('#site-overlay').is('.-active')) {
+      // Fade in the overlay
+      $('#site-overlay').velocity(
+        { opacity: 1 }, {
+        display: "block",
+          // on complete, fade in the lightbox
+          complete: function() {
+            $('#site-overlay').addClass('-active');
+            if(typeof callback !== 'undefined') {
+              callback();
+            }
+          }
+      });
+    }
+  }
+
+  function _hideSiteOverlay(callback) {
+    if (!$('#site-overlay').length) {
+      return;
+    }
+
+    $('#site-overlay').velocity(
+      { opacity: 0 }, {
+      display: "none",
+      complete: function() {
+        $('#site-overlay').removeClass('-active');
+        if(typeof callback !== 'undefined') {
+          callback();
+        }
+      }
+    });
+  }
+
   function _injectSvgIcons() {
     // Add needed markup for section links
     $('.inline-links-container a').each(function() {
@@ -91,7 +148,7 @@ var FB = (function($) {
         $(this).append('<span class="icon"><svg class="icon-arrow-dotted" role="img"><use xlink:href="#icon-arrow-dotted" /></svg></span>');
       }
     });
-    
+
     $('a.inline-link.-left span').each(function() {
       if (!$(this).find('svg').length) {
         $(this).prepend('<span class="icon"><svg class="icon-arrow-dotted-left" role="img"><use xlink:href="#icon-arrow-dotted-left" /></svg></span>');
@@ -100,14 +157,14 @@ var FB = (function($) {
 
     // Inject Icon
     $('.svg-inject').each(function() {
-      if (!$(this).find('svg').length) {      
+      if (!$(this).find('svg').length) {
         var icon = $(this).data('icon');
         $(this).prepend('<svg class="'+icon+'" role="img"><use xlink:href="#'+icon+'" /></svg>');
       }
     });
   }
 
-  function _initNav() {
+  function _initSiteNav() {
     // Give sticky class on scroll
     $(window).on('scroll', function() {
       if ($(window).scrollTop() > $siteHeader.outerHeight()) {
@@ -118,11 +175,48 @@ var FB = (function($) {
     });
 
     // Inject SEO-useless mobile nav toggle
-    $('.site-nav').closest('div').append('<button class="menu-toggle" aria-hidden="true"><span class="lines"></span></button>');
-    $document.on('click', '.menu-toggle', function() {
-      $('.site-nav').toggleClass('-active');
-      $('body, .menu-toggle').toggleClass('nav-open');
+    $('.site-nav').closest('div').append('<button class="menu-toggle" aria-hidden="true" data-active-toggle=".site-nav"><span class="lines"></span></button>');
+
+    $siteNav.find('.has-children').append('<button class="subnav-toggle" aria-hidden="true" data-active-toggle></button>');
+
+    $siteNav.on('click', '.has-children > .subnav-toggle', function(e) {
+      if (!breakpoint_nav) {
+        e.preventDefault();
+        var $childNav = $(this).closest('.has-children').find('.subnav');
+
+        if ($(this).is('.-active')) {
+          $childNav.velocity('slideUp', { duration: 250, easing: 'easeOutSine' });
+        } else {
+          $siteNav.find('.has-children > a.-active + .subnav').velocity('slideUp', { duration: 250, easing: 'easeOutSine' });
+          $siteNav.find('.has-children > a.-active').not($(this)).removeClass('-active');
+          $childNav.velocity('slideDown', { duration: 250, easing: 'easeOutSine' });
+        }
+      }
     });
+
+    // Nav Toggle Functions
+    $('.menu-toggle').on('click', function() {
+      if ($(this).is('.-active')) {
+        _hideSiteOverlay();
+      } else {
+        _showSiteOverlay();
+      }
+    });
+
+    // Close when clicking away from nav
+    $(document).on('click touchend', '#site-overlay', function(e) {
+      _closeSiteNav();
+    });
+  }
+
+  function _closeSiteNav() {
+    if (!$siteNav.is('.-active')) {
+      return;
+    }
+
+    _hideSiteOverlay();
+    $siteNav.removeClass('-active');
+    $('.menu-toggle').removeClass('-active');
   }
 
   function _initCarousels() {
@@ -173,16 +267,16 @@ var FB = (function($) {
         var page = $(this).attr('data-page'),
             collection = $(this).attr('data-collection');
         e.preventDefault();
-        
+
         $loadmoreSection.append('<div class="loading"><svg class="ednavigator-mark" role="img"><use xlink:href="#ednavigator-mark" /></svg></div>');
         $loadmore.addClass('hidden');
 
         $.get( "/"+collection+"/p"+page, function(data) {
-      
+
           $( ".article-list" ).append(data);
-          
+
           page++;
-          
+
           $loadmore.attr('data-page', page);
           _injectSvgIcons();
           _initVideoPlayers();
@@ -201,10 +295,10 @@ var FB = (function($) {
   }
 
   function _initShareLinks() {
-    $.fn.sharePopup = function (e, intWidth, intHeight, blnResize) {      
+    $.fn.sharePopup = function (e, intWidth, intHeight, blnResize) {
       // Prevent default anchor event
       e.preventDefault();
-      
+
       // Set values for window
       intWidth = intWidth || '500';
       intHeight = intHeight || '400';
@@ -214,7 +308,7 @@ var FB = (function($) {
 
       // Set title and open popup with focus on it
       var strTitle = ((typeof this.attr('title') !== 'undefined') ? this.attr('title') : 'Social Share'),
-      strParam = 'width=' + intWidth + ',height=' + intHeight + ',resizable=' + strResize + ',left=' + left + ',top=' + top,            
+      strParam = 'width=' + intWidth + ',height=' + intHeight + ',resizable=' + strResize + ',left=' + left + ',top=' + top,
       objWindow = window.open(this.attr('href'), strTitle, strParam).focus();
     }
 
@@ -224,9 +318,7 @@ var FB = (function($) {
   }
 
   function _initVideoPlayers() {
-
     if ($('.youtube-video').length) {
-
       $.getScript("https://www.youtube.com/iframe_api", function () {
 
         $('.youtube-video').each(function(e) {
@@ -253,39 +345,9 @@ var FB = (function($) {
               }
             });
           });
-
         });
-
-
       });
-
-
     }
-
-  }
-
-  function _showPageOverlay() {
-    clearTimeout(overlayTimer);
-    $('body').prepend('<div class="page-overlay"></div>');
-    overlayTimer = setTimeout(function() {
-      $('.page-overlay').addClass('-active');
-    }, 0);
-  }
-
-  function _hidePageOverlay() {
-    clearTimeout(overlayTimer);
-    $('.page-overlay').removeClass('-active');
-    overlayTimer = setTimeout(function() {
-      $('.page-overlay').remove();
-    }, 100);
-  }
-
-  function _initPageTransitions() {
-    $('.page-back').on('mouseenter', _showPageOverlay).on('mouseleave', _hidePageOverlay);
-
-    $('.breadcrumbs a').on('click', function() {
-      $('.breadcrumbs').addClass('-clicked');
-    });
   }
 
   function _initNewsletterForm() {
@@ -313,7 +375,7 @@ var FB = (function($) {
 
     // Hide hidden part of form when clicking away
     $document.on('click', 'body.form-active', function(e) {
-      if (!$(e.target).is('.newsletter-form') && !$(e.target).parents('.newsletter-form').length) {      
+      if (!$(e.target).is('.newsletter-form') && !$(e.target).parents('.newsletter-form').length) {
         $('body').removeClass('form-active');
         $('.newsletter-form .hidden-group').removeClass('-visible').slideUp();
       }
@@ -421,7 +483,7 @@ var FB = (function($) {
           price = $(this).attr('data-price'),
           planId = $(this).attr('data-plan'),
           description = $(this).attr('data-description');
-      
+
       // Open Checkout with further options:
       stripeCheckout = _stripeCheckout($container, planId);
       stripeCheckout.open({
@@ -440,13 +502,55 @@ var FB = (function($) {
     });
   }
 
+  // Disabling transitions on certain elements on resize
+  function _disableTransitions() {
+    $.each(transitionElements, function() {
+      $(this).css('transition', 'none');
+    });
+  }
+
+  function _enableTransitions() {
+    $.each(transitionElements, function() {
+      $(this).attr('style', '');
+    });
+  }
+
   // Called in quick succession as window is resized
   function _resize() {
-    screenWidth = document.documentElement.clientWidth;
-    breakpoint_sm = (screenWidth > breakpoint_array[0]);
-    breakpoint_md = (screenWidth > breakpoint_array[1]);
-    breakpoint_lg = (screenWidth > breakpoint_array[2]);
-    breakpoint_xl = (screenWidth > breakpoint_array[3]);
+    // Check breakpoint indicator in DOM ( :after { content } is controlled by CSS media queries )
+    breakpointIndicatorString = window.getComputedStyle(
+      document.querySelector('#breakpoint-indicator'), ':after'
+    ).getPropertyValue('content')
+    .replace(/['"]+/g, '');
+
+    // Determine current breakpoint
+    breakpoint_xl = breakpointIndicatorString === 'xl';
+    breakpoint_nav = breakpointIndicatorString === 'nav' || breakpoint_xl;
+    breakpoint_lg = breakpointIndicatorString === 'lg' || breakpoint_nav;
+    breakpoint_md = breakpointIndicatorString === 'md' || breakpoint_lg;
+    breakpoint_sm = breakpointIndicatorString === 'sm' || breakpoint_md;
+    breakpoint_xs = breakpointIndicatorString === 'xs' || breakpoint_sm;
+
+    // Close Nav
+    if ($siteNav.is('.-active') && breakpoint_nav) {
+      _closeSiteNav();
+    }
+
+    // Reset inline styles for navigation for medium breakpoint
+    if (breakpoint_nav) {
+      $('.site-nav .-active, .menu-toggle').removeClass('-active');
+      $('.site-nav .subnav[style]').attr('style', '');
+    }
+
+    // Disable transitions when resizing
+    _disableTransitions();
+
+    // Functions to run on resize end
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      // Re-enable transitions
+      _enableTransitions();
+    }, 250);
   }
 
   // Public functions

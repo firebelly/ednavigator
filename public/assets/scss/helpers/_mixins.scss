@@ -35,6 +35,11 @@
     @content;
   }
 }
+@mixin media-nav() {
+  @media screen and (min-width: $breakpoint-nav) {
+    @content;
+  }
+}
 @mixin media-xl() {
   @media screen and (min-width: $breakpoint-xl) {
     @content;

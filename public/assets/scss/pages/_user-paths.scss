@@ -3,7 +3,7 @@
 body.page-user-path {
   .site-header {
 
-    @include max-screen($breakpoint-lg) {    
+    @include max-screen($breakpoint-lg) {
       &.-sticky {
         @include sticky-header;
       }
@@ -28,7 +28,6 @@ body.page-user-path {
 // Families/Familias
 body.page-families,
 body.page-familias {
-  @extend .sidebar-left;
 
   .page-section {
     @include media-lg {
@@ -46,7 +45,6 @@ body.page-familias {
 // Employers
 body.page-employers,
 body.page-empleadores {
-  @extend .sidebar-right;
 
   .page-section {
     @include media-lg {

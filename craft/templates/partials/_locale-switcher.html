@@ -5,7 +5,7 @@
 
         {% set siteLocales = craft.i18n.getSiteLocales() %}
         {% for locale in siteLocales %}
-        
+
           {% if locale.id == "en_us" %}
             {% set localeName = "English" %}
           {% elseif locale.id == "es_us" %}
@@ -15,13 +15,13 @@
           {% set localeEntry = craft.entries.id(entry.id).locale(locale.id).first %}
 
           {% if locale == craft.locale %}
-              <li class="-active"><a href="{{ localeEntry.getUrl() }}">{{ localeName }}</a></li>
+              <li class="current-locale"><a href="{{ localeEntry.getUrl() }}">{{ localeName }}</a></li>
             {% else %}
               <li><a href="{{ localeEntry.getUrl() }}">{{ localeName }}</a></li>
           {% endif %}
 
           {% if not loop.last %}
-            <span>/</span> 
+            <span>/</span>
           {% endif %}
 
         {% endfor %}

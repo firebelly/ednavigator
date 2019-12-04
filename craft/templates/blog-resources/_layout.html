@@ -11,7 +11,7 @@
 {% endif %}
 
 {% set title = object.title %}
-{% set bodyClass = 'page sidebar-right page-' ~ object.slug %}
+{% set bodyClass = 'page page-' ~ object.slug %}
 
 {% block content %}
 
@@ -46,7 +46,7 @@
       {% set bundles = craft.categories.group('resourceBundle') %}
       {% for bundle in bundles %}
         <div class="bundle col-1-3">
-          <div class="bundle-content">        
+          <div class="bundle-content">
             <h4>Resource Bundle</h4>
             <h3>{{ bundle.title }}</h3>
             <p><a href="{{ bundle.url }}" class="inline-link"><span>{{ bundle.pageDescription }}</span></a></p>
@@ -68,7 +68,7 @@
       <div class="search col-1-2">
         <form action="{{ url('blog/search') }}" class="search-filter">
 
-          <div class="search-wrap">          
+          <div class="search-wrap">
             <input type="search" name="q" placeholder="Search Posts">
             <button type="submit" class="svg-inject" data-icon="icon-search"><span class="visually-hidden">Search Posts</span></button>
           </div>
@@ -115,7 +115,7 @@
     {% if not craft.request.isAjax %}
     <div class="article-list">
     {% endif %}
-      
+
       {% for article in articles %}
         {% include "blog/_article" %}
       {% endfor %}
@@ -126,7 +126,7 @@
         <button id="load-more" class="load-more" data-collection="blog" data-page="{{ pageInfo.currentPage + 1 }}" data-total-pages="{{ pageInfo.totalPages }}">Load More<span class="icon"><svg class="icon-arrow" role="img"><use xlink:href="#icon-arrow" /></span></button>
       </div>
     {% endif %}
-    
+
   {% endpaginate %}
 
 {% endblock %}

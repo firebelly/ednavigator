@@ -1,11 +1,10 @@
 // Landing Page Template
 
 body.landing-page-template {
-  @extend .sidebar-right;
 
   .site-header {
 
-    @include max-screen($breakpoint-lg) {    
+    @include max-screen($breakpoint-lg) {
       &.-sticky {
         @include sticky-header;
       }
@@ -25,7 +24,7 @@ body.landing-page-template {
     }
 
     &:first-of-type {
-      @include media-md {
+      @include media-nav {
         padding-top: $header-height;
       }
     }

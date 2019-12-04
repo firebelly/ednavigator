@@ -8,7 +8,7 @@ body {
   font-size: 14px;
   box-sizing: border-box;
   font-family: $font-regular;
-  
+
   @include media-md {
     padding-bottom: $global-spacing;
 
@@ -65,14 +65,13 @@ img {
 }
 
 // Page Overlay
-.page-overlay {
+#site-overlay {
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 25;
+  z-index: 1;
   position: fixed;
-  pointer-events: none;
   will-change: background-color;
   background-color: rgba($black, 0);
   transition: background-color .35s ease-out;

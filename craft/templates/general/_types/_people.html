@@ -4,7 +4,7 @@
 {% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
 {% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
 
-{% set bodyClass = 'single sidebar-right page people-page-template page-' ~ entry.slug %}
+{% set bodyClass = 'single page people-page-template page-' ~ entry.slug %}
 {% set bodyId = 'page-' ~ entry.slug %}
 
 {% block content %}
@@ -22,7 +22,7 @@
         <h3 class="headline-rule"><span>{{ location.locationName }}</span></h3>
 
         <div class="people-grid grid spaced">
-          
+
           {% for person in entry.people.person %}
 
             {% if location.locationName in person.locations %}
@@ -96,7 +96,7 @@
       </div>
 
     {% endif %}
-    
+
     <div class="section-links">
       {% include 'partials/_entry-nav.html' %}
     </div>

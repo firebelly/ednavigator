@@ -10,7 +10,7 @@
   <title>{% if seoTitle is defined %}{{ seoTitle }} | {{ siteName }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}</title>
 
   {% include 'partials/_head-meta.html' %}
-  
+
   <link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.png">
   <script src="/assets/js/modernizr-min.js"></script>
 
@@ -40,6 +40,7 @@
 </head>
 
 <body class="{% if bodyClass is defined %}{{ bodyClass }}{% else %}index{% endif %}" id="{% if bodyId is defined %}{{ bodyId }}{% else %}{{ craft.request.getSegment(1)}}-page{% endif %}">
+  <div id="breakpoint-indicator"></div>
 
   <header class="site-header" role="banner">
     <div class="grid">
@@ -52,15 +53,12 @@
 
       <nav class="site-nav" role="navigation">
         {% include 'partials/_navigation.html' %}
-        {% include 'partials/_locale-switcher.html' %}
       </div>
 
     </div>
   </header>
 
   <main class="site-main" role="main">
-    {% include 'partials/_breadcrumbs.html' %}
-    
     {% block content %}{% endblock %}
   </main>
 

@@ -104,7 +104,7 @@ gulp.task('watch', ['build'], function() {
   // Init BrowserSync
   browserSync.init({
     files: ['*.html', '*.php'],
-    proxy: 'ednavigator.dev',
+    proxy: 'ednavigator.craft',
     notify: false,
     open: false
   });

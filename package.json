@@ -6,6 +6,7 @@
   "license": "ISC",
   "main": "gulpfile.js",
   "dependencies": {
+    "gulp-sass": "^4.0.2"
   },
   "devDependencies": {
     "browser-sync": "^2.18.5",
@@ -25,7 +26,7 @@
     "gulp-rename": "^1.2.0",
     "run-sequence": "^1.1.2",
     "gulp-ruby-sass": "^1.0.0-alpha.3",
-    "gulp-svgmin": "^1.1.1",
+    "gulp-svgmin": "^2.2.0",
     "gulp-svgstore": "^5.0.0"
   },
   "scripts": {

@@ -1,13 +1,10 @@
 // Home page
 
 body.home {
-  @include media-lg {
-    padding-right: $global-spacing;
-  }
 
   .site-header {
     background: none;
-    
+
     svg {
       fill: $white;
     }
@@ -16,7 +13,7 @@ body.home {
       @include sticky-header;
     }
   }
-  
+
   .site-header:not(.-sticky) .site-nav {
     color: $white;
     &.-active {
@@ -24,12 +21,13 @@ body.home {
     }
   }
 
-  .menu-toggle {
+  .menu-toggle:not(.-active) {
     .lines {
       background: $white;
-    }
-    &.nav-open .lines {
-      background: rgba($white, 0);
+      &::before,
+      &::after {
+        background: $white;
+      }
     }
   }
 
@@ -50,7 +48,7 @@ body.home {
         height: 300px;
       }
     }
-  
+
     .page-header-image {
       height: 0;
       background-size: cover;
@@ -67,17 +65,21 @@ body.home {
       p {
         margin-bottom: 0;
       }
-
-      @include media-lg {
-        margin-top: #{$global-spacing * 3};
-      }
     }
 
     .scroll-button {
       left: 50%;
       position: absolute;
+      border-color: $white;
       bottom: $global-spacing;
       transform: translateX(-40px);
+      svg {
+        fill: $white;
+      }
+    }
+
+    @include media-lg {
+      align-items: flex-end;
     }
   }
 
@@ -85,7 +87,7 @@ body.home {
     position: relative;
 
     .block {
-  
+
       &::before,
       &::after {
         top: 0;
@@ -161,7 +163,7 @@ body.home {
 
       .block-title {
         font: normal 42px/40px $font-bold;
-      }      
+      }
     }
   }
 

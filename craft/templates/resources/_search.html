@@ -1,7 +1,7 @@
 {% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
 {% set title = "Search Results" %}
-{% set bodyClass = 'page sidebar-right page-resources page-search-results' %}
+{% set bodyClass = 'page page-resources page-search-results' %}
 
 {% set query = craft.request.getParam('q') %}
 {% set results = craft.entries().section('resourcesEntries').search(query).order('score') %}
@@ -13,18 +13,18 @@
     <h2 class="page-description">
       {{ results|length }} result{{ results|length > 1 ? "s" : "" }} found for “{{ query }}”
     </h2>
-    
+
   </section>
 
   {% include "resources/_filter" %}
 
   {% if results|length %}
     <div class="article-list">
-      
+
       {% for article in results %}
         {% include "resources/_article" %}
       {% endfor %}
-    
+
     </div>
   {% else %}
     <p>Your search for “{{ query }}” didn’t return any results.</p>

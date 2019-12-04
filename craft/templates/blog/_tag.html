@@ -3,7 +3,7 @@
 {% set tag = craft.tags.slug(tag).first() %}
 
 {% set title = "Tag: "~tag.title %}
-{% set bodyClass = 'page sidebar-right page-blog page-tag' %}
+{% set bodyClass = 'page page-blog page-tag' %}
 
 {% block content %}
 
@@ -23,7 +23,7 @@
   {% set articles = craft.entries.relatedTo(tag).order('title') %}
 
   <div class="article-list">
-    
+
     {% if articles | length %}
       {% for article in articles %}
         {% include "blog/_article" %}

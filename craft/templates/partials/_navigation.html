@@ -1,4 +1,7 @@
-{% set nav = craft.amNav.getNavRaw("mainNav") %}
+{% set locale = craft.i18n.getCurrentLocale() %}
+{% set mainNav = craft.amNav.getNavRaw("mainNav") %}
+{% set secondaryNav = craft.amNav.getNavRaw("secondaryNav") %}
+{% set getStarted = craft.entries().section('getStarted').locale(locale.id).first() %}
 
 {% macro addNodeToNavigation(node, index) %}
   {%- set nodeClasses = [] -%}
@@ -6,7 +9,7 @@
     {%- set nodeClasses = nodeClasses|merge(['has-children']) -%}
   {%- endif -%}
   {%- if node.active or node.hasActiveChild -%}
-    {%- set nodeClasses = nodeClasses|merge(['-active']) -%}
+    {%- set nodeClasses = nodeClasses|merge(['current']) -%}
   {%- endif -%}
   {%- if node.level == 1 and index == 1 -%}
     {%- set nodeClasses = nodeClasses|merge(['first']) -%}
@@ -16,19 +19,40 @@
   {%- endif -%}
 
   <li{% if nodeClasses|length %} class="{{ nodeClasses|join(' ') }}"{% endif %}>
-    <a href="{{ node.url }}" {% if node.blank %} target="_blank"{% endif %}>{{ node.name }}</a>
+    <a href="{{ node.url }}" title="{{ node.name }}"{% if node.blank %} target="_blank"{% endif %} data-active-toggle>{{ node.name }}</a>
     {% if node.hasChildren %}
-      <ul class="nav__level{{ (node.level + 1) }}">
+      <ul class="subnav">
         {% for subnode in node.children %}
-        {{ _self.addNodeToNavigation(subnode, loop.index) }}
+          {{ _self.addNodeToNavigation(subnode, loop.index) }}
         {% endfor %}
+        <svg class="icon icon-nav-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-nav-arrow"/></svg>
       </ul>
     {% endif %}
   </li>
 {% endmacro %}
 
-<ul class="nav-list">
-  {% for node in nav %}
-    {{ _self.addNodeToNavigation(node, loop.index) }}
-  {% endfor %}
-</ul>
+<div class="primary-nav">
+  {% if mainNav %}
+    <ul class="main-nav">
+      {% for node in mainNav %}
+        {{ _self.addNodeToNavigation(node, loop.index) }}
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if secondaryNav %}
+    <ul class="secondary-nav">
+      {% for node in secondaryNav %}
+        {{ _self.addNodeToNavigation(node, loop.index) }}
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+
+<div class="utility-nav">
+  {% if getStarted %}
+    <a href="{{ getStarted.url }}" class="get-started-link button -blue">{{ getStarted.title }}</a>
+  {% endif %}
+
+  {% include 'partials/_locale-switcher.html' %}
+</div>

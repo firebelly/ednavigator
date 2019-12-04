@@ -4,10 +4,10 @@
 {% set featuredPosts = craft.entries.section('blogEntries').search('featuredBlogPost:1') %}
 
 {% block content %}
-<div class="page-header snap-section grid block-grid align-right" style="background-image:url({{ entry.bannerImage.last().getUrl('hero') }});">
+<div class="page-header snap-section grid block-grid" style="background-image:url({{ entry.bannerImage.last().getUrl('hero') }});">
 
   <div class="page-header-image" style="background-image:url({{ entry.bannerImage.last().getUrl('hero') }});"></div>
-  <div class="block col-1-2 background-offwhite">
+  <div class="block col-1-2 background-yellow offset-bottom">
     <h2 class="block-title">{{ entry.pageDescription }}</h2>
     <h3>{{ entry.body }}</h3>
   </div>
@@ -15,12 +15,12 @@
 </div>
 
 <div class="user-paths grid block-grid snap-section" id="user-paths">
-  
+
   {% for userPath in entry.userPaths %}
-    
+
     <div class="block col-1-2" style="background-image:url({{ userPath.pathImage.last().getUrl('hero') }});">
-      
-      <div class="-inner">      
+
+      <div class="-inner">
         <h2 class="block-title"><a href="{{ userPath.pathPage.last().url }}">{{ userPath.pathTitle|nl2br }}</a></h2>
         <p><a href="{{ userPath.pathPage.last().url }}" class="inline-link"><span>{{ userPath.pathLinkText|nl2br }}</span></a></p>
       </div>
@@ -28,7 +28,7 @@
     </div>
 
   {% endfor %}
-  
+
 </div>
 
 {% if featuredPosts|length %}
@@ -37,7 +37,7 @@
   <div class="page-section-image-carousel" id="pageSectionImageCarousel">
     {% for featuredPost in featuredPosts %}
       <div class="image-block col-1-2" style="background-image: url({{ featuredPost.blogBannerImage.first().getUrl('hero') }})"></div>
-    {% endfor %}    
+    {% endfor %}
   </div>
   <div class="page-section-content-carousel" id="pageSectionContentCarousel">
     {% for featuredPost in featuredPosts %}

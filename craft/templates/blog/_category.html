@@ -4,7 +4,7 @@
 {% set params = { limit: limit, relatedTo: category } %}
 
 {% set title = "Blog" %}
-{% set bodyClass = 'page sidebar-right page-blog page-category' %}
+{% set bodyClass = 'page page-blog page-category' %}
 
 {% block content %}
 
@@ -24,7 +24,7 @@
   {% set articles = craft.entries(params) %}
 
   <div class="article-list">
-    
+
     {% for article in articles %}
       {% include "blog/_article" %}
     {% endfor %}

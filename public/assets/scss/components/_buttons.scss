@@ -23,6 +23,16 @@
       color: $black;
     }
   }
+
+  &.-blue {
+    border: none;
+    color: $white;
+    background-color: $blue;
+    &:hover {
+      color: $black;
+      background-color: $brand-primary;
+    }
+  }
 }
 
 // 'Inline-link' style button

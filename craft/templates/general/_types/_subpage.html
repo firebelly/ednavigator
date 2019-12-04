@@ -4,11 +4,11 @@
 {% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
 {% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
 
-{% set bodyClass = 'single page sub-page-template sidebar-right page-' ~ entry.slug %}
+{% set bodyClass = 'single page sub-page-template page-' ~ entry.slug %}
 {% set bodyId = entry.slug %}
 
 {% block content %}
-  
+
   <section class="intro-section">
     {% if entry.pageDescription %}
     <h2 class="page-description">

@@ -4,15 +4,15 @@
 {% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
 {% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
 
-{% set bodyClass = 'single page page-payment sidebar-right' %}
+{% set bodyClass = 'single page page-payment' %}
 {% set bodyId = 'payment' %}
 
 {% block content %}
-  
+
   {% include 'partials/_intro-section.html' %}
 
   <section class="main-content">
-    
+
     <form class="stripe-checkout" method="POST" data-key="{{ craft.config.stripePublishableKey }}">
       <input type="hidden" name="action" value="edNavPayment/payments/charge">
       <script src="https://checkout.stripe.com/checkout.js"></script>

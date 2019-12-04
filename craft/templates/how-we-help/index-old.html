@@ -4,12 +4,12 @@
 {% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
 {% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
 
-{% set bodyClass = 'single page how-we-help sidebar-right' %}
+{% set bodyClass = 'single page how-we-help' %}
 {% set bodyId = 'how-we-help-page' %}
 
 {% block content %}
-  
-  <section class="intro-section">    
+
+  <section class="intro-section">
   {% if entry.pageDescription|length %}
     <h2 class="page-description">
       {{ entry.pageDescription }}

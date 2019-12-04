@@ -1,5 +1,5 @@
 {% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
-{% set bodyClass = 'single page page-user-path sidebar-right page-' ~ entry.slug %}
+{% set bodyClass = 'single page page-user-path page-' ~ entry.slug %}
 {% set bodyId = 'page-' ~ entry.slug %}
 
 {% block content %}
@@ -11,7 +11,7 @@
       <div class="page-section-image-carousel" id="pageSectionImageCarousel{{ loop.index }}">
         {% for block in section.pathPageSections %}
           <div class="image-block col-1-2" style="background-image: url({{ block.sectionImage.last().getUrl('hero') }})"></div>
-        {% endfor %}    
+        {% endfor %}
       </div>
       <div class="page-section-content-carousel" id="pageSectionContentCarousel{{ loop.index }}">
         {% for block in section.pathPageSections %}

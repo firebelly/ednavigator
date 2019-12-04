@@ -4,7 +4,7 @@
 {% set params = { limit: limit, relatedTo: category } %}
 
 {% set title = "Resource Bundle: "~category.title %}
-{% set bodyClass = 'page sidebar-right page-resources page-resource-bundle' %}
+{% set bodyClass = 'page page-resources page-resource-bundle' %}
 
 {% block content %}
 
@@ -26,7 +26,7 @@
   {% set articles = craft.entries(params) %}
 
   <div class="article-list">
-    
+
     {% for article in articles %}
       {% include "resources/_article" %}
     {% endfor %}

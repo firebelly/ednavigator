@@ -1,12 +1,17 @@
 {% set entryIds = craft.entries.section('blogEntries').ids() %}
 {% set categories = craft.categories.relatedTo({ sourceElement: entryIds }).group('blogCetegories').find() %}
+{% if entry.locale == 'en_us' %}
+  {% set actionUrl = url('blog/search') %}
+{% elseif entry.locale == 'es_us' %}
+  {% set actionUrl = url('blog/buscar') %}
+{% endif %}
 
 <div class="filter-section grid">
 
   <div class="search col-1-2">
-    <form action="{{ url('blog/search') }}" class="search-filter">
+    <form action="{{ actionUrl }}" class="search-filter">
 
-      <div class="search-wrap">          
+      <div class="search-wrap">
         <input type="search" name="q" placeholder="{{'Search Posts'|t}}">
         <button type="submit" class="svg-inject" data-icon="icon-search"><span class="visually-hidden">{{"Search Posts"|t}}</span></button>
       </div>
