@@ -15,7 +15,7 @@ def production():
   env.remotepath = '/home/ednavigator/webapps/ednavigator'
 
 def testing():
-  env.git_branch = 'phase-1-updates'
+  env.git_branch = '2019-updates'
 
 def assets():
   local('node_modules/.bin/gulp --production')
