@@ -109,7 +109,7 @@ body.sidebar-right {
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   color: $black;
   display: flex;
@@ -157,7 +157,7 @@ body.sidebar-right {
 
   .primary-nav {
     overflow: auto;
-    padding: 30px $global-spacing $global-spacing;
+    padding: 30px 85px $global-spacing $global-spacing;
 
     a {
       padding: 22px $vertical-beat;
@@ -540,5 +540,12 @@ body.sidebar-right {
         transform: rotate(-45deg);
       }
     }
+  }
+}
+
+// site-nav-open
+body.site-nav-open {
+  .menu-toggle {
+    z-index: 3;
   }
 }

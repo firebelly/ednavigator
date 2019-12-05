@@ -5,7 +5,7 @@
 
 body {
   color: $black;
-  font-size: 14px;
+  font-size: 18px;
   box-sizing: border-box;
   font-family: $font-regular;
 
@@ -34,8 +34,8 @@ h3 {
 }
 
 p {
-  font-size: 1em;
-  line-height: 1.428571429;
+  font-size: 18px;
+  line-height: 25px;
 }
 
 a {
@@ -70,13 +70,16 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1;
+  z-index: 2;
   position: fixed;
   will-change: background-color;
   background-color: rgba($black, 0);
   transition: background-color .35s ease-out;
   &.-active {
     background-color: rgba($black, .5);
+  }
+  @include media-nav {
+    z-index: 3;
   }
 }
 

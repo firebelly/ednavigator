@@ -33,7 +33,7 @@
     margin-bottom: $global-spacing;
     // Alternative Styles
     &.largeNumeral {
-      @extend .headline-numeral;
+      @include headline-numeral;
     }
     &.quote {
       @extend .headline-quote;

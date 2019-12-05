@@ -4,12 +4,31 @@
 {% set featuredPosts = craft.entries.section('blogEntries').search('featuredBlogPost:1') %}
 
 {% block content %}
+
+{% if entry.bannerVideo %}
+  <div id="video-modal">
+    <div class="video-container">
+      <button class="video-modal-close"><span class="sr-only">Close Video</span> <svg class="icon-close" aria-hidden="true" role="presentation"><use xlink:href="#icon-close"/></svg></button>
+      <div id="video" class="banner-video" data-url="{{ entry.bannerVideo }}"></div>
+    </div>
+  </div>
+{% endif %}
+
 <div class="page-header snap-section grid block-grid" style="background-image:url({{ entry.bannerImage.last().getUrl('hero') }});">
 
   <div class="page-header-image" style="background-image:url({{ entry.bannerImage.last().getUrl('hero') }});"></div>
-  <div class="block col-1-2 background-yellow offset-bottom">
-    <h2 class="block-title">{{ entry.pageDescription }}</h2>
-    <h3>{{ entry.body }}</h3>
+
+  <div class="-inner">
+    {% if entry.bannerVideo %}
+      <div class="video-play-container">
+        <button class="banner-video-play button play with-icon -blue">Watch the video <svg class="icon-play" aria-hidden="true" role="presentation"><use xlink:href="#icon-play"/></svg></button>
+      </div>
+    {% endif %}
+
+    <div class="block col-1-2 background-yellow offset-bottom">
+      <h2 class="block-title">{{ entry.pageDescription }}</h2>
+      <h3>{{ entry.body }}</h3>
+    </div>
   </div>
 
 </div>

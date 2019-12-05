@@ -1,0 +1,38 @@
+// Video Modal
+
+#video-modal {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 20;
+  display: none;
+  position: fixed;
+  padding: $global-spacing;
+  @include media-md {
+    padding: $global-spacing #{$global-spacing * 2};
+  }
+
+  .video-container {
+    position: relative;
+  }
+
+  .video-modal-close {
+    top: 15px;
+    left: 100%;
+    padding: 0;
+    border: none;
+    background: none;
+    margin-left: 15px;
+    position: absolute;
+    &:focus {
+      outline: none;
+    }
+
+    svg {
+      width: 25px;
+      height: 25px;
+      fill: $white;
+    }
+  }
+}

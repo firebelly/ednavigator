@@ -16,24 +16,22 @@ $font-regular: 'DINNextLTPro-Regular', sans-serif;
 $font-bold: 'DINNextLTPro-Medium', sans-serif;
 $font-slab: 'DINNextSlabPro-Light', serif;
 
-// Font mixins
+// Font mixins / Classes
 @mixin headline-one {
   margin: 0 0 0 -.05em;
   letter-spacing: -.01em;
-  font: normal 42px/40px $font-bold;
+  font: normal 40px/45px $font-bold;
   @include media-md {
-    font-size: 56px;
-    line-height: 60px;
+    font-size: 62px;
+    line-height: 65px;
   }
 }
-
-// Font Classes
-.body-copy {
-  font: normal 14px/20px $font-regular;
-}
-
 .headline-one {
   @include headline-one;
+}
+
+.body-copy {
+  font: normal 18px/25px $font-regular;
 }
 
 .headline-two {
@@ -69,9 +67,18 @@ $font-slab: 'DINNextSlabPro-Light', serif;
   @include headline-descriptor;
 }
 
-.headline-numeral {
+@mixin headline-numeral {
   margin: 0;
-  font: normal 112px/.982142857 $font-bold;
+  letter-spacing: -0.05em;
+  font: normal 80px/80px $font-bold;
+
+  @include media-md {
+    font-size: 120px;
+    line-height: 100px;
+  }
+}
+.headline-numeral {
+  @include headline-numeral;
 }
 
 .headline-quote {

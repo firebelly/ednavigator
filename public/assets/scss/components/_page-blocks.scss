@@ -97,7 +97,7 @@ body.page {
 
         .step-number {
           color: $white;
-          @extend .headline-numeral;
+          @include headline-numeral;
           -webkit-font-smoothing: antialiased;
         }
 
@@ -134,7 +134,7 @@ body.page {
       .block {
         order: 0;
       }
-      
+
       // Alternate the order if there are multiple next to each other
       & + .stat-with-photo:nth-of-type(2n) {
         .image-block {
@@ -156,7 +156,7 @@ body.page {
 
   // Link List
   .link-list {
-    
+
     h5 {
       @extend .headline-descriptor;
     }

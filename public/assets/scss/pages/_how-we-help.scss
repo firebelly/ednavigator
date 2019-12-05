@@ -5,7 +5,7 @@ body.how-we-help {
   .intro-section {
     background: $offwhite;
   }
-  
+
   .our-navigators {
     padding-bottom: 0;
     background: $offwhite;
@@ -91,7 +91,7 @@ body.how-we-help {
 
         .step-number {
           color: $white;
-          @extend .headline-numeral;
+          @include headline-numeral;
           -webkit-font-smoothing: antialiased;
         }
 

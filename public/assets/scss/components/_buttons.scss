@@ -16,6 +16,10 @@
     outline: none;
   }
 
+  svg {
+    fill: $black;
+  }
+
   &.-yellow {
     color: $brand-primary;
     border-color: $brand-primary;
@@ -31,6 +35,24 @@
     &:hover {
       color: $black;
       background-color: $brand-primary;
+    }
+
+    svg {
+      fill: $white;
+    }
+  }
+
+  // With Icon
+  &.with-icon {
+    display: flex;
+    text-align: left;
+    align-items: center;
+    justify-content: space-between;
+
+    svg {
+      width: 25px;
+      height: 25px;
+      margin-left: $vertical-beat * 2;
     }
   }
 }

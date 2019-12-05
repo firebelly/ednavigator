@@ -7,7 +7,7 @@
 //=include "../bower_components/imagesloaded/imagesloaded.pkgd.min.js"
 //=include "../bower_components/flickity/dist/flickity.pkgd.min.js"
 //=include "../bower_components/flickity-sync/flickity-sync.js"
-//=include "../bower_components/panelsnap/jquery.panelSnap.js"
+//=include "../bower_components/vimeo-player-js/dist/player.js"
 //=include "../bower_components/jquery-validation/dist/jquery.validate.js"
 
 // Good Design for Good Reason for Good Namespace
@@ -51,6 +51,7 @@ var FB = (function($) {
     _initActiveToggle();
     _injectSvgIcons();
     _initSiteNav();
+    _initBannerVideo();
     _initCarousels();
     _initLoadMore();
     _initShareLinks();
@@ -197,8 +198,10 @@ var FB = (function($) {
     // Nav Toggle Functions
     $('.menu-toggle').on('click', function() {
       if ($(this).is('.-active')) {
+        $body.removeClass('site-nav-open');
         _hideSiteOverlay();
       } else {
+        $body.addClass('site-nav-open');
         _showSiteOverlay();
       }
     });
@@ -215,8 +218,97 @@ var FB = (function($) {
     }
 
     _hideSiteOverlay();
+    $body.removeClass('site-nav-open');
     $siteNav.removeClass('-active');
     $('.menu-toggle').removeClass('-active');
+  }
+
+  function _initBannerVideo() {
+    if (!$('.banner-video').length) {
+      return;
+    }
+
+    var $video = $('#video');
+    var $container = $video.closest('.video-container');
+
+    var options = {
+        responsive: true
+    };
+
+    if ($video[0].hasAttribute('data-url')) {
+      options['url'] = $video.attr('data-url');
+    } else {
+      options['id'] = $video.attr('data-id');
+    }
+
+    var player = new Vimeo.Player('video', options);
+
+    $('.banner-video-play').on('click', function() {
+      $container.addClass('playing');
+      _openVideoModal(player);
+    });
+
+    // Open Modal if Video Play triggered
+    player.on('play', function() {
+      if (!$('#video-modal').is('.-active')) {
+        _openVideoModal(false);
+      }
+    })
+
+    // Close Modal when video ends
+    player.on('ended', function() {
+      _closeVideoModal();
+    });
+
+    // Close Video Modal
+    $(document).keyup(function(e) {
+      if (e.keyCode === 27) {
+        if ($('#video-modal.-active').length) {
+          _closeVideoModal(player);
+        }
+      }
+    });
+
+    $(document).on('click', '.video-modal-close', function() {
+      _closeVideoModal(player);
+    });
+
+    $(document).on('click touchend', 'body.video-modal-open', function(e) {
+      var $target = $(e.target);
+      if (!$target.is('.video-container') && !$target.parents('.video-container').length) {
+        _closeVideoModal(player);
+      }
+    });
+  }
+
+  function _openVideoModal(player) {
+    _showSiteOverlay();
+    $('#video-modal').velocity(
+      { opacity: 1 }, {
+      display: "block",
+        complete: function() {
+          $('body').addClass('video-modal-open');
+          $('#video-modal').addClass('-active');
+          if (player !== false) {
+            player.play();
+          }
+        }
+    });
+  }
+
+  function _closeVideoModal(player) {
+    if (player.getPaused()) {
+      player.pause();
+    }
+    _hideSiteOverlay();
+    $('#video-modal').velocity(
+      { opacity: 0 }, {
+      display: "none",
+      complete: function() {
+        $('body').removeClass('video-modal-open');
+        $('#video-modal').removeClass('-active');
+      }
+    });
   }
 
   function _initCarousels() {
