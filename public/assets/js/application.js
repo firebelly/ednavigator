@@ -257,7 +257,7 @@ var FB = (function($) {
 
     // Close Modal when video ends
     player.on('ended', function() {
-      _closeVideoModal();
+      _closeVideoModal(player);
     });
 
     // Close Video Modal
