@@ -1,16 +1,16 @@
 // Video Modal
 
 #video-modal {
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+  top: 50%;
   z-index: 20;
   display: none;
   position: fixed;
-  padding: $global-spacing;
+  left: $global-spacing;
+  right: $global-spacing;
+  transform: translateY(-50%);
   @include media-md {
-    padding: $global-spacing #{$global-spacing * 2};
+    left: $global-spacing * 2;
+    right: $global-spacing * 2;
   }
 
   .video-container {
