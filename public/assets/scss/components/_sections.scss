@@ -1,0 +1,7 @@
+// Common Section Styles
+
+.section {
+  .section-title {
+    @include headline-four;
+  }
+}

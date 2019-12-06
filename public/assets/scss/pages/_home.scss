@@ -100,34 +100,114 @@ body.home {
     }
   }
 
+  // Feature Sections
+  .feature-section {
+    background-color: $white;
+
+    > div {
+      padding: $global-spacing;
+
+      @include media-lg {
+        padding: $global-spacing * 2;
+      }
+    }
+
+    .section-intro {
+      @include media-lg {
+        padding-top: $global-spacing * 4;
+      }
+    }
+
+    .features {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      .feature {
+        + .feature {
+          margin-top: $vertical-beat * 3;
+        }
+
+        .feature-icon {
+          margin-left: $vertical-beat;
+          margin-bottom: $vertical-beat * 3;
+
+          img {
+            max-width: $global-spacing;
+          }
+        }
+
+        .feature-text {
+          h5 {
+            margin: 0;
+          }
+        }
+
+        @include media-md {
+          display: flex;
+          + .feature {
+            margin-top: $vertical-beat * 4;
+          }
+
+          .feature-icon {
+            margin: 0;
+          }
+
+          .feature-text {
+            margin-left: $global-spacing;
+          }
+        }
+      }
+    }
+  }
+
+  // How We Work Section
+  .how-we-work {
+    .content-block {
+      background-color: $blue;
+    }
+  }
+
+  .stats-section {
+    .stat {
+      text-align: center;
+      padding: $global-spacing;
+      background-color: $gray-light;
+      @include media-lg {
+        padding: $global-spacing * 2;
+
+        &:first-of-type {
+          border-right: 1px solid $white;
+        }
+
+        &.offset-bottom {
+          z-index: 2;
+        }
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .stat-figure {
+      color: $blue;
+      @include headline-numeral;
+    }
+  }
+
   .user-paths {
     position: relative;
 
     .block {
-
-      &::before,
-      &::after {
-        top: 0;
-        left: 0;
-        bottom: 0;
-        opacity: 0;
-        z-index: 0;
-        width: 100%;
-        content: '';
-        background: $blue;
-        position: absolute;
-      }
-      &::before {
-        opacity: 1;
-        will-change: opacity;
-        transition: opacity .5s ease-out;
-      }
+      background-color: $orange;
 
       &:first-of-type {
-        &::before,
-        &::after {
-          background: $gray;
-        }
+        background-color: $green;
+      }
+
+      &.offset-bottom {
+        padding-top: $global-spacing * 4;
       }
 
       &:hover {
@@ -164,11 +244,14 @@ body.home {
         }
       }
     }
+  }
 
+  // Partners Section
+  .partners-section {
+    background-color: $gray-light;
   }
 
   .featured-news {
-
     .page-section-content-carousel {
       background: $yellow;
     }
@@ -183,5 +266,4 @@ body.home {
       }
     }
   }
-
 }

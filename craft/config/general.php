@@ -14,6 +14,7 @@ return array(
         'stripePublishableKey' => getenv('STRIPE_PUBLISHABLE_KEY'),
         'enableCsrfProtection' => true,
         'generateTransformsBeforePageLoad' => true,
+        'extraAllowedFileExtensions' => 'svg',
         'siteUrl' => array(
             'en_us' => getenv('BASE_URL'),
             'es_us' => getenv('BASE_URL') . 'es/'

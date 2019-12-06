@@ -53,19 +53,6 @@
 
   @include media-lg {
     min-height: calc(100vh - #{$global-spacing + $header-height});
-
-    &.offset {
-      &-top {
-        z-index: 1;
-        position: relative;
-        margin-top: -$global-spacing * 2;
-      }
-      &-bottom {
-        z-index: 1;
-        position: relative;
-        margin-bottom: -$global-spacing * 2;
-      }
-    }
   }
 }
 

@@ -1,11 +1,16 @@
 {% set entryIds = craft.entries.section('resourcesEntries').ids() %}
 {% set topics = craft.categories.relatedTo({ sourceElement: entryIds }).group('resourcesTopics').find() %}
+{% if entry.locale == 'en_us' %}
+  {% set actionUrl = url('resources/search') %}
+{% elseif entry.locale == 'es_us' %}
+  {% set actionUrl = url('recursos/buscar') %}
+{% endif %}
 
 <div class="filter-section grid">
 
   <div class="search col-1-2">
-    <form action="{{ url('family-resources/search') }}" class="search-filter">
-      <div class="search-wrap">          
+    <form action="{{ actionUrl }}" class="search-filter">
+      <div class="search-wrap">
         <input type="search" name="q" placeholder="{{'Search Resources'|t}}">
         <button type="submit" class="svg-inject" data-icon="icon-search"><span class="visually-hidden">{{"Search Resources"|t}}</span></button>
       </div>
@@ -14,7 +19,7 @@
 
   <div class="col-1-2 grid">
     <div class="filter topic col-1-2">
-      <div class="select-wrap">        
+      <div class="select-wrap">
         <select name="topic" id="topic">
           <option value="null">{{ 'topic' | t | capitalize }}</option>
           {% for topic in topics %}

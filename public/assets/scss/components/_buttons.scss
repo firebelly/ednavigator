@@ -66,18 +66,24 @@
 
 // 'Inline-link' style button
 a.inline-link {
+  @include headline-inline;
   color: $black;
   position: relative;
-  @extend .headline-three;
+  border-radius: 20px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 11px 16px 7px;
+  border: 1px solid $black;
   transition: color .2s ease-out;
-  span {
-    color: $black;
-    transition: color .2s ease-out;
+  > span {
+    display: flex;
+    align-items: center;
   }
   .icon {
+    margin-left: 28px;
     position: relative;
     &::after {
-      top: 9px;
+      top: 7px;
       left: 10px;
       width: 42px;
       height: 2px;
@@ -85,8 +91,8 @@ a.inline-link {
       position: absolute;
       transform: scaleX(0) translateY(1px);
       transform-origin: left;
-      background: $brand-primary;
-      transition: transform .2s ease-out;
+      background: $black;
+      transition: transform .2s ease-out, background .2s ease-out;
     }
   }
   svg {
@@ -97,17 +103,17 @@ a.inline-link {
     transition: fill .2s ease-out;
   }
   &:hover {
-    color: $brand-primary;
-    span {
-      color: $black;
-    }
+    color: $blue;
+    border-color: $white;
+    background-color: $white;
     .icon {
       &::after {
+        background: $blue;
         transform: scaleX(1) translateY(1px);
       }
-      svg {
-        fill: $brand-primary;
-      }
+    }
+    svg {
+      fill: $blue;
     }
   }
 

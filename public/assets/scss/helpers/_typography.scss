@@ -44,8 +44,13 @@ $font-slab: 'DINNextSlabPro-Light', serif;
   font: normal 21px/30px $font-slab;
 }
 
+@mixin headline-four {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font: normal 14px/20px $font-bold;
+}
 .headline-four {
-  font: normal 14px/20px $font-regular;
+  @include headline-four;
 }
 
 @mixin headline-inline {

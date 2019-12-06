@@ -15,7 +15,6 @@
 {% endif %}
 
 <div class="page-header snap-section grid block-grid" style="background-image:url({{ entry.bannerImage.last().getUrl('hero') }});">
-
   <div class="page-header-image" style="background-image:url({{ entry.bannerImage.last().getUrl('hero') }});"></div>
 
   <div class="-inner">
@@ -30,24 +29,115 @@
       <h3>{{ entry.body }}</h3>
     </div>
   </div>
-
 </div>
 
-<div class="user-paths grid block-grid snap-section" id="user-paths">
+{% if entry.whatWeDoHeadline %}
+  <div id="what-we-do" class="what-we-do feature-section grid section">
+    <div class="section-intro col-1-2">
+      <h4 class="section-label">What We Do</h4>
+      <h5 class="section-title">{{ entry.whatWeDoHeadline }}</h5>
+      {% if entry.whatWeDoText %}
+        <div class="section-description">
+          {{ entry.whatWeDoText }}
+        </div>
+      {% endif %}
+    </div>
 
+    <div class="col-1-2">
+      {% if entry.whatWeDoFeatures %}
+        <ul class="features">
+          {% for feature in entry.whatWeDoFeatures %}
+            <li class="feature">
+              <div class="feature-icon">
+                <img src="{{ feature.featureIcon.first().getUrl() }}">
+              </div>
+              <div class="feature-text">
+                <h5>{{ feature.featureTitle }}</h5>
+                <p>{{ feature.featureDescription }}</p>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
+{% if entry.howWeWorkSection %}
+  {% set howWeWork = entry.howWeWorkSection.first() %}
+  <div id="how-we-work" class="how-we-work section grid block-grid">
+    <div class="content-block block col-1-2 offset-bottom">
+      <div class="-inner">
+        <h4 class="section-label">How We Work</h4>
+        <h2 class="block-title">{{ howWeWork.headline|nl2br }}</h2>
+        {% if howWeWork.description %}
+          <p>{{ howWeWork.description }}</p>
+        {% endif %}
+        {% if howWeWork.linkEntry %}
+          <p><a href="{{ howWeWork.linkEntry.first().url }}" class="inline-link"><span>{{ howWeWork.linkLabel|nl2br }}</span></a></p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="image-block col-1-2" style="background-image:url({{ howWeWork.image.first().getUrl('hero') }});"></div>
+  </div>
+{% endif %}
+
+{% if entry.sustainableResultsHeadline %}
+  <div id="what-we-do" class="what-we-do feature-section grid section">
+    <div class="section-intro col-1-2">
+      <h4 class="section-label">Sustainable Results</h4>
+      <h5 class="section-title">{{ entry.sustainableResultsHeadline }}</h5>
+      {% if entry.sustainableResultsText %}
+        <div class="section-description">
+          {{ entry.sustainableResultsText }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="col-1-2">
+      {% if entry.sustainableResultsFeatures %}
+        <ul class="features">
+          {% for feature in entry.sustainableResultsFeatures %}
+            <li class="feature">
+              <div class="feature-icon">
+                <img src="{{ feature.featureIcon.first().getUrl() }}">
+              </div>
+              <div class="feature-text">
+                <h5>{{ feature.featureTitle }}</h5>
+                <p>{{ feature.featureDescription }}</p>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
+{% if entry.stats %}
+  <div id="stats" class="stats-section section flex-grid">
+    {% for stat in entry.stats %}
+      <div class="stat col-1-2{{ loop.last ? ' offset-bottom' }}">
+        <p class="stat-figure">{{ stat.statFigure }}</p>
+        <p class="stat-description">{{ stat.statDescription }}</p>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<div class="user-paths grid block-grid" id="user-paths">
   {% for userPath in entry.userPaths %}
-
-    <div class="block col-1-2" style="background-image:url({{ userPath.pathImage.last().getUrl('hero') }});">
-
+    <div class="block col-1-2{{ loop.last ? ' offset-bottom' }}">
       <div class="-inner">
         <h2 class="block-title"><a href="{{ userPath.pathPage.last().url }}">{{ userPath.pathTitle|nl2br }}</a></h2>
         <p><a href="{{ userPath.pathPage.last().url }}" class="inline-link"><span>{{ userPath.pathLinkText|nl2br }}</span></a></p>
       </div>
-
     </div>
-
   {% endfor %}
+</div>
 
+<div id="partners" class="partners-section section">
+  <h4 class="section-title">Some of our partners</h4>
 </div>
 
 {% if featuredPosts|length %}
