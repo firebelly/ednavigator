@@ -24,8 +24,8 @@
   }
 
   .block-descriptor {
+    @include headline-four;
     margin: 0 0 20px;
-    @extend .headline-descriptor;
   }
 
   .block-title {
@@ -40,6 +40,10 @@
     }
   }
 
+  .block-cta {
+    margin: $global-spacing 0 0;
+  }
+
   .inline-links-container {
     margin-top: $global-spacing;
     p {
@@ -52,7 +56,9 @@
   }
 
   @include media-lg {
-    min-height: calc(100vh - #{$global-spacing + $header-height});
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }
 

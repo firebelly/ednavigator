@@ -66,15 +66,17 @@ img {
 
 // Offset
 .offset {
-  &-top {
-    z-index: 1;
-    position: relative;
-    margin-top: -$global-spacing * 2;
-  }
-  &-bottom {
-    z-index: 1;
-    position: relative;
-    margin-bottom: -$global-spacing * 2;
+  @include media-lg {
+    &-top {
+      z-index: 1;
+      position: relative;
+      margin-top: -$global-spacing * 2;
+    }
+    &-bottom {
+      z-index: 1;
+      position: relative;
+      margin-bottom: -$global-spacing * 2;
+    }
   }
 }
 

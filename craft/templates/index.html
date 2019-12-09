@@ -66,15 +66,17 @@
 {% if entry.howWeWorkSection %}
   {% set howWeWork = entry.howWeWorkSection.first() %}
   <div id="how-we-work" class="how-we-work section grid block-grid">
-    <div class="content-block block col-1-2 offset-bottom">
+    <div class="block col-1-2 offset-bottom">
       <div class="-inner">
-        <h4 class="section-label">How We Work</h4>
-        <h2 class="block-title">{{ howWeWork.headline|nl2br }}</h2>
-        {% if howWeWork.description %}
-          <p>{{ howWeWork.description }}</p>
-        {% endif %}
+        <div>
+          <h4 class="block-descriptor">How We Work</h4>
+          <h2 class="block-title">{{ howWeWork.headline|nl2br }}</h2>
+          {% if howWeWork.description %}
+            <p>{{ howWeWork.description }}</p>
+          {% endif %}
+        </div>
         {% if howWeWork.linkEntry %}
-          <p><a href="{{ howWeWork.linkEntry.first().url }}" class="inline-link"><span>{{ howWeWork.linkLabel|nl2br }}</span></a></p>
+          <p class="block-cta"><a href="{{ howWeWork.linkEntry.first().url }}" class="inline-link"><span>{{ howWeWork.linkLabel|nl2br }}</span></a></p>
         {% endif %}
       </div>
     </div>
@@ -129,16 +131,42 @@
   {% for userPath in entry.userPaths %}
     <div class="block col-1-2{{ loop.last ? ' offset-bottom' }}">
       <div class="-inner">
-        <h2 class="block-title"><a href="{{ userPath.pathPage.last().url }}">{{ userPath.pathTitle|nl2br }}</a></h2>
-        <p><a href="{{ userPath.pathPage.last().url }}" class="inline-link"><span>{{ userPath.pathLinkText|nl2br }}</span></a></p>
+        <div>
+          <h3 class="block-descriptor">{{ userPath.pathTitle }}</h3>
+          <h2 class="block-title"><a href="{{ userPath.pathPage.last().url }}">{{ userPath.pathHeadline|nl2br }}</a></h2>
+          {% if userPath.pathDescription %}
+            <p>{{ userPath.pathDescription }}</p>
+          {% endif %}
+        </div>
+        {% if userPath.pathLinkText and userPath.pathPage|length %}
+          <p class="block-cta"><a href="{{ userPath.pathPage.last().url }}" class="inline-link"><span>{{ userPath.pathLinkText|nl2br }}</span></a></p>
+        {% endif %}
       </div>
     </div>
   {% endfor %}
 </div>
 
-<div id="partners" class="partners-section section">
-  <h4 class="section-title">Some of our partners</h4>
-</div>
+{% set partnersEntry = craft.entries.section('whoWeAre').slug('our-partners').first() %}
+{% set partners = partnersEntry.people.person.order('RAND()').limit(6) %}
+
+{% if partners|length %}
+  <div id="partners" class="partners-section section">
+    <h4 class="section-title">Some of our partners</h4>
+    <ul class="partners">
+      {% for person in partners %}
+        {% set image = person.personImage.first().getUrl() %}
+        {% set transformedImage = craft.imager.transformImage(image, { effects: { colorize: '#a3b0b2' } }) %}
+        {% if person.personImage|length %}
+          <li class="partner">
+            <div class="partner-image">
+              <img src="{{ transformedImage.getUrl() }}" alt="{{ person.personName }}">
+            </div>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
 
 {% if featuredPosts|length %}
 

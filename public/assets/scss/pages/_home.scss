@@ -163,7 +163,7 @@ body.home {
 
   // How We Work Section
   .how-we-work {
-    .content-block {
+    .block {
       background-color: $blue;
     }
   }
@@ -207,7 +207,9 @@ body.home {
       }
 
       &.offset-bottom {
-        padding-top: $global-spacing * 4;
+        @include media-lg {
+          padding-top: $global-spacing * 4;
+        }
       }
 
       &:hover {
@@ -224,13 +226,8 @@ body.home {
           text-decoration: none;
         }
 
-        p {
-          margin: 0;
-        }
-
         @include media-lg {
           height: 100%;
-          padding-bottom: #{$global-spacing * 2};
         }
       }
 
@@ -248,7 +245,66 @@ body.home {
 
   // Partners Section
   .partners-section {
-    background-color: $gray-light;
+    background-color: $offwhite;
+    padding: $global-spacing $global-spacing #{($global-spacing * 2) - 20px};
+    @include media-lg {
+      padding: $global-spacing * 2;
+    }
+
+    .partners {
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      overflow: hidden;
+      list-style: none;
+      position: relative;
+      align-items: center;
+      justify-content: space-around;
+      width: calc(100% + $global-spacing);
+      margin: $global-spacing 0 0 -#{$global-spacing / 2};
+
+      .partner {
+        flex-basis: 50%;
+        text-align: center;
+        margin-bottom: 20px;
+        padding: 0 #{$global-spacing / 2};
+
+        .partner-image {
+          img {
+            max-height: 100px;
+            max-width: 120px;
+          }
+        }
+      }
+
+      @include media-lg {
+        width: 100%;
+        margin-left: 0;
+        flex-wrap: nowrap;
+        &::before,
+        &::after {
+          top: 0;
+          bottom: 0;
+          content: '';
+          position: absolute;
+          width: $global-spacing;
+        }
+        &::before {
+          left: 0;
+          background-image: linear-gradient(to right, rgba($offwhite,1), rgba($offwhite,0));
+        }
+        &::after {
+          right: 0;
+          background-image: linear-gradient(to left, rgba($offwhite,1), rgba($offwhite,0));
+        }
+
+        .partner {
+          padding: 0;
+          margin: 0 33px;
+          flex-basis: auto;
+        }
+      }
+    }
   }
 
   .featured-news {

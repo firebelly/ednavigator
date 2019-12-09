@@ -3,5 +3,6 @@
 .section {
   .section-title {
     @include headline-four;
+    margin: 0 0 $vertical-beat;
   }
 }
