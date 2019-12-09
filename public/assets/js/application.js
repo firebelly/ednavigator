@@ -346,6 +346,23 @@ var FB = (function($) {
       $contentCarousel.find('button.next').prepend('<span>Next</span>');
     });
 
+    // Feature News Carousel on homepage
+    if ($('#featuredNewsCarousel').length) {
+      var $featuredNewsCarousel = $('#featuredNewsCarousel')
+
+      $featuredNewsCarousel.flickity({
+        cellSelector: '.block',
+        cellAlign: 'left',
+        pageDots: false,
+        adaptiveHeight: true,
+        wrapAround: true,
+        groupCells: true,
+        arrowShape: 'M33.4 47.7l30.8-15.4c2.1-1.1 4.7 1.1 3.6 3.6l-6.4 12.9c-.7.7-.7 1.4-.4 2.1l6.4 13.2c1.1 2.1-1.1 4.7-3.6 3.6L33 52.3c-1.4-1-1.4-3.9.4-4.6'
+      });
+
+      $featuredNewsCarousel.find('button.previous').append('<span>Prev</span>');
+      $featuredNewsCarousel.find('button.next').prepend('<span>Next</span>');
+    }
   }
 
   function _initLoadMore() {

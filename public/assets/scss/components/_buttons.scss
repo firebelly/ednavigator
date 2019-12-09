@@ -8,7 +8,8 @@
   @extend .headline-inline;
   border: 1px solid $black;
   transition: background .2s ease-out, border-color .2s ease-out, color .2s ease-out;
-  &:hover {
+  &:hover,
+  &:focus {
     background: $brand-primary;
     border-color: $brand-primary;
   }
@@ -24,7 +25,8 @@
   &.-yellow {
     color: $brand-primary;
     border-color: $brand-primary;
-    &:hover {
+    &:hover,
+    &:focus {
       color: $black;
     }
   }
@@ -38,7 +40,8 @@
       fill: $white;
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: $black;
       background-color: $brand-primary;
 
@@ -102,7 +105,8 @@ a.inline-link {
     margin-left: 10px;
     transition: fill .2s ease-out;
   }
-  &:hover {
+  &:hover,
+  &:focus {
     color: $blue;
     border-color: $white;
     background-color: $white;
@@ -126,6 +130,63 @@ a.inline-link {
         left: auto;
         transform-origin: right;
       }
+    }
+  }
+
+  // Borderless Varioation
+  &.borderless {
+    padding: 0;
+    border: none;
+  }
+
+  // Color Variations
+  &.-blue {
+    color: $blue;
+    .icon {
+      &::after {
+        background: $blue;
+      }
+    }
+    svg {
+      fill: $blue;
+    }
+
+    &:hover,
+    &:focus {
+
+    }
+  }
+}
+
+// Plain old text link
+a.text-link {
+  @include headline-inline;
+  text-decoration: none;
+  transition: color .2s ease-out;
+
+  svg {
+    width: 10px;
+    height: 10px;
+    fill: $black;
+    margin-left: 37px;
+    transition: fill .2s ease-out;
+  }
+
+  &:hover,
+  &:focus {
+    color: $blue;
+
+    svg {
+      fill: $blue;
+    }
+  }
+
+  // Color Variations
+  &.-blue {
+    color: $blue;
+
+    svg {
+      fill: $blue;
     }
   }
 }
