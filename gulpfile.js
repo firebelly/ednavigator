@@ -50,7 +50,7 @@ gulp.task('scripts', function() {
 
 // revision files for production assets
 gulp.task('rev', function() {
-  return gulp.src(['public/assets/dist/**/*.css', 'public/assets/dist/**/*.js'])
+  return gulp.src(['public/assets/dist/**/*.css', 'public/assets/dist/**/*.js', 'public/assets/dist/svgs-defs.svg'])
     .pipe(rev())
     .pipe(gulp.dest('public/assets/dist'))
     .pipe(rev.manifest())
@@ -72,7 +72,7 @@ gulp.task('svgs', function() {
     .pipe(gulp.dest('public/assets/svgs'))
     .pipe(svgstore({ inlineSvg: true }))
     .pipe(rename({suffix: '-defs'}))
-    .pipe(gulp.dest('public/assets/svgs/build'))
+    .pipe(gulp.dest('public/assets/dist'))
     .pipe(browserSync.reload({stream:true}));
 });
 
