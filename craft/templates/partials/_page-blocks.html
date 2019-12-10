@@ -43,7 +43,7 @@
 
       <div class="grid spaced">
 
-        <div class="sub-section col-1">
+        <div class="sub-section col-1-2">
           {% if block.sectionContent %}
           <div class="sub-section-content user-content">
             {{ block.sectionContent }}
@@ -98,8 +98,8 @@
           <h2 class="block-title {{ block.headlineStyle }}">{{ block.headline|nl2br }}</h2>
           <p>{{ block.description }}</p>
           {% if block.linkText and (block.internalLink or block.externalLink) %}
-            <p class="inline-links-container">
-              <a href="{{ block.internalLink is not empty ? block.internalLink.first().url : block.externalLink }}" class="inline-link"{{ block.internalLink is empty ? ' target="_blank"' : ''}}><span>{{ block.linkText }}<span class="icon"><svg class="icon-arrow-dotted" role="img"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-dotted"></use></svg></span></span></a>
+            <p class="block-cta">
+              <a href="{{ block.internalLink is not empty ? block.internalLink.first().url : block.externalLink }}" class="inline-link"{{ block.internalLink is empty ? ' target="_blank"' : ''}}><span>{{ block.linkText }}</span></a>
             </p>
           {% endif %}
         </div>

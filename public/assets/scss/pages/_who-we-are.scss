@@ -3,11 +3,16 @@
 body.who-we-are {
 
   .intro-section {
-    background: $offwhite;
+    background: $white;
   }
-  
+
   .operating-principles {
     background: $yellow;
+    padding-bottom: $global-spacing * 2;
+
+    @include media-md {
+      padding-bottom: 220px;
+    }
 
     .headline-rule span {
       background: $yellow;
@@ -24,19 +29,19 @@ body.who-we-are {
       }
 
       .principle {
-        text-align: center;
+        text-align: left;
         position: relative;
         margin-bottom: #{$vertical-beat * 8};
 
         .principle-icon {
           img {
             max-width: 100px;
+            margin-left: -25px;
           }
         }
 
         h4 {
-          font-size: 14px;
-          @extend .headline-descriptor;
+          @include headline-four;
           margin: #{$global-spacing / 2} 0;
         }
 
@@ -50,6 +55,12 @@ body.who-we-are {
           max-width: 50%;
           flex-basis: 50%;
           padding: 0 #{$global-spacing / 2};
+
+          .principle-icon {
+            img {
+              margin-left: 0;
+            }
+          }
         }
 
         @include media-lg {
@@ -59,35 +70,25 @@ body.who-we-are {
       }
     }
 
-    .section-links {
-      margin-top: #{$vertical-beat * 8};
-      
-      h5 {
-        @extend .headline-descriptor;
-      }
+    .who-we-are-nav {
+      margin-top: 20px;
 
       ul {
+        margin: 0;
         padding: 0;
         list-style: none;
-        margin: #{$global-spacing / 2} 0 0;
-        li {
-          line-height: 3;
-        }
-      }
 
-      .inline-link {
-        &:hover {
-          .icon svg {
-            fill: $black;
-          }
+        li {
+          margin-bottom: $vertical-beat;
         }
-        .icon {
-          &::after {
-            background: $black;
+
+        @include media-md {
+          li {
+            display: inline-block;
+            margin-right: $vertical-beat;
           }
         }
       }
     }
   }
-
 }

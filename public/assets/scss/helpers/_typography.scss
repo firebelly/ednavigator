@@ -34,14 +34,24 @@ $font-slab: 'DINNextSlabPro-Light', serif;
   font: normal 18px/25px $font-regular;
 }
 
-.headline-two {
+@mixin headline-two {
   letter-spacing: -.01em;
-  font: normal 28px/30px $font-bold;
+  font: normal 32px/40px $font-bold;
+}
+.headline-two {
+  @include headline-two;
 }
 
+@mixin headline-three {
+  letter-spacing: 0.02em;
+  font: normal 22px/30px $font-slab;
+  @include media-md {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
 .headline-three {
-  letter-spacing: .025em;
-  font: normal 21px/30px $font-slab;
+  @include headline-three;
 }
 
 @mixin headline-four {
@@ -98,9 +108,9 @@ $font-slab: 'DINNextSlabPro-Light', serif;
 
 // Headline with trailing rule
 @mixin headline-rule($color, $background) {
+  @include headline-three;
   color: $color;
   position: relative;
-  @extend .headline-three;
   span {
     z-index: 1;
     position: relative;

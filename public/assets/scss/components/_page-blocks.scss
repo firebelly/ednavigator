@@ -22,7 +22,7 @@ body.page {
   .single-column-section,
   .call-to-action-section {
     + .call-to-action-section {
-      padding-top: 100px;
+      padding-top: $global-spacing * 2;
     }
   }
 

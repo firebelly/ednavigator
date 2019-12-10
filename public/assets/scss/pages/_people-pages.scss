@@ -5,6 +5,10 @@ body.people-page-template {
     background-color: $offwhite;
   }
 
+  .intro-section {
+    background-color: $white;
+  }
+
   // Entry Nav
   .entry-nav {
     @include media-md {
@@ -90,15 +94,15 @@ body.people-page-template {
     }
 
     h4 {
+      @include headline-two;
       color: $yellow-text;
-      @extend .headline-two;
       margin: 0 0 $vertical-beat;
     }
 
     h5 {
-      @extend .headline-descriptor;
+      @include headline-four;
       max-width: #{$global-spacing * 5};
-      margin-bottom: #{$vertical-beat * 3};
+      margin: 0 0 #{$vertical-beat * 3};
     }
 
     .person-description {
@@ -149,7 +153,7 @@ body.page-socios-empresariales {
       h5 {
         color: $yellow;
       }
-      
+
       .person-description {
         max-width: 400px;
       }
@@ -159,7 +163,7 @@ body.page-socios-empresariales {
 
 // Mix Blend Mode Support
 html.backgroundblendmode {
-  body.people-page-template {  
+  body.people-page-template {
     .people-section {
       .person {
         .person-image {
