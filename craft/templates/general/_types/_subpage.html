@@ -9,26 +9,7 @@
 
 {% block content %}
 
-  <section class="intro-section">
-    {% if entry.pageDescription %}
-    <h2 class="page-description">
-      {{ entry.pageDescription }}
-    </h2>
-    {% endif %}
-
-    {% if entry.introSections.introSection %}
-      <div class="intro-sections grid spaced">
-        {% for introSection in entry.introSections.introSection %}
-          <div class="col-1-2">
-            <h4>{{ introSection.sectionTitle }}</h4>
-            <div class="intro-section-content user-content">
-              {{ introSection.sectionContent }}
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-    {% endif %}
-  </section>
+  {% include 'partials/_intro-section.html' %}
 
   {% include 'partials/_page-blocks.html' %}
 

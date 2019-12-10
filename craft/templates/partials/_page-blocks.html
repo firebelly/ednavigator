@@ -86,7 +86,7 @@
       {% if block.introText %}
         <p class="intro-text">{{ block.introText }}</p>
       {% endif %}
-      <p class="call-to-action"><a href="{{ block.actionLinkInternal|length ? block.actionLinkInternal.first().url : block.actionLinkExternal }}" class="button">{{ block.actionText }}</a></p>
+      <p class="call-to-action"><a href="{{ block.actionLinkInternal|length ? block.actionLinkInternal.first().url : block.actionLinkExternal }}" class="button -blue">{{ block.actionText }}</a></p>
     </section>
   {% endif %}
 

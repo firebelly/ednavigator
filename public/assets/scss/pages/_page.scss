@@ -35,28 +35,50 @@ body.page {
   }
 
   .intro-section {
-    padding-top: #{$global-spacing * 2};
+    padding: 0;
 
-    @include media-md {
-      padding-top: #{$global-spacing * 5};
+    > * {
+      padding-left: $global-spacing;
+      padding-right: $global-spacing;
+      @include media-md {
+        padding-left: $global-spacing * 2;
+        padding-right: $global-spacing * 2;
+      }
     }
 
     .page-description {
-      margin: 0;
-      @include headline-one;
+      background-color: $white;
+      padding-bottom: $global-spacing;
+      padding-top: #{$global-spacing * 2};
+
+      h2 {
+        @include headline-one;
+        margin: 0;
+      }
+
       @include media-md {
-        min-width: 500px;
-        max-width: 750px;
+        padding-bottom: 85px;
+        padding-top: #{$global-spacing * 5};
+
+        h2 {
+          min-width: 500px;
+          max-width: 750px;
+        }
       }
     }
 
     .intro-sections {
-      margin-top: $global-spacing;
+      background-color: $offwhite;
+      padding-top: $global-spacing;
+      padding-bottom: $global-spacing;
+
+      > div + div {
+        margin-top: $global-spacing;
+      }
 
       h4 {
-        color: $yellow-text;
-        @extend .headline-two;
-        -webkit-font-smoothing: antialiased;
+        @include headline-two;
+        margin: 0 0 30px;
       }
 
       .intro-section-content {
@@ -65,8 +87,18 @@ body.page {
           margin-top: 0;
         }
       }
-    }
 
+      @include media-md {
+        padding-top: 85px;
+        padding-bottom: $global-spacing * 2;
+      }
+
+      @include media-lg {
+        > div + div {
+          margin-top: 0;
+        }
+      }
+    }
   }
 }
 
