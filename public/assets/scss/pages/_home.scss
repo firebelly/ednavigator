@@ -359,43 +359,71 @@ body.home {
         height: 100%;
       }
 
+      .block-title a {
+        &:hover,
+        &:focus {
+          color: $blue;
+        }
+      }
+
       .post-image-container {
         position: relative;
         top: -$global-spacing;
         left: -$global-spacing;
         width: calc(100% + #{$global-spacing * 2});
-        &::before {
-          top: 0;
-          left: 0;
-          bottom: 0;
-          width: 100%;
-          opacity: .4;
-          content: '';
-          position: absolute;
-          background-color: #AAABAC;
-        }
-        .post-image {
+        padding-bottom: calc(38.3333% + #{$global-spacing});
+
+        &.logo-image {
           height: 0;
-          background-size: cover;
-          padding-bottom: 38.3333%;
-          background-position: center;
-          &::before,
-          &::after {
+          .post-image {
+            top: 50%;
+            max-height: 75px;
+            position: absolute;
+            left: $global-spacing;
+            transform: translateY(-50%);
+          }
+        }
+
+        &:not(.logo-image) {
+          height: 0;
+          &::before {
+            top: 0;
+            left: 0;
+            bottom: 0;
+            z-index: 1;
+            width: 100%;
+            opacity: .4;
+            content: '';
+            position: absolute;
+            background-color: #AAABAC;
+          }
+
+          .post-image {
             top: 0;
             left: 0;
             bottom: 0;
             width: 100%;
-            content: '';
             position: absolute;
-          }
-          &::before {
-            mix-blend-mode: color;
-            background-color: $tan;
-          }
-          &::after {
-            opacity: .2;
-            background-color: #676A6D;
-            mix-blend-mode: color-burn;
+            background-size: cover;
+            background-position: center;
+            &::before,
+            &::after {
+              top: 0;
+              left: 0;
+              bottom: 0;
+              width: 100%;
+              content: '';
+              position: absolute;
+            }
+            &::before {
+              mix-blend-mode: color;
+              background-color: $tan;
+            }
+            &::after {
+              opacity: .2;
+              background-color: #676A6D;
+              mix-blend-mode: color-burn;
+            }
           }
         }
       }
@@ -407,6 +435,13 @@ body.home {
           top: -$global-spacing * 2;
           left: -$global-spacing * 2;
           width: calc(100% + #{$global-spacing * 4});
+          padding-bottom: calc(38.3333% + #{$global-spacing * 2});
+
+          &.logo-image {
+            .post-image {
+              left: $global-spacing * 2;
+            }
+          }
         }
       }
 

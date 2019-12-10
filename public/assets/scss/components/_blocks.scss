@@ -38,6 +38,11 @@
     &.quote {
       @extend .headline-quote;
     }
+
+    a {
+      text-decoration: none;
+      transition: color .2s ease-out;
+    }
   }
 
   .block-cta {
