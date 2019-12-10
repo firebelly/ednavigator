@@ -59,67 +59,6 @@ body.page {
     }
   }
 
-  // Feature Sections
-  .feature-section {
-    background-color: $white;
-
-    > div {
-      padding: $global-spacing;
-
-      @include media-lg {
-        padding: $global-spacing * 2;
-      }
-    }
-
-    .section-intro {
-      @include media-lg {
-        padding-top: $global-spacing * 4;
-      }
-    }
-
-    .features {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-
-      .feature {
-        + .feature {
-          margin-top: $vertical-beat * 3;
-        }
-
-        .feature-icon {
-          margin-left: $vertical-beat;
-          margin-bottom: $vertical-beat * 3;
-
-          img {
-            max-width: $global-spacing;
-          }
-        }
-
-        .feature-text {
-          h5 {
-            margin: 0;
-          }
-        }
-
-        @include media-md {
-          display: flex;
-          + .feature {
-            margin-top: $vertical-beat * 4;
-          }
-
-          .feature-icon {
-            margin: 0;
-          }
-
-          .feature-text {
-            margin-left: $global-spacing;
-          }
-        }
-      }
-    }
-  }
-
   .stepped-process {
     background: $white;
 
