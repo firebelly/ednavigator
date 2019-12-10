@@ -35,21 +35,14 @@ body.page {
   }
 
   .intro-section {
-    padding: 0;
+    background-color: $white;
+    padding: #{$global-spacing * 2} $global-spacing $global-spacing;
 
-    > * {
-      padding-left: $global-spacing;
-      padding-right: $global-spacing;
-      @include media-md {
-        padding-left: $global-spacing * 2;
-        padding-right: $global-spacing * 2;
-      }
+    @include media-md {
+      padding: #{$global-spacing * 5} #{$global-spacing * 2} #{$global-spacing * 2};
     }
 
     .page-description {
-      background-color: $white;
-      padding-bottom: $global-spacing;
-      padding-top: #{$global-spacing * 2};
 
       h2 {
         @include headline-one;
@@ -58,7 +51,6 @@ body.page {
 
       @include media-md {
         padding-bottom: 85px;
-        padding-top: #{$global-spacing * 5};
 
         h2 {
           min-width: 500px;
@@ -68,9 +60,7 @@ body.page {
     }
 
     .intro-sections {
-      background-color: $offwhite;
       padding-top: $global-spacing;
-      padding-bottom: $global-spacing;
 
       > div + div {
         margin-top: $global-spacing;
@@ -90,7 +80,6 @@ body.page {
 
       @include media-md {
         padding-top: 85px;
-        padding-bottom: $global-spacing * 2;
       }
 
       @include media-lg {
