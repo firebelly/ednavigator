@@ -5,4 +5,8 @@
     @include headline-four;
     margin: 0 0 $vertical-beat;
   }
+  .section-headline {
+    @include headline-two;
+    margin-top: 0;
+  }
 }

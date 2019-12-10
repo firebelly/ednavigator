@@ -33,8 +33,8 @@
 {% if entry.whatWeDoHeadline %}
   <div id="what-we-do" class="what-we-do feature-section grid section">
     <div class="section-intro col-1-2">
-      <h4 class="section-label">What We Do</h4>
-      <h5 class="section-title">{{ entry.whatWeDoHeadline }}</h5>
+      <h4 class="section-title">What We Do</h4>
+      <h5 class="section-headline">{{ entry.whatWeDoHeadline }}</h5>
       {% if entry.whatWeDoText %}
         <div class="section-description">
           {{ entry.whatWeDoText }}
@@ -86,8 +86,8 @@
 {% if entry.sustainableResultsHeadline %}
   <div id="what-we-do" class="what-we-do feature-section grid section">
     <div class="section-intro col-1-2">
-      <h4 class="section-label">Sustainable Results</h4>
-      <h5 class="section-title">{{ entry.sustainableResultsHeadline }}</h5>
+      <h4 class="section-title">Sustainable Results</h4>
+      <h5 class="section-headline">{{ entry.sustainableResultsHeadline }}</h5>
       {% if entry.sustainableResultsText %}
         <div class="section-description">
           {{ entry.sustainableResultsText }}
@@ -167,61 +167,6 @@
   </div>
 {% endif %}
 
-{% set featuredPosts = entry.featuredNews %}
-{% if featuredPosts|length %}
-  <div class="featured-news section grid block-grid" id="featured-news">
-    <div class="featured-news-carousel" id="featuredNewsCarousel">
-      {% for featuredPost in featuredPosts %}
-        <article class="{{ featuredPost.type }} block">
-          {% if featuredPost.type == "blogResourcePost" %}
-            {% set featuredEntry = featuredPost.postEntry.last() %}
-            {% if featuredEntry.type == 'blogEntry' %}
-              {% set postType = 'Blog Post' %}
-              {% set postImage = featuredEntry.blogBannerImage.last() %}
-            {% elseif featuredEntry.type == 'resources' %}
-              {% set postType = 'Resource Post' %}
-              {% set postImage = featuredEntry.resourcesBannerImage.last() %}
-            {% endif %}
-            <div class="-inner">
-              {% if postImage|length %}
-                {% set transformedImage = craft.imager.transformImage(postImage, { width: 1200, ratio: 60/23 }) %}
-                <div class="post-image-container">
-                  <div class="post-image" style="background-image:url('{{ transformedImage.getUrl() }}');"></div>
-                </div>
-              {% endif %}
-              <h4 class="block-descriptor">{{ postType }}</h4>
-              <h2 class="block-title"><a href="{{ featuredEntry.url }}">{{ featuredEntry.title }}</a></h2>
-              <p>{{ featuredEntry.excerpt|raw }}</p>
-            </div>
-            <p class="block-cta"><a href="{{ featuredEntry.url }}" class="inline-link borderless -blue"><span>Read More</span></a></p>
-          {% else %}
-            <div class="-inner">
-              {% if featuredPost.articleImage|length %}
-                {% set articleImage = featuredPost.articleImage.last() %}
-                {% if featuredPost.logoTreatment == 1 %}
-                  {% set treatedImage = craft.imager.transformImage(articleImage, { height: 150, effects: { grayscale: true } }) %}
-                  <div class="post-image-container{{ featuredPost.logoTreatment == 1 ? ' logo-image' : '' }}">
-                    <img class="post-image" src="{{ treatedImage.getUrl() }}">
-                  </div>
-                {% else %}
-                  <div class="post-image-container">
-                  {% set transformedImage = craft.imager.transformImage(articleImage, { width: 1200, ratio: 60/23 }) %}
-                    <div class="post-image" style="background-image:url('{{ transformedImage.getUrl('hero') }}');"></div>
-                  </div>
-                {% endif %}
-              {% endif %}
-              <h4 class="block-descriptor">EdNavigator in the news</h4>
-              <h2 class="block-title"><a href="{{ featuredPost.articleUrl }}" target="_blank">{{ featuredPost.articleTitle }}</a></h2>
-              {% if featuredPost.articleDescription %}
-                <p>{{ featuredPost.articleDescription }}</p>
-              {% endif %}
-            </div>
-            <p class="block-cta"><a href="{{ featuredPost.articleUrl }}" target="_blank" class="text-link -blue"><span>View article</span> <svg class="icon-linkout" aria-hidden="true" role="presentation"><use xlink:href="#icon-linkout"/></svg></a></p>
-          {% endif %}
-        </article>
-      {% endfor %}
-    </div>
-  </div>
-{% endif %}
+{% include 'partials/_featured-news.html' with { carousel: true } %}
 
 {% endblock %}

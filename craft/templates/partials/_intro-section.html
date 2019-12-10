@@ -1,17 +1,21 @@
-<section class="intro-section">
-  <div class="page-description">
-    <h2>{{ entry.pageDescription }}</h2>
-  </div>
-  {% if entry.introSections.introSection|length %}
-    <div class="intro-sections grid spaced">
-      {% for introSection in entry.introSections.introSection %}
-        <div class="col-1-2">
-          <h4>{{ introSection.sectionTitle }}</h4>
-          <div class="intro-section-content user-content">
-            {{ introSection.sectionContent }}
+{% if entry.pageDescription or entry.introSections.introSection|length %}
+  <section class="intro-section{{ entry.pageDescription ? ' with-description' : '' }}">
+    {% if entry.pageDescription %}
+      <div class="page-description">
+        <h2>{{ entry.pageDescription }}</h2>
+      </div>
+    {% endif %}
+    {% if entry.introSections.introSection|length %}
+      <div class="intro-sections grid spaced">
+        {% for introSection in entry.introSections.introSection %}
+          <div class="col-1-2">
+            <h4>{{ introSection.sectionTitle }}</h4>
+            <div class="intro-section-content user-content">
+              {{ introSection.sectionContent }}
+            </div>
           </div>
-        </div>
-      {% endfor %}
-    </div>
-  {% endif %}
-</section>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </section>
+{% endif %}

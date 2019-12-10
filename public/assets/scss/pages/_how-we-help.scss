@@ -140,3 +140,41 @@ body.how-we-help {
     }
   }
 }
+
+// Families + Students Page
+body.page-families-students {
+  .page-banner {
+    .banner-headline {
+      color: $orange;
+    }
+  }
+
+  .two-column-section.content-block {
+    background-color: $orange;
+
+    .sub-section {
+      h4 {
+        color: $black;
+      }
+    }
+  }
+}
+
+// Families + Students Page
+body.page-employers {
+  .page-banner {
+    .banner-headline {
+      color: $green;
+    }
+  }
+
+  .two-column-section.content-block {
+    background-color: $green;
+
+    .sub-section {
+      h4 {
+        color: $black;
+      }
+    }
+  }
+}
