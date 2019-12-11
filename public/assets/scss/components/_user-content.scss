@@ -1,6 +1,14 @@
 // User Content
 
 .user-content {
+  a {
+    color: $blue;
+    transition: color .2s ease-out;
+    &:hover {
+      color: $yellow-text;
+    }
+  }
+
   ul, ol {
     padding: 0;
     margin: #{$vertical-beat * 3} 0;
@@ -12,7 +20,7 @@
       &::before {
         position: absolute;
       }
-    }    
+    }
   }
 
   ul {

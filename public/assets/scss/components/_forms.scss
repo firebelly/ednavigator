@@ -1,7 +1,8 @@
 // Forms
 
 form {
-  input {
+  input,
+  textarea {
     width: 100%;
     color: $black;
     padding: 10px 0;
@@ -20,17 +21,16 @@ form {
        color: $black;
     }
     &::-moz-placeholder {  /* Firefox 19+ */
-       color: $black;  
+       color: $black;
     }
-    &:-ms-input-placeholder {  
-       color: $black;  
+    &:-ms-input-placeholder {
+       color: $black;
     }
   }
 
   .form-group {
-    margin-top: #{$vertical-beat * 2};
-    &:first-of-type {
-      margin-top: 0;
+    + .form-group {
+      margin-top: #{$vertical-beat * 2};
     }
 
     [class*='col-'] {
@@ -50,6 +50,26 @@ form {
         [class*='col-'] {
           padding: 0 #{$global-spacing / 2};
         }
+      }
+    }
+  }
+
+  // Reuired Styles
+  .input-wrap.required {
+    position: relative;
+    &::after {
+      @include headline-four;
+      top: 0;
+      color: $blue;
+      position: absolute;
+      content: '*Required';
+      right: $vertical-beat;
+    }
+  }
+  @include media-lg {
+    .form-group.spaced {
+      .input-wrap.required::after {
+        right: #{($global-spacing / 2) + $vertical-beat};
       }
     }
   }
@@ -78,6 +98,14 @@ form {
         fill: $brand-primary;
       }
     }
+  }
+
+  textarea {
+    max-width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
   }
 
   .submit {
@@ -199,10 +227,10 @@ form {
        color: $gray-dark;
     }
     &::-moz-placeholder {  /* Firefox 19+ */
-       color: $gray-dark;  
+       color: $gray-dark;
     }
-    &:-ms-input-placeholder {  
-       color: $gray-dark;  
+    &:-ms-input-placeholder {
+       color: $gray-dark;
     }
   }
 

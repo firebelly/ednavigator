@@ -9,4 +9,7 @@
     @include headline-two;
     margin-top: 0;
   }
+  .section-cta {
+    margin: $global-spacing 0 0;
+  }
 }
