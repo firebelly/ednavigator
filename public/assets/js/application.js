@@ -57,6 +57,7 @@ var FB = (function($) {
     _initShareLinks();
     _initVideoPlayers();
     _initNewsletterForm();
+    _initFormFunctions();
     _snapScrolling();
     _initBlogFilter();
     _initGAEventTracking();
@@ -491,8 +492,14 @@ var FB = (function($) {
       }
     });
 
-
   }
+
+  function _initFormFunctions() {
+    $('#get-started #fromName').on('keyup', function() {
+      $('#messageFrom').val($(this).val());
+    });
+  }
+
   function _snapScrolling() {
     if ($('.snap-section').length) {
 

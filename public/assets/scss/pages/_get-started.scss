@@ -16,9 +16,7 @@ body.page-get-started {
     textarea {
       padding-top: 0;
       color: $gray-dark;
-      padding-bottom: 29px;
-      letter-spacing: 0.02em;
-      font: normal 22px/30px $font-slab;
+      padding-bottom: 19px;
 
       &::placeholder {
         color: $gray-dark;
@@ -47,6 +45,10 @@ body.page-get-started {
       input {
         width: auto;
       }
+    }
+
+    #honeyhoneyhoney {
+      display: none;
     }
 
     @include media-lg {

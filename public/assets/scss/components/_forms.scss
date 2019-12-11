@@ -164,6 +164,19 @@ form {
     padding: 0;
     list-style: none;
   }
+
+  // Thank you message and states
+  #thanks {
+    display: none;
+  }
+  &.success {
+    > .-inner {
+      display: none;
+    }
+    #thanks {
+      display: block;
+    }
+  }
 }
 
 .search-wrap {

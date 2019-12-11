@@ -96,6 +96,10 @@ body.home {
         bottom: 0;
         width: auto;
         padding: 0 #{$vertical-beat * 7} #{$vertical-beat * 8} 0;
+
+        .button {
+          min-width: 300px;
+        }
       }
     }
   }

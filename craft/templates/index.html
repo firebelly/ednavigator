@@ -1,5 +1,6 @@
 {% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
+{% set locale = craft.i18n.getCurrentLocale() %}
 {% set bodyClass = 'home' %}
 
 {% block content %}
@@ -145,7 +146,11 @@
   {% endfor %}
 </div>
 
-{% set partnersEntry = craft.entries.section('whoWeAre').slug('our-partners').first() %}
+{% if entry.locale == 'en_us' %}
+  {% set partnersEntry = craft.entries.section('whoWeAre').slug('our-partners').first() %}
+{% else  %}
+  {% set partnersEntry = craft.entries.section('whoWeAre').slug('socios-empresariales').first() %}
+{% endif %}
 {% set partners = partnersEntry.people.person.order('RAND()').limit(6) %}
 
 {% if partners|length %}

@@ -261,7 +261,8 @@ body.sidebar-right {
               }
             }
 
-            &:hover {
+            &:hover,
+            &:focus {
               .subnav {
                 display: block;
               }
@@ -269,6 +270,12 @@ body.sidebar-right {
 
             .subnav-toggle {
               display: none;
+            }
+
+            > a {
+              &:focus + .subnav {
+                display: block;
+              }
             }
           }
         }
