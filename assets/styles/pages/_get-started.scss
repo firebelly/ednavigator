@@ -1,0 +1,71 @@
+// Get Started Page
+
+body.get-started-template {
+  .page-banner {
+    .banner-headline {
+      color: $blue;
+    }
+  }
+
+  .form-section {
+    background-color: $white;
+  }
+
+  .get-started-form {
+    input:not([type=submit]),
+    textarea {
+      padding-top: 0;
+      color: $gray-dark;
+      padding-bottom: 19px;
+
+      &::placeholder {
+        color: $gray-dark;
+      }
+    }
+
+    .form-group {
+      + .form-group {
+        margin-top: 37px;
+      }
+
+      &.spaced {
+        @include media-lg {
+          padding: 0;
+          margin-left: -$global-spacing;
+          width: calc(100% + #{$global-spacing * 2});
+          > * {
+            padding: 0 $global-spacing;
+          }
+        }
+      }
+    }
+
+    .submit-container {
+      text-align: center;
+      input {
+        width: auto;
+      }
+    }
+
+    #honeyhoneyhoney {
+      display: none;
+    }
+
+    @include media-lg {
+      max-width: 80%;
+    }
+  }
+
+  .individual-memberships {
+    padding: $global-spacing;
+    background-color: $yellow;
+
+    @include media-md {
+      padding: $global-spacing * 2;
+
+      > .-inner {
+        padding-right: $global-spacing * 2;
+      }
+    }
+  }
+}

@@ -1,28 +1,37 @@
-craft/storage/runtime/*
-craft/storage/backups/*
-craft/storage/userphotos/*
-public/assets/bower_components/*
-public/uploads/*
-public/downloads/*
-craft/app
-
+/.env
+/.idea
+/vendor
+!assets/scss/vendor
 .DS_Store
-.scss-cache/*
-.gulp-scss-cache/*
-node_modules/*
-logs/*
-.env
-_env.php
+
+# Build
+# from yarn/webpack assets
+.cache-loader
+dist
+node_modules
+npm-debug.log
+yarn-error.log
+resources/assets/config-local.json
+
+# Letsencrypt
+.well-known
+
+# Fabfile
 *.pyc
 
-public/assets/dist/css/application.css
-public/assets/dist/js/application.js
-public/assets/dist/js/maps/application.js.map
-public/assets/dist/css/maps/application.css.map
+# Bower
+bower_components
 
-public/.well-known
-public/.htaccess
-vendor/*
+# Licensed fonts
+web/assets/fonts
 
-# random stuff
-.notes
+# Treated images
+web/imager
+
+# Ignore unrevisioned assets
+web/assets/dist/css/application.css
+web/assets/dist/js/application.js
+
+# Webfaction-specific PHP settings
+web/php.ini
+

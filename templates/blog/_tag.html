@@ -1,0 +1,37 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set tag = craft.tags.slug(tag).one() %}
+
+{% set title = "Tag: "~tag.title %}
+{% set bodyClass = 'page page-blog page-tag' %}
+
+{% block content %}
+
+  <section class="intro-section">
+    <div class="grid">
+      <h2 class="page-description">
+        Posts tagged with “{{ tag.title }}”
+      </h2>
+
+      {% include "blog/_subscribe" %}
+    </div>
+
+    {% include "blog/_filter" %}
+
+  </section>
+
+  {% set articles = craft.entries.relatedTo(tag).orderBy('title') %}
+
+  <div class="article-list">
+
+    {% if articles | length %}
+      {% for article in articles.all() %}
+        {% include "blog/_article" %}
+      {% endfor %}
+    {% else %}
+      <p>No entries could be found with that tag.</p>
+    {% endif %}
+
+  </div>
+
+{% endblock %}

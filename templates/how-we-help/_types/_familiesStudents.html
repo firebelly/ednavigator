@@ -1,0 +1,20 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set title = entry.title %}
+{% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
+{% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
+
+{% set bodyClass = 'single page families-students-template page-' ~ entry.slug %}
+{% set bodyId = entry.slug %}
+
+{% block content %}
+
+  {% include 'partials/_banner-page-header.html' %}
+
+  {% include 'partials/_intro-section.html' %}
+
+  {% include 'partials/_page-blocks.html' %}
+
+  {% include 'partials/_featured-news.html' %}
+
+{% endblock %}

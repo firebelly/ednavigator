@@ -1,0 +1,29 @@
+{% set langSwitcher = craft.app.sites.getAllSites() %}
+<ul class="locale">
+  {% for lang in langSwitcher %}
+    {% set locale = craft.app.i18n.getLocaleById(lang.language|slice(0,2)) %}
+    {# Set homepage as default #}
+    {% set url = lang.getBaseUrl() %}
+    {# Entry is defined #}
+    {% if entry is defined %}
+      {# Check if that entry exists in other locale #}
+      {% set otherLocaleEntry = craft.entries.siteId(lang.id).id(entry.id).one() %}
+      {% if otherLocaleEntry %}
+        {% set url = otherLocaleEntry.url %}
+      {% endif %}
+    {# Category is defined #}
+    {% elseif category is defined %}
+      {# Check if that entry exists in other locale #}
+      {% set otherLocaleCat = craft.categories.siteId(lang.id).id(category.id).one() %}
+      {% if otherLocaleCat %}
+        {% set url = otherLocaleCat.url %}
+      {% endif %}
+    {% endif %}
+    <li{% if lang.id == currentSite.id %} class="current-locale"{% endif %}>
+      <a href="{{url}}">{{ locale.displayName }}</a>
+      {% if not loop.last %}
+        <span>/</span>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

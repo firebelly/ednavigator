@@ -1,0 +1,22 @@
+  {% if excerpt is defined %}
+  <meta name="description" content="{{ excerpt }}">
+  {% elseif seoDescription is defined %}
+  <meta name="description" content="{{ seoDescription }}">
+  {% elseif globalSeo.seoDescription|length %}
+  <meta name="description" content="{{ globalSeo.seoDescription }}">
+  {% endif %}
+  <meta property="og:title" content="{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}" />
+  {% if bannerImage is defined %}
+    <meta property="og:image" content="{{ url(siteUrl ~ bannerImage.getUrl()|trim('/')) }}" />
+  {% elseif globalSeo.seoImage is defined %}
+    <meta property="og:image" content="{{ url(siteUrl ~ globalSeo.seoImage.one().getUrl('hero')|trim('/')) }}" />
+  {% endif %}
+  {% if excerpt is defined %}
+  <meta property="og:description" content="{{ excerpt }}">
+  {% elseif seoDescription is defined %}
+  <meta property="og:description" content="{{ seoDescription }}">
+  {% elseif globalSeo.seoDescription|length %}
+  <meta property="og:description" content="{{ globalSeo.seoDescription }}">
+  {% endif %}
+  <meta property="og:url" content="{{ craft.app.request.absoluteUrl }}">
+  <meta property="fb:app_id" content="1675583716017779">

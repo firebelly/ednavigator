@@ -1,0 +1,21 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set title = entry.title %}
+{% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
+{% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
+
+{% set bodyClass = 'single-post page page-' ~ entry.slug %}
+{% set bodyId = entry.slug ~ '-page' %}
+
+{% block content %}
+
+  {% include 'partials/_intro-section.html' %}
+
+  {% if entry.body %}
+  <section class="main-content entry-content">
+    {{ entry.body }}
+  </section>
+  {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% set mainNav = craft.entries.section('navigation').slug('main').one().children().level(2) %}
+{% set secondaryNav = craft.entries.section('navigation').slug('secondary').one().children().level(2) %}
+{% set getStarted = craft.entries().section('getStarted').one() %}
+
+<div class="primary-nav">
+  {% if mainNav|length %}
+    <ul class="main-nav">
+      {% nav item in mainNav.all() %}
+        {% set mappedEntry = item.mappedEntry.one() %}
+        {% set mappedEntryChildren = mappedEntry.children().level(2) %}
+        {% if mappedEntryChildren|length %}
+          <li class="has-children{{ entry is defined and craft.app.request.getSegment(1) == mappedEntry.slug ? ' current' : '' }}">
+            <a href="{{ mappedEntry.url }}" data-active-toggle>{{ mappedEntry.title }}</a>
+            <ul class="subnav">
+              {% for child in mappedEntryChildren.all() %}
+                <li{{ entry is defined and entry.slug == child.slug or craft.app.request.getSegment(2) == child.slug ? ' class="current"' : '' }}><a href="{{ child.url }}">{{ child.title }}</a></li>
+              {% endfor %}
+              <svg class="icon icon-nav-arrow" aria-hidden="true" role="presentation"><use xlink:href="#icon-nav-arrow"/></svg>
+            </ul>
+          </li>
+        {% else %}
+          <li class="{{ entry is defined and craft.app.request.getSegment(1) == mappedEntry.slug ? ' current' : '' }}">
+            <a href="{{ mappedEntry.url }}">{{ mappedEntry.title }}</a>
+          </li>
+        {% endif %}
+      {% endnav %}
+    </ul>
+  {% endif %}
+
+  {% if secondaryNav|length %}
+    <ul class="secondary-nav">
+      {% nav item in secondaryNav.all() %}
+        {% set mappedEntry = item.mappedEntry.one() %}
+        <li{{ entry is defined and entry.slug == mappedEntry.slug or craft.app.request.getSegment(1) == mappedEntry.slug or craft.app.request.getSegment(2) == mappedEntry.slug ? ' class="current"' : '' }}>
+          <a href="{{ mappedEntry.url }}">{{ mappedEntry.title }}</a>
+        </li>
+      {% endnav %}
+    </ul>
+  {% endif %}
+</div>
+
+<div class="utility-nav">
+  {% if getStarted %}
+    <a href="{{ getStarted.url }}" class="get-started-link button -blue">{{ getStarted.title }}</a>
+  {% endif %}
+
+  {% include 'partials/_locale-switcher.html' %}
+</div>

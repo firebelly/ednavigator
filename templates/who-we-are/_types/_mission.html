@@ -1,0 +1,45 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set title = entry.title %}
+{% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
+{% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
+
+{% set navEntries = craft.entries.section(entry.section).level(entry.level) %}
+
+{% set bodyClass = 'single page who-we-are' %}
+{% set bodyId = 'who-we-are-page' %}
+
+{% block content %}
+
+  {% include 'partials/_intro-section.html' %}
+
+  <section class="operating-principles section">
+    <h3 class="headline-rule"><span>{{ entry.principlesSectionLabel }}</span></h3>
+    <div class="principles grid spaced">
+      {% for principle in entry.principles.all() %}
+        <div class="principle col-1-3">
+          <div class="principle-icon">
+            <img src="{{ principle.principleIcon.one().getUrl() }}">
+          </div>
+          <h4>{{ principle.principleLabel }}</h4>
+          <div class="principle-content user-content">
+            {{ principle.principleDescription }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    {% if navEntries|length %}
+      <nav class="who-we-are-nav">
+        <h4 class="section-title">Learn More About</h4>
+        <ul>
+          {% for navEntry in navEntries.all() if navEntry.slug != entry.slug %}
+            <li><a href="{{ navEntry.url }}" class="inline-link"><span>{{ navEntry.title }}</span></a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endif %}
+  </section>
+
+  {% include 'partials/_page-blocks.html' %}
+
+{% endblock %}

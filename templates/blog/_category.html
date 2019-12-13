@@ -1,0 +1,34 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set limit = null %}
+{% set params = { limit: limit, relatedTo: category } %}
+
+{% set title = "Blog" %}
+{% set bodyClass = 'page page-blog page-category' %}
+
+{% block content %}
+
+  <section class="intro-section">
+    <div class="grid">
+      <h2 class="page-description">
+        {{ 'category' | t | capitalize }}:<br> {{ category.title }}
+      </h2>
+
+      {% include "blog/_subscribe" %}
+    </div>
+
+    {% include "blog/_filter" %}
+
+  </section>
+
+  {% set articles = craft.entries(params) %}
+
+  <div class="article-list">
+
+    {% for article in articles.all() %}
+      {% include "blog/_article" %}
+    {% endfor %}
+
+  </div>
+
+{% endblock %}

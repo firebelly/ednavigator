@@ -1,0 +1,143 @@
+{% for block in entry.pageBlocks.all() %}
+
+  {% if block.type == "twoColumnSection" %}
+    <section class="two-column-section content-block page-block {{ block.sectionColor }}">
+      {% if block.sectionTitle %}
+      <h3 class="headline-rule"><span>{{ block.sectionTitle }}</span></h3>
+      {% endif %}
+
+      <div class="grid spaced">
+
+        <div class="sub-section col-1-2">
+          {% if block.leftColumnTitle %}
+          <h4>{{ block.leftColumnTitle }}</h4>
+          {% endif %}
+          {% if block.leftColumnContent %}
+          <div class="sub-section-content user-content">
+            {{ block.leftColumnContent }}
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="sub-section col-1-2">
+          {% if block.rightColumnTitle %}
+          <h4>{{ block.rightColumnTitle }}</h4>
+          {% endif %}
+          {% if block.rightColumnContent %}
+          <div class="sub-section-content user-content">
+            {{ block.rightColumnContent }}
+          </div>
+          {% endif %}
+        </div>
+
+      </div>
+
+    </section>
+  {% endif %}
+
+  {% if block.type == "singleColumnSection" %}
+    <section class="single-column-section content-block page-block">
+      {% if block.sectionTitle %}
+      <h3 class="headline-rule"><span>{{ block.sectionTitle }}</span></h3>
+      {% endif %}
+
+      <div class="grid spaced">
+
+        <div class="sub-section col-1-2">
+          {% if block.sectionContent %}
+          <div class="sub-section-content user-content">
+            {{ block.sectionContent }}
+          </div>
+          {% endif %}
+        </div>
+
+      </div>
+
+    </section>
+  {% endif %}
+
+  {% if block.type == "steppedProcess" %}
+    <section class="stepped-process page-block">
+      {% if block.sectionTitle %}
+      <h3 class="headline-rule"><span>{{ block.sectionTitle }}</span></h3>
+      {% endif %}
+      <div class="steps grid spaced">
+        {% for step in block.steps %}
+          <div class="step col-1-{{ block.steps|length }}">
+            {% if not loop.last %}
+              <svg class="icon-arrow-dotted" role="img"><use xlink:href="#icon-arrow-dotted" /></svg>
+            {% endif %}
+            <h5 class="step-number">{{ loop.index }}</h5>
+            <h4>{{ step.stepLabel }}</h4>
+            <div class="step-content user-content">
+              {{ step.stepContent|slice(0, 250) }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  {% if block.type == "callToAction" %}
+    <section class="call-to-action-section page-block">
+      {% if block.sectionTitle %}
+        <h4>{{ block.sectionTitle }}</h4>
+      {% endif %}
+      {% if block.introText %}
+        <p class="intro-text">{{ block.introText }}</p>
+      {% endif %}
+      <p class="call-to-action"><a href="{{ block.actionLinkInternal|length ? block.actionLinkInternal.one().url : block.actionLinkExternal }}" class="button -blue">{{ block.actionText }}</a></p>
+    </section>
+  {% endif %}
+
+  {% if block.type == "statWithPhoto" %}
+    <section class="stat-with-photo page-block grid block-grid">
+      <div class="image-block col-1-2" style="background-image: url({{ block.image.one().getUrl('hero') }})"></div>
+      <div class="block col-1-2 {{ block.sectionColor }}">
+        <div class="-inner">
+          <h2 class="block-title {{ block.headlineStyle }}">{{ block.headline|nl2br }}</h2>
+          <p>{{ block.description }}</p>
+          {% if block.linkText and (block.internalLink or block.externalLink) %}
+            <p class="block-cta">
+              <a href="{{ block.internalLink is not empty ? block.internalLink.one().url : block.externalLink }}" class="inline-link"{{ block.internalLink is empty ? ' target="_blank"' : ''}}><span>{{ block.linkText }}</span></a>
+            </p>
+          {% endif %}
+        </div>
+    </section>
+  {% endif %}
+
+  {% if block.type == "twoColumnStatWithPhoto" %}
+    <section class="two-column-stat-with-photo{{ block.sectionPhoto|length ? ' with-photo' : '' }} page-block">
+      {% if block.sectionPhoto|length %}
+        {% set transformedImage = craft.imager.transformImage(block.sectionPhoto.one(), { width: 1200, ratio: 60/11 }) %}
+        <div class="section-photo-container">
+          <div class="section-photo treated-image" style="background-image: url('{{ transformedImage.getUrl() }}');"></div>
+        </div>
+      {% endif %}
+      <div class="grid block-grid">
+
+        {% if block.leftColumnStatFigure %}
+          <div class="stat block col-1-2">
+            <div class="-inner">
+              <h2 class="block-stat">{{ block.leftColumnStatFigure }}</h2>
+              {% if block.leftColumnStatDescription %}
+                <p>{{ block.leftColumnStatDescription }}</p>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+        {% if block.rightColumnStatFigure %}
+          <div class="stat block col-1-2">
+            <div class="-inner">
+              <h2 class="block-stat">{{ block.rightColumnStatFigure }}</h2>
+              {% if block.rightColumnStatDescription %}
+                <p>{{ block.rightColumnStatDescription }}</p>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+  {% endif %}
+
+{% endfor %}

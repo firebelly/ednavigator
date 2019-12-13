@@ -1,0 +1,103 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set title = entry.title %}
+{% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
+{% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
+
+{% set bodyClass = 'single page people-page-template page-' ~ entry.slug %}
+{% set bodyId = 'page-' ~ entry.slug %}
+
+{% block content %}
+
+  {% include 'partials/_intro-section.html' %}
+
+  {% if entry.slug == 'navigators-staff' or entry.slug == 'navegantes-personal' or entry.slug == 'our-partners' %}
+
+    {% set staffLocations = craft.categories.group('locations').all() %}
+    {% set activeLocations = [] %}
+    {% for location in staffLocations %}
+      {% for person in entry.people.all() %}
+        {% for location in person.locations.all() %}
+          {% set activeLocations = activeLocations|merge([location.slug]) %}
+        {% endfor %}
+      {% endfor %}
+    {% endfor %}
+
+    <section class="people-section">
+      {% for location in staffLocations if location.slug in activeLocations %}
+
+        <h3 class="headline-rule"><span {{ location.title != 'National' ? ' class="notranslate"' : '' }}>{{ location.title }}</span></h3>
+
+        <div class="people-grid grid spaced">
+          {% set relatedPeople = craft.matrixBlocks().owner(entry).fieldId(36).relatedTo(location) %}
+          {% for person in relatedPeople.all() %}
+
+            {% if person.personImage|length %}
+              {% set image = person.personImage.one().getUrl() %}
+              {% if 'partners' in bodyId or 'socios-empresariales' in bodyId %}
+                {% set transformedImage = craft.imager.transformImage(image, { effects: { colorize: '#a3b0b2' } }) %}
+              {% else %}
+                {% set transformedImage = craft.imager.transformImage(image, { effects: { grayscale: true, modulate: [120, 90, 0] } }) %}
+              {% endif %}
+            {% endif %}
+              <div class="person col-1-2">
+                {% if person.personImage|length %}
+                <div class="person-image">
+                  <img src="{{ transformedImage.getUrl() }}">
+                </div>
+                {% endif %}
+                <div class="person-content">
+                  <h4 class="notranslate">{{ person.personName }}</h4>
+
+                  <h5>{{ person.personTitle }}</h5>
+                  {% if person.personDescription %}
+                    <div class="person-description user-content">
+                      {{ person.personDescription }}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+
+          {% endfor %}
+
+        </div>
+
+      {% endfor %}
+
+  {% else %}
+
+    <section class="people-section">
+      <h3 class="headline-rule"><span>{{ entry.peopleSectionLabel }}</span></h3>
+      <div class="people-grid grid spaced">
+        {% for person in entry.people.all() %}
+        {% if person.personImage|length %}
+          {% set image = person.personImage.one().getUrl() %}
+          {% if 'partners' in bodyId or 'socios-empresariales' in bodyId %}
+            {% set transformedImage = craft.imager.transformImage(image, { effects: { colorize: '#a3b0b2' } }) %}
+          {% else %}
+            {% set transformedImage = craft.imager.transformImage(image, { effects: { grayscale: true, modulate: [120, 90, 0] } }) %}
+          {% endif %}
+        {% endif %}
+          <div class="person col-1-2">
+            {% if person.personImage|length %}
+            <div class="person-image">
+              <img src="{{ transformedImage.getUrl() }}">
+            </div>
+            {% endif %}
+            <div class="person-content">
+              <h4 class="notranslate">{{ person.personName }}</h4>
+
+              <h5>{{ person.personTitle }}</h5>
+              {% if person.personDescription %}
+                <div class="person-description user-content">
+                  {{ person.personDescription }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+    {% endif %}
+  </section>
+{% endblock %}

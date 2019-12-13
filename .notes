@@ -1,0 +1,40 @@
+// Notes
+
+Changes in page names requiring redirects:
+/family-resources -> /resources
+/family-resources/search -> resources/search
+/family-resources/{slug} -> /resources/{slug}
+/family-resources/bundle/{slug} -> /resources/bundle/{slug}
+/family-resources/topic/{slug} -> /resources/topic/{slug}
+/who-we-are/mission -> /who-we-are/our-mission
+/who-we-are/staff -> /who-we-are/navigators-staff
+/how-we-help/our-partners -> /who-we-are/our-partners
+/es/recursos-familiares -> /es/recursos
+/es/family-resources/search -> /es/recursos/search
+/es/resources-familiares/{slug} -> /es/recursos/{slug}
+/es/recursos-familiares/paguete/{slug} -> /es/recursos/paquete/{slug}
+/es/recursos-familiares/tema/{slug} -> /es/recursos/tema/{slug}
+/es/blog/search -> /es/blog/buscar
+/es/quienes-somos/mission -> /quien-somos/nuestra-misión
+/es/quienes-somos/navegantes -> /quien-somos/navegantes-personal
+/es/como-ayudamos/families-students -> /es/como-ayudamos/familias-estudiantes
+/es/como-ayudamos/employers -> /es/como-ayudamos/los-empleadores
+
+// rsync
+// prod to local
+rsync -avz ednavigator@ednavigator.webfactional.com:/home/ednavigator/webapps/ednavigator/public/uploads/ public/uploads/
+
+// local to staging
+rsync -avz public/uploads/ firebelly@firebelly.webfactional.com:/home/firebelly/webapps/ednavigator/public/uploads/
+
+// Task List
+- [X] Homepage
+  - [X] Featured Posts Section
+- [X] Who We Are/How We Help
+- [X] Our Mission
+- [X] Navigators/Leadership/Board
+- [X] Careers
+- [X] Families/Empoloyers
+- [X] Partners
+- [X] Schools
+- [] Get Started Page

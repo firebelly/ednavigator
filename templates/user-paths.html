@@ -1,0 +1,63 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+{% set bodyClass = 'single page page-user-path page-' ~ entry.slug %}
+{% set bodyId = 'page-' ~ entry.slug %}
+{% set userPaths = craft.entries.type('userPathLandingPage') %}
+{% if entry.getPrev(userPaths) %}
+  {% set sibling = entry.getPrev(userPaths) %}
+{% elseif entry.getNext(userPaths) %}
+  {% set sibling = entry.getNext(userPaths) %}
+{% endif %}
+
+{% block content %}
+
+  {% for section in craft.entries.section(entry.section) if section.type != 'userPathLandingPage' %}
+    <div class="page-section snap-section grid block-grid{% if section.pathPageSections|length > 1 %} page-section-carousel{% endif %}" id="pageSection{{ loop.index }}">
+    {% if section.pathPageSections|length > 1 %}
+
+      <div class="page-section-image-carousel" id="pageSectionImageCarousel{{ loop.index }}">
+        {% for block in section.pathPageSections %}
+          <div class="image-block col-1-2" style="background-image: url({{ block.sectionImage.one().getUrl('hero') }})"></div>
+        {% endfor %}
+      </div>
+      <div class="page-section-content-carousel" id="pageSectionContentCarousel{{ loop.index }}">
+        {% for block in section.pathPageSections %}
+          <div class="block col-1-2 {{ block.sectionColor }}">
+            <div class="-inner">
+              <h4 class="block-descriptor">{{ entry.userPathTagline }}</h4>
+              <h2 class="block-title {{ block.sectionTitleStyle }}">{{ block.sectionTitle|nl2br }}</h2>
+              <p>{{ block.sectionText }}</p>
+              {% if block.sectionLinks %}
+                <div class="inline-links-container">{{ block.sectionLinks }}</div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+    {% else %}
+
+      {% for block in section.pathPageSections %}
+        {% if loop.last and block.sectionColor == 'background-yellow' %}
+          {% set sectionColor = 'background-orange' %}
+        {% else %}
+          {% set sectionColor = block.sectionColor %}
+        {% endif %}
+        <div class="page-section-content grid block-grid">
+          <div class="image-block col-1-2" style="background-image: url({{ block.sectionImage.one().getUrl('hero') }})"></div>
+          <div class="page-section-content-carousel block col-1-2 {{ sectionColor }}">
+            <div class="-inner">
+              <h4 class="block-descriptor">{{ entry.userPathTagline }}</h4>
+              <h2 class="block-title {{ block.sectionTitleStyle }}">{{ block.sectionTitle|nl2br }}</h2>
+              <p>{{ block.sectionText }}</p>
+              {% if block.sectionLinks %}
+                <div class="inline-links-container">{{ block.sectionLinks }}</div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+    {% endif %}
+    </div>
+  {% endfor %}
+{% endblock %}

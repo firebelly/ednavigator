@@ -1,0 +1,37 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set title = "Search Results" %}
+{% set bodyClass = 'page page-blog page-search-results' %}
+
+{% set query = craft.request.getParam('q') %}
+{% set results = craft.entries().section('blogEntries').search(query).order('score') %}
+
+{% block content %}
+
+  <section class="intro-section">
+    <div class="grid">
+      <h2 class="page-description">
+        {{ results|length }} result{{ results|length > 1 ? "s" : "" }} found for “{{ query }}”
+      </h2>
+
+      {% include "blog/_subscribe" %}
+    </div>
+
+    {% include "blog/_filter" %}
+
+  </section>
+
+
+  {% if results|length %}
+    <div class="article-list">
+
+      {% for article in results %}
+        {% include "blog/_article" %}
+      {% endfor %}
+
+    </div>
+  {% else %}
+    <p>Your search for “{{ query }}” didn’t return any results.</p>
+  {% endif %}
+
+{% endblock %}

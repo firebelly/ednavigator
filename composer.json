@@ -1,7 +1,37 @@
 {
+  "repositories": [
+    {
+      "type": "path",
+      "url": "plugins/ednavpayments"
+    }
+  ],
   "require": {
-    "vlucas/phpdotenv": "^2.4",
-    "stripe/stripe-php": "4.*",
-    "pelago/emogrifier": "^1.1"
+    "aelvan/imager": "v2.3.0",
+    "clubstudioltd/craft-asset-rev": "6.0.2",
+    "craftcms/cms": "^3.0.0",
+    "craftcms/contact-form": "2.2.5",
+    "craftcms/contact-form-honeypot": "^1.0",
+    "craftcms/redactor": "2.4.0",
+    "firebelly/ednavpayments": "^1.0.0",
+    "mmikkel/cp-field-inspect": "1.0.7",
+    "rias/craft-contact-form-extensions": "1.2.0",
+    "vlucas/phpdotenv": "^3.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "modules\\": "modules/"
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true,
+    "platform": {
+      "php": "7.0"
+    }
+  },
+  "scripts": {
+    "post-root-package-install": [
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ]
   }
 }
