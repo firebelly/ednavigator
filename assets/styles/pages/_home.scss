@@ -203,7 +203,7 @@ body.home {
       position: relative;
       align-items: center;
       justify-content: space-around;
-      width: calc(100% + $global-spacing);
+      width: calc(100% + #{$global-spacing});
       margin: $global-spacing 0 0 -#{$global-spacing / 2};
 
       .partner {

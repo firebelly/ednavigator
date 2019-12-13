@@ -1,6 +1,7 @@
 import Player from '@vimeo/player';
 import Velocity from 'velocity-animate';
 import Flickity from 'flickity-sync';
+import Inputmask from 'inputmask';
 
 import appState from '../util/appState';
 
@@ -510,6 +511,10 @@ export default {
             }
           });
       });
+
+      // Form Masking
+      var phoneMask = new Inputmask("(999) 999-9999");
+      phoneMask.mask($('input[type="tel"]'));
     }
 
     function _snapScrolling() {
