@@ -486,66 +486,47 @@ export default {
     }
 
     function _initFormFunctions() {
+      // Form Masking
+      var phoneMask = new Inputmask("(999) 999-9999");
+      phoneMask.mask($('input[type="tel"]'));
+
       $('#get-started #fromName').on('keyup', function() {
         $('#messageFrom').val($(this).val());
       });
 
-      // $('form.get-started-form').submit(function(ev) {
-      //     // Prevent the form from actually submitting
-      //     ev.preventDefault();
-      //     var data = $(this).serialize();
+      var $getStartedForm = $('#get-started-form');
 
-      //     // Send it to the server
-      //     $.post({
-      //       url: $(this).,
-      //       dataType: 'json',
-      //       data: data,
-      //       success: function(response) {
-      //         if (response.success) {
-      //           $('#thanks').fadeIn();
-      //         } else {
-      //           // response.error will be an object containing any validation errors that occurred, indexed by field name
-      //           // e.g. response.error.fromName => ['From Name is required']
-      //           alert('An error occurred. Please try again.');
-      //         }
-      //       }
-      //     });
-      // });
+      $getStartedForm.submit(function(ev) {
+          // Prevent the form from actually submitting
+          ev.preventDefault();
 
-      // Form Masking
-      var phoneMask = new Inputmask("(999) 999-9999");
-      phoneMask.mask($('input[type="tel"]'));
+          $getStartedForm.find('.submit-container').append('<div class="loading"><svg class="ednavigator-mark" role="img"><use xlink:href="#ednavigator-mark" /></svg></div>');
+          $getStartedForm.find('.button.submit').addClass('disabled');
+
+          // Send it to the server
+          $.post({
+            url: '/',
+            dataType: 'json',
+            data: $(this).serialize(),
+            success: function(response) {
+              $getStartedForm.find('.button.submit').removeClass('disabled');
+              $getStartedForm.find('.submit-container .loading').remove();
+
+              if (response.success) {
+                $getStartedForm.addClass('success');
+                $('#thanks').fadeIn();
+              } else {
+                // response.error will be an object containing any validation errors that occurred, indexed by field name
+                // e.g. response.error.fromName => ['From Name is required']
+                alert('An error occurred. Please try again.');
+              }
+            }
+          });
+      });
     }
 
     function _snapScrolling() {
       if ($('.snap-section').length) {
-
-        // $('body').panelSnap({
-        //   panelSelector: '.snap-section',
-        //   easing: 'swing',
-        //   slideSpeed: 350,
-        //   directionThreshold: 1,
-        //   onActivate: function(panel) {
-        //     if ($(panel).is('.page-section-carousel')) {
-        //       $(panel).find('.page-section-content-carousel').first().focus();
-        //     }
-        //   }
-        // });
-
-        function enableDisable() {
-          if (breakpoint_xl === true) {
-            $('body').panelSnap('enable');
-          } else {
-            $('body').panelSnap('disable');
-          }
-        }
-
-        // Disable on single-column view
-        // enableDisable();
-        // $(window).resize(function() {
-        //   enableDisable();
-        // });
-
         // Add Scroll to next section nav
         $('.snap-section').each(function(i) {
           if (i < $('.snap-section').length - 1) {
@@ -560,7 +541,6 @@ export default {
             });
           }
         });
-
       }
     }
 

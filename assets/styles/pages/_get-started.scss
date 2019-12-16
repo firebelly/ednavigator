@@ -12,11 +12,15 @@ body.get-started-template {
   }
 
   .get-started-form {
+    > .-inner {
+      transition: opacity .35s ease-out;
+    }
+
     input:not([type=submit]),
     textarea {
-      padding-top: 0;
+      padding-top: 13px;
       color: $gray-dark;
-      padding-bottom: 19px;
+      padding-bottom: 6px;
 
       &::placeholder {
         color: $gray-dark;
@@ -42,8 +46,20 @@ body.get-started-template {
 
     .submit-container {
       text-align: center;
+      position: relative;
+      margin-top: $global-spacing;
+
       input {
         width: auto;
+      }
+    }
+
+    input[type=submit] {
+      margin-top: 0;
+      &.disabled {
+        opacity: .25;
+        cursor: pointer;
+        pointer-events: none;
       }
     }
 
@@ -53,6 +69,28 @@ body.get-started-template {
 
     @include media-lg {
       max-width: 80%;
+    }
+
+    // Thank you message and states
+    #thanks {
+      text-align: center;
+      @include headline-three;
+      display: none;
+      color: $orange;
+
+      svg {
+        width: 15px;
+        height: 15px;
+        fill: $orange;
+      }
+    }
+    &.success {
+      > .-inner {
+        opacity: .5;
+      }
+      .button.submit {
+        display: none;
+      }
     }
   }
 

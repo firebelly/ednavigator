@@ -27,55 +27,56 @@
 
   <section class="form-section">
 
-    <form method="post" action="/get-started" class="get-started-form">
-      <div class="form-group input-wrap required">
-        <label for="fromName" class="sr-only">Full Name</label>
-        <input id="fromName" type="text" name="fromName" value="{% if message is defined %}{{ message.fromName }}{% endif %}" placeholder="Full Name" class="required" required>
-        {{ message is defined and message ? errorList(message.getErrors('fromName')) }}
-        <input type="hidden" id="messageFrom" name="message[From]" value="{% if message is defined %}{{ message.fromName }}{% endif %}">
-      </div>
-
-      <div class="form-group grid spaced">
-        <div class="input-wrap required col-1-2">
-          <label for="fromEmail" class="sr-only">Email Address</label>
-          <input id="fromEmail" type="email" name="fromEmail" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}" placeholder="Email Address" class="required" required>
-          {{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
+    <form method="post" action="/get-started" id="get-started-form" class="get-started-form">
+      <div class="-inner">
+        <div class="form-group input-wrap required">
+          <label for="fromName" class="sr-only">Full Name</label>
+          <input id="fromName" type="text" name="fromName" value="{% if message is defined %}{{ message.fromName }}{% endif %}" placeholder="Full Name" class="required" required>
+          {{ message is defined and message ? errorList(message.getErrors('fromName')) }}
+          <input type="hidden" id="messageFrom" name="message[From]" value="{% if message is defined %}{{ message.fromName }}{% endif %}">
         </div>
-        <div class="input-wrap col-1-2">
-          <label for="phone" class="sr-only">Phone Number</label>
-          <input type="tel" value="" name="message[Phone]" id="phone" placeholder="Phone Number">
+
+        <div class="form-group grid spaced">
+          <div class="input-wrap required col-1-2">
+            <label for="fromEmail" class="sr-only">Email Address</label>
+            <input id="fromEmail" type="email" name="fromEmail" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}" placeholder="Email Address" class="required" required>
+            {{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
+          </div>
+          <div class="input-wrap col-1-2">
+            <label for="phone" class="sr-only">Phone Number</label>
+            <input type="tel" value="" name="message[Phone]" id="phone" placeholder="Phone Number">
+          </div>
+        </div>
+
+        <div class="form-group grid spaced">
+          <div class="input-wrap col-1-2">
+            <label for="organization" class="sr-only">Organization Name</label>
+            <input id="organization" name="message[Organization]" type="text" placeholder="Organization Name">
+          </div>
+          <div class="input-wrap col-1-2">
+            <label for="city" class="sr-only">City</label>
+            <input type="text" name="message[City]" id="city" placeholder="City">
+          </div>
+        </div>
+
+        <div class="form-group input-wrap required">
+          <label for="message" class="sr-only">Please leave your message</label>
+          <textarea name="message[body]" id="message" class="required" rows="4" placeholder="Please Leave Your Message" required>{% if message is defined %}{{ message.message }}{% endif %}</textarea>
+          {{ message is defined and message ? errorList(message.getErrors('message')) }}
+        </div>
+
+
+        <div class="form-actions submit-container">
+          {{ csrfInput() }}
+          <input type="hidden" name="action" value="contact-form/send">
+          <input type="hidden" name="subject" value="EdNavigator - Get Started Form Submission">
+          <input type="hidden" name="message[formName]" value="Get Started">
+          <input id="honeyhoneyhoney" name="honeyhoneyhoney" type="text">
+          <input type="submit" value="Get Started" class="button submit -blue">
         </div>
       </div>
 
-      <div class="form-group grid spaced">
-        <div class="input-wrap col-1-2">
-          <label for="organization" class="sr-only">Organization Name</label>
-          <input id="organization" name="message[Organization]" type="text" placeholder="Organization Name">
-        </div>
-        <div class="input-wrap col-1-2">
-          <label for="city" class="sr-only">City</label>
-          <input type="text" name="message[City]" id="city" placeholder="City">
-        </div>
-      </div>
-
-      <div class="form-group input-wrap required">
-        <label for="message" class="sr-only">Please leave your message</label>
-        <textarea name="message[body]" id="message" class="required" rows="4" placeholder="Please Leave Your Message" required>{% if message is defined %}{{ message.message }}{% endif %}</textarea>
-        {{ message is defined and message ? errorList(message.getErrors('message')) }}
-      </div>
-
-
-      <div class="form-actions form-group submit-container">
-        {{ csrfInput() }}
-        <input type="hidden" name="action" value="contact-form/send">
-        <input type="hidden" name="subject" value="EdNavigator - Get Started Form Submission">
-        <input type="hidden" name="message[formName]" value="Get Started">
-        <input id="honeyhoneyhoney" name="honeyhoneyhoney" type="text">
-        <input type="submit" value="Get Started" class="button submit -blue">
-      </div>
-
-      <div id="thanks">Thanks!</div>
-
+      <div id="thanks"><svg class="icon" aria-hidden="true" role="presentation"><use xlink:href="#icon-checkmark"/></svg> Thank you for Submitting!</div>
     </form>
   </section>
 

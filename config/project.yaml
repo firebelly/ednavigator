@@ -115,7 +115,7 @@ categoryGroups:
         hasUrls: true
         uriFormat: 'locations/{slug}'
         template: ''
-dateModified: 1576516027
+dateModified: 1576529719
 email:
   fromEmail: admin@ednavigator.com
   fromName: EdNavigator
@@ -4112,6 +4112,22 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
+    settings:
+      enableDatabase: '1'
+      enableTemplateOverwrite: ''
+      enableConfirmationEmail: ''
+      notificationTemplate: ''
+      confirmationTemplate: ''
+      confirmationSubject: ''
+      recaptcha: ''
+      recaptchaVersion: ''
+      recaptchaSiteKey: ''
+      recaptchaSecretKey: ''
+      recaptchaHideBadge: ''
+      recaptchaDataBadge: bottomright
+      recaptchaTimeout: '5'
+      recaptchaDebug: ''
+      recaptchaThreshold: '0.5'
   contact-form-honeypot:
     edition: standard
     enabled: true
