@@ -8,11 +8,11 @@
 
 {% block content %}
 
-  <section class="intro-section">
+  <section class="intro-section with-headline">
     <div class="grid">
-      <h2 class="page-description">
+      <h1 class="page-headline">
         {{ results|length }} result{{ results|length > 1 ? "s" : "" }} found for “{{ query }}”
-      </h2>
+      </h1>
 
       {% include "blog/_subscribe" %}
     </div>

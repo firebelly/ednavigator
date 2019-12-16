@@ -8,12 +8,10 @@
 
 {% block content %}
 
-  <section class="intro-section">
-
-    <h2 class="page-description">
+  <section class="intro-section with-headline">
+    <h1 class="page-headline">
       {{ results|length }} result{{ results|length > 1 ? "s" : "" }} found for “{{ query }}”
-    </h2>
-
+    </h1>
   </section>
 
   {% include "resources/_filter" %}

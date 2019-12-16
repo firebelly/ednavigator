@@ -46,7 +46,8 @@
       }
 
       .feature-text {
-        h5 {
+        .feature-label {
+          @include headline-four;
           margin: 0;
         }
       }
@@ -170,7 +171,7 @@ body.page {
     }
 
     .page-headline {
-      h2 {
+      h1, h2 {
         @include headline-one;
         margin: 0;
       }
@@ -178,7 +179,7 @@ body.page {
       @include media-md {
         padding-bottom: 85px;
 
-        h2 {
+        h1, h2 {
           min-width: 500px;
           max-width: 750px;
         }

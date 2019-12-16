@@ -103,3 +103,15 @@ body.page-resources {
   }
 
 }
+
+// Resource Bundle Page
+body.page-resource-bundle {
+  .intro-section {
+    .page-headline {
+      padding-bottom: 0;
+    }
+    .category-description {
+      max-width: 800px;
+    }
+  }
+}

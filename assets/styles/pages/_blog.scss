@@ -1,10 +1,6 @@
 // Blog Page
 
 body.page-blog {
-  @include media-lg {
-    padding-right: $global-spacing;
-  }
-
   .intro-section {
     background: $offwhite;
 

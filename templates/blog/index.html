@@ -13,14 +13,14 @@
     <section class="intro-section with-headline">
       <div class="grid">
         <div class="page-headline">
-          <h2>
+          <h1>
             {% if craft.app.language != "en-US" and entry.pageHeadline is empty %}
               {% set enDescription = craft.entries.id(entry.id).site("en_us").one().pageHeadline %}
               {{ enDescription }}
             {% else %}
               {{ entry.pageHeadline }}
             {% endif %}
-          </h2>
+          </h1>
         </div>
 
         {% include "blog/_subscribe" %}

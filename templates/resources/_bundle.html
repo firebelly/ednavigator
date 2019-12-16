@@ -8,16 +8,19 @@
 
 {% block content %}
 
-  <section class="intro-section">
-    <h2 class="page-description">
+  <section class="intro-section with-headline">
+    <h1 class="page-headline">
       Resource Bundle:<br> {{ category.title }}
-    </h2>
+    </h1>
 
-    {% if category.longDescription %}
-      <h3>{{ category.longDescription }}</h3>
-    {% elseif category.shortDescription %}
-      <h3>{{ category.shortDescription }}</h3>
-    {% else %}
+    {% if category.longDescription or category.shortDescription %}
+      <div class="category-description">
+        {% if category.longDescription %}
+          {{ category.longDescription }}
+        {% elseif category.shortDescription %}
+          {{ category.shortDescription }}
+        {% endif %}
+      </div>
     {% endif %}
   </section>
 
