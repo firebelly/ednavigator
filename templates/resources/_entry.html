@@ -126,7 +126,7 @@
       <ul class="related-posts">
         {% for relatedEntry in relatedEntries.all() %}
           <li>
-            <a class="inline-link" href="{{ relatedEntry.url }}"><span>{{ relatedEntry.title }}</span></a>
+            <a class="inline-link borderless" href="{{ relatedEntry.url }}"><span>{{ relatedEntry.title }}</span></a>
           </li>
         {% endfor %}
       </ul>

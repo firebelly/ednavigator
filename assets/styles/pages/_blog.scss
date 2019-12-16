@@ -4,11 +4,11 @@ body.page-blog {
   @include media-lg {
     padding-right: $global-spacing;
   }
-  
+
   .intro-section {
     background: $offwhite;
 
-    .page-description {
+    .page-headline {
       @include media-lg {
         float: left;
       }

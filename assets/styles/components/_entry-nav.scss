@@ -31,7 +31,7 @@
     margin: 0 0 #{$vertical-beat * 3};
   }
 
-  .inline-link {
+  .inline-link.borderless {
     position: static;
 
     .icon {
@@ -39,7 +39,7 @@
       margin: 0;
       position: absolute;
       &::after {
-        top: 13px;
+        top: 7px;
       }
     }
   }
@@ -55,14 +55,14 @@
       li {
         width: 50%;
         padding: 0 $global-spacing;
-        
-        .inline-link {
+
+        .inline-link.borderless {
           position: relative;
 
           .icon {
             position: relative;
             &::after {
-              top: 9px;
+              top: 4px;
             }
           }
         }

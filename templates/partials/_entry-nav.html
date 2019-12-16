@@ -11,13 +11,13 @@
       {% if prevEntry %}
         <li class="previous">
           <p>Previous</p>
-          <a class="inline-link -left" href="{{ prevEntry.url }}"><span>{{ prevEntry.title }}</span></a>
+          <a class="inline-link borderless -left" href="{{ prevEntry.url }}"><span>{{ prevEntry.title }}</span></a>
         </li>
       {% endif %}
       {% if nextEntry %}
         <li class="next">
           <p>Next</p>
-          <a class="inline-link" href="{{ nextEntry.url }}"><span>{{ nextEntry.title }}</span></a>
+          <a class="inline-link borderless" href="{{ nextEntry.url }}"><span>{{ nextEntry.title }}</span></a>
         </li>
       {% endif %}
     </ul>

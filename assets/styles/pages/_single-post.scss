@@ -335,19 +335,6 @@ body.single-post {
 
     .entry-nav {
       margin-top: #{$global-spacing * 2};
-
-      @include media-md {
-        ul li .inline-link {
-          position: static;
-
-          .icon {
-            position: absolute;
-            &::after {
-              top: 13px;
-            }
-          }
-        }
-      }
     }
   }
 

@@ -5,7 +5,7 @@ body.page-resources {
   .intro-section {
     background: $offwhite;
   }
-  
+
   .tools-and-bundles {
     flex-wrap: wrap;
     background: $offwhite;
@@ -16,8 +16,8 @@ body.page-resources {
     }
 
     h4 {
+      @include headline-four;
       margin: 0;
-      @extend .headline-descriptor;
     }
 
     .tool {
@@ -64,7 +64,7 @@ body.page-resources {
       &:nth-of-type(odd) {
         background-color: $gray-light;
 
-        .bundle-image {          
+        .bundle-image {
           &::after {
             background: $gray-light;
           }
@@ -72,7 +72,7 @@ body.page-resources {
       }
 
       @include media-md {
-        .bundle-image {        
+        .bundle-image {
           &::after {
             opacity: 1;
           }

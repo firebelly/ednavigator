@@ -115,7 +115,7 @@ categoryGroups:
         hasUrls: true
         uriFormat: 'locations/{slug}'
         template: ''
-dateModified: 1576262817
+dateModified: 1576276445
 email:
   fromEmail: admin@ednavigator.com
   fromName: EdNavigator
@@ -4228,7 +4228,7 @@ sections:
         name: Blog
         handle: blog
         hasTitleField: false
-        titleLabel: null
+        titleLabel: ''
         titleFormat: '{section.name|raw}'
         sortOrder: 1
         fieldLayouts:
@@ -4238,7 +4238,7 @@ sections:
                 name: Default
                 sortOrder: 1
                 fields:
-                  32044766-4b09-4e5c-a620-b18d4dbe3ffb:
+                  a85fabb2-a4f6-4f0c-aad1-4fede5a8bc3f:
                     required: false
                     sortOrder: 1
     siteSettings:
@@ -4390,7 +4390,7 @@ sections:
         handle: resources
         hasTitleField: true
         titleLabel: Title
-        titleFormat: null
+        titleFormat: ''
         sortOrder: 1
         fieldLayouts:
           6f9034d6-6586-4405-985f-f7f7f98e2e69:
@@ -4399,7 +4399,7 @@ sections:
                 name: Default
                 sortOrder: 1
                 fields:
-                  32044766-4b09-4e5c-a620-b18d4dbe3ffb:
+                  a85fabb2-a4f6-4f0c-aad1-4fede5a8bc3f:
                     required: false
                     sortOrder: 1
     siteSettings:

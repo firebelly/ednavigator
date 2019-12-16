@@ -122,14 +122,49 @@ a.inline-link {
     }
   }
 
-  // Left-sided variation
-  &.-left {
+  // Borderless variation
+  &.borderless {
+    padding: 0;
+    border: none;
+    border-radius: none;
+    text-decoration: underline;
+    span {
+      color: $black;
+      display: inline;
+      transition: color .2s ease-out;
+    }
     .icon {
-      margin-right: $vertical-beat;
+      margin-left: 0;
       &::after {
-        right: 0;
-        left: auto;
-        transform-origin: right;
+        top: 4px;
+      }
+    }
+
+    &:hover {
+      background: none;
+      color: $brand-primary;
+      span {
+        color: $black;
+      }
+      .icon {
+        &::after {
+          background: $brand-primary;
+        }
+        svg {
+          fill: $brand-primary;
+        }
+      }
+    }
+
+    // Left-sided variation
+    &.-left {
+      .icon {
+        margin-right: $vertical-beat;
+        &::after {
+          right: 0;
+          left: auto;
+          transform-origin: right;
+        }
       }
     }
   }

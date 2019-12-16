@@ -10,16 +10,18 @@
 
   {% if not craft.app.request.isAjax %}
 
-    <section class="intro-section">
+    <section class="intro-section with-headline">
       <div class="grid">
-        <h2 class="page-description">
-          {% if craft.app.language != "en-US" and entry.pageDescription is empty %}
-            {% set enDescription = craft.entries.id(entry.id).site("en_us").one().pageDescription %}
-            {{ enDescription }}
-          {% else %}
-            {{ entry.pageDescription }}
-          {% endif %}
-        </h2>
+        <div class="page-headline">
+          <h2>
+            {% if craft.app.language != "en-US" and entry.pageHeadline is empty %}
+              {% set enDescription = craft.entries.id(entry.id).site("en_us").one().pageHeadline %}
+              {{ enDescription }}
+            {% else %}
+              {{ entry.pageHeadline }}
+            {% endif %}
+          </h2>
+        </div>
 
         {% include "blog/_subscribe" %}
 
