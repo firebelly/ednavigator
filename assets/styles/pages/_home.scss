@@ -65,6 +65,8 @@ body.home {
       align-self: flex-end;
 
       .block-title {
+        margin: 0 0 12px;
+
         @include media-md {
           font-size: 52px;
           line-height: 60px;
