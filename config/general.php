@@ -28,6 +28,8 @@ return [
         'useProjectConfigFile' => true,
 
         'stripePublishableKey' => getenv('STRIPE_PUBLISHABLE_KEY'),
+
+        'enableGql' => false,
     ],
 
     // Dev environment settings
@@ -45,6 +47,6 @@ return [
     // Production environment settings
     'production' => [
         // Set this to `false` to prevent administrative changes from being made on production
-        'allowAdminChanges' => true,
+        'allowAdminChanges' => false,
     ],
 ];

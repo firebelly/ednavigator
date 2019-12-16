@@ -490,26 +490,27 @@ export default {
         $('#messageFrom').val($(this).val());
       });
 
-      $('#get-started').submit(function(ev) {
-          // Prevent the form from actually submitting
-          ev.preventDefault();
+      // $('form.get-started-form').submit(function(ev) {
+      //     // Prevent the form from actually submitting
+      //     ev.preventDefault();
+      //     var data = $(this).serialize();
 
-          // Send it to the server
-          $.post({
-            url: '/',
-            dataType: 'json',
-            data: $(this).serialize(),
-            success: function(response) {
-              if (response.success) {
-                $('#thanks').fadeIn();
-              } else {
-                // response.error will be an object containing any validation errors that occurred, indexed by field name
-                // e.g. response.error.fromName => ['From Name is required']
-                alert('An error occurred. Please try again.');
-              }
-            }
-          });
-      });
+      //     // Send it to the server
+      //     $.post({
+      //       url: $(this).,
+      //       dataType: 'json',
+      //       data: data,
+      //       success: function(response) {
+      //         if (response.success) {
+      //           $('#thanks').fadeIn();
+      //         } else {
+      //           // response.error will be an object containing any validation errors that occurred, indexed by field name
+      //           // e.g. response.error.fromName => ['From Name is required']
+      //           alert('An error occurred. Please try again.');
+      //         }
+      //       }
+      //     });
+      // });
 
       // Form Masking
       var phoneMask = new Inputmask("(999) 999-9999");

@@ -3,8 +3,8 @@
 {% set title = "Search Results" %}
 {% set bodyClass = 'page page-blog page-search-results' %}
 
-{% set query = craft.request.getParam('q') %}
-{% set results = craft.entries().section('blogEntries').search(query).order('score') %}
+{% set query = craft.app.request.getParam('q') %}
+{% set results = craft.entries().section('blogEntries').search(query).orderBy('score') %}
 
 {% block content %}
 
@@ -25,7 +25,7 @@
   {% if results|length %}
     <div class="article-list">
 
-      {% for article in results %}
+      {% for article in results.all() %}
         {% include "blog/_article" %}
       {% endfor %}
 
