@@ -126,6 +126,7 @@ a.inline-link {
   &.borderless {
     padding: 0;
     border: none;
+    line-height: 23px;
     border-radius: none;
     text-decoration: underline;
     span {
@@ -140,7 +141,8 @@ a.inline-link {
       }
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       background: none;
       color: $brand-primary;
       span {
