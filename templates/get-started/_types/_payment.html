@@ -12,10 +12,9 @@
   {% include 'partials/_intro-section.html' %}
 
   <section class="main-content">
+    <script src="https://checkout.stripe.com/checkout.js"></script>
 
-    <form id="stripe-checkout" class="stripe-checkout" method="POST" data-key="{{ craft.app.config.general.stripePublishableKey }}">
-      <input type="hidden" name="action" value="edNavPayment/payments/charge">
-      <script src="https://checkout.stripe.com/checkout.js"></script>
+    <form id="stripe-checkout" class="stripe-checkout" method="POST" action="/get-started/individual-membership?action=ednavstripecheckout/payment/charge" data-key="{{ craft.app.config.general.stripePublishableKey }}">
 
       <ul class="payment-table">
 
@@ -34,14 +33,12 @@
           <div class="user-content">
             {{ paymentOption.features }}
           </div>
-          {{ csrfInput() }}
           <div class="checkout-feedback user-content"></div>
         </li>
         {% endfor %}
       </ul>
 
-      <input type="hidden" name="stripeToken" value="" />
-
+      {{ csrfInput() }}
     </form>
 
     {% if entry.body|length %}

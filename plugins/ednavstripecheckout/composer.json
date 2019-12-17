@@ -1,0 +1,40 @@
+{
+    "name": "firebelly/ednavstripecheckout",
+    "description": "Stripe checkout for EdNavigator payments.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "ednavstripecheckout"
+    ],
+    "support": {
+        "docs": "https://github.com/firebelly/ednavstripecheckout/blob/master/README.md",
+        "issues": "https://github.com/firebelly/ednavstripecheckout/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Firebelly",
+            "homepage": "https://firebellydesign.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "firebelly\\ednavstripecheckout\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Ednavstripecheckout",
+        "handle": "ednavstripecheckout",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/firebelly/ednavstripecheckout/master/CHANGELOG.md",
+        "class": "firebelly\\ednavstripecheckout\\Ednavstripecheckout"
+    }
+}

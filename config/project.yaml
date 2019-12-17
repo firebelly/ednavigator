@@ -115,7 +115,7 @@ categoryGroups:
         hasUrls: true
         uriFormat: 'locations/{slug}'
         template: ''
-dateModified: 1576529719
+dateModified: 1576613970
 email:
   fromEmail: admin@ednavigator.com
   fromName: EdNavigator
@@ -4134,11 +4134,11 @@ plugins:
     schemaVersion: 1.0.0
     settings:
       honeypotParam: honeyhoneyhoney
-  ednavpayments:
-    edition: standard
-    enabled: false
-    schemaVersion: 1.0.0
   site-sync:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  ednavstripecheckout:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0

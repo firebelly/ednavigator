@@ -576,18 +576,20 @@ export default {
           image: '/assets/dist/images/marketplace.png',
           locale: 'auto',
           token: function(token, args) {
-            var data = $('form.stripe-checkout').serialize() + '&token=' + JSON.stringify(token) + '&customer=' + JSON.stringify(args) + '&plan=' + JSON.stringify(planId);
-            $.post('/', data, function(response) {
+            var data = $('form#stripe-checkout').serialize() + '&token=' + JSON.stringify(token) + '&customer=' + JSON.stringify(args) + '&plan=' + JSON.stringify(planId);
+            $.post($('form#stripe-checkout').attr('action'), data, function(response) {
               if (response.success) {
                 container.find('.checkout-feedback').html('<h3>Success!</h3><p>Your payment will be processed shortly.</p>').slideDown('fast');
               } else {
+                console.log(response);
                 container.find('.checkout-feedback').html('<h3>Uh oh!</h3><p>There was a transaction error: ' + response.error + '</p>').slideDown('fast');
               }
-            }).fail(function() {
+            }, 'json').fail(function() {
               container.find('.checkout-feedback').html('<h3>Uh oh!</h3><p>There was a transaction error. Please contact us at <a href="mailto:info@ednavigator.com?subject=stripe%20error">info@ednavigator.com</a>.</p>').slideDown('fast');
-            }, 'json');
+          });
           }
         });
+
         return stripeCheckout;
       }
 

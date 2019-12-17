@@ -1,4 +1,4 @@
-# Ednav plugin for Craft CMS 3.x
+# Ednavstripecheckout plugin for Craft CMS 3.x
 
 Stripe checkout for EdNavigator payments.
 
@@ -18,26 +18,26 @@ To install the plugin, follow these instructions.
 
 2. Then tell Composer to load the plugin:
 
-        composer require firebelly/ednavpayments
+        composer require firebelly/ednavstripecheckout
 
-3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Ednavpayments.
+3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Ednavstripecheckout.
 
-## Ednavpayments Overview
-
--Insert text here-
-
-## Configuring Ednavpayments
+## Ednavstripecheckout Overview
 
 -Insert text here-
 
-## Using Ednavpayments
+## Configuring Ednavstripecheckout
 
 -Insert text here-
 
-## Ednavpayments Roadmap
+## Using Ednavstripecheckout
+
+-Insert text here-
+
+## Ednavstripecheckout Roadmap
 
 Some things to do, and ideas for potential features:
 
 * Release it
 
-Brought to you by [Firebelly](https://firebellydesign.com/)
+Brought to you by [Firebelly](https://firebellydesign.com)

@@ -2,7 +2,7 @@
   "repositories": [
     {
       "type": "path",
-      "url": "plugins/ednavpayments"
+      "url": "plugins/ednavstripecheckout"
     }
   ],
   "require": {
@@ -12,9 +12,10 @@
     "craftcms/contact-form": "2.2.5",
     "craftcms/contact-form-honeypot": "^1.0",
     "craftcms/redactor": "2.4.0",
-    "firebelly/ednavpayments": "^1.0.0",
+    "firebelly/ednavstripecheckout": "^1.0",
     "mmikkel/cp-field-inspect": "1.0.7",
     "rias/craft-contact-form-extensions": "1.2.0",
+    "stripe/stripe-php": "^7.14",
     "vlucas/phpdotenv": "^3.4.0"
   },
   "autoload": {
