@@ -581,7 +581,6 @@ export default {
               if (response.success) {
                 container.find('.checkout-feedback').html('<h3>Success!</h3><p>Your payment will be processed shortly.</p>').slideDown('fast');
               } else {
-                console.log(response);
                 container.find('.checkout-feedback').html('<h3>Uh oh!</h3><p>There was a transaction error: ' + response.error + '</p>').slideDown('fast');
               }
             }, 'json').fail(function() {
