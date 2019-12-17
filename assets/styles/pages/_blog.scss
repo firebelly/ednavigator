@@ -128,7 +128,7 @@ body.page-blog {
     }
 
     .article-category {
-      @extend .headline-descriptor;
+      @include headline-four;
     }
 
     .article-title {

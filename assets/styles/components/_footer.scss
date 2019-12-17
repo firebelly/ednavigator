@@ -11,8 +11,8 @@
   }
 
   h5 {
+    @include headline-four;
     margin-bottom: 30px;
-    @extend .headline-descriptor;
   }
 
   .newsletter {
@@ -129,7 +129,7 @@
         margin-bottom: $vertical-beat;
       }
     }
-    
+
     a {
       display: inline-block;
       &:hover {
@@ -184,7 +184,6 @@
     color: $gray-light;
     position: absolute;
     font-smoothing: antialiased;
-    @extend .headline-descriptor;
     padding: #{$vertical-beat * 2} $global-spacing;
 
     @include media-md {
@@ -193,6 +192,7 @@
     }
 
     p {
+      @include headline-four;
       margin: 0;
     }
 
@@ -202,13 +202,14 @@
         color: $black;
       }
     }
-  
+
     nav {
       ul {
         padding: 0;
         margin: 0 0 -#{$vertical-beat};
         list-style: none;
         li {
+          @include headline-four;
           display: inline-block;
           margin-bottom: $vertical-beat;
           margin-right: #{$vertical-beat * 2};
