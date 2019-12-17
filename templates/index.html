@@ -2,6 +2,7 @@
 
 {% set locale = craft.app.locale %}
 {% set bodyClass = 'home' %}
+{% set bannerVideoId = '380035247' %}
 
 {% block content %}
 
@@ -14,7 +15,7 @@
   </div>
 {% endif %}
 
-<div class="page-header snap-section grid block-grid" style="background-image:url({{ entry.bannerImage.one().getUrl('hero') }});">
+<div class="page-header snap-section grid block-grid" {% if not bannerVideoId %}style="background-image:url({{ entry.bannerImage.one().getUrl('hero') }});"{% endif %}>
   <div class="page-header-image" style="background-image:url({{ entry.bannerImage.one().getUrl('hero') }});"></div>
 
   <div class="-inner">
@@ -29,6 +30,13 @@
       {{ entry.body }}
     </div>
   </div>
+
+  {% if bannerVideoId %}
+    <div class="background-video">
+      <iframe src="https://player.vimeo.com/video/{{ bannerVideoId }}?background=1&autoplay=1&loop=1&byline=0&title=0"
+                 frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+  {% endif %}
 </div>
 
 {% if entry.whatWeDoFeatures|length %}
