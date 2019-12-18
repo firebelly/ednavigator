@@ -577,7 +577,11 @@ export default {
           locale: 'auto',
           token: function(token, args) {
             var data = $('form#stripe-checkout').serialize() + '&token=' + JSON.stringify(token) + '&customer=' + JSON.stringify(args) + '&plan=' + JSON.stringify(planId);
+            container.addClass('-loading');
+            container.append('<div class="loading"><svg class="ednavigator-mark" role="img"><use xlink:href="#ednavigator-mark" /></svg></div>');
             $.post($('form#stripe-checkout').attr('action'), data, function(response) {
+              container.removeClass('-loading');
+              container.find('.loading').remove();
               if (response.success) {
                 container.find('.checkout-feedback').html('<h3>Success!</h3><p>Your payment will be processed shortly.</p>').slideDown('fast');
               } else {

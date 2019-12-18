@@ -30,6 +30,8 @@ body.page-payment {
   }
 
   .payment-option {
+    overflow: hidden;
+    position: relative;
     border-radius: 10px;
     border: 1px solid $black;
     padding: $global-spacing;
@@ -39,8 +41,26 @@ body.page-payment {
       background: $brand-primary;
       border-color: rgba($black, 0);
     }
+    &.-loading {
+      pointer-events: none;
+      &::before {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        content: '';
+        position: absolute;
+        background-color: rgba($offwhite,.9);
+      }
+    }
     &:first-of-type {
       margin-top: 0;
+    }
+
+    // loading spinner
+    .loading {
+      z-index: 2;
     }
 
     @include media-lg {
