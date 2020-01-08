@@ -30,12 +30,12 @@
       position: relative;
       line-height: 1.428571429;
       &::before {
-        top: .35em;
+        top: .5em;
         width: 5px;
         height: 5px;
         content: '';
         left: -22px;
-        background: url('../../svgs/icon-arrow.svg');
+        background: url('../svgs/icon-arrow.svg');
       }
     }
   }
