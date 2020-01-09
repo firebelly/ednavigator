@@ -38,7 +38,7 @@
               {% if featuredPost.articleImage|length %}
                 {% set articleImage = featuredPost.articleImage.one() %}
                 {% if featuredPost.logoTreatment == 1 %}
-                  {% set treatedImage = craft.imager.transformImage(articleImage, { height: 150, effects: { grayscale: true } }) %}
+                  {% set treatedImage = craft.imager.transformImage(articleImage, { height: 150, effects: { modulate: [100, 0, 100] } }) %}
                   <div class="post-image-container{{ featuredPost.logoTreatment == 1 ? ' logo-image' : '' }}">
                     <img class="post-image" src="{{ treatedImage.getUrl() }}">
                   </div>
