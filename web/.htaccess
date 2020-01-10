@@ -1,6 +1,23 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # Ensure consistent www URL
+    RewriteCond %{REQUEST_URI} !\.well-known/acme-challenge
+    RewriteCond %{HTTP_HOST} !^www\.ednavigator\.com [NC]
+    RewriteCond %{HTTP_HOST} !^ednavigator\.localhost [NC]
+    RewriteCond %{HTTP_HOST} !^ednavigator-3\.localhost [NC]
+    RewriteCond %{HTTP_HOST} !^ednavigator\.webfactional\.com [NC]
+    RewriteRule ^(.*)$ https://www.ednavigator.com/$1 [R=301,L]
+
+    # Force SSL
+    RewriteCond %{HTTP:X-Forwarded-SSL} !on
+    RewriteCond %{HTTP_HOST} !^ednavigator\.craft [NC]
+    RewriteCond %{HTTP_HOST} !^ednavigator\.localhost [NC]
+    RewriteCond %{HTTP_HOST} !^ednavigator-3\.localhost [NC]
+    RewriteCond %{HTTP_HOST} !^ednavigator\.firebelly\.co [NC]
+    RewriteCond %{HTTP_HOST} !^ednavigator\.webfactional\.com [NC]
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
     # Send would-be 404 requests to Craft
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
