@@ -9,6 +9,12 @@ env.remotepath = '/home/firebelly/webapps/ednavigator'
 env.git_branch = 'master'
 env.warn_only = True
 
+def staging():
+  env.hosts = ['ednavigator.webfactional.com']
+  env.user = 'ednavigator'
+  env.git_branch = '2019-updates'
+  env.remotepath = '/home/ednavigator/webapps/ednavigator2020'
+
 def production():
   env.hosts = ['www.ednavigator.com']
   env.user = 'ednavigator'
@@ -33,4 +39,4 @@ def update():
 
 def composer_install():
   with cd(env.remotepath):
-    run('~/bin/composer install')
+    run('~/bin/composer.phar install')
