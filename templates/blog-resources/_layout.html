@@ -53,7 +53,7 @@
           </div>
           {% if bundle.bannerImage|length %}
         {% set bundleImage = bundle.bannerImage.one().getUrl() %}
-        {% set bundleImageTransform = craft.imager.transformImage(bundleImage, { effects: { grayscale: true } }) %}
+        {% set bundleImageTransform = craft.imager.transformImage(bundleImage, { effects: { modulate: [100, 0, 100] } }) %}
             <div class="bundle-image" style="background-image:url({{ bundleImageTransform.url }})"></div>
           {% endif %}
         </div>
