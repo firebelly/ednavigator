@@ -18,6 +18,20 @@
     RewriteCond %{HTTP_HOST} !^ednavigator\.webfactional\.com [NC]
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
+    # Custom redirects
+    RewriteRule ^family-resources/?$ /resources [R=301,L]
+    RewriteRule ^family-resources/(.*)$ /resources/$1 [R=301,L]
+    RewriteRule ^who-we-are/mission/?$ /who-we-are/our-mission [R=301,L]
+    RewriteRule ^who-we-are/staff/?$ /who-we-are/navigators-staff [R=301,L]
+    RewriteRule ^how-we-help/our-partners/?$ /who-we-are/our-partners [R=301,L]
+    RewriteRule ^es/resources-familiares/?$ /es/recursos [R=301,L]
+    RewriteRule ^es/resources-familiares/(.*)$ /es/recursos/$1 [R=301,L]
+    RewriteRule ^es/blog/search/?$ /es/blog/buscar [R=301,L]
+    RewriteRule ^es/quienes-somos/mission/?$ /es/quienes-somos/nuestra-misión [R=301,L]
+    RewriteRule ^es/quienes-somos/navegantes/?$ /es/quienes-somos/navegantes-personal [R=301,L]
+    RewriteRule ^es/como-ayudamos/families-students/?$ /es/como-ayudamos/familias-estudiantes [R=301,L]
+    RewriteRule ^es/como-ayudamos/employers/?$ /es/como-ayudamos/los-empleadores [R=301,L]
+
     # Send would-be 404 requests to Craft
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d

@@ -115,7 +115,7 @@ categoryGroups:
         hasUrls: true
         uriFormat: 'locations/{slug}'
         template: ''
-dateModified: 1576613970
+dateModified: 1578702631
 email:
   fromEmail: admin@ednavigator.com
   fromName: EdNavigator
@@ -4435,6 +4435,18 @@ sections:
     handle: resourcesEntries
     type: channel
     enableVersioning: true
+    propagationMethod: all
+    siteSettings:
+      84ea1cc0-8139-4b33-b94a-1c02700fc1ef:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: 'resources/{slug}'
+        template: resources/_entry
+      ed2e38d9-d86c-40c4-b682-df89fc90f62d:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: 'recursos/{slug}'
+        template: resources/_entry
     entryTypes:
       2db5181d-e45a-4b55-8859-966957d32117:
         name: resources
@@ -4487,18 +4499,6 @@ sections:
                   8dd0581c-6902-4a9c-8ddd-e11ce7656351:
                     required: false
                     sortOrder: 1
-    siteSettings:
-      84ea1cc0-8139-4b33-b94a-1c02700fc1ef:
-        enabledByDefault: true
-        hasUrls: true
-        uriFormat: 'resources/{slug}'
-        template: resources/_entry
-      ed2e38d9-d86c-40c4-b682-df89fc90f62d:
-        enabledByDefault: true
-        hasUrls: true
-        uriFormat: 'resources/{slug}'
-        template: resources/_entry
-    propagationMethod: all
   bbc987b8-a57f-4ea5-9a26-913ec9199524:
     name: 'Who We Are'
     handle: whoWeAre
