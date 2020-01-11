@@ -115,7 +115,7 @@ categoryGroups:
         hasUrls: true
         uriFormat: 'locations/{slug}'
         template: ''
-dateModified: 1578702631
+dateModified: 1578703054
 email:
   fromEmail: admin@ednavigator.com
   fromName: EdNavigator
@@ -4087,11 +4087,10 @@ plugins:
     schemaVersion: '1.0'
   contact-form:
     settings:
-      toEmail: matt.m.soria@gmail.com
+      toEmail: info@ednavigator.com
       prependSender: 'On behalf of'
       prependSubject: 'New Get Started form submission'
       allowAttachments: ''
-      honeypotField: honeyhoneyhoney
       successFlashMessage: 'Thank you, your message has been sent!'
     licenseKey: null
     enabled: '1'
