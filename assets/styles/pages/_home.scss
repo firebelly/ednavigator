@@ -58,14 +58,14 @@ body.home {
       overflow: hidden;
       position: absolute;
       iframe {
-        top: 50%;
+        top: 0;
         left: 50%;
         width: 100vw;
         height: 56.25vw;
         min-height: 100vh;
         position: absolute;
         min-width: 177.77vh;
-        transform: translate(-50%, -50%);
+        transform: translateX(-50%);
       }
     }
 
@@ -88,6 +88,7 @@ body.home {
     .block {
       min-height: 1px;
       align-self: flex-end;
+      background-color: $yellow;
 
       .block-title {
         margin: 0 0 12px;
@@ -127,6 +128,31 @@ body.home {
         .button {
           min-width: 300px;
         }
+      }
+    }
+  }
+
+  // What We Do Section
+  .what-we-do {
+    .award-showcase {
+      display: flex;
+      margin-top: $global-spacing;
+
+      img {
+        max-width: 100px;
+        vertical-align: top;
+        display: inline-block;
+        margin-right: $global-spacing;
+      }
+
+      .award-text {
+        p {
+          @include headline-inline;
+        }
+      }
+
+      @include media-md {
+
       }
     }
   }

@@ -115,7 +115,7 @@ categoryGroups:
         hasUrls: true
         uriFormat: 'locations/{slug}'
         template: ''
-dateModified: 1578703054
+dateModified: 1584027581
 email:
   fromEmail: admin@ednavigator.com
   fromName: EdNavigator
@@ -618,6 +618,21 @@ fields:
       columnType: text
     fieldGroup: b8065821-73bc-41b6-9331-08c71b8228ff
     contentColumnType: text
+  5caf08d9-f15c-4580-a38d-e3b1c796dac5:
+    name: 'Award Showcase'
+    handle: awardShowcase
+    instructions: 'Optional award showcase(s) listing awards, award icons, and short text describing award and optionally linking to a post or article.'
+    searchable: true
+    translationMethod: site
+    translationKeyFormat: null
+    type: craft\fields\Matrix
+    settings:
+      minBlocks: ''
+      maxBlocks: ''
+      contentTable: '{{%matrixcontent_awardshowcase}}'
+      propagationMethod: all
+    contentColumnType: string
+    fieldGroup: 906608b2-91ed-4a3f-af22-d10f34202903
   60fb224d-1163-4fda-8ccc-ec5f35830998:
     name: 'Banner Image'
     handle: bannerImage
@@ -1356,6 +1371,24 @@ fields:
       columnType: text
     fieldGroup: b8065821-73bc-41b6-9331-08c71b8228ff
     contentColumnType: text
+  fbb9d500-a777-4fc0-bb23-f3863056a4ee:
+    name: 'Banner Background Video'
+    handle: bannerBackgroundVideo
+    instructions: 'Enter in the vimeo video ID (ID only, not the full url) to be used as the background video in the banner.'
+    searchable: false
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\Number
+    settings:
+      defaultValue: null
+      min: '0'
+      max: null
+      decimals: 0
+      size: null
+      prefix: 'https://vimeo.com/'
+      suffix: ''
+    contentColumnType: integer(10)
+    fieldGroup: 906608b2-91ed-4a3f-af22-d10f34202903
   fbd80904-a7d9-456b-8cd7-e08ad76a867f:
     name: 'Resource Downloads'
     handle: resourceDownloads
@@ -3022,6 +3055,72 @@ matrixBlockTypes:
           columnType: text
         fieldGroup: null
         contentColumnType: text
+  a952345e-b8f0-4dcf-beea-4809ee96eb20:
+    field: 5caf08d9-f15c-4580-a38d-e3b1c796dac5
+    name: Award
+    handle: award
+    sortOrder: 1
+    fields:
+      172e5810-6bfe-4794-a1d9-434cc7bd653a:
+        name: 'Award Text'
+        handle: awardText
+        instructions: 'Brief text explaining award, ideally with some text linking to a post or external article.'
+        searchable: false
+        translationMethod: language
+        translationKeyFormat: null
+        type: craft\redactor\Field
+        settings:
+          redactorConfig: ''
+          purifierConfig: ''
+          cleanupHtml: true
+          removeInlineStyles: '1'
+          removeEmptyTags: '1'
+          removeNbsp: '1'
+          purifyHtml: '1'
+          columnType: text
+          availableVolumes: ''
+          availableTransforms: ''
+        contentColumnType: text
+        fieldGroup: null
+      b02fe813-e0c3-4c18-a65d-d9510fd850a4:
+        name: 'Award Image'
+        handle: awardImage
+        instructions: 'Image to be displayed with Award.'
+        searchable: false
+        translationMethod: site
+        translationKeyFormat: null
+        type: craft\fields\Assets
+        settings:
+          useSingleFolder: '1'
+          defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+          defaultUploadLocationSubpath: ''
+          singleUploadLocationSource: 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
+          singleUploadLocationSubpath: '{owner.slug}'
+          restrictFiles: ''
+          allowedKinds: null
+          sources: '*'
+          source: null
+          targetSiteId: null
+          viewMode: large
+          limit: '1'
+          selectionLabel: 'Choose an image'
+          localizeRelations: ''
+          validateRelatedElements: ''
+        contentColumnType: string
+        fieldGroup: null
+    fieldLayouts:
+      73756028-4d9f-479e-9ac3-a2dcf4c7d2a2:
+        tabs:
+          -
+            name: Content
+            sortOrder: 1
+            fields:
+              172e5810-6bfe-4794-a1d9-434cc7bd653a:
+                required: false
+                sortOrder: 2
+              b02fe813-e0c3-4c18-a65d-d9510fd850a4:
+                required: false
+                sortOrder: 1
   b6480205-7c21-4102-8cb3-66a004b998b4:
     name: address
     handle: address
@@ -4809,7 +4908,7 @@ sections:
         handle: homepage
         hasTitleField: true
         titleLabel: Title
-        titleFormat: null
+        titleFormat: ''
         sortOrder: 1
         fieldLayouts:
           077a72ed-21b2-4996-9465-e4bc9e6c18c7:
@@ -4820,7 +4919,7 @@ sections:
                 fields:
                   32044766-4b09-4e5c-a620-b18d4dbe3ffb:
                     required: false
-                    sortOrder: 3
+                    sortOrder: 4
                   60fb224d-1163-4fda-8ccc-ec5f35830998:
                     required: false
                     sortOrder: 1
@@ -4829,17 +4928,23 @@ sections:
                     sortOrder: 2
                   b16265b0-cb4e-4558-8cc7-36917aa93b69:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 7
+                  fbb9d500-a777-4fc0-bb23-f3863056a4ee:
+                    required: false
+                    sortOrder: 3
               -
                 name: 'What We Do'
                 sortOrder: 2
                 fields:
+                  5caf08d9-f15c-4580-a38d-e3b1c796dac5:
+                    required: false
+                    sortOrder: 3
                   ab922378-6db1-4511-ac57-00ac91e8154d:
                     required: false
                     sortOrder: 2
                   c95314c3-b3d1-4f5c-9cb8-109f49fdfd68:
                     required: false
-                    sortOrder: 3
+                    sortOrder: 4
                   de4de851-be5d-4110-a7a0-2ca1a58b6718:
                     required: false
                     sortOrder: 1

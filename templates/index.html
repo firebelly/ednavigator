@@ -2,7 +2,6 @@
 
 {% set locale = craft.app.locale %}
 {% set bodyClass = 'home' %}
-{% set bannerVideoId = '396473191' %}
 
 {% block content %}
 
@@ -15,7 +14,7 @@
   </div>
 {% endif %}
 
-<div class="page-header snap-section grid block-grid" {% if not bannerVideoId %}style="background-image:url({{ entry.bannerImage.one().getUrl('hero') }});"{% endif %}>
+<div class="page-header snap-section grid block-grid" style="background-image:url({{ entry.bannerImage.one().getUrl('hero') }});">
   <div class="page-header-image" style="background-image:url({{ entry.bannerImage.one().getUrl('hero') }});"></div>
 
   <div class="-inner">
@@ -25,15 +24,17 @@
       </div>
     {% endif %}
 
-    <div class="block col-1-2 background-yellow offset-bottom">
-      <h1 class="block-title">{{ entry.pageDescription }}</h1>
-      {{ entry.body }}
+    <div class="col-1-2 offset-bottom">
+      <div class="block">
+        <h1 class="block-title">{{ entry.pageDescription }}</h1>
+        {{ entry.body }}
+      </div>
     </div>
   </div>
 
-  {% if bannerVideoId %}
+  {% if entry.bannerBackgroundVideo | length %}
     <div class="background-video">
-      <iframe src="https://player.vimeo.com/video/{{ bannerVideoId }}?background=1&autoplay=1&loop=1&byline=0&title=0"
+      <iframe src="https://player.vimeo.com/video/{{ entry.bannerBackgroundVideo }}?background=1&autoplay=1&loop=1&byline=0&title=0"
                  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     </div>
   {% endif %}
@@ -48,6 +49,20 @@
         <div class="section-description">
           {{ entry.whatWeDoText }}
         </div>
+      {% endif %}
+      {% if entry.awardShowcase | length %}
+        {% for award in entry.awardShowcase.all() %}
+          <div class="award-showcase">
+            {% if award.awardImage %}
+              <div class="award-image">
+                <img src="{{ award.awardImage.one().getUrl() }}" alt="{{ award.awardImage.one().title }}">
+              </div>
+            {% endif %}
+            {% if award.awardText | length %}
+              <div class="award-text">{{ award.awardText }}</div>
+            {% endif %}
+          </div>
+        {% endfor %}
       {% endif %}
     </div>
 
