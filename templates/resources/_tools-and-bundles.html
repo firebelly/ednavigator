@@ -13,18 +13,20 @@
 
     {% if bundles|length %}
       {% for bundle in bundles %}
-        <div class="bundle col-1-3">
-          <div class="bundle-content">
-            <h4>Resource Bundle</h4>
-            <h3>{{ bundle.title }}</h3>
-            <p><a href="{{ bundle.url }}" class="inline-link borderless"><span>{{ bundle.shortDescription }}</span></a></p>
+        {% if bundle.hideBundle != 'on' %}
+          <div class="bundle col-1-3">
+            <div class="bundle-content">
+              <h4>Resource Bundle</h4>
+              <h3>{{ bundle.title }}</h3>
+              <p><a href="{{ bundle.url }}" class="inline-link borderless"><span>{{ bundle.shortDescription }}</span></a></p>
+            </div>
+            {% if bundle.bannerImage|length %}
+          {% set bundleImage = bundle.bannerImage.one().getUrl() %}
+          {% set bundleImageTransform = craft.imager.transformImage(bundleImage, { effects: { modulate: [100, 0, 100] } }) %}
+              <div class="bundle-image" style="background-image:url({{ bundleImageTransform.url }})"></div>
+            {% endif %}
           </div>
-          {% if bundle.bannerImage|length %}
-        {% set bundleImage = bundle.bannerImage.one().getUrl() %}
-        {% set bundleImageTransform = craft.imager.transformImage(bundleImage, { effects: { modulate: [100, 0, 100] } }) %}
-            <div class="bundle-image" style="background-image:url({{ bundleImageTransform.url }})"></div>
-          {% endif %}
-        </div>
+        {% endif %}
       {% endfor %}
     {% endif %}
   </div>

@@ -72,6 +72,9 @@ categoryGroups:
               60fb224d-1163-4fda-8ccc-ec5f35830998:
                 required: false
                 sortOrder: 1
+              cfd62712-2106-44c2-bd7a-806750669d71:
+                required: false
+                sortOrder: 4
               e7fcea37-554c-4d17-9e4e-cd00c40c53de:
                 required: false
                 sortOrder: 2
@@ -115,7 +118,7 @@ categoryGroups:
         hasUrls: true
         uriFormat: 'locations/{slug}'
         template: ''
-dateModified: 1584027581
+dateModified: 1584651074
 email:
   fromEmail: admin@ednavigator.com
   fromName: EdNavigator
@@ -1253,6 +1256,18 @@ fields:
       branchLimit: '1'
     fieldGroup: 0200d286-aa37-4a58-9853-7f8a1aeb6cc3
     contentColumnType: string
+  cfd62712-2106-44c2-bd7a-806750669d71:
+    name: 'Hide Bundle?'
+    handle: hideBundle
+    instructions: 'Should this bundle be hidden?'
+    searchable: false
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\Lightswitch
+    settings:
+      default: ''
+    contentColumnType: boolean
+    fieldGroup: 0200d286-aa37-4a58-9853-7f8a1aeb6cc3
   de4de851-be5d-4110-a7a0-2ca1a58b6718:
     name: 'What We Do Headline'
     handle: whatWeDoHeadline
