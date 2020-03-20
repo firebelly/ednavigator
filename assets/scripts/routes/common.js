@@ -44,6 +44,7 @@ export default {
     // Init functions
     _initActiveToggle();
     _injectSvgIcons();
+    _initMarkupTreatment();
     _initSiteNav();
     _initBannerVideo();
     _initCarousels();
@@ -137,9 +138,13 @@ export default {
       });
 
       // Inject dotted arrow svgs for .inline-link elements
-      $('a.inline-link:not(.-left) span').each(function() {
-        if (!$(this).find('svg').length) {
-          $(this).append('<span class="icon"><svg class="icon-arrow-dotted" role="img"><use xlink:href="#icon-arrow-dotted" /></svg></span>');
+      $('a.inline-link:not(.-left)').each(function() {
+        if (!$(this).find('span').length) {
+          var linkText = $(this).text();
+          $(this).empty();
+          $(this).append('<span>' + linkText + '<span class="icon"><svg class="icon-arrow-dotted" role="img"><use xlink:href="#icon-arrow-dotted" /></svg></span></span>');
+        } else if (!$(this).find('svg').length) {
+          $(this).find('span').append('<span class="icon"><svg class="icon-arrow-dotted" role="img"><use xlink:href="#icon-arrow-dotted" /></svg></span>');
         }
       });
 
@@ -155,6 +160,15 @@ export default {
           var icon = $(this).data('icon');
           $(this).prepend('<svg class="'+icon+'" role="img"><use xlink:href="#'+icon+'" /></svg>');
         }
+      });
+    }
+
+    function _initMarkupTreatment() {
+      // Inject a span for user-content h2
+      $('body.single-post .entry-content h3').each(function() {
+        var headlineText = $(this).text();
+        $(this).empty();
+        $(this).append('<span>' + headlineText + '</span');
       });
     }
 

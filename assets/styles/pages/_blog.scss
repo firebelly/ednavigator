@@ -172,8 +172,8 @@ body.page-blog {
 .article-date {
   top: 0;
   height: 20px;
-  color: $white;
-  background: $black;
+  color: $black;
+  background: $yellow;
   position: absolute;
   padding: 6px 0 2px 8px;
   right: $global-spacing;
@@ -190,15 +190,15 @@ body.page-blog {
   }
   &::before {
     top: 0;;
-    border-left: 8px solid $black;
-    border-top: 10px solid $black;
+    border-left: 8px solid $yellow;
+    border-top: 10px solid $yellow;
     border-right: 8px solid transparent;
     border-bottom: 10px solid transparent;
   }
   &::after {
     bottom: 0;
-    border-left: 8px solid $black;
-    border-bottom: 10px solid $black;
+    border-left: 8px solid $yellow;
+    border-bottom: 10px solid $yellow;
     border-top: 10px solid transparent;
     border-right: 8px solid transparent;
   }

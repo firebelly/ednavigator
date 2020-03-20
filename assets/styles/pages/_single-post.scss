@@ -105,11 +105,12 @@ body.single-post {
 
       .category {
         margin: 0;
-        @extend .headline-descriptor;
+        color: $gray-dark;
+        @extend .headline-three;
       }
 
       h1 {
-        color: $yellow;
+        color: $black;
         margin-top: $vertical-beat;
         margin-bottom: $global-spacing;
       }
@@ -184,7 +185,7 @@ body.single-post {
       }
 
       a {
-        color: $yellow-text;
+        color: $blue;
         transition: color .2s ease-out;
         &:hover {
           color: $gray;
@@ -206,16 +207,38 @@ body.single-post {
   .entry-content {
 
     h1, h2, h3, h4, h5, h6 {
-      color: $yellow-text;
+      color: $black;
       margin: #{$vertical-beat * 4} 0 #{$vertical-beat * 3};
     }
 
-    h1, h2 {
+    h1 {
       @extend .headline-two;
+
+      + h2 {
+        margin-top: -30px;
+      }
+    }
+
+    h2 {
+      @extend .headline-three;
+      color: $gray-dark;
+      @include media-md {
+        font-size: 22px;
+        line-height: 30px;
+      }
     }
 
     h3, h4, h5, h6 {
       @extend .headline-inline;
+      margin: 0;
+      > span {
+        display: inline-block;
+        background-color: $white;
+      }
+
+      + p {
+        margin-top: 6px;
+      }
     }
 
     p {
@@ -231,7 +254,7 @@ body.single-post {
       font-family: $font-bold;
     }
 
-    a {
+    a:not(.inline-link) {
       color: $blue;
       transition: color .2s ease-out;
       &:hover {
@@ -241,6 +264,14 @@ body.single-post {
 
     figcaption {
       font-size: 10px;
+    }
+
+    blockquote {
+      @extend .body-copy;
+      padding: 15px 20px;
+      border-radius: 20px;
+      border: 1px solid $yellow;
+      margin: #{$vertical-beat * 3} 0;
     }
 
   }

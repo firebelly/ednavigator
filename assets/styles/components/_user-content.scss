@@ -1,7 +1,7 @@
 // User Content
 
 .user-content {
-  a {
+  a:not(.inline-link) {
     color: $blue;
     transition: color .2s ease-out;
     &:hover {
@@ -49,11 +49,6 @@
         content: counter(listItem) ".";
       }
     }
-  }
-
-  blockquote {
-    @extend .headline-inline;
-    margin: #{$vertical-beat * 3} 0;
   }
 
   hr {
