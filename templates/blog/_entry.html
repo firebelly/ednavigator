@@ -56,7 +56,7 @@
             {% endif %}
             <h5 class="author-content">
               <span>Author:</span>
-              {{ entry.author.name }}
+              <a href="/blog/author/{{ entry.author.firstName | lower }}-{{ entry.author.lastName | lower }}">{{ entry.author.name }}</a>
             </h5>
           </div>
 
