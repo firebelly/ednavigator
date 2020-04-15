@@ -48,7 +48,6 @@
                     "aelvan\\imager\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -60,8 +59,8 @@
             ],
             "description": "Image transforms gone wild",
             "keywords": [
-                "Craft",
                 "cms",
+                "craft",
                 "craft-plugin",
                 "craftcms",
                 "image",
@@ -70,6 +69,10 @@
                 "srcset",
                 "transform"
             ],
+            "support": {
+                "docs": "https://github.com/aelvan/Imager-Craft/blob/craft3/README.md",
+                "issues": "https://github.com/aelvan/Imager-Craft/issues"
+            },
             "abandoned": "spacecatninja/imager-x",
             "time": "2020-02-11T19:28:27+00:00"
         },
@@ -5905,16 +5908,16 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v3.6.2",
+            "version": "v3.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "786a947e57086cf236cefdee80784634224b99fa"
+                "reference": "1b3103013797f04521c6cae5560f604649484066"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/786a947e57086cf236cefdee80784634224b99fa",
-                "reference": "786a947e57086cf236cefdee80784634224b99fa",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/1b3103013797f04521c6cae5560f604649484066",
+                "reference": "1b3103013797f04521c6cae5560f604649484066",
                 "shasum": ""
             },
             "require": {
@@ -5964,7 +5967,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2020-03-27T23:36:02+00:00"
+            "time": "2020-04-12T15:18:03+00:00"
         },
         {
             "name": "voku/anti-xss",
