@@ -4,7 +4,11 @@
 {% set fullname = craft.request.segment(3) | split('-') %}
 
 {# Then, grab the user based on the username #}
-{% set user = craft.users().anyStatus().firstName(fullname.0 | capitalize).lastName(fullname.1 | capitalize).first() %}
+{% if fullname|length > 1 %}
+  {% set user = craft.users().anyStatus().firstName(fullname.0 | capitalize).lastName(fullname.1 | capitalize).first() %}
+{% else %}
+  {% set user = craft.users().anyStatus().firstName(fullname.0 | capitalize).first() %}
+{% endif %}
 
 {% set title = "Posts by "~user.name %}
 {% set bodyClass = 'page page-blog page-author' %}
