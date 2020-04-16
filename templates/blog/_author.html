@@ -1,13 +1,13 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
 {# Get the username from the uri #}
-{% set fullname = craft.request.segment(3) | split('-') %}
+{% set fullname = craft.app.request.getSegment(3) | split('-') %}
 
 {# Then, grab the user based on the username #}
 {% if fullname|length > 1 %}
-  {% set user = craft.users().anyStatus().firstName(fullname.0 | capitalize).lastName(fullname.1 | capitalize).first() %}
+  {% set user = craft.users().anyStatus().firstName(fullname.0 | capitalize).lastName(fullname.1 | capitalize).one() %}
 {% else %}
-  {% set user = craft.users().anyStatus().firstName(fullname.0 | capitalize).first() %}
+  {% set user = craft.users().anyStatus().firstName(fullname.0 | capitalize).one() %}
 {% endif %}
 
 {% set title = "Posts by "~user.name %}
