@@ -21,9 +21,17 @@
     position: relative;
     -webkit-font-smoothing: antialiased;
 
+    // Active accordion
+    &.-active {
+      .accordion-toggle .text {
+        opacity: 0;
+      }
+    }
+
     .aside-tag {
       top: 0;
       left: 0;
+      z-index: 1;
       width: 50px;
       height: 50px;
       display: flex;
@@ -35,6 +43,58 @@
         height: 15px;
         margin: auto;
         fill: $black;
+      }
+    }
+
+    .accordion-toggle {
+      @include headline-four;
+      width: 100%;
+      border: none;
+      text-align: left;
+      position: relative;
+      background: $orange;
+      height: $global-spacing * 2;
+      padding: 0 $global-spacing 0 #{$global-spacing * 3};
+
+      .text {
+        opacity: 1;
+        transition: opacity .2s ease-out;
+      }
+
+      .expand-contract {
+        top: 50%;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        position: absolute;
+        right: $global-spacing;
+        border: 1px solid $black;
+        transform: translateY(-50%);
+        &::before,
+        &::after {
+          top: 50%;
+          left: 50%;
+          height: 1px;
+          width: 10px;
+          content: '';
+          position: absolute;
+          background-color: $black;
+          transform-origin: center center;
+          transform: translate(-50%, -50%);
+          transition: transform .2s ease-out;
+        }
+        &::after {
+          transform: translate(-50%, -50%) rotate(90deg);
+        }
+        &.-active {
+          &::after {
+            transform: translate(-50%, -50%) rotate(0deg);
+          }
+        }
+      }
+
+      @include media-lg {
+        display: none;
       }
     }
 

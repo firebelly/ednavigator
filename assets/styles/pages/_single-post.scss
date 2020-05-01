@@ -527,6 +527,7 @@ body.single-post {
   &.resources-post {
     .general-content-block .content-aside {
       .aside-tag,
+      .accordion-toggle,
       .-inner {
         background-color: $green;
       }

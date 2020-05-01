@@ -3,8 +3,10 @@ import appState from '../util/appState';
 
 const accordions = {
   init() {
-    // Activate/deactive functions
+    // Watch resize for resetting accordion state
+    window.addEventListener('resize', accordions.reset);
 
+    // Activate/deactive functions
     $('.accordion').each(function() {
       var $accordion = $(this),
           $toggle = $accordion.find('.accordion-toggle'),
@@ -55,6 +57,18 @@ const accordions = {
       $accordion.find('.accordion-content').slideDown(250);
     } else {
       $accordion.find('.accordion-content').show();
+    }
+  },
+
+  reset() {
+    // Re-activate accordions with active-lg class
+    if (appState.breakpoints.lg && $('.accordion.active-lg .accordion-content')[0].hasAttribute('style')) {
+      accordions.expand($('.accordion.active-lg'), false);
+    }
+
+    // De-activate accordions for small-screen
+    if (!appState.breakpoints.lg) {
+      accordions.collapse($('.accordion'), false);
     }
   }
 }

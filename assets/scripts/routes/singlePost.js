@@ -182,7 +182,17 @@ const singlePost = {
     function _resize() {
       // Reposition section nav
       if ($('.section-navigation').length) {
-        _updateSectionNavPos($siteHeader.outerHeight());
+        if ($('.section-navigation-wrap').is('.stuck')) {
+          _updateSectionNavPos($siteHeader.outerHeight());
+        }
+
+        if (appState.breakpoints.lg && $(window).scrollTop() < $('.sticky-wrap').offset().top && !$('.section-navigation').is('.-active')) {
+          accordions.expand($('.section-navigation'), false);
+
+          if ($('.section-navigation-wrap').is('.stuck')) {
+            $('.section-navigation-wrap').removeClass('stuck').css('top', 'auto');
+          }
+        }
       }
     }
     $window.resize(_resize);
