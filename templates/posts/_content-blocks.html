@@ -1,0 +1,141 @@
+{% if entry.section.handle == 'resourcesEntries' %}
+  {% set contentBlocks = entry.resourcesContentBlocks.all() %}
+{% elseif entry.section.handle == 'ideasEntries' %}
+  {% set contentBlocks = entry.ideasContentBlocks.all() %}
+{% endif %}
+
+{% if contentBlocks|length %}
+
+  {% for block in contentBlocks %}
+    {% switch block.type %}
+
+      {% case 'sectionHeading' %}
+        <div class="content-block sectionHeading section">
+          <div class="-inner">
+            <h2 class="section-heading" id="{{ block.heading|lower|replace(' ', '-')|replace('/[^a-zA-Z\d\s-]+/', '') }}">{{ block.heading }}</h2>
+          </div>
+        </div>
+
+      {% case 'generalContent' %}
+        <div class="content-block general-content-block{{ loop.index < 3 ? ' first-position' : '' }}">
+          <div class="block-content -inner user-content">
+            {{ block.contentBlock|footnotes }}
+          </div>
+
+          {# Family Narrative Aside #}
+          {% if block.familyNarrativeHeadline and block.familyNarrativeCopy %}
+            <aside class="content-aside family-narrative">
+              <div class="aside-tag"><svg class="icon icon-aside" aria-hidden="true" role="presentation"><use xlink:href="#icon-aside"/></svg></div>
+              <div class="-inner">
+                {% if block.familyNarrativeImage %}
+                  <img src="{{ block.familyNarrativeImage.one().getUrl('thumbnail') }}" alt="{{ block.familyNarrativeImage.one().title }}" class="aside-image">
+                {% endif %}
+                <h3 class="aside-subheading">Family Narrative</h3>
+                {% if block.familyNarrativeHeadline %}
+                  <h4 class="aside-heading">{{ block.familyNarrativeHeadline }}</h4>
+                {% endif %}
+                {% if block.familyNarrativeCopy %}
+                  <div class="aside-content user-content">
+                    {{ block.familyNarrativeCopy }}
+                  </div>
+                {% endif %}
+              </div>
+            </aside>
+          {# Aside Quote #}
+          {% elseif block.asideQuote %}
+            <aside class="content-aside quote-aside">
+              <div class="aside-tag"><svg class="icon icon-aside" aria-hidden="true" role="presentation"><use xlink:href="#icon-aside"/></svg></div>
+              <div class="-inner">
+                <blockquote class="aside-blockquote">
+                  <p>“{{ block.asideQuote }}”</p>
+                  {% if block.asideQuoteAttribution %}
+                    <cite>{{ block.asideQuoteAttribution }}</cite>
+                  {% endif %}
+                </blockquote>
+                {% set urlLength = entry.url|length %}
+                {% set tweetAttr = block.asideQuoteAttribution ? ' — ' ~ block.asideQuoteAttribution : '' %}
+                {% set tweetText = '“' ~ block.asideQuote ~ '”' ~ tweetAttr %}
+                <p class="share"><a href="http://twitter.com/share?url=http://{{ entry.url }}&amp;text={{ tweetText|length > 262 - urlLength ? tweetText|slice(0, 262 - urlLength) ~ '...' : tweetText }} via @ednavigate" target="_blank">Share<svg class="icon icon-twitter" aria-hidden="true" role="presentation"><use xlink:href="#icon-twitter"/></svg></a></p>
+              </div>
+            </aside>
+          {# Aside Stat #}
+          {% elseif block.asideStatFigure %}
+            <aside class="content-aside stat-aside">
+              <div class="aside-tag"><svg class="icon icon-aside" aria-hidden="true" role="presentation"><use xlink:href="#icon-aside"/></svg></div>
+              <div class="-inner">
+                <dl class="stat">
+                  <dd class="figure">{{ block.asideStatFigure }}</dd>
+                  {% if block.asideStatAttribution %}
+                    <dt>{{ block.asideStatAttribution }}</dt>
+                  {% endif %}
+                </dl>
+              </div>
+            </aside>
+          {% endif %}
+        </div>
+
+      {% case 'pullquote' %}
+        {% if block.quote %}
+          <div class="content-block pullquote-content-block">
+            <div class="-inner">
+              <blockquote>
+                <p>“{{ block.quote }}”</p>
+                {% if block.attribution %}
+                  <cite>—{{ block.attribution }}</cite>
+                {% endif %}
+              </blockquote>
+            </div>
+          </div>
+        {% endif %}
+
+      {% case 'statBlock' %}
+        {% if block.statFigure %}
+          <div class="content-block stat-content-block">
+            <div class="-inner">
+              <dl class="stat">
+                <dd class="figure">{{ block.statFigure }}</dd>
+                {% if block.statDescription %}
+                  <dt>{{ block.statDescription }}</dt>
+                {% endif %}
+              </dl>
+            </div>
+          </div>
+        {% endif %}
+
+      {% case 'imageBlock' %}
+        <div class="content-block image-content-block{{ block.expanded == 'on' ? ' -expanded' : '' }}">
+          <div class="-inner">
+            {% for image in block.images.all() %}
+              <figure>
+                {% if image.displayTitle %}
+                  <h5 class="figure-title">{{ image.displayTitle }}</h5>
+                {% endif %}
+                <img src="{{ image.getUrl('postImage') }}" alt="{{ image.title }}">
+                {% if image.caption %}
+                  <figcaption>{{ image.caption }}</figcaption>
+                {% endif %}
+              </figure>
+            {% endfor %}
+          </div>
+        </div>
+
+      {% case 'imageCarousel' %}
+        <div class="content-block image-carousel-block{{ block.expanded == 'on' ? ' -expanded' : '' }}">
+          <div class="-inner">
+            <div class="content-block-carousel">
+              {% for image in block.images.all() %}
+                <figure>
+                  <img src="{{ image.getUrl('postCarousel') }}" alt="{{ image.title }}">
+                  {% if image.caption %}
+                    <figcaption>{{ image.caption }}</figcaption>
+                  {% endif %}
+                </figure>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+
+    {% endswitch %}
+  {% endfor %}
+{% endif %}

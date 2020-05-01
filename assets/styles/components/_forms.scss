@@ -46,9 +46,9 @@ form {
 
     &.grid.spaced {
       @include media-lg {
-        padding: 0 #{$global-spacing / 2};
+        padding: 0 $global-spacing;
         [class*='col-'] {
-          padding: 0 #{$global-spacing / 2};
+          padding: 0 $global-spacing;
         }
       }
     }
@@ -109,7 +109,7 @@ form {
   }
 
   .submit {
-    margin-top: $global-spacing;
+    margin-top: $global-spacing * 2;
   }
 
   // Checkboxes
@@ -144,7 +144,7 @@ form {
       position: relative;
       display: inline-block;
       margin-right: $vertical-beat;
-      border: 1px solid $gray-dark;
+      border: 1px solid $gray-one;
       &::after {
         top: 0;
         left: 0;
@@ -154,7 +154,7 @@ form {
         height: 16px;
         position: absolute;
         will-change: opacity;
-        background: $gray-dark;
+        background: $gray-one;
         transition: opacity .15s ease-out;
       }
     }
@@ -214,7 +214,7 @@ form {
     background: none;
     border-style: solid;
     border-width: 0 0 1px 0;
-    border-bottom-color: $gray-dark;
+    border-bottom-color: $gray-one;
     &:focus {
       outline: none;
     }
@@ -230,16 +230,16 @@ form {
 .newsletter-form {
 
   input {
-    color: $gray-dark;
-    border-color: $gray-dark;
+    color: $gray-one;
+    border-color: $gray-one;
     &::-webkit-input-placeholder {
-       color: $gray-dark;
+       color: $gray-one;
     }
     &::-moz-placeholder {  /* Firefox 19+ */
-       color: $gray-dark;
+       color: $gray-one;
     }
     &:-ms-input-placeholder {
-       color: $gray-dark;
+       color: $gray-one;
     }
   }
 

@@ -38,11 +38,11 @@ $col: 100% * 1 / $columns;
   //   </div>
   // </div>
   .grid.spaced {
-    margin-left: -#{$global-spacing};
-    width: calc(100% + #{$global-spacing * 2});
+    margin-left: -#{$global-spacing * 2};
+    width: calc(100% + #{$global-spacing * 4});
 
     [class*='col-'] {
-      padding: 0 #{$global-spacing};
+      padding: 0 #{$global-spacing * 2};
     }
   }
   // If you need the grid to have a gutter,
@@ -134,11 +134,11 @@ $col: 100% * 1 / $columns;
     @include media-lg {
       content: 'lg';
     }
-    @include media-xl {
-      content: 'xl';
-    }
     @include media-nav {
       content: 'nav';
+    }
+    @include media-xl {
+      content: 'xl';
     }
   }
 }

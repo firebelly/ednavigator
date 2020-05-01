@@ -12,11 +12,12 @@
     {% endif %}
       {% for featuredPost in featuredPosts.all() %}
         <article class="{{ featuredPost.type }} block">
+          {% set postImage = '' %}
           {% if featuredPost.type == "blogResourcePost" %}
             {% set featuredEntry = featuredPost.postEntry.one() %}
-            {% if featuredEntry.type == 'blogEntry' %}
-              {% set postType = 'Blog Post' %}
-              {% set postImage = featuredEntry.blogBannerImage.one() %}
+            {% if featuredEntry.section.handle == 'ideasEntries' %}
+              {% set postType = 'Ideas Post' %}
+              {% set postImage = featuredEntry.ideasBannerImage.one() %}
             {% elseif featuredEntry.type == 'resources' %}
               {% set postType = 'Family Resource' %}
               {% set postImage = featuredEntry.resourcesBannerImage.one() %}

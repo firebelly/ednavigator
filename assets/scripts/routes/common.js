@@ -1,20 +1,17 @@
 import Player from '@vimeo/player';
 import Velocity from 'velocity-animate';
 import Flickity from 'flickity-sync';
+require('flickity-imagesloaded');
 import Inputmask from 'inputmask';
+import ImagesLoaded from 'imagesloaded';
 
 import appState from '../util/appState';
+import scrollBody from '../util/scrollBody';
+import accordions from '../util/accordions';
 
 export default {
   init() {
-    var breakpointIndicatorString,
-        breakpoint_xl,
-        breakpoint_nav,
-        breakpoint_lg,
-        breakpoint_md,
-        breakpoint_sm,
-        breakpoint_xs,
-        resizeTimer,
+    var resizeTimer,
         slideEasing = [0.65, 0, 0.35, 1],
         $document,
         $body,
@@ -24,6 +21,9 @@ export default {
         overlayTimer,
         loadingTimer,
         transitionElements;
+
+    // jQueryify
+    ImagesLoaded.makeJQueryPlugin($);
 
     // Cache some common DOM queries
     $document = $(document);
@@ -42,21 +42,24 @@ export default {
     transitionElements = [$siteNav];
 
     // Init functions
+    accordions.init();
     _initActiveToggle();
     _injectSvgIcons();
     _initMarkupTreatment();
     _initSiteNav();
     _initBannerVideo();
     _initCarousels();
+    _initPostFunctions();
     _initLoadMore();
-    _initShareLinks();
     _initVideoPlayers();
     _initNewsletterForm();
     _initFormFunctions();
     _snapScrolling();
     _initBlogFilter();
     _initGAEventTracking();
-    _initStripeCheckout();
+    if ($('form#stripe-checkout').length) {
+      _initStripeCheckout();
+    }
 
     // Esc handlers
     $(document).keyup(function(e) {
@@ -69,16 +72,8 @@ export default {
     $('a.smoothscroll').click(function(e) {
       e.preventDefault();
       var href = $(this).attr('href');
-      _scrollBody($(href));
+      scrollBody($(href));
     });
-
-    function _scrollBody(element, duration, delay, offset) {
-      element.velocity("scroll", {
-        duration: duration,
-        delay: delay,
-        offset: -offset
-      }, "easeOutSine");
-    }
 
     function _initActiveToggle() {
       $(document).on('click', '[data-active-toggle]', function(e) {
@@ -188,7 +183,7 @@ export default {
       $siteNav.find('.has-children').append('<button class="subnav-toggle" aria-hidden="true" data-active-toggle></button>');
 
       $siteNav.on('click', '.has-children > .subnav-toggle', function(e) {
-        if (!breakpoint_nav) {
+        if (!appState.breakpoints.nav) {
           e.preventDefault();
           var $childNav = $(this).closest('.has-children').find('.subnav');
 
@@ -372,6 +367,12 @@ export default {
       }
     }
 
+
+
+    function _initPostFunctions() {
+
+    }
+
     function _initLoadMore() {
 
       if ($('#load-more').length) {
@@ -408,29 +409,6 @@ export default {
         });
       }
 
-    }
-
-    function _initShareLinks() {
-      $.fn.sharePopup = function (e, intWidth, intHeight, blnResize) {
-        // Prevent default anchor event
-        e.preventDefault();
-
-        // Set values for window
-        intWidth = intWidth || '500';
-        intHeight = intHeight || '400';
-        strResize = (blnResize ? 'yes' : 'no');
-        var left = (screen.width/2)-(intWidth/2);
-        var top = (screen.height/2)-(intHeight/2);
-
-        // Set title and open popup with focus on it
-        var strTitle = ((typeof this.attr('title') !== 'undefined') ? this.attr('title') : 'Social Share'),
-        strParam = 'width=' + intWidth + ',height=' + intHeight + ',resizable=' + strResize + ',left=' + left + ',top=' + top,
-        objWindow = window.open(this.attr('href'), strTitle, strParam).focus();
-      }
-
-      $('a.share').on("click", function(e) {
-        $(this).sharePopup(e);
-      });
     }
 
     function _initVideoPlayers() {
@@ -483,7 +461,7 @@ export default {
       $('.subscribe-link').on('click', function(e) {
         e.preventDefault();
 
-        _scrollBody($('.newsletter-form'));
+        scrollBody($('.newsletter-form'));
         setTimeout(function() {
           $('.newsletter-form input').first().focus();
         }, 0);
@@ -551,7 +529,7 @@ export default {
             }
             $(this).find('.section-advance').on('click', function(e) {
               e.preventDefault();
-              _scrollBody($(this).closest('.snap-section').next('.snap-section'), 350, 0, $('.site-header').outerHeight());
+              scrollBody($(this).closest('.snap-section').next('.snap-section'), 350, 0, $('.site-header').outerHeight());
             });
           }
         });
@@ -650,27 +628,14 @@ export default {
 
     // Called in quick succession as window is resized
     function _resize() {
-      // Check breakpoint indicator in DOM ( :after { content } is controlled by CSS media queries )
-      breakpointIndicatorString = window.getComputedStyle(
-        document.querySelector('#breakpoint-indicator'), ':after'
-      ).getPropertyValue('content')
-      .replace(/['"]+/g, '');
-
-      // Determine current breakpoint
-      breakpoint_xl = breakpointIndicatorString === 'xl';
-      breakpoint_nav = breakpointIndicatorString === 'nav' || breakpoint_xl;
-      breakpoint_lg = breakpointIndicatorString === 'lg' || breakpoint_nav;
-      breakpoint_md = breakpointIndicatorString === 'md' || breakpoint_lg;
-      breakpoint_sm = breakpointIndicatorString === 'sm' || breakpoint_md;
-      breakpoint_xs = breakpointIndicatorString === 'xs' || breakpoint_sm;
 
       // Close Nav
-      if ($siteNav.is('.-active') && breakpoint_nav) {
+      if ($siteNav.is('.-active') && appState.breakpoints.nav) {
         _closeSiteNav();
       }
 
       // Reset inline styles for navigation for medium breakpoint
-      if (breakpoint_nav) {
+      if (appState.breakpoints.nav) {
         $('.site-nav .-active, .menu-toggle').removeClass('-active');
         $('.site-nav .subnav[style]').attr('style', '');
       }

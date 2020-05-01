@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>{{ entry.title }} | {{ siteName }}</title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 class="site-logo">
+        <a href="{{ siteUrl }}">
+          <span class="sr-only">EdNavigator</span>
+        </a>
+      </h1>
+      <img src="/assets/dist/images/marketplace.png" alt="">
+      <h2>{{ entry.title }}</h2>
+      {% include 'posts/_content-blocks.html' %}
+
+      {% if entry.body %}
+        <div class="legacy-content-container user-content">
+          {% if craft.app.language != "en-US" %}
+            {% if localizedEntry[0].body == entry.body %}
+              {{ entry.body }}
+            {% else %}
+              <div class="notranslate">
+                {{ entry.body }}
+              </div>
+            {% endif %}
+          {% else %}
+            {{ entry.body }}
+          {% endif %}
+        </div>
+      {% endif %}
+    </header>
+  </body>
+</html>

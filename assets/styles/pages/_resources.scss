@@ -25,7 +25,7 @@ body.page-resources {
       padding: $global-spacing;
 
       @include media-lg {
-        padding: #{$global-spacing * 2};
+        padding: #{$global-spacing * 4};
       }
     }
 
@@ -46,7 +46,7 @@ body.page-resources {
         z-index: 0;
         position: absolute;
         background-size: cover;
-        background-color: $gray;
+        background-color: $gray-two;
 
         &::after {
           top: 0;
@@ -55,18 +55,18 @@ body.page-resources {
           bottom: 0;
           opacity: .8;
           content: '';
-          background: $gray;
           position: absolute;
+          background: $gray-two;
           transition: .5s ease-out;
         }
       }
 
       &:nth-of-type(odd) {
-        background-color: $gray-light;
+        background-color: $gray-four;
 
         .bundle-image {
           &::after {
-            background: $gray-light;
+            background: $gray-four;
           }
         }
       }
@@ -87,7 +87,7 @@ body.page-resources {
       }
 
       @include media-lg {
-        padding: #{$global-spacing * 2};
+        padding: #{$global-spacing * 4};
       }
 
     }
@@ -98,7 +98,7 @@ body.page-resources {
     padding: $global-spacing;
 
     @include media-lg {
-      padding: #{$global-spacing * 2};
+      padding: #{$global-spacing * 4};
     }
   }
 

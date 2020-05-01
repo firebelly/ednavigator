@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+// Vendor
+@import "~flickity/css/flickity.css";
+
 // Reset
 @import "vendor/normalize";
 
@@ -11,9 +14,6 @@
 @import "helpers/accessibility";
 @import "helpers/animations";
 
-// Vendor
-@import "vendor/flickity";
-
 // Components
 @import "components/color-scheme";
 @import "components/base";
@@ -21,9 +21,12 @@
 @import "components/user-content";
 @import "components/buttons";
 @import "components/blocks";
+@import "components/content-blocks";
+@import "components/related-posts";
 @import "components/page-blocks";
 @import "components/sections";
 @import "components/entry-nav";
+@import "components/section-nav";
 @import "components/page-section-carousels";
 @import "components/forms";
 @import "components/filter";
@@ -40,8 +43,9 @@
 @import "pages/careers";
 @import "pages/people-pages";
 @import "pages/how-we-help";
-@import "pages/blog";
+@import "pages/ideas";
 @import "pages/single-post";
+@import "pages/publication-post";
 @import "pages/resources";
 @import "pages/get-started";
 @import "pages/payment";

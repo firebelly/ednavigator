@@ -1,9 +1,6 @@
 from fabric.api import *
 import os
 
-env.hosts = ['ednavigator.firebelly.co']
-env.user = 'firebelly'
-
 env.path = '/Users/developer/Sites/ednavigator'
 env.remotepath = '/home/firebelly/webapps/ednavigator'
 env.git_branch = 'master'
@@ -16,9 +13,9 @@ def staging():
   env.remotepath = '/home/ednavigator/webapps/ednavigator2020'
 
 def production():
-  env.hosts = ['www.ednavigator.com']
+  env.hosts = ['ednavigator.webfactional.com']
   env.user = 'ednavigator'
-  env.remotepath = '/home/ednavigator/webapps/ednavigator'
+  env.remotepath = '/home/ednavigator/webapps/ednavigator_prod'
 
 def testing():
   env.git_branch = '2019-updates'

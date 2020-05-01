@@ -1,11 +1,11 @@
-{% set bannerImage = article.blogBannerImage.one() %}
+{% set bannerImage = article.ideasBannerImage.one() %}
 {% if article.postDate|date("Y") == "now"|date("Y") %}
   {% set articleDate = article.postDate.format('M d') %}
 {% else %}
   {% set articleDate = article.postDate.format('m/d/y') %}
 {% endif %}
 
-<article class="blog-article flex-grid">
+<article class="ideas-article flex-grid">
   {% if article.videoId|length %}
     <div class="article-image has-video col-1-2">
       <svg class="play icon icon-arrow-stroke" role="img"><use xlink:href="#icon-arrow-stroke" /></svg>
@@ -18,7 +18,7 @@
 
   <div class="article-content col-1-2">
     <h3 class="article-date">{{ articleDate }}</h3>
-    <h4 class="article-category">{{ article.blogPostType.one() }}</h4>
+    <h4 class="article-category">{{ article.ideasPostType.one() }}</h4>
     <h1 class="article-title"><a href="{{ article.url }}"><span>{{ article.title }}</span></a></h1>
     <div class="article-excerpt user-content">
       {{ article.excerpt|raw }}

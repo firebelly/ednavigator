@@ -1,0 +1,120 @@
+// Related Posts Section
+
+.related-posts {
+  background-color: $gray-three;
+
+  h4 {
+    @include headline-three;
+    margin: 20px 0 18px;
+
+    @include media-md {
+      margin: 30px 0 26px;
+    }
+  }
+
+  .related-posts-carousel {
+    margin-bottom: 70px;
+    background-color: $gray-two;
+    border-bottom: 1px solid $gray-three;
+
+    .flickity-prev-next-button {
+      top: auto;
+      left: auto;
+      padding: 0;
+      width: auto;
+      color: $blue;
+      height: 70px;
+      bottom: -70px;
+      display: flex;
+      transform: none;
+
+      span {
+        @include headline-four;
+        line-height: 32px;
+        vertical-align: top;
+        display: inline-block;
+      }
+
+      svg  {
+        path {
+          fill: $blue;
+        }
+      }
+
+      &.previous {
+        left: 20px;
+      }
+      &.next {
+        right: 20px;
+      }
+
+      @include media-lg {
+        &.previous {
+          left: auto;
+          right: 306px;
+        }
+        &.next {
+          right: #{($global-spacing * 4) - 10px};
+        }
+      }
+    }
+
+    article {
+      width: 50%;
+      padding: $global-spacing;
+      background-color: $white;
+      border-left: 1px solid $gray-two;
+
+      h5 {
+        @include headline-five;
+        margin: 0;
+
+        a {
+          color: $blue;
+          text-decoration: none;
+
+          &:hover,
+          &:focus {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .topics {
+        list-style: none;
+        margin: 30px 0 0;
+        position: relative;
+        padding: 0 0 0 25px;
+
+        .icon {
+          left: 0;
+          top: 2px;
+          width: 15px;
+          height: 15px;
+          fill: $gray-one;
+          position: absolute;
+        }
+
+        li {
+          display: inline-block;
+        }
+
+        a {
+          color: $gray-one;
+        }
+      }
+    }
+
+    @include media-md {
+      article {
+        width: 33.3333%;
+      }
+    }
+
+    @include media-lg {
+      article {
+        width: 25%;
+      }
+    }
+  }
+}

@@ -8,14 +8,19 @@
   "require": {
     "aelvan/imager": "v2.4.0",
     "clubstudioltd/craft-asset-rev": "6.0.2",
-    "craftcms/cms": "3.4.15",
+    "craftcms/cms": "3.4.17.1",
     "craftcms/contact-form": "2.2.6",
     "craftcms/contact-form-honeypot": "^1.0",
     "craftcms/redactor": "2.6.1",
+    "enupal/snapshot": "1.2.7",
     "firebelly/ednavstripecheckout": "^1.0",
     "mmikkel/cp-field-inspect": "1.1.3",
     "rias/craft-contact-form-extensions": "1.2.0",
+    "spicyweb/craft-embedded-assets": "2.2.1.1",
     "stripe/stripe-php": "^7.14",
+    "vaersaagod/matrixmate": "1.2.5",
+    "verbb/field-manager": "^2.1",
+    "vierbeuter/craft-footnotes": "^2.2",
     "vlucas/phpdotenv": "^3.4.0"
   },
   "autoload": {

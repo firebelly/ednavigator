@@ -1,7 +1,6 @@
 // Entry Navigation (templats/partials/_entry-nav.html)
 
 .entry-nav {
-
   ul {
     margin: 0;
     padding: 0;
@@ -10,37 +9,31 @@
       position: relative;
       &.previous {
         padding-left: $global-spacing;
-        .icon {
-          left: 0;
-        }
       }
       &.next {
         padding-right: $global-spacing;
-        .icon {
-          right: 0;
-        }
       }
     }
     li + li {
       margin-top: #{$vertical-beat * 3};
     }
+
+    a {
+      &:hover,
+      &:focus {
+        color: $blue;
+      }
+    }
   }
 
   p {
-    @extend .headline-descriptor;
+    @extend .headline-four;
     margin: 0 0 #{$vertical-beat * 3};
-  }
 
-  .inline-link.borderless {
-    position: static;
-
-    .icon {
-      bottom: 0;
-      margin: 0;
-      position: absolute;
-      &::after {
-        top: 7px;
-      }
+    svg {
+      width: 50px;
+      height: 10px;
+      margin: 0 10px;
     }
   }
 
@@ -56,22 +49,13 @@
         width: 50%;
         padding: 0 $global-spacing;
 
-        .inline-link.borderless {
-          position: relative;
-
-          .icon {
-            position: relative;
-            &::after {
-              top: 4px;
-            }
-          }
-        }
-
         &.previous {
           float: left;
+          padding-right: $global-spacing * 2;
         }
         &.next {
           float: right;
+          padding-left: $global-spacing * 2;
         }
 
         + li {

@@ -65,7 +65,7 @@ body.page-empleadores {
   z-index: 1;
   display: none;
   position: absolute;
-  bottom: $global-spacing;
+  bottom: $global-spacing * 2;
   transform: translate(-40px);
 
   @include media-lg {

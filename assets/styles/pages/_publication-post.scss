@@ -1,0 +1,44 @@
+  // Publication Post Template
+
+body.single-post.publication-post {
+  .entry-header {
+    .header-main {
+      > .-inner {
+        padding: $global-spacing;
+      }
+
+      @include media-lg {
+        > .-inner {
+          padding: 80px #{$global-spacing * 4} #{$global-spacing * 4};
+        }
+      }
+    }
+
+    .header-sidebar {
+      padding: $global-spacing 0;
+      background-color: $gray-three;
+
+      .share-section {
+        padding: 0 $global-spacing;
+      }
+
+      @include media-lg {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: #{$global-spacing * 2} 0 70px;
+
+        .share-section {
+          padding: 0 #{$global-spacing * 2};
+        }
+      }
+    }
+  }
+
+  .general-content-block .content-aside {
+    .aside-tag,
+    .-inner {
+      background-color: $yellow;
+    }
+  }
+}

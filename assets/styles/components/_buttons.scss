@@ -1,12 +1,13 @@
 // Buttons
 
 .button {
-  border-radius: 5px;
+  @extend .headline-inline;
+  border-radius: 20px;
   display: inline-block;
   text-decoration: none;
-  padding: 15px 25px 13px;
-  @extend .headline-inline;
+  padding: 10px 25px 8px;
   border: 1px solid $black;
+  background-color: transparent;
   transition: background .2s ease-out, border-color .2s ease-out, color .2s ease-out;
   &:hover,
   &:focus {
@@ -32,9 +33,8 @@
   }
 
   &.-blue {
-    border: none;
     color: $white;
-    padding: 16px 25px 14px;
+    border-color: $blue;
     background-color: $blue;
 
     svg {
@@ -61,8 +61,8 @@
     justify-content: space-between;
 
     svg {
-      width: 25px;
-      height: 25px;
+      width: 15px;
+      height: 15px;
       margin-left: $vertical-beat * 2;
     }
   }

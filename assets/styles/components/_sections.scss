@@ -10,6 +10,6 @@
     margin-top: 0;
   }
   .section-cta {
-    margin: $global-spacing 0 0;
+    margin: #{$global-spacing * 2} 0 0;
   }
 }

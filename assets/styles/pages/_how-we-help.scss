@@ -27,14 +27,14 @@ body.how-we-help {
       margin-top: $global-spacing;
 
       @include media-md {
-        margin-top: #{$global-spacing * 2};
+        margin-top: #{$global-spacing * 4};
       }
     }
 
     .navigators-image {
       text-align: center;
       margin-top: $global-spacing;
-      margin-left: -#{$global-spacing * 2/3};
+      margin-left: -#{$global-spacing * 4/3};
       width: calc(100% + #{$global-spacing * 4/3});
 
       @include media-md {
@@ -133,7 +133,7 @@ body.how-we-help {
     }
 
     .knowledge-links {
-      margin-top: #{$global-spacing * 2};
+      margin-top: #{$global-spacing * 4};
       h5 {
         @extend .headline-descriptor;
       }

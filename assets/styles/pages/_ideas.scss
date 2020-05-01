@@ -1,6 +1,6 @@
 // Blog Page
 
-body.page-blog {
+body.page-ideas {
   .intro-section {
     background: $offwhite;
 
@@ -123,7 +123,7 @@ body.page-blog {
       padding: #{$global-spacing * 1.5} $global-spacing;
 
       @include media-md {
-        padding: #{$global-spacing * 2};
+        padding: #{$global-spacing * 4};
       }
     }
 
@@ -204,7 +204,7 @@ body.page-blog {
   }
 
   @include media-md {
-    right: #{$global-spacing * 2};
+    right: #{$global-spacing * 4};
   }
 }
 
@@ -216,7 +216,7 @@ body.page-blog {
   padding: $global-spacing;
 
   @include media-lg {
-    padding: #{$global-spacing * 2};
+    padding: #{$global-spacing * 4};
   }
 
   .load-more {

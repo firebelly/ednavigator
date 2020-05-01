@@ -1,0 +1,256 @@
+// Content Block Styles
+
+// Common Content Block Styles
+.content-block {
+  > .-inner {
+    max-width: 1000px;
+    padding: 0 $global-spacing;
+
+    @include media-lg {
+      padding: 0 #{$global-spacing * 4};
+    }
+  }
+}
+
+// General Content Block
+.general-content-block {
+  position: relative;
+
+  // Content Asides
+  .content-aside {
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+
+    .aside-tag {
+      top: 0;
+      left: 0;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      position: absolute;
+      background-color: $orange;
+
+      svg {
+        width: 15px;
+        height: 15px;
+        margin: auto;
+        fill: $black;
+      }
+    }
+
+    > .-inner {
+      padding: $global-spacing;
+      background-color: $orange;
+    }
+
+    .aside-subheading {
+      @include headline-four;
+      margin: 0 0 $global-spacing;
+    }
+
+    .aside-heading {
+      @include headline-three;
+      margin: 0 0 $global-spacing;
+    }
+
+    @include media-lg {
+      top: 0;
+      width: 50%;
+      left: 100%;
+      position: absolute;
+      transition: opacity .3s ease-out;
+
+      .aside-tag {
+        left: auto;
+        right: 100%;
+      }
+
+      > .-inner {
+        padding: $global-spacing * 2;
+      }
+    }
+  }
+
+  // General Content Block in the first position
+  &.first-position {
+    .content-aside {
+      @include media-lg {
+        top: 120px;
+      }
+      @media screen and (min-width: 1100px) {
+        top: 50px;
+      }
+    }
+  }
+
+  // Family Narrative
+  .family-narrative {
+    img {
+      width: 150px;
+      width: 150px;
+      border-radius: 50%;
+      margin-bottom: $global-spacing;
+    }
+  }
+
+  // Blockquotes
+  .quote-aside {
+    blockquote {
+      margin: 0;
+
+      p {
+        @include quote-small;
+        margin-top: 0;
+      }
+
+      cite {
+        @extend .body-copy;
+        font-style: normal;
+      }
+    }
+
+    .share {
+      margin-bottom: 0;
+
+      a {
+        @include headline-four;
+        color: $black;
+        display: inline-block;
+      }
+
+      svg {
+        width: 18px;
+        height: 15px;
+        fill: $black;
+        margin-left: 13px;
+        vertical-align: text-bottom;
+      }
+    }
+  }
+
+  // Stat
+  .stat-aside {
+    .figure {
+      @include headline-numeral;
+    }
+    dt {
+      margin-top: 11px;
+    }
+  }
+}
+
+// Pullquote
+.pullquote-content-block {
+  blockquote {
+    margin: 0;
+    padding: 30px 0;
+    border-top: 1px solid $gray-three;
+    border-bottom: 1px solid $gray-three;
+    p {
+      @include headline-three;
+      margin: 0;
+    }
+
+    cite {
+      @extend .type-caption;
+      display: block;
+      margin-top: $global-spacing;
+    }
+  }
+}
+
+.stat-content-block {
+  .stat {
+    text-align: center;
+    padding: #{$global-spacing * 2} 0;
+    border-top: 1px solid $gray-three;
+    border-bottom: 1px solid $gray-three;
+  }
+  .figure {
+    @include headline-numeral;
+    margin: 0;
+  }
+  dt {
+    margin: 0;
+  }
+}
+
+// Common Image Block Styles
+.image-content-block,
+.image-carousel-block {
+  &.-expanded {
+    .-inner {
+      padding: 0;
+      max-width: none;
+    }
+
+    img {
+      margin: 0 auto;
+      display: block;
+    }
+
+    .figure-title,
+    figcaption {
+      padding: 0 $global-spacing;
+
+      @include media-md {
+        padding: 0 #{$global-spacing * 4};
+      }
+    }
+  }
+
+  figcaption p {
+    @extend .type-caption;
+    margin: 0;
+  }
+}
+
+// Image Block
+.image-content-block {
+  .figure-title {
+    @include headline-four;
+    color: $gray-one;
+  }
+}
+
+// Image Carousel Block
+.image-carousel-block {
+  .content-block-carousel {
+    height: 0;
+    padding-bottom: 50%;
+
+    .flickity-viewport {
+      width: 100%;
+      position: absolute;
+    }
+
+    .flickity-prev-next-button {
+      top: auto;
+      width: 50px;
+      right: 30px;
+      bottom: 30px;
+      height: 50px;
+      display: flex;
+      transform: none;
+      background-color: $white;
+
+      &.previous {
+        left: auto;
+        right: 95px;
+      }
+
+      .flickity-button-icon {
+        margin: auto;
+
+        .arrow {
+          fill: $blue;
+        }
+      }
+    }
+  }
+
+  figure {
+    width: 100%;
+    height: 100%;
+  }
+}

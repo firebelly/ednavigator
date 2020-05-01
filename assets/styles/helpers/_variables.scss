@@ -5,9 +5,10 @@ $black       : #1c1f21;
 $white       : #fff;
 $offwhite    : #f0f1f2;
 $blue        : #4d7dee;
-$gray        : #a3b0b2;
-$gray-light  : #d0d6d8;
-$gray-dark   : #70797b;
+$gray-one    : #70797b;
+$gray-two    : #a4b0b2;
+$gray-three  : #D0D6D9;
+$gray-four   : #f0f1f2;
 $tan         : #D7D6CC;
 $yellow      : #f7cc0c;
 $yellow-text : #f4c903;
@@ -24,9 +25,10 @@ $colors: (
   'white'      : $white,
   'offwhite'   : $offwhite,
   'blue'       : $blue,
-  'gray'       : $gray,
-  'gray-light' : $gray-light,
-  'gray-dark'  : $gray-dark,
+  'gray-one'   : $gray-one,
+  'gray-two'   : $gray-two,
+  'gray-three' : $gray-three,
+  'gray-four'  : $gray-four,
   'tan'        : $tan,
   'yellow'     : $yellow,
   'gold'       : $gold,
@@ -43,7 +45,7 @@ $breakpoint-nav : 1006px;
 $breakpoint-xl  : 1200px;
 
 // Spacing
-$global-spacing : 50px;
+$global-spacing : 25px;
 $vertical-beat  : 10px;
 
 // Header Heights

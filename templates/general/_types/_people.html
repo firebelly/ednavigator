@@ -1,4 +1,4 @@
-{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+  {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
 {% set title = entry.title %}
 {% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
@@ -33,7 +33,7 @@
           {% for person in relatedPeople.all() %}
 
             {% if person.personImage|length %}
-              {% set image = person.personImage.one().getUrl() %}
+              {% set image = person.personImage.one().getUrl('thumbnail') %}
               {% if 'partners' in bodyId or 'socios-empresariales' in bodyId %}
                 {% set transformedImage = craft.imager.transformImage(image, { effects: { colorize: '#a3b0b2' } }) %}
               {% else %}

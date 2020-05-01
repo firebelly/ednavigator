@@ -13,7 +13,7 @@
 
   @include media-nav {
     height: $header-height;
-    padding: $global-spacing $global-spacing 0 #{$global-spacing * 2};
+    padding: #{$global-spacing * 2} #{$global-spacing * 2} 0 #{$global-spacing * 4};
   }
 }
 
@@ -51,7 +51,7 @@ body.sidebar-left {
   .site-header {
     @include media-md {
       left: $global-spacing;
-      padding-left: #{$global-spacing * 2};
+      padding-left: #{$global-spacing * 4};
     }
   }
 }
@@ -100,7 +100,7 @@ body.sidebar-right {
 
   @include media-nav {
     margin-top: -7px;
-    margin-left: -#{$global-spacing};
+    margin-left: -#{$global-spacing * 2};
   }
 }
 
@@ -193,7 +193,7 @@ body.sidebar-right {
       li {
         &.has-children {
           position: relative;
-          border-bottom: 2px dotted $gray-light;
+          border-bottom: 2px dotted $gray-four;
 
           a {
             display: inline-block;
@@ -231,9 +231,9 @@ body.sidebar-right {
         }
 
         &.-active {
-          border-color: $gray;
+          border-color: $gray-two;
           &::before {
-            background-color: $gray;
+            background-color: $gray-two;
           }
           &::after {
             display: none;
@@ -422,7 +422,7 @@ body.sidebar-right {
       content: '';
       bottom: 100%;
       position: absolute;
-      height: $global-spacing * 2;
+      height: $global-spacing * 4;
       background-image: linear-gradient(to top, rgba($white,1), rgba($white,0));
     }
 

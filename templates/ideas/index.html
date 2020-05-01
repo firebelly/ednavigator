@@ -1,7 +1,7 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
 {% set limit = 9 %}
-{% set params = { section: 'blogEntries', limit: limit} %}
+{% set params = { section: 'ideasEntries', limit: limit} %}
 
 {% set title = "Blog" %}
 {% set bodyClass = 'page page-' ~ entry.slug %}
@@ -23,11 +23,11 @@
           </h1>
         </div>
 
-        {% include "blog/_subscribe" %}
+        {% include "ideas/_subscribe" %}
 
       </div>
 
-      {% include "blog/_filter" %}
+      {% include "ideas/_filter" %}
 
     </section>
 
@@ -40,13 +40,13 @@
     {% endif %}
 
   		{% for article in articles %}
-  			{% include "blog/_article" %}
+  			{% include "ideas/_article" %}
   		{% endfor %}
 
     {% if not craft.app.request.isAjax and articles|length >= limit %}
       </div>
       <div class="load-more-section">
-        <button id="load-more" class="load-more" data-collection="blog" data-page="{{ pageInfo.currentPage + 1 }}" data-total-pages="{{ pageInfo.totalPages }}">Load More<span class="icon"><svg class="icon-arrow" role="img"><use xlink:href="#icon-arrow" /></span></button>
+        <button id="load-more" class="load-more" data-collection="ideas" data-page="{{ pageInfo.currentPage + 1 }}" data-total-pages="{{ pageInfo.totalPages }}">Load More<span class="icon"><svg class="icon-arrow" role="img"><use xlink:href="#icon-arrow" /></span></button>
       </div>
     {% endif %}
 

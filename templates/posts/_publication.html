@@ -1,0 +1,248 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set title = entry.title %}
+{% set bodyClass = 'single-post publication-post ' ~ entry.section.handle|lower|replace('entries', '') ~ '-post' %}
+
+{% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
+{% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
+
+{% if entry.postDate|date("Y") == "now"|date("Y") %}
+  {% set entryDate = entry.postDate.format('M d') %}
+{% else %}
+  {% set entryDate = entry.postDate.format('M d, Y') %}
+{% endif %}
+
+{% set excerpt = entry.excerpt|raw %}
+
+{# Set Post Type Vars #}
+{% set bannerImage, postType, categories, tags, relatedEntries = '', '', '', '', '' %}
+{% if entry.section.handle == 'resourcesEntries' %}
+  {% set parentSlug = 'resources' %}
+  {% set bannerImage = entry.resourcesBannerImage.one() %}
+  {% set postType = entry.resourcePostType.one() %}
+  {% set categories = entry.resourceTopic %}
+  {% set tags = entry.resourceLocations %}
+  {% set relatedEntries = craft.entries.section('resourcesEntries').relatedTo(['or', {targetElement: categories}, {targetElement: tags}]).id('not ' ~ entry.id).limit(12) %}
+{% elseif entry.section.handle == 'ideasEntries' %}
+  {% set parentSlug = 'ideas' %}
+  {% set bannerImage = entry.ideasBannerImage.one() %}
+  {% set postType = entry.ideasPostType.one() %}
+  {% set categories = entry.ideasCategory %}
+  {% set tags = entry.ideasTags %}
+  {% set relatedEntries = craft.entries.section('ideasEntries').relatedTo(['or', {targetElement: categories}, {targetElement: tags}]).id('not ' ~ entry.id).limit(12) %}
+{% endif %}
+
+{% if craft.app.language != "en-US" %}
+  {% set localizedEntry = craft.entries.id(entry.id).site('en_us') %}
+{% endif %}
+
+{% block content %}
+  <article class="entry">
+
+    <div class="entry-body">
+      <div class="-top">
+        <header class="entry-header flex-grid">
+          <div class="header-main col-2-3">
+            {% if entry.videoId|length %}
+              <div class="featured-image has-video">
+                <svg class="play icon icon-arrow-stroke" role="img"><use xlink:href="#icon-arrow-stroke" /></svg>
+                <div class="image" style="background-image:url({{ bannerImage.getUrl('hero') }});"></div>
+                <iframe id="yt-{{ entry.id }}" class="youtube-video" width="100%" src="https://www.youtube.com/embed/{{ entry.videoId }}?enablejsapi=1&modestbranding=1&rel=0" frameborder="0" allowfullscreen></iframe>
+              </div>
+            {% else %}
+              <div class="featured-image" style="background-image:url({{ bannerImage.getUrl('hero') }});"></div>
+            {% endif %}
+
+            <div class="-inner">
+              <p class="type-date">{{ postType }} / Published {{ entryDate }}</p>
+
+              <div class="entry-title">
+                {% if craft.app.language != "en-US" %}
+                  {% if localizedEntry[0].title == entry.title %}
+                    <h1>{{ entry.title }}</h1>
+                  {% else %}
+                    <h1 class="notranslate">{{ entry.title }}</h1>
+                  {% endif %}
+                {% else %}
+                    <h1>{{ entry.title }}</h1>
+                {% endif %}
+
+                {% if entry.subtitle %}
+                  {% if craft.app.language != "en-US" %}
+                    {% if localizedEntry[0].subtitle == entry.subtitle %}
+                      <h2>{{ entry.subtitle }}</h2>
+                    {% else %}
+                      <h2 class="notranslate">{{ entry.subtitle }}</h2>
+                    {% endif %}
+                  {% else %}
+                      <h2>{{ entry.subtitle }}</h2>
+                  {% endif %}
+                {% endif %}
+              </div>
+
+              <div class="entry-meta flex-grid">
+                <div class="entry-author col-1-3">
+                  <h5>Written by</h5>
+                  {% set authors = entry.additionalAuthors.all() %}
+                  {% set authors = authors|filter(v => v.name != entry.author.name) %}
+                  <ul class="authors">
+                    <li>
+                      {% if entry.author.getPhoto()|length %}
+                        <img src="{{ entry.author.getPhoto().getUrl() }}" alt="Profile photo of {{ entry.author.name }}" class="author-image">
+                      {% endif %}
+                      <a href="/{{ parentSlug }}/author/{{ entry.author.firstName|lower }}{{ entry.author.lastName ? '-' ~ entry.author.lastName|lower : '' }}">{{ entry.author.name }}</a>
+                    </li>
+                    {% if authors|length %}
+                      {% for author in authors %}
+                        <li>
+                          {% if author.getPhoto()|length %}
+                            <img src="{{ author.getPhoto().getUrl() }}" alt="Profile photo of {{ author.name }}" class="author-image">
+                          {% endif %}
+                          <a href="/{{ parentSlug }}/author/{{ author.firstName|lower }}{{ author.lastName ? '-' ~ author.lastName|lower : '' }}">{{ author.name }}</a>
+                        </li>
+                      {% endfor %}
+                    {% endif %}
+                  </ul>
+                </div>
+
+                <div class="entry-cats-tags col-1-3">
+                  {% if categories|length %}
+                    <div>
+                      <h5>Categor{{ categories|length > 1 ? 'ies' : 'y' }}:</h5>
+                      <ul>
+                        {% for category in categories.all() %}
+                          <li><a href="{{ category.url }}">{{ category.title }}</a>{{ loop.index < categories|length ? ', ' : '' }}</li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  {% endif %}
+
+                  {% if tags|length %}
+                  <div>
+                    <h5>Tag{{ tags|length > 1 ? 's' : '' }}:</h5>
+                    <ul>
+                      {% for tag in tags.all() %}
+                        <li><a href="{{ url('{{ parentSlug }}/tag/'~tag.slug) }}">{{ tag.title }}</a>{{ loop.index < tags|length ? ', ' : '' }}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                  {% endif %}
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-1-3 header-sidebar">
+            {% set postSections = craft.matrixBlocks().owner(entry).type('sectionHeading') %}
+            {% if postSections|length %}
+              <div class="section-navigation-wrap">
+                <nav class="section-navigation accordion">
+                  <button class="content-nav-expand accordion-toggle">Jump to section <svg class="expand-contract" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></button>
+                  <ol class="accordion-content">
+                    {% for block in entry.ideasContentBlocks.all() if block.type == 'sectionHeading' %}
+                      <li><a href="#{{ block.heading|lower|replace(' ', '-')|replace('/[^a-zA-Z\d\s-]+/', '') }}">{{ block.heading }}</a></li>
+                    {% endfor %}
+                  </ol>
+                </nav>
+              </div>
+            {% endif %}
+
+            <div class="share-section">
+              <div>
+                <h5>Share</h5>
+                <ul>
+                  <li><a class="share" href="https://www.facebook.com/sharer/sharer.php?u={{ entry.url }}" target="_blank" rel="noopener"><span class="visually-hidden">facebook</span><svg class="icon icon-facebook" role="img"><use xlink:href="#icon-facebook" /></svg></a></li>
+                  <li><a class="share" href="http://twitter.com/share?url=http://{{ entry.url }}&amp;text={{ entry.title }} via @ednavigate" target="_blank" rel="noopener"><span class="visually-hidden">Twitter</span><svg class="icon icon-twitter" role="img"><use xlink:href="#icon-twitter" /></svg></a></li>
+                </ul>
+              </div>
+              <div>
+                <h5>Download / Print</h5>
+                <ul>
+                  <li><a href="{{ entry.slug }}/pdf" target="_blank"><span class="visually-hidden">download</span><svg class="icon icon-download" aria-hidden="true" role="presentation"><use xlink:href="#icon-download"/></svg></a></li>
+                  <li><a href="javascript:window.print()"><span class="visually-hidden">print</span><svg class="icon icon-print" aria-hidden="true" role="presentation"><use xlink:href="#icon-print"/></svg></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </header>
+      </div>
+
+      <div class="entry-content flex-grid background-gray-four sticky-wrap">
+        <div class="content-column col-2-3 background-white">
+          {% include 'posts/_content-blocks.html' %}
+
+          {% if entry.body %}
+            <div class="legacy-content-container user-content">
+              {% if craft.app.language != "en-US" %}
+                {% if localizedEntry[0].body == entry.body %}
+                  {{ entry.body }}
+                {% else %}
+                  <div class="notranslate">
+                    {{ entry.body }}
+                  </div>
+                {% endif %}
+              {% else %}
+                {{ entry.body }}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% include 'partials/_resources-downloads.html' %}
+
+          {% if footnotes_exist() %}
+            <div id="endnotes" class="content-block endnotes">
+              <div class="-inner">
+                <hr>
+                <h2>Endnotes</h2>
+                <ol>
+                  {% for number, footnote in footnotes() %}
+                    <li id="footnote-{{ loop.index }}"><a href="#fnref:{{ loop.index }}" class="index">{{ loop.index }}</a> <span>{{ footnote|raw }}</span></li>
+                  {% endfor %}
+                </ol>
+              </div>
+            </div>
+          {% endif %}
+
+          <div class="section-links">
+            {% include 'partials/_entry-nav.html' %}
+          </div>
+        </div>
+
+        <div class="sidebar-column col-1-3">
+          {% include 'partials/_post-newsletter-signup' %}
+        </div>
+      </div>
+    </div>
+
+    {% if relatedEntries|length %}
+    <div class="related-posts">
+      <div class="wrap">
+        <h4>Related Posts</h4>
+      </div>
+      <div class="related-posts-carousel">
+        {% for relatedEntry in relatedEntries.all() %}
+          {% set relatedEntryTopics = '' %}
+          {% if entry.section.handle == 'resourcesEntries' %}
+            {% set relatedEntryTopics = relatedEntry.resourceTopic %}
+          {% elseif entry.section.handle == 'ideasEntries' %}
+            {% set relatedEntryTopics = relatedEntry.ideasTags %}
+          {% endif %}
+          <article>
+            <h5><a href="{{ relatedEntry.url }}">{{ relatedEntry.title }}</a></h5>
+            <ul class="topics">
+              <svg class="icon" aria-hidden="true" role="presentation"><use xlink:href="#icon-tag"/></svg>
+              {% for topic in relatedEntryTopics.all() %}
+                <li><a href="{{ topic.url }}">{{ topic.title }}{{ loop.index < relatedEntryTopics.all()|length ? ', ' : '' }}</a></li>
+              {% endfor %}
+            </ul>
+          </article>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+
+  </article>
+
+{% endblock %}
