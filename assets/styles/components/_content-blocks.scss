@@ -55,6 +55,9 @@
       background: $orange;
       height: $global-spacing * 2;
       padding: 0 $global-spacing 0 #{$global-spacing * 3};
+      &:focus {
+        outline: none;
+      }
 
       .text {
         opacity: 1;
@@ -147,9 +150,71 @@
   .family-narrative {
     img {
       width: 150px;
-      width: 150px;
       border-radius: 50%;
       margin-bottom: $global-spacing;
+    }
+
+    a[data-readmore-toggle] {
+      display: none;
+    }
+
+    @include media-lg {
+      &.with-readmore {
+        z-index: 1;
+
+        > .-inner {
+          transition: box-shadow 0.35s ease-out;
+          box-shadow: 0px 2px 8px rgba(0,0,0,0);
+        }
+      }
+
+      > .-inner.-expanded {
+        box-shadow: 0px 2px 8px rgba(0,0,0,0.25);
+      }
+
+      .aside-content {
+        max-height: 146px;
+
+        &[data-readmore] {
+          height: 146px;
+          position: relative;
+          transition: height 1s ease-out;
+
+          &[aria-expanded=true] {
+            + a[data-readmore-toggle] {
+              bottom: $global-spacing;
+            }
+          }
+        }
+      }
+
+      a[data-readmore-toggle] {
+        display: block;
+        padding-left: 30px;
+        position: absolute;
+        text-decoration: none;
+        right: $global-spacing * 2;
+        bottom: ($global-spacing * 2) + 6px;
+        background-image: linear-gradient(to left, rgba($yellow, 1), rgba($yellow, 1) 80%, rgba($yellow, 0));
+
+        span {
+          text-decoration: underline;
+        }
+
+        svg {
+          width: 10px;
+          height: 10px;
+          fill: $black;
+          transform: rotate(-90deg);
+        }
+
+        &:hover,
+        &:focus {
+          span {
+            text-decoration: none;
+          }
+        }
+      }
     }
   }
 

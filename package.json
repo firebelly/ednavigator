@@ -47,6 +47,7 @@
     "jquery-mask-plugin": "^1.14.16",
     "js-dom-router": "^1.0",
     "popper.js": "^1.15",
+    "readmore-js": "^3.0.0-1",
     "stripe-checkout": "^1.0.9",
     "velocity-animate": "^1.5.2",
     "waypoints": "^4.0.1"

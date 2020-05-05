@@ -1,6 +1,7 @@
 // Single Post js
 import Velocity from 'velocity-animate';
 import Flickity from 'flickity-sync';
+import Readmore from 'readmore-js';
 require('flickity-imagesloaded');
 
 import appState from '../util/appState';
@@ -10,11 +11,14 @@ import accordions from '../util/accordions';
 const singlePost = {
 
   init() {
+
     var $window = $(window),
         $siteHeader = $('.site-header'),
         userScrolled = false,
         sectionNavLastScrollTop = 0,
-        paddingBuffer = 25;
+        paddingBuffer = 25,
+        rmjsEnabled = false,
+        rmjs = '';
 
     // Update userScrolled var
     $(window).scroll(function(e){
@@ -30,9 +34,41 @@ const singlePost = {
     }, 250);
 
     // Initi
+    _checkReadMore();
     _initCarousel();
     _initSectionNav();
     _initFootnotes();
+
+    function _initReadMore() {
+      rmjs = new Readmore('.content-aside.family-narrative .aside-content', {
+        speed: 100,
+        collapsedHeight: 146,
+        embedCSS: false,
+        lessLink: '<a href="#"><span>close</span></a>',
+        moreLink: '<a href="#"> ... (<span>read more</span>)</a>',
+        blockProcessed: function(element) {
+          $(element).closest('aside').addClass('with-readmore');
+        },
+        beforeToggle: function(trigger, element, expanded) {
+          if (!expanded) {
+            $(element).closest('.-inner').addClass('-expanded');
+          } else {
+            $(element).closest('.-inner').removeClass('-expanded');
+          }
+        }
+      });
+
+      rmjsEnabled = true;
+    }
+
+    function _checkReadMore() {
+      if (appState.breakpoints.lg && rmjsEnabled === false) {
+        _initReadMore();
+      } else if (rmjs !== '' && !appState.breakpoints.lg) {
+        rmjs.destroy(null);
+        rmjsEnabled = false;
+      }
+    }
 
     function _initCarousel() {
       // Related Posts Carousel
@@ -194,6 +230,8 @@ const singlePost = {
           }
         }
       }
+
+      _checkReadMore();
     }
     $window.resize(_resize);
   },
