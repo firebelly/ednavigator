@@ -1,20 +1,20 @@
 // Related Posts Section
 
 .related-posts {
-  background-color: $gray-three;
+  background-color: $orange;
 
   h4 {
     @include headline-three;
-    margin: 20px 0 18px;
+    margin: 0;
+    padding: 20px $global-spacing 18px;
 
-    @include media-md {
-      margin: 30px 0 26px;
+    @include media-lg {
+      padding: 30px #{$global-spacing * 4} 26px;
     }
   }
 
   .related-posts-carousel {
     margin-bottom: 70px;
-    background-color: $gray-two;
     border-bottom: 1px solid $gray-three;
 
     .flickity-prev-next-button {
@@ -63,7 +63,7 @@
       width: 50%;
       padding: $global-spacing;
       background-color: $white;
-      border-left: 1px solid $gray-two;
+      border-left: 1px solid $orange;
 
       h5 {
         @include headline-five;
@@ -101,6 +101,10 @@
 
         a {
           color: $gray-one;
+          &:hover,
+          &:focus {
+            color: $blue;
+          }
         }
       }
     }
@@ -114,6 +118,7 @@
     @include media-lg {
       article {
         width: 25%;
+        padding: $global-spacing * 2;
       }
     }
   }

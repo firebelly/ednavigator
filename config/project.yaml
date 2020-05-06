@@ -118,7 +118,7 @@ categoryGroups:
     structure:
       maxLevels: 1
       uid: 57a02549-a05b-4d1d-8988-0230f4825164
-dateModified: 1588099736
+dateModified: 1588696352
 email:
   fromEmail: admin@ednavigator.com
   fromName: EdNavigator
@@ -270,13 +270,13 @@ fields:
     type: craft\fields\PlainText
   0d3e14a2-0c82-4a5f-b7ac-4e7ce75f352e:
     contentColumnType: string
-    fieldGroup: c07eca58-32d2-42c5-9bc5-0149d5f91a25
-    handle: ideasContentBlocks
+    fieldGroup: 62d1d9b7-d1f6-4696-b71d-80e0cb0e167d
+    handle: postContentBlocks
     instructions: ''
-    name: 'Ideas Content Blocks'
+    name: 'Post Content Blocks'
     searchable: true
     settings:
-      contentTable: '{{%matrixcontent_ideascontentblocks}}'
+      contentTable: '{{%matrixcontent_postcontentblocks}}'
       maxBlocks: ''
       minBlocks: ''
       propagationMethod: all
@@ -3163,8 +3163,8 @@ matrixBlockTypes:
           selectionLabel: 'Choose an embed'
           showUnpermittedFiles: false
           showUnpermittedVolumes: false
-          singleUploadLocationSource: 'volume:6b3a49f8-4ed5-4a69-86eb-7b2fa0d422f6'
-          singleUploadLocationSubpath: '{owner.slug}'
+          singleUploadLocationSource: 'volume:2cab35ea-e7c6-43b3-824c-befeac13bb2a'
+          singleUploadLocationSubpath: '{section}/{slug}_{id}'
           source: null
           sources: '*'
           targetSiteId: null
@@ -3561,8 +3561,8 @@ matrixBlockTypes:
           selectionLabel: 'Add an image'
           showUnpermittedFiles: false
           showUnpermittedVolumes: false
-          singleUploadLocationSource: 'volume:6b3a49f8-4ed5-4a69-86eb-7b2fa0d422f6'
-          singleUploadLocationSubpath: '{owner.slug}'
+          singleUploadLocationSource: 'volume:2cab35ea-e7c6-43b3-824c-befeac13bb2a'
+          singleUploadLocationSubpath: '{section}/{slug}_{id}'
           source: null
           sources: '*'
           targetSiteId: null
@@ -3685,8 +3685,8 @@ matrixBlockTypes:
           selectionLabel: 'Add an image'
           showUnpermittedFiles: false
           showUnpermittedVolumes: false
-          singleUploadLocationSource: 'volume:6b3a49f8-4ed5-4a69-86eb-7b2fa0d422f6'
-          singleUploadLocationSubpath: '{owner.slug}'
+          singleUploadLocationSource: 'volume:2cab35ea-e7c6-43b3-824c-befeac13bb2a'
+          singleUploadLocationSubpath: '{owner.section}/{owner.slug}_{id}'
           source: null
           sources: '*'
           targetSiteId: null
@@ -3822,8 +3822,8 @@ matrixBlockTypes:
           selectionLabel: 'Choose an image'
           showUnpermittedFiles: false
           showUnpermittedVolumes: false
-          singleUploadLocationSource: 'volume:6b3a49f8-4ed5-4a69-86eb-7b2fa0d422f6'
-          singleUploadLocationSubpath: '{owner.slug}'
+          singleUploadLocationSource: 'volume:2cab35ea-e7c6-43b3-824c-befeac13bb2a'
+          singleUploadLocationSubpath: '{owner.section}/{owner.slug}_{id}'
           source: null
           sources: '*'
           targetSiteId: null
@@ -6175,7 +6175,7 @@ sections:
                 sortOrder: 1
               -
                 fields:
-                  dd868fe1-3a50-4146-be40-157b12e3f0dc:
+                  0d3e14a2-0c82-4a5f-b7ac-4e7ce75f352e:
                     required: false
                     sortOrder: 1
                 name: 'Content Blocks'
@@ -7069,6 +7069,28 @@ volumes:
     sortOrder: 10
     type: craft\volumes\Local
     url: null
+  2cab35ea-e7c6-43b3-824c-befeac13bb2a:
+    fieldLayouts:
+      e6863704-f4d5-49eb-b90c-c4b3ca7c0a9e:
+        tabs:
+          -
+            fields:
+              033c51c3-9ce3-4ca5-9be9-a957bec922bf:
+                required: false
+                sortOrder: 2
+              59634ba7-ce29-47f3-8f83-30d2037eeacb:
+                required: false
+                sortOrder: 1
+            name: Settings
+            sortOrder: 1
+    handle: posts
+    hasUrls: true
+    name: Posts
+    settings:
+      path: uploads/posts/
+    sortOrder: 12
+    type: craft\volumes\Local
+    url: /uploads/posts/
   6b3a49f8-4ed5-4a69-86eb-7b2fa0d422f6:
     fieldLayouts:
       dd9a54f1-8491-4cf3-8683-79e4cbe7d459:

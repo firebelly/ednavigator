@@ -1,8 +1,4 @@
-{% if entry.section.handle == 'resourcesEntries' %}
-  {% set contentBlocks = entry.resourcesContentBlocks.all() %}
-{% elseif entry.section.handle == 'ideasEntries' %}
-  {% set contentBlocks = entry.ideasContentBlocks.all() %}
-{% endif %}
+{% set contentBlocks = entry.postContentBlocks.all() %}
 
 {% if contentBlocks|length %}
 

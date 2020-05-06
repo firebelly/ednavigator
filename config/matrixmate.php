@@ -2,7 +2,7 @@
 
 return [
     'fields' => [
-        'ideasContentBlocks' => [
+        'postContentBlocks' => [
             'types' => [
                 'generalContent' => [
                     'tabs' => [[

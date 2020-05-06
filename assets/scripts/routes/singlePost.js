@@ -40,6 +40,10 @@ const singlePost = {
     _initFootnotes();
 
     function _initReadMore() {
+      if (!$('.content-aside.family-narrative').length) {
+        return;
+      }
+
       rmjs = new Readmore('.content-aside.family-narrative .aside-content', {
         speed: 100,
         collapsedHeight: 146,

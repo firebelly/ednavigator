@@ -6,7 +6,7 @@
   position: relative;
   padding: #{$global-spacing * 2} $global-spacing;
 
-  @include media-md {
+  @include media-lg {
     padding: $global-spacing * 4;
   }
 
@@ -186,7 +186,7 @@
     font-smoothing: antialiased;
     padding: #{$vertical-beat * 2} $global-spacing;
 
-    @include media-md {
+    @include media-lg {
       min-height: $global-spacing;
       padding: #{$vertical-beat * 2} #{$global-spacing * 4};
     }

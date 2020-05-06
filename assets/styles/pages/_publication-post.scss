@@ -35,11 +35,24 @@ body.single-post.publication-post {
     }
   }
 
+  .related-posts {
+    background-color: $yellow;
+    article {
+      border-left-color: $yellow;
+    }
+  }
   .general-content-block .content-aside {
     .aside-tag,
     .accordion-toggle,
     .-inner {
       background-color: $yellow;
+    }
+    &.family-narrative {
+      @include media-lg {
+        a[data-readmore-toggle] {
+          background-image: linear-gradient(to left, rgba($yellow, 1), rgba($yellow, 1) 80%, rgba($yellow, 0));
+        }
+      }
     }
   }
 }

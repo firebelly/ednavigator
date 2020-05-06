@@ -140,7 +140,7 @@
                 <nav class="section-navigation accordion">
                   <button class="content-nav-expand accordion-toggle">Jump to section <svg class="expand-contract" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></button>
                   <ol class="accordion-content">
-                    {% for block in entry.ideasContentBlocks.all() if block.type == 'sectionHeading' %}
+                    {% for block in entry.postContentBlocks.all() if block.type == 'sectionHeading' %}
                       <li><a href="#{{ block.heading|lower|replace(' ', '-')|replace('/[^a-zA-Z\d\s-]+/', '') }}">{{ block.heading }}</a></li>
                     {% endfor %}
                   </ol>
@@ -215,33 +215,7 @@
       </div>
     </div>
 
-    {% if relatedEntries|length %}
-    <div class="related-posts">
-      <div class="wrap">
-        <h4>Related Posts</h4>
-      </div>
-      <div class="related-posts-carousel">
-        {% for relatedEntry in relatedEntries.all() %}
-          {% set relatedEntryTopics = '' %}
-          {% if entry.section.handle == 'resourcesEntries' %}
-            {% set relatedEntryTopics = relatedEntry.resourceTopic %}
-          {% elseif entry.section.handle == 'ideasEntries' %}
-            {% set relatedEntryTopics = relatedEntry.ideasTags %}
-          {% endif %}
-          <article>
-            <h5><a href="{{ relatedEntry.url }}">{{ relatedEntry.title }}</a></h5>
-            <ul class="topics">
-              <svg class="icon" aria-hidden="true" role="presentation"><use xlink:href="#icon-tag"/></svg>
-              {% for topic in relatedEntryTopics.all() %}
-                <li><a href="{{ topic.url }}">{{ topic.title }}{{ loop.index < relatedEntryTopics.all()|length ? ', ' : '' }}</a></li>
-              {% endfor %}
-            </ul>
-          </article>
-        {% endfor %}
-      </div>
-      {% endif %}
-    </div>
-
+    {% include 'partials/_related-posts' with relatedEntries %}
 
   </article>
 

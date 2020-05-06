@@ -195,7 +195,7 @@
         text-decoration: none;
         right: $global-spacing * 2;
         bottom: ($global-spacing * 2) + 6px;
-        background-image: linear-gradient(to left, rgba($yellow, 1), rgba($yellow, 1) 80%, rgba($yellow, 0));
+        background-image: linear-gradient(to left, rgba($orange, 1), rgba($orange, 1) 80%, rgba($orange, 0));
 
         span {
           text-decoration: underline;
@@ -239,7 +239,6 @@
 
       a {
         @include headline-four;
-        color: $black;
         display: inline-block;
       }
 

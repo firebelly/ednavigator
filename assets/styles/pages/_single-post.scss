@@ -415,24 +415,28 @@ body.single-post {
   }
 
   .resource-downloads {
+    padding: $global-spacing;
     margin-top: $global-spacing;
-    padding-top: $global-spacing;
     border-top: 1px solid $gray-two;
 
     .resource-download {
       @include clearfix;
+      max-width: 1000px;
+      border-radius: 10px;
+      padding: $global-spacing;
       margin-top: $global-spacing;
-      padding-top: $global-spacing;
-      border-top: 1px solid $gray-four;
-      &:first-of-type {
-        margin-top: 0;
-        border-top: 0;
-        padding-top: 0;
+      border: 1px solid $gray-four;
+      + .resource-download {
+        margin-top: $global-spacing;
       }
     }
 
     h3 {
+      @include headline-five;
       margin-top: 0;
+      a {
+        color: $blue;
+      }
     }
 
     .download-thumb {
@@ -444,6 +448,7 @@ body.single-post {
       .download-thumb {
         float: left;
         width: 200px;
+        display: block;
         margin-bottom: 0;
         img {
           max-width: 100%;
@@ -457,6 +462,11 @@ body.single-post {
           width: calc(100% - 200px - #{$global-spacing});
         }
       }
+    }
+
+    @include media-lg {
+      padding-left: 100px;
+      padding-right: 100px;
     }
   }
 
@@ -525,11 +535,32 @@ body.single-post {
 
   // Resource Post
   &.resources-post {
+    .related-posts {
+      background-color: $green;
+      h4 {
+        color: $white;
+      }
+      article {
+        border-left-color: $green;
+      }
+    }
     .general-content-block .content-aside {
+      color: $white;
       .aside-tag,
       .accordion-toggle,
       .-inner {
+        color: $white;
         background-color: $green;
+      }
+      svg {
+        fill: $white;
+      }
+      &.family-narrative {
+        @include media-lg {
+          a[data-readmore-toggle] {
+            background-image: linear-gradient(to left, rgba($green, 1), rgba($green, 1) 80%, rgba($green, 0));
+          }
+        }
       }
     }
   }

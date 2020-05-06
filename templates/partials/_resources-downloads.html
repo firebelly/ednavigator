@@ -9,7 +9,7 @@
           </a>
         {% endif %}
         <div class="resource-info">
-          <h3>{{ resource.resourceTitle }}</h3>
+          <h3><a href="{{ resource.resourceFile.one().getUrl() }}" class="ga-download" target="_blank" data-resourceTitle="{{ resource.resourceTitle }}">{{ resource.resourceTitle }}</a></h3>
           {% if resource.resourceDescription %}
             {{ resource.resourceDescription }}
           {% endif %}
