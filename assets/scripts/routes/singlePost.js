@@ -162,6 +162,12 @@ const singlePost = {
             if ($accordion.is('.-active')) {
               accordions.collapse($accordion, false);
             }
+            // Add some padding to the container so it doesn't jump down
+            // when the nav is plucked to be fixed
+            if (!appState.breakpoints.lg) {
+              $wrap.parent().css('padding-top', $wrap.outerHeight() + 25 + 'px');
+            }
+
             $wrap.addClass('stuck').css('top', $siteHeader.outerHeight());
             $wrap.find('.section-navigation').velocity({
               translateY: [0, '-100%']
@@ -169,7 +175,12 @@ const singlePost = {
 
           // If it's already stuck and scroll is above the element, un-stick it
           } else if (wrapIsStuck && scrollPos < stickyWrapTop) {
+            if (!appState.breakpoints.lg) {
+              $wrap.parent().css('padding-top', '');
+            }
+
             $wrap.removeClass('stuck').css('top', 'auto');
+
             if (appState.breakpoints.lg && !$accordion.is('.-active')) {
               accordions.expand($accordion, false);
             }

@@ -29,7 +29,14 @@ body.single-post.publication-post {
         padding: #{$global-spacing * 2} 0 70px;
 
         .share-section {
+          display: block;
           padding: 0 #{$global-spacing * 2};
+        }
+      }
+
+      @media screen and (min-width: 1100px) {
+        .share-section {
+          display: flex;
         }
       }
     }

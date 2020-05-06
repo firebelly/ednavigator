@@ -415,51 +415,66 @@ body.single-post {
   }
 
   .resource-downloads {
-    padding: $global-spacing;
-    margin-top: $global-spacing;
-    border-top: 1px solid $gray-two;
+    max-width: 1000px;
+    padding: 0 $global-spacing;
+    margin: #{$global-spacing * 2} 0;
 
     .resource-download {
-      @include clearfix;
-      max-width: 1000px;
+      display: flex;
       border-radius: 10px;
       padding: $global-spacing;
-      margin-top: $global-spacing;
-      border: 1px solid $gray-four;
+      border: 1px solid $gray-three;
       + .resource-download {
-        margin-top: $global-spacing;
+        margin-top: 30px;
       }
-    }
 
-    h3 {
-      @include headline-five;
-      margin-top: 0;
-      a {
-        color: $blue;
+      .button {
+        svg {
+          margin-left: $global-spacing * 2;
+        }
       }
     }
 
     .download-thumb {
-      display: inline-block;
-      margin-bottom: #{$vertical-beat * 3};
+      display: none;
+    }
+
+    h3 {
+      @include headline-five;
+      margin: 0 0 $vertical-beat;
+      a {
+        color: $blue;
+        text-decoration: none;
+        &:hover,
+        &:focus {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .resource-info {
+      p {
+        margin-top: 0;
+      }
     }
 
     @include media-md {
-      .download-thumb {
-        float: left;
-        width: 200px;
-        display: block;
-        margin-bottom: 0;
-        img {
-          max-width: 100%;
-          vertical-align: top;
-        }
+      padding: 30px;
+
+      .resource-info {
+        flex: 1;
+        margin-left: 30px;
       }
 
-      .resource-download.has-thumb {
-        .resource-info {
-          float: right;
-          width: calc(100% - 200px - #{$global-spacing});
+      .download-thumb {
+        width: 120px;
+        display: block;
+        margin-bottom: 0;
+        flex-basis: 120px;
+        img {
+          max-width: 100%;
+          border-radius: 50%;
+          vertical-align: top;
         }
       }
     }

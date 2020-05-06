@@ -160,11 +160,11 @@ export default {
 
     function _initMarkupTreatment() {
       // Inject a span for user-content h2
-      $('body.single-post .entry-content h3').each(function() {
-        var headlineText = $(this).text();
-        $(this).empty();
-        $(this).append('<span>' + headlineText + '</span');
-      });
+      // $('body.single-post .entry-content h3').each(function() {
+      //   var headlineText = $(this).text();
+      //   $(this).empty();
+      //   $(this).append('<span>' + headlineText + '</span');
+      // });
     }
 
     function _initSiteNav() {

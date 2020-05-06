@@ -23,6 +23,12 @@
     transition: fill .2s ease-out;
   }
 
+  &.-big {
+    width: auto;
+    border-radius: 25px;
+    padding: 15px 25px 13px;
+  }
+
   &.-yellow {
     color: $brand-primary;
     border-color: $brand-primary;
@@ -44,6 +50,7 @@
     &:hover,
     &:focus {
       color: $black;
+      border-color: $brand-primary;
       background-color: $brand-primary;
 
       svg {
@@ -55,9 +62,9 @@
 
   // With Icon
   &.with-icon {
-    display: flex;
     text-align: left;
     align-items: center;
+    display: inline-flex;
     justify-content: space-between;
 
     svg {
