@@ -4,6 +4,10 @@
   padding-left: $global-spacing;
   padding-right: $global-spacing;
 
+  .results-text {
+    @include headline-four;
+  }
+
   @include media-lg {
     padding-left: #{$global-spacing * 4};
     padding-right: #{$global-spacing * 4};

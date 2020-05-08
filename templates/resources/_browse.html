@@ -42,7 +42,7 @@
       {% set featuredPosts = craft.entries.section('resourcesEntries').relatedTo(category).search('featuredPost:1').limit(3) %}
       {% set params = { section: 'resourcesEntries', limit: limit, relatedTo: category } %}
     {% endif %}
-    {% if baseSlug != 'search' and featuredPosts %}
+    {% if baseSlug != 'search' and featuredPosts|length %}
       <div class="section featured-posts-section">
         <div class="featured-post-carousel">
           {% for featuredPost in featuredPosts.all() %}
@@ -61,7 +61,11 @@
   {% if not craft.app.request.isAjax %}
     <div class="section posts-section">
       {% if baseSlug != 'all' %}
-        <p class="results-text">{{ articles|length }} results for "{{ pageHeadline }}"</p>
+        {% if baseSlug == 'search' %}
+          <p class="results-text">{{ pageHeadline }}</p>
+        {% else %}
+          <p class="results-text">{{ articles|length }} results for "{{ pageHeadline }}"</p>
+        {% endif %}
       {% endif %}
   {% endif %}
 
