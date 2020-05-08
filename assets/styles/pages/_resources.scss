@@ -19,7 +19,7 @@ body.page-resources {
 
   .browse-by-age {
     background-color: $green;
-    padding: #{$global-spacing * 2} 0;
+    padding: #{$global-spacing * 2} $global-spacing;
 
     h3 {
       @include headline-rule($black, $green);
@@ -63,7 +63,7 @@ body.page-resources {
     }
 
     @include media-lg {
-      padding: 80px 0 30px;
+      padding: 80px #{$global-spacing * 4} 30px;
 
       h3 {
         margin-bottom: $global-spacing * 2;
@@ -88,17 +88,17 @@ body.page-resources {
 
   .search-section {
     background: $offwhite;
-    padding: $global-spacing 0;
+    padding: $global-spacing;
 
     @include media-lg {
-      padding: #{$global-spacing * 2} 0;
+      padding: #{$global-spacing * 2} #{$global-spacing * 4};
     }
   }
 
   // Posts Section
   .posts-section {
     background-color: $gray-three;
-    padding: #{$global-spacing * 2} 0;
+    padding: #{$global-spacing * 2} $global-spacing;
 
     h3 {
       @include headline-rule($black, $gray-three)
@@ -109,7 +109,7 @@ body.page-resources {
     }
 
     @include media-lg {
-      padding: 80px 0;
+      padding: 80px #{$global-spacing * 4};
     }
   }
 }

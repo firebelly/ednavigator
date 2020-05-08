@@ -64,11 +64,14 @@ hr {
   @include media-lg {
     padding: 0 $global-spacing * 2;
   }
+}
 
-  &.-large {
-    @include media-lg {
-      padding: 0 $global-spacing * 4;
-    }
+.global-padding {
+  padding-left: $global-spacing;
+  padding-right: $global-spacing;
+  @include media-lg {
+    padding-left: $global-spacing * 4;
+    padding-right: $global-spacing * 4;
   }
 }
 

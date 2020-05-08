@@ -1,3 +1,5 @@
+import jQueryBridget from 'jquery-bridget';
+import Masonry from 'masonry-layout';
 import Player from '@vimeo/player';
 import Velocity from 'velocity-animate';
 import Flickity from 'flickity-sync';
@@ -23,6 +25,7 @@ export default {
         transitionElements;
 
     // jQueryify
+    jQueryBridget( 'masonry', Masonry, $ );
     ImagesLoaded.makeJQueryPlugin($);
 
     // Cache some common DOM queries
@@ -42,14 +45,17 @@ export default {
     transitionElements = [$siteNav];
 
     // Init functions
-    accordions.init();
+    if ($('.accordion').length) {
+      accordions.init();
+    }
+
     _initActiveToggle();
     _injectSvgIcons();
     _initMarkupTreatment();
     _initSiteNav();
     _initBannerVideo();
     _initCarousels();
-    _initPostFunctions();
+    _initMasonry();
     _initLoadMore();
     _initVideoPlayers();
     _initNewsletterForm();
@@ -365,12 +371,28 @@ export default {
         $featuredNewsCarousel.find('button.previous').append('<span>Prev</span>');
         $featuredNewsCarousel.find('button.next').prepend('<span>Next</span>');
       }
+
+      if ($('.featured-post-carousel').length) {
+        var $featuredPostCarousel = $('.featured-post-carousel');
+
+        var featuredPostCarousel = new Flickity('.featured-post-carousel', {
+          cellSelector: 'article',
+          pageDots: false,
+          adaptiveHeight: true,
+          arrowShape: 'M33.4 47.7l30.8-15.4c2.1-1.1 4.7 1.1 3.6 3.6l-6.4 12.9c-.7.7-.7 1.4-.4 2.1l6.4 13.2c1.1 2.1-1.1 4.7-3.6 3.6L33 52.3c-1.4-1-1.4-3.9.4-4.6'
+        });
+
+        $featuredPostCarousel.find('button.previous').append('<span>Prev</span>');
+        $featuredPostCarousel.find('button.next').prepend('<span>Next</span>');
+      }
     }
 
-
-
-    function _initPostFunctions() {
-
+    function _initMasonry() {
+      $('.masonry').masonry({
+        itemSelector: 'article',
+        columnWidth: '.grid-sizer',
+        percentPosition: true,
+      });
     }
 
     function _initLoadMore() {
@@ -388,22 +410,30 @@ export default {
           $loadmoreSection.append('<div class="loading"><svg class="ednavigator-mark" role="img"><use xlink:href="#ednavigator-mark" /></svg></div>');
           $loadmore.addClass('hidden');
 
-          $.get( "/"+collection+"/p"+page, function(data) {
+          $.ajax({
+              url: "/"+collection+"/all/p"+page,
+              type: 'GET',
+              success: function(data) {
+                var $data = $(data);
+                $('.post-grid').append($data);
+                $('.post-grid').masonry('appended', $data, true)
 
-            $( ".article-list" ).append(data);
+                page++;
 
-            page++;
+                $loadmore.attr('data-page', page);
+                _injectSvgIcons();
+                _initVideoPlayers();
 
-            $loadmore.attr('data-page', page);
-            _injectSvgIcons();
-            _initVideoPlayers();
+                $loadmore.removeClass('hidden');
+                $('.loading').remove();
 
-            $loadmore.removeClass('hidden');
-            $('.loading').remove();
-
-            if (page > pageLimit) {
-              $loadmoreSection.addClass('hidden');
-            }
+                if (page > pageLimit) {
+                  $loadmoreSection.addClass('hidden');
+                }
+              },
+              error: function(data) {
+                console.log(data.responseText);
+              }
           });
 
         });

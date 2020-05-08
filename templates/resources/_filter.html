@@ -7,12 +7,15 @@
 {% endif %}
 
 <div class="filter-section grid">
+  <div class="col-1">
+    <h3 class="filter-title">Filter By</h3>
+  </div>
 
   <div class="search col-1-2">
     {% include 'partials/_search.html' with {'actionUrl': actionUrl, 'placeholder': 'Enter Keyword(s)'} %}
   </div>
 
-  {% if not searchOnly %}
+  {% if searchOnly is not defined %}
     <div class="col-1-2 grid">
       <div class="filter topic col-1-2">
         <div class="select-wrap">

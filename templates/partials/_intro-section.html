@@ -1,11 +1,11 @@
-{% if entry.pageHeadline or entry.introSections|length %}
-  <section class="intro-section{{ entry.pageHeadline ? ' with-headline' : '' }}">
-    {% if entry.pageHeadline %}
+{% if customHeadline is defined or entry is defined and entry.pageHeadline or entry.introSections|length %}
+  <section class="intro-section{{ entry is defined and entry.pageHeadline or customHeadline is defined ? ' with-headline' : '' }}">
+    {% if customHeadline is defined or entry is defined and entry.pageHeadline %}
       <div class="page-headline">
-        <h1>{{ entry.pageHeadline }}</h1>
+        <h1>{{ entry is defined and entry.pageHeadline ? entry.pageHeadline : customHeadline }}</h1>
       </div>
     {% endif %}
-    {% if entry.introSections|length and entry.introSections|length %}
+    {% if entry is defined and entry.introSections|length and entry.introSections|length %}
       <div class="intro-sections grid spaced">
         {% for introSection in entry.introSections.all() %}
           <div class="col-1-2">

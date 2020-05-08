@@ -1,0 +1,94 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set limit = 9 %}
+
+{% set title = "Resources" %}
+{% set bodyClass = 'page page-browse resources-browse' %}
+
+{% set baseSlug = craft.app.request.getSegment(2) %}
+{% set taxSlug = craft.app.request.getSegment(3) %}
+{% if baseSlug == 'all' %}
+  {% set pageHeadline = 'Browse all Resources' %}
+{% elseif baseSlug == 'search' or baseSlug == 'buscar' %}
+  {% set query = craft.app.request.getParam('q') %}
+  {% set results = craft.entries.section('resourcesEntries').search(query).orderBy('score') %}
+  {% set params = { section: 'resourcesEntries', search: query, orderBy: 'score' } %}
+  {% if results|length %}
+    {% set pageHeadline = results|length > 1 ? results|length ~ ' results found for “' ~ query ~ '”' : results|length ~ ' result found for “' ~ query ~ '”' %}
+  {% else %}
+    {% set pageHeadline = 'No results found for "' ~ query ~ '"' %}
+  {% endif %}
+{% elseif baseSlug == 'topic' or baseSlug == 'tema' %}
+  {% set pageHeadline = 'topic'|t|capitalize ~ ': ' ~ category|replace('-', ' ')|title  %}
+{% elseif baseSlug == 'age' or baseSlug == 'edad' %}
+  {% set pageHeadline = 'ages'|t|capitalize ~ ': ' ~ category|replace('-', ' ')|title  %}
+{% elseif baseSlug == 'location' or baseSlug == 'ubicacion' %}
+  {% set pageHeadline = 'location'|t|title ~ ': ' ~ tag|replace('-', ' ')|title  %}
+{% endif %}
+
+{% block content %}
+
+  {% if not craft.app.request.isAjax %}
+
+    {% include 'partials/_intro-section.html' with {'customHeadline': pageHeadline} %}
+
+    {% if baseSlug == 'all' %}
+      {% set featuredPosts = craft.entries.section('resourcesEntries').search('featuredPost:1').limit(3) %}
+      {% set params = { section: 'resourcesEntries', limit: limit } %}
+    {% elseif tag is defined %}
+      {% set featuredPosts = craft.entries.section('resourcesEntries').relatedTo(tag).search('featuredPost:1').limit(3) %}
+      {% set params = { section: 'resourcesEntries', limit: limit, relatedTo: tag } %}
+    {% elseif category is defined %}
+      {% set featuredPosts = craft.entries.section('resourcesEntries').relatedTo(category).search('featuredPost:1').limit(3) %}
+      {% set params = { section: 'resourcesEntries', limit: limit, relatedTo: category } %}
+    {% endif %}
+    {% if baseSlug != 'search' and featuredPosts %}
+      <div class="section featured-posts-section">
+        <div class="featured-post-carousel">
+          {% for featuredPost in featuredPosts.all() %}
+            {% include 'posts/_post-article.html' with { 'post': featuredPost, 'featured': true } %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% include 'resources/_filter.html' %}
+
+  {% endif %}
+
+  {% paginate craft.entries(params) as pageInfo, articles %}
+
+  {% if not craft.app.request.isAjax %}
+    <div class="section posts-section">
+      {% if baseSlug != 'all' %}
+        <p class="results-text">{{ articles|length }} results for "{{ pageHeadline }}"</p>
+      {% endif %}
+  {% endif %}
+
+    {% if articles|length %}
+      {% if not craft.app.request.isAjax %}
+        <div class="post-grid masonry">
+          <div class="grid-sizer"></div>
+      {% endif %}
+        {% for post in articles %}
+          {% include 'posts/_post-article.html' with { 'post': post } %}
+        {% endfor %}
+      {% if not craft.app.request.isAjax and baseSlug != 'search' and articles|length >= limit %}
+        </div>
+        <div class="load-more-section">
+          <button id="load-more" class="load-more button -big -blue with-icon" data-collection="resources" data-page="{{ pageInfo.currentPage + 1 }}" data-total-pages="{{ pageInfo.totalPages }}"><span>Load More</span> <svg class="icon" aria-hidden="true" role="presentation"><use xlink:href="#icon-cross"/></svg></button>
+        </div>
+      {% endif %}
+    {% else %}
+      {% if not craft.app.request.isAjax %}
+        <div class="no-posts">
+          <h2>There are no posts that match that query.</h2>
+        </div>
+      {% endif %}
+    {% endif %}
+
+  {% if not craft.app.request.isAjax %}
+    </div>
+  {% endif %}
+
+{% endblock %}

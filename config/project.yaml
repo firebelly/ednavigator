@@ -30,12 +30,12 @@ categoryGroups:
     siteSettings:
       84ea1cc0-8139-4b33-b94a-1c02700fc1ef:
         hasUrls: true
-        template: ''
-        uriFormat: 'age-groups/{slug}'
+        template: resources/_browse
+        uriFormat: 'age/{slug}'
       ed2e38d9-d86c-40c4-b682-df89fc90f62d:
         hasUrls: true
-        template: ''
-        uriFormat: 'age-groups/{slug}'
+        template: resources/_browse
+        uriFormat: 'edad/{slug}'
     structure:
       maxLevels: 1
       uid: aaf07168-433c-44b2-b3c3-abd62c021ac2
@@ -45,11 +45,11 @@ categoryGroups:
     siteSettings:
       84ea1cc0-8139-4b33-b94a-1c02700fc1ef:
         hasUrls: true
-        template: resources/_topic
+        template: resources/_browse
         uriFormat: '{% if object.level == 1 %}resources/topic/{slug}{% else %}{parent.uri}/{slug}{% endif %}'
       ed2e38d9-d86c-40c4-b682-df89fc90f62d:
         hasUrls: true
-        template: resources/_topic
+        template: resources/_browse
         uriFormat: '{% if object.level == 1 %}recursos/tema/{slug}{% else %}{parent.uri}/{slug}{% endif %}'
     structure:
       maxLevels: null
@@ -143,7 +143,7 @@ categoryGroups:
     structure:
       maxLevels: 1
       uid: 57a02549-a05b-4d1d-8988-0230f4825164
-dateModified: 1588920713
+dateModified: 1588969779
 email:
   fromEmail: admin@ednavigator.com
   fromName: EdNavigator
@@ -566,6 +566,18 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\redactor\Field
+  39037932-db05-465e-aa9f-ac995dcf52a3:
+    contentColumnType: boolean
+    fieldGroup: 62d1d9b7-d1f6-4696-b71d-80e0cb0e167d
+    handle: featuredPost
+    instructions: 'Should this post be featured?'
+    name: 'Featured Post'
+    searchable: true
+    settings:
+      default: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
   39a42cdc-d4b3-413a-affc-b6cb90cd0e99:
     contentColumnType: string
     fieldGroup: c07eca58-32d2-42c5-9bc5-0149d5f91a25
@@ -5796,34 +5808,52 @@ routes:
   186a16fb-71d2-40ce-a167-a38cd8a330fe:
     siteUid: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
     sortOrder: 2
-    template: resources/_location
+    template: resources/_browse
     uriParts:
       - resources/location/
       -
         - tag
         - '[^\/]+'
     uriPattern: 'resources/location/<tag:[^\/]+>'
-  21187390-7973-4e8b-acb2-ecac2834f534:
-    siteUid: null
-    sortOrder: 7
-    template: resources/_age
+  1e421956-ca6e-42ea-b43d-b12ccc581647:
+    siteUid: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
+    sortOrder: 9
+    template: resources/_browse
     uriParts:
-      - resources/age/
-      -
-        - slug
-        - '[^\/]+'
-    uriPattern: 'resources/age/<slug:[^\/]+>'
+      - resources/all
+    uriPattern: resources/all
+  23d112fc-ef89-4ca9-92a9-96d6a9519de4:
+    siteUid: ed2e38d9-d86c-40c4-b682-df89fc90f62d
+    sortOrder: 12
+    template: resources/_browse
+    uriParts:
+      - recursos/buscar
+    uriPattern: recursos/buscar
+  39dbfef2-d361-42a6-8dd9-e5228cd1784d:
+    siteUid: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
+    sortOrder: 13
+    template: ideas/_browse
+    uriParts:
+      - ideas/search
+    uriPattern: ideas/search
   3fac891f-8bf0-4477-b35a-f1d7eafb7cc3:
-    siteUid: null
+    siteUid: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
     sortOrder: 6
     template: posts/_pdf
     uriParts:
-      - ideas/
-      -
+      0: ideas/
+      1:
         - slug
         - '[^\/]+'
-      - /pdf
+      3: /pdf
     uriPattern: 'ideas/<slug:[^\/]+>/pdf'
+  5a7b3319-7ac5-4f38-9500-8d254f3096b0:
+    siteUid: ed2e38d9-d86c-40c4-b682-df89fc90f62d
+    sortOrder: 10
+    template: resources/_browse
+    uriParts:
+      - recursos/todo
+    uriPattern: recursos/todo
   7814e2ab-92a3-409e-886e-580f1ccc11ba:
     siteUid: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
     sortOrder: 5
@@ -5844,26 +5874,30 @@ routes:
         - tag
         - '[^\/]+'
     uriPattern: 'ideas/tag/<tag:[^\/]+>'
-  a6689423-6874-4af8-8ea0-b55694b44bf3:
-    siteUid: null
-    sortOrder: 8
-    template: resources/_age
-    uriParts:
-      - recursos/edad/
-      -
-        - slug
-        - '[^\/]+'
-    uriPattern: 'recursos/edad/<slug:[^\/]+>'
   b1005693-be13-4768-826d-bf2f7d6f263d:
     siteUid: ed2e38d9-d86c-40c4-b682-df89fc90f62d
     sortOrder: 3
-    template: resources/_location
+    template: resources/_browse
     uriParts:
       - recursos/ubicacion/
       -
         - tag
         - '[^\/]+'
     uriPattern: 'recursos/ubicacion/<tag:[^\/]+>'
+  b7b0c4d8-8a82-4734-8f09-765f40a635c1:
+    siteUid: ed2e38d9-d86c-40c4-b682-df89fc90f62d
+    sortOrder: 14
+    template: ideas/_browse
+    uriParts:
+      - ideas/buscar
+    uriPattern: ideas/buscar
+  d83ad2a5-08a3-43e1-bbae-26126eb9ec73:
+    siteUid: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
+    sortOrder: 11
+    template: resources/_browse
+    uriParts:
+      - resources/search
+    uriPattern: resources/search
   f49be77b-6cd6-4c6c-9c4c-2c71fd204f9f:
     siteUid: ed2e38d9-d86c-40c4-b682-df89fc90f62d
     sortOrder: 4
@@ -5875,72 +5909,6 @@ routes:
         - '[^\/]+'
     uriPattern: 'ideas/etiqueta/<tag:[^\/]+>'
 sections:
-  3a4fc5a5-acaa-49c3-a2a0-c0d4190e41d4:
-    enableVersioning: false
-    entryTypes:
-      9e7d25bc-1d20-4cb1-8e0b-13a4e6ec67ce:
-        handle: ideasSearch
-        hasTitleField: false
-        name: 'Ideas Search'
-        sortOrder: 1
-        titleFormat: '{section.name|raw}'
-        titleLabel: null
-    handle: ideasSearch
-    name: 'Ideas Search'
-    previewTargets:
-      -
-        __assoc__:
-          -
-            - label
-            - 'Primary entry page'
-          -
-            - urlFormat
-            - '{url}'
-          -
-            - refresh
-            - '1'
-    propagationMethod: all
-    siteSettings:
-      84ea1cc0-8139-4b33-b94a-1c02700fc1ef:
-        enabledByDefault: true
-        hasUrls: true
-        template: ideas/_search
-        uriFormat: ideas/search
-      ed2e38d9-d86c-40c4-b682-df89fc90f62d:
-        enabledByDefault: true
-        hasUrls: true
-        template: ideas/_search
-        uriFormat: ideas/buscar
-    type: single
-  44203785-76f2-4934-82f6-56bb14616e43:
-    enableVersioning: false
-    entryTypes:
-      9d3a1a28-62f8-49db-b38d-bb2357de8025:
-        handle: resourcesSearch
-        hasTitleField: true
-        name: 'Resources Search'
-        sortOrder: 1
-        titleFormat: null
-        titleLabel: Title
-    handle: resourcesSearch
-    name: 'Resources Search'
-    previewTargets:
-      -
-        label: 'Primary entry page'
-        urlFormat: '{url}'
-    propagationMethod: all
-    siteSettings:
-      84ea1cc0-8139-4b33-b94a-1c02700fc1ef:
-        enabledByDefault: true
-        hasUrls: true
-        template: resources/_search
-        uriFormat: resources/search
-      ed2e38d9-d86c-40c4-b682-df89fc90f62d:
-        enabledByDefault: true
-        hasUrls: true
-        template: resources/_search
-        uriFormat: recursos/buscar
-    type: single
   47e80b5c-8440-4621-8148-e9a56745e412:
     enableVersioning: true
     entryTypes:
@@ -6296,34 +6264,37 @@ sections:
                 fields:
                   0742d16d-ff12-44c8-9946-48094b611af3:
                     required: false
-                    sortOrder: 1
+                    sortOrder: 2
                   2a183104-63d4-445d-9e90-de8bcd9938c4:
                     required: false
-                    sortOrder: 3
+                    sortOrder: 4
+                  39037932-db05-465e-aa9f-ac995dcf52a3:
+                    required: false
+                    sortOrder: 1
                   39a42cdc-d4b3-413a-affc-b6cb90cd0e99:
                     required: false
-                    sortOrder: 5
+                    sortOrder: 6
                   50364b57-8731-453d-b212-32fd8d30c25a:
                     required: true
-                    sortOrder: 4
+                    sortOrder: 5
                   687a30fa-2f0c-44ad-85bd-0c87ffaec0c4:
                     required: true
-                    sortOrder: 7
+                    sortOrder: 8
                   755b777a-d10c-4321-9223-644f74eec81b:
                     required: false
-                    sortOrder: 9
+                    sortOrder: 10
                   9628cfbe-7a5e-4469-82f2-63eff08a0681:
                     required: false
-                    sortOrder: 8
+                    sortOrder: 9
                   b20b524d-39a1-465c-8779-3343f105238a:
                     required: true
-                    sortOrder: 2
+                    sortOrder: 3
                   cf9835fc-20c9-4837-82e8-ec16f965f65f:
                     required: true
-                    sortOrder: 6
+                    sortOrder: 7
                   fbd80904-a7d9-456b-8cd7-e08ad76a867f:
                     required: false
-                    sortOrder: 10
+                    sortOrder: 11
                 name: Main
                 sortOrder: 1
               -

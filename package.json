@@ -46,6 +46,7 @@
     "jquery-bridget": "^2.0.1",
     "jquery-mask-plugin": "^1.14.16",
     "js-dom-router": "^1.0",
+    "masonry-layout": "^4.2.2",
     "popper.js": "^1.15",
     "readmore-js": "^3.0.0-1",
     "stripe-checkout": "^1.0.9",

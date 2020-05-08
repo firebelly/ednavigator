@@ -2,6 +2,8 @@
 
 .filter-section {
   padding-top: $global-spacing;
+  padding-left: $global-spacing;
+  padding-right: $global-spacing;
 
   .search {
     @include media-lg {
@@ -13,5 +15,10 @@
     @include media-lg {
       padding-right: #{$col * 4};
     }
+  }
+
+  @include media-lg {
+    padding-left: #{$global-spacing * 4};
+    padding-right: #{$global-spacing * 4};
   }
 }

@@ -2,79 +2,81 @@
 {% set isFeatured = featured is defined and featured == true ? true : false %}
 
 <article class="post-card {{ isFeatured ? ' featured-post' : '' }}{{ postClass is defined ? ' ' ~ postClass : '' }}">
-  {% if isFeatured %}
-    {% set width = 1000 %}
-    {% set height = 1240 %}
-    <div class="ribbons">
-      <svg class="featured" aria-hidden="true" role="presentation"><use xlink:href="#icon-featured-ribbon"/></svg>
-    </div>
-  {% else %}
-    {% set width = 960 %}
-    {% set height = 480 %}
-  {% endif %}
-  {% if postType == 'resources'  %}
-    {% set parentSlug = 'resources' %}
-    {% set categories = post.resourceTopic %}
-    {% set tags = post.resourceLocations %}
-    {% set transformedImage = craft.imager.transformImage(post.resourcesBannerImage.one(), { width: width, height: height }) %}
-  {% else %}
-    {% set parentSlug = 'ideas' %}
-    {% set categories = post.ideasCategory %}
-    {% set tags = post.ideasTags %}
-    {% set transformedImage = craft.imager.transformImage(post.ideasBannerImage.one(), { width: width, height: height }) %}
-  {% endif %}
+  <div class="-inner">
+    {% if isFeatured %}
+      {% set width = 1000 %}
+      {% set height = 1240 %}
+      <div class="ribbons">
+        <svg class="featured" aria-hidden="true" role="presentation"><use xlink:href="#icon-featured-ribbon"/></svg>
+      </div>
+    {% else %}
+      {% set width = 960 %}
+      {% set height = 480 %}
+    {% endif %}
+    {% if postType == 'resources'  %}
+      {% set parentSlug = 'resources' %}
+      {% set categories = post.resourceTopic %}
+      {% set tags = post.resourceLocations %}
+      {% set transformedImage = craft.imager.transformImage(post.resourcesBannerImage.one(), { width: width, height: height }) %}
+    {% else %}
+      {% set parentSlug = 'ideas' %}
+      {% set categories = post.ideasCategory %}
+      {% set tags = post.ideasTags %}
+      {% set transformedImage = craft.imager.transformImage(post.ideasBannerImage.one(), { width: width, height: height }) %}
+    {% endif %}
 
-  <div class="post-image" style="background-image:url({{ transformedImage.getUrl() }});"></div>
-  <div class="post-content">
-    <h4 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h4>
-    <p class="post-excerpt">{{ post.excerpt }}</p>
-    <div class="post-meta">
-      <p class="post-date"><svg class="icon icon-calendar" aria-hidden="true" role="presentation"><use xlink:href="#icon-calendar"/></svg> {{ post.postDate.format('M d, Y') }}</p>
+    <div class="post-image" style="background-image:url({{ transformedImage.getUrl() }});"></div>
+    <div class="post-content">
+      <h4 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h4>
+      <p class="post-excerpt">{{ post.excerpt }}</p>
+      <div class="post-meta">
+        <p class="post-date"><svg class="icon icon-calendar" aria-hidden="true" role="presentation"><use xlink:href="#icon-calendar"/></svg> {{ post.postDate.format('M d, Y') }}</p>
 
-      {% if post.ageGroups|length %}
-        {% if post.ageGroups|length > 1 %}
-          {% set ageRanges = [] %}
-          {% for ageGroup in post.ageGroups.all() %}
-            {% set ages = ageGroup.ageRange|replace('+', '')|split('-') %}
-            {% for age in ages %}
-              {% set ageRanges = ageRanges|merge([age]) %}
+        {% if post.ageGroups|length %}
+          {% if post.ageGroups|length > 1 %}
+            {% set ageRanges = [] %}
+            {% for ageGroup in post.ageGroups.all() %}
+              {% set ages = ageGroup.ageRange|replace('+', '')|split('-') %}
+              {% for age in ages %}
+                {% set ageRanges = ageRanges|merge([age]) %}
+              {% endfor %}
             {% endfor %}
-          {% endfor %}
-          {% set lowAge = min(ageRanges) %}
-          {% set highAge = max(ageRanges) %}
-          {% set ageText = lowAge ~ '-' ~ highAge %}
-        {% else %}
-          {% set ageText = post.ageGroups.one().ageRange %}
+            {% set lowAge = min(ageRanges) %}
+            {% set highAge = max(ageRanges) %}
+            {% set ageText = lowAge ~ '-' ~ highAge %}
+          {% else %}
+            {% set ageText = post.ageGroups.one().ageRange %}
+          {% endif %}
+          <p class="age-range"><svg class="icon icon-person" aria-hidden="true" role="presentation"><use xlink:href="#icon-person"/></svg>Ages {{ ageText }}</p>
         {% endif %}
-        <p class="age-range"><svg class="icon icon-person" aria-hidden="true" role="presentation"><use xlink:href="#icon-person"/></svg>Ages {{ ageText }}</p>
-      {% endif %}
 
-      {% if categories|length %}
-        <div class="post-categories">
-          <ul>
-            <svg class="icon icon-tag" aria-hidden="true" role="presentation"><use xlink:href="#icon-tag"/></svg>
-            {% for category in categories.all() %}
-              <li><a href="{{ category.url }}">{{ category.title }}</a>{{ loop.index < categories|length ? ', ' : '' }}</li>
-            {% endfor %}
-          </ul>
-        </div>
-      {% endif %}
-
-      {% if tags|length %}
-        <div class="post-tags">
-          <ul>
-            {% if postType == 'resources' %}
-              <svg class="icon icon-location" aria-hidden="true" role="presentation"><use xlink:href="#icon-location"/></svg>
-            {% else %}
+        {% if categories|length %}
+          <div class="post-categories">
+            <ul>
               <svg class="icon icon-tag" aria-hidden="true" role="presentation"><use xlink:href="#icon-tag"/></svg>
-            {% endif %}
-            {% for tag in tags.all() %}
-              <li><a href="{{ url('{{ parentSlug }}/tag/'~tag.slug) }}">{{ tag.title }}</a>{{ loop.index < tags|length ? ', ' : '' }}</li>
-            {% endfor %}
-          </ul>
-        </div>
-      {% endif %}
+              {% for category in categories.all() %}
+                <li><a href="{{ category.url }}">{{ category.title }}</a>{{ loop.index < categories|length ? ', ' : '' }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        {% if tags|length %}
+          <div class="post-tags">
+            <ul>
+              {% if postType == 'resources' %}
+                <svg class="icon icon-location" aria-hidden="true" role="presentation"><use xlink:href="#icon-location"/></svg>
+              {% else %}
+                <svg class="icon icon-tag" aria-hidden="true" role="presentation"><use xlink:href="#icon-tag"/></svg>
+              {% endif %}
+              {% for tag in tags.all() %}
+                <li><a href="{{ url('{{ parentSlug }}/tag/'~tag.slug) }}">{{ tag.title }}</a>{{ loop.index < tags|length ? ', ' : '' }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+      <p class="cta"><a href="{{ post.url }}" class="inline-link -blue"><span>Read More</span></a></p>
     </div>
-    <p class="cta"><a href="{{ post.url }}" class="inline-link -blue"><span>Read More</span></a></p>
   </div>
 </article>
