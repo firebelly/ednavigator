@@ -14,6 +14,31 @@ categoryGroups:
     structure:
       maxLevels: null
       uid: fccfa722-d3ba-4904-b577-20d3e37d4eea
+  3caf2470-30cc-44f1-8cbf-bcaae081988e:
+    fieldLayouts:
+      48f51e86-0d19-4e69-a1db-ddbcbd28118b:
+        tabs:
+          -
+            fields:
+              6b5df7ea-0478-4276-9b48-a9117c3d1013:
+                required: false
+                sortOrder: 1
+            name: Settings
+            sortOrder: 1
+    handle: ageGroups
+    name: 'Age Groups'
+    siteSettings:
+      84ea1cc0-8139-4b33-b94a-1c02700fc1ef:
+        hasUrls: true
+        template: ''
+        uriFormat: 'age-groups/{slug}'
+      ed2e38d9-d86c-40c4-b682-df89fc90f62d:
+        hasUrls: true
+        template: ''
+        uriFormat: 'age-groups/{slug}'
+    structure:
+      maxLevels: 1
+      uid: aaf07168-433c-44b2-b3c3-abd62c021ac2
   7f19df16-7584-4d94-a3f7-6aa14f45630b:
     handle: resourcesTopics
     name: 'Resources Topics'
@@ -118,7 +143,7 @@ categoryGroups:
     structure:
       maxLevels: 1
       uid: 57a02549-a05b-4d1d-8988-0230f4825164
-dateModified: 1588696352
+dateModified: 1588918132
 email:
   fromEmail: admin@ednavigator.com
   fromName: EdNavigator
@@ -827,6 +852,24 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Categories
+  6b5df7ea-0478-4276-9b48-a9117c3d1013:
+    contentColumnType: text
+    fieldGroup: 0200d286-aa37-4a58-9853-7f8a1aeb6cc3
+    handle: ageRange
+    instructions: ''
+    name: 'Age Range'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: '1'
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: 0-24
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
   6ead88fb-e8dd-4483-a356-486e2926724a:
     contentColumnType: string
     fieldGroup: 906608b2-91ed-4a3f-af22-d10f34202903
@@ -855,6 +898,28 @@ fields:
       source: 'group:c6992af6-05f1-4a94-87a2-063dfb5321e6'
     translationKeyFormat: null
     translationMethod: none
+    type: craft\fields\Categories
+  755b777a-d10c-4321-9223-644f74eec81b:
+    contentColumnType: string
+    fieldGroup: 0200d286-aa37-4a58-9853-7f8a1aeb6cc3
+    handle: ageGroups
+    instructions: ''
+    name: 'Age Groups'
+    searchable: true
+    settings:
+      allowLimit: false
+      allowMultipleSources: false
+      branchLimit: ''
+      limit: null
+      localizeRelations: ''
+      selectionLabel: 'Add an age group'
+      source: 'group:3caf2470-30cc-44f1-8cbf-bcaae081988e'
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: ''
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
     type: craft\fields\Categories
   76d5a8a9-fba9-457c-ab56-379dad242837:
     contentColumnType: text
@@ -1020,6 +1085,37 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Matrix
+  9adcfd08-78b3-4dfb-9f44-41682ee61d17:
+    contentColumnType: string
+    fieldGroup: 62d1d9b7-d1f6-4696-b71d-80e0cb0e167d
+    handle: postBannerImage
+    instructions: ''
+    name: 'Post Banner Image'
+    searchable: false
+    settings:
+      allowedKinds: null
+      defaultUploadLocationSource: 'volume:2cab35ea-e7c6-43b3-824c-befeac13bb2a'
+      defaultUploadLocationSubpath: '{owner.section}/{owner.slug}_{id}'
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: ''
+      selectionLabel: 'Choose an image'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      singleUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources:
+        - 'volume:6b3a49f8-4ed5-4a69-86eb-7b2fa0d422f6'
+        - 'volume:1e3bbacb-6818-4f7f-8516-ae22e47c8b82'
+        - 'volume:2cab35ea-e7c6-43b3-824c-befeac13bb2a'
+      targetSiteId: null
+      useSingleFolder: false
+      validateRelatedElements: ''
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
   a3418340-8df9-494d-a2e0-cbc666702ffc:
     contentColumnType: text
     fieldGroup: b8065821-73bc-41b6-9331-08c71b8228ff
@@ -1068,6 +1164,26 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\PlainText
+  a7ede9ae-ea0d-45e3-9ebb-978d24054eed:
+    contentColumnType: string
+    fieldGroup: 0200d286-aa37-4a58-9853-7f8a1aeb6cc3
+    handle: featuredResourcePost
+    instructions: ''
+    name: 'Featured Resource Post'
+    searchable: true
+    settings:
+      limit: '1'
+      localizeRelations: ''
+      selectionLabel: 'Choose an entry'
+      source: null
+      sources:
+        - 'section:b04c9ca0-ec19-4957-9463-e561c6cbe987'
+      targetSiteId: null
+      validateRelatedElements: ''
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
   a85fabb2-a4f6-4f0c-aad1-4fede5a8bc3f:
     contentColumnType: text
     fieldGroup: 9aec6670-8753-4f2e-91d5-03ff2b4f3ef6
@@ -5533,6 +5649,10 @@ plugins:
       canDoActions: '1'
       pluginName: 'Site Navigation'
       quietErrors: ''
+  architect:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
   array-unique:
     enabled: '1'
     licenseKey: null
@@ -5592,6 +5712,10 @@ plugins:
     licenseKey: null
     schemaVersion: '1.0'
     settings: null
+  craft-bulk-edit:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.4
   ed-nav-payment:
     enabled: '1'
     licenseKey: null
@@ -5679,6 +5803,16 @@ routes:
         - tag
         - '[^\/]+'
     uriPattern: 'resources/location/<tag:[^\/]+>'
+  21187390-7973-4e8b-acb2-ecac2834f534:
+    siteUid: null
+    sortOrder: 7
+    template: resources/_age
+    uriParts:
+      - resources/age/
+      -
+        - slug
+        - '[^\/]+'
+    uriPattern: 'resources/age/<slug:[^\/]+>'
   3fac891f-8bf0-4477-b35a-f1d7eafb7cc3:
     siteUid: null
     sortOrder: 6
@@ -5693,23 +5827,33 @@ routes:
   7814e2ab-92a3-409e-886e-580f1ccc11ba:
     siteUid: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
     sortOrder: 5
-    template: blog/_author
+    template: ideas/_author
     uriParts:
-      - blog/author/
+      - ideas/author/
       -
         - slug
         - '[^\/]+'
-    uriPattern: 'blog/author/<slug:[^\/]+>'
+    uriPattern: 'ideas/author/<slug:[^\/]+>'
   a1ea33d1-26a1-4ccb-b4e5-69a24ecef577:
     siteUid: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
     sortOrder: 1
-    template: blog/_tag
+    template: ideas/_tag
     uriParts:
-      - blog/tag/
+      - ideas/tag/
       -
         - tag
         - '[^\/]+'
-    uriPattern: 'blog/tag/<tag:[^\/]+>'
+    uriPattern: 'ideas/tag/<tag:[^\/]+>'
+  a6689423-6874-4af8-8ea0-b55694b44bf3:
+    siteUid: null
+    sortOrder: 8
+    template: resources/_age
+    uriParts:
+      - recursos/edad/
+      -
+        - slug
+        - '[^\/]+'
+    uriPattern: 'recursos/edad/<slug:[^\/]+>'
   b1005693-be13-4768-826d-bf2f7d6f263d:
     siteUid: ed2e38d9-d86c-40c4-b682-df89fc90f62d
     sortOrder: 3
@@ -5723,13 +5867,13 @@ routes:
   f49be77b-6cd6-4c6c-9c4c-2c71fd204f9f:
     siteUid: ed2e38d9-d86c-40c4-b682-df89fc90f62d
     sortOrder: 4
-    template: blog/_tag
+    template: ideas/_tag
     uriParts:
-      - blog/etiqueta/
+      - ideas/etiqueta/
       -
         - tag
         - '[^\/]+'
-    uriPattern: 'blog/etiqueta/<tag:[^\/]+>'
+    uriPattern: 'ideas/etiqueta/<tag:[^\/]+>'
 sections:
   3a4fc5a5-acaa-49c3-a2a0-c0d4190e41d4:
     enableVersioning: false
@@ -6102,10 +6246,19 @@ sections:
             tabs:
               -
                 fields:
-                  a85fabb2-a4f6-4f0c-aad1-4fede5a8bc3f:
+                  348f54c4-b833-4ced-bf8a-da9b48e36232:
                     required: false
                     sortOrder: 1
-                name: Default
+                  60fb224d-1163-4fda-8ccc-ec5f35830998:
+                    required: false
+                    sortOrder: 2
+                  a7ede9ae-ea0d-45e3-9ebb-978d24054eed:
+                    required: false
+                    sortOrder: 4
+                  aaf771f5-2db7-4257-b26d-b6ca2a58f2c8:
+                    required: false
+                    sortOrder: 3
+                name: Settings
                 sortOrder: 1
         handle: resources
         hasTitleField: true
@@ -6156,7 +6309,7 @@ sections:
                   687a30fa-2f0c-44ad-85bd-0c87ffaec0c4:
                     required: true
                     sortOrder: 7
-                  73a2406b-1ed1-4a9b-b258-6ef9ed261e82:
+                  755b777a-d10c-4321-9223-644f74eec81b:
                     required: false
                     sortOrder: 9
                   9628cfbe-7a5e-4469-82f2-63eff08a0681:

@@ -33,7 +33,7 @@
               <h2 class="block-title"><a href="{{ featuredEntry.url }}">{{ featuredEntry.title }}</a></h2>
               <p>{{ featuredEntry.excerpt|raw }}</p>
             </div>
-            <p class="block-cta"><a href="{{ featuredEntry.url }}" class="inline-link borderless -blue"><span>Read More</span></a></p>
+            <p class="block-cta"><a href="{{ featuredEntry.url }}" class="inline-link -blue"><span>Read More</span></a></p>
           {% else %}
             <div class="-inner">
               {% if featuredPost.articleImage|length %}
@@ -56,7 +56,7 @@
                 <p>{{ featuredPost.articleDescription }}</p>
               {% endif %}
             </div>
-            <p class="block-cta"><a href="{{ featuredPost.articleUrl }}" target="_blank" class="text-link -blue"><span>View article</span> <svg class="icon-linkout" aria-hidden="true" role="presentation"><use xlink:href="#icon-linkout"/></svg></a></p>
+            <p class="block-cta"><a href="{{ featuredPost.articleUrl }}" target="_blank" class="inline-link -blue"><span>View article</span> <svg class="icon-linkout" aria-hidden="true" role="presentation"><use xlink:href="#icon-linkout"/></svg></a></p>
           {% endif %}
         </article>
       {% endfor %}

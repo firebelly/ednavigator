@@ -9,38 +9,35 @@
 <div class="filter-section grid">
 
   <div class="search col-1-2">
-    <form action="{{ actionUrl }}" class="search-filter">
-      <div class="search-wrap">
-        <input type="search" name="q" placeholder="{{'Search Resources'|t}}">
-        <button type="submit" class="svg-inject" data-icon="icon-search"><span class="visually-hidden">{{"Search Resources"|t}}</span></button>
-      </div>
-    </form>
+    {% include 'partials/_search.html' with {'actionUrl': actionUrl, 'placeholder': 'Enter Keyword(s)'} %}
   </div>
 
-  <div class="col-1-2 grid">
-    <div class="filter topic col-1-2">
-      <div class="select-wrap">
-        <select name="topic" id="topic">
-          <option value="null">{{ 'topic' | t | capitalize }}</option>
-          {% for topic in topics %}
-            <option value="{{ topic.url }}">{{ topic.title }}</option>
-          {% endfor %}
-        </select>
+  {% if not searchOnly %}
+    <div class="col-1-2 grid">
+      <div class="filter topic col-1-2">
+        <div class="select-wrap">
+          <select name="topic" id="topic">
+            <option value="null">{{ 'topic' | t | capitalize }}</option>
+            {% for topic in topics %}
+              <option value="{{ topic.url }}">{{ topic.title }}</option>
+            {% endfor %}
+          </select>
+        </div>
       </div>
-    </div>
 
-    {% set locationEntries = craft.entries.section('resourcesEntries').limit(null) %}
-    {% set locations = craft.tags.group('resourcesLocations').relatedTo(locationEntries).indexBy('title') %}
-    <div class="filter location col-1-2">
-      <div class="select-wrap">
-        <select name="location" id="location" class="notranslate">
-          <option value="null">{{ 'locations'|t|capitalize }}</option>
-          {% for location in locations.all() %}
-            <option value="{{ siteUrl }}{{ 'resources'|t }}/{{ 'location'|t }}/{{ location.slug }}">{{ location.title }}</option>
-          {% endfor %}
-        </select>
+      {% set locationEntries = craft.entries.section('resourcesEntries').limit(null) %}
+      {% set locations = craft.tags.group('resourcesLocations').relatedTo(locationEntries).indexBy('title') %}
+      <div class="filter location col-1-2">
+        <div class="select-wrap">
+          <select name="location" id="location" class="notranslate">
+            <option value="null">{{ 'locations'|t|capitalize }}</option>
+            {% for location in locations.all() %}
+              <option value="{{ siteUrl }}{{ 'resources'|t }}/{{ 'location'|t }}/{{ location.slug }}">{{ location.title }}</option>
+            {% endfor %}
+          </select>
+        </div>
       </div>
     </div>
-  </div>
+  {% endif %}
 
 </div>

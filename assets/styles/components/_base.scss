@@ -64,6 +64,12 @@ hr {
   @include media-lg {
     padding: 0 $global-spacing * 2;
   }
+
+  &.-large {
+    @include media-lg {
+      padding: 0 $global-spacing * 4;
+    }
+  }
 }
 
 .site-main {

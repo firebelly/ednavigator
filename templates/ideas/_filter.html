@@ -9,15 +9,7 @@
 <div class="filter-section grid">
 
   <div class="search col-1-2">
-    <form action="{{ actionUrl }}" class="search-filter">
-
-      <div class="search-wrap">
-        <input type="search" name="q" placeholder="{{'Search Posts'|t}}">
-        <button type="submit" class="svg-inject" data-icon="icon-search"><span class="visually-hidden">{{"Search Posts"|t}}</span></button>
-      </div>
-
-    </form>
-
+    {% include 'partials/_search.html' with {'actionUrl': actionUrl, 'placeholder': 'Enter Keyword(s)'} %}
   </div>
 
   <div class="col-1-2 grid">

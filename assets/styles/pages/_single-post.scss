@@ -181,11 +181,12 @@ body.single-post {
       }
     }
 
-    .entry-cats-tags {
+    .entry-cats-tags,
+    .age-groups {
       margin-top: 40px;
 
       div + div {
-        margin-top: $vertical-beat * 2;
+        margin-top: $vertical-beat * 4;
       }
 
       ul {
@@ -193,7 +194,6 @@ body.single-post {
         padding: 0;
         list-style: none;
         li {
-          color: $blue;
           display: inline-block;
         }
       }
@@ -208,6 +208,20 @@ body.single-post {
 
       @include media-lg {
         margin-top: 0;
+      }
+    }
+
+    // Age Groups
+    .age-groups {
+      ul {
+        li {
+          display: block;
+          color: $gray-one;
+        }
+      }
+
+      @include media-lg {
+        padding-left: $global-spacing;
       }
     }
 
@@ -595,7 +609,7 @@ body.single-post {
     }
 
     .share-section {
-      margin-top: $global-spacing;
+      margin-top: $vertical-beat * 4;
 
       @include media-lg {
         top: 100%;

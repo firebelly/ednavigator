@@ -172,6 +172,10 @@ form {
   input[type=search] {
     box-sizing: border-box;
     padding-right: $global-spacing;
+    &::placeholder {
+      color: $gray-one;
+    }
+
     @include media-md {
       font-size: 22px;
       line-height: 30px;
@@ -201,7 +205,7 @@ form {
     position: absolute;
     pointer-events: none;
     transform: rotate(90deg);
-    background: url('../../svgs/icon-arrow.svg');
+    background: url('../svgs/icon-arrow.svg');
   }
 
   select {
