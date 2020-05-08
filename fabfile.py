@@ -9,8 +9,8 @@ env.warn_only = True
 def staging():
   env.hosts = ['ednavigator.webfactional.com']
   env.user = 'ednavigator'
-  env.git_branch = '2019-updates'
-  env.remotepath = '/home/ednavigator/webapps/ednavigator2020'
+  env.git_branch = '2019-phase2-updates'
+  env.remotepath = '/home/ednavigator/webapps/ednavigator_staging'
 
 def production():
   env.hosts = ['ednavigator.webfactional.com']
