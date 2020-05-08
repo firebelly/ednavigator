@@ -26,22 +26,23 @@
   {% set pageHeadline = 'location'|t|title ~ ': ' ~ tag|replace('-', ' ')|title  %}
 {% endif %}
 
+{% if baseSlug == 'all' %}
+  {% set featuredPosts = craft.entries.section('resourcesEntries').search('featuredPost:1').limit(3) %}
+  {% set params = { section: 'resourcesEntries', limit: limit } %}
+{% elseif tag is defined %}
+  {% set featuredPosts = craft.entries.section('resourcesEntries').relatedTo(tag).search('featuredPost:1').limit(3) %}
+  {% set params = { section: 'resourcesEntries', limit: limit, relatedTo: tag } %}
+{% elseif category is defined %}
+  {% set featuredPosts = craft.entries.section('resourcesEntries').relatedTo(category).search('featuredPost:1').limit(3) %}
+  {% set params = { section: 'resourcesEntries', limit: limit, relatedTo: category } %}
+{% endif %}
+
 {% block content %}
 
   {% if not craft.app.request.isAjax %}
 
     {% include 'partials/_intro-section.html' with {'customHeadline': pageHeadline} %}
 
-    {% if baseSlug == 'all' %}
-      {% set featuredPosts = craft.entries.section('resourcesEntries').search('featuredPost:1').limit(3) %}
-      {% set params = { section: 'resourcesEntries', limit: limit } %}
-    {% elseif tag is defined %}
-      {% set featuredPosts = craft.entries.section('resourcesEntries').relatedTo(tag).search('featuredPost:1').limit(3) %}
-      {% set params = { section: 'resourcesEntries', limit: limit, relatedTo: tag } %}
-    {% elseif category is defined %}
-      {% set featuredPosts = craft.entries.section('resourcesEntries').relatedTo(category).search('featuredPost:1').limit(3) %}
-      {% set params = { section: 'resourcesEntries', limit: limit, relatedTo: category } %}
-    {% endif %}
     {% if baseSlug != 'search' and featuredPosts|length %}
       <div class="section featured-posts-section">
         <div class="featured-post-carousel">
