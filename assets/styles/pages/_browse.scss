@@ -153,4 +153,18 @@ body.page-browse {
       }
     }
   }
+
+  // Resources Browse page
+  &.ideas-browse {
+    .featured-post-carousel,
+    .featured-post-section .featured-post {
+      &,
+      &::after {
+        background-color: $yellow;
+      }
+      .post-content {
+        background-color: $yellow;
+      }
+    }
+  }
 }
