@@ -2,21 +2,6 @@
 
 body.page-resources {
 
-  .page-banner {
-    .banner-headline {
-      color: $blue;
-    }
-    .banner-content {
-      padding-bottom: $global-spacing;
-    }
-
-    @include media-lg {
-      .banner-content {
-        padding-bottom: 80px;
-      }
-    }
-  }
-
   .browse-by-age {
     background-color: $green;
     padding: #{$global-spacing * 2} $global-spacing;
@@ -95,21 +80,9 @@ body.page-resources {
     }
   }
 
-  // Posts Section
   .posts-section {
-    background-color: $gray-three;
-    padding: #{$global-spacing * 2} $global-spacing;
-
     h3 {
       @include headline-rule($black, $gray-three)
-    }
-
-    .featured-post-section {
-      margin-bottom: $global-spacing * 2;
-    }
-
-    @include media-lg {
-      padding: 80px #{$global-spacing * 4};
     }
   }
 }

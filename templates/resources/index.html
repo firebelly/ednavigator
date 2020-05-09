@@ -4,7 +4,7 @@
 {% set params = { section: 'resourcesEntries', limit: limit} %}
 
 {% set title = "Resources" %}
-{% set bodyClass = 'page page-' ~ entry.slug %}
+{% set bodyClass = 'page post-landing-page page-' ~ entry.slug %}
 
 {% set resourcesEntries = craft.entries.section('resourcesEntries').all() %}
 {% set ageGroups = craft.categories.group('ageGroups').relatedTo(resourcesEntries) %}
@@ -37,7 +37,7 @@
     </div>
   </div>
 
-  <div class="section posts-section">
+  <div class="section posts-section background-gray-three">
 
     {% set featuredResource = entry.featuredResourcePost.one() %}
     {% if featuredResource %}

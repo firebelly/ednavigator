@@ -374,11 +374,22 @@ export default {
 
       if ($('.featured-post-carousel').length) {
         var $featuredPostCarousel = $('.featured-post-carousel');
+        Flickity.prototype._createResizeClass = function() {
+          this.element.classList.add('flickity-resize');
+        };
+
+        Flickity.createMethods.push('_createResizeClass');
+
+        var resize = Flickity.prototype.resize;
+        Flickity.prototype.resize = function() {
+          this.element.classList.remove('flickity-resize');
+          resize.call( this );
+          this.element.classList.add('flickity-resize');
+        };
 
         var featuredPostCarousel = new Flickity('.featured-post-carousel', {
           cellSelector: 'article',
           pageDots: false,
-          adaptiveHeight: true,
           arrowShape: 'M33.4 47.7l30.8-15.4c2.1-1.1 4.7 1.1 3.6 3.6l-6.4 12.9c-.7.7-.7 1.4-.4 2.1l6.4 13.2c1.1 2.1-1.1 4.7-3.6 3.6L33 52.3c-1.4-1-1.4-3.9.4-4.6'
         });
 

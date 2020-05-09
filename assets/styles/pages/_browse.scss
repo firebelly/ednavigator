@@ -65,35 +65,26 @@ body.page-browse {
       }
     }
 
+    &.flickity-resize .post-card {
+      display: flex;
+      min-height: 100%;
+
+      > .-inner {
+        width: 100%;
+      }
+    }
+
     .post-card {
       width: 100%;
       margin-bottom: 0;
     }
   }
 
-  // Filter Section
-  .filter-section {
-    padding-bottom: $global-spacing;
-    .filter-title {
-      @include headline-four;
-      margin: 0;
-    }
-
-    @include media-lg {
-      padding-bottom: $global-spacing * 2;
-    }
-  }
-
-  // Resources Browse page
-  &.resources-browse {
-    .featured-post-carousel {
-      &,
-      &::after {
-        background-color: $green;
-      }
+  // Singular and Carousel Featured Post Treatment
+  .featured-post-section,
+  .featured-post-carousel {
+    .featured-post {
       .post-content {
-        background-color: $green;
-
         &,
         a,
         .post-excerpt,
@@ -123,6 +114,42 @@ body.page-browse {
             }
           }
         }
+      }
+    }
+  }
+
+  // Singular Featured Post
+  .featured-post-section {
+    margin-bottom: $global-spacing;
+
+    @include media-lg {
+      margin-bottom: $global-spacing * 2;
+    }
+  }
+
+  // Filter Section
+  .filter-section {
+    padding-bottom: $global-spacing;
+    .filter-title {
+      @include headline-four;
+      margin: 0;
+    }
+
+    @include media-lg {
+      padding-bottom: $global-spacing * 2;
+    }
+  }
+
+  // Resources Browse page
+  &.resources-browse {
+    .featured-post-carousel,
+    .featured-post-section .featured-post {
+      &,
+      &::after {
+        background-color: $green;
+      }
+      .post-content {
+        background-color: $green;
       }
     }
   }

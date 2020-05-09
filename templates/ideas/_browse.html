@@ -2,39 +2,53 @@
 
 {% set limit = 9 %}
 
-{% set title = "Resources" %}
-{% set bodyClass = 'page page-browse resources-browse' %}
+{% set title = "Ideas" %}
+{% set bodyClass = 'page page-browse ideas-browse' %}
 
 {% set baseSlug = craft.app.request.getSegment(2) %}
 {% set taxSlug = craft.app.request.getSegment(3) %}
 {% if baseSlug == 'all' %}
-  {% set pageHeadline = 'Browse all Resources' %}
+  {% set pageHeadline = 'Browse all Ideas' %}
 {% elseif baseSlug == 'search' or baseSlug == 'buscar' %}
   {% set query = craft.app.request.getParam('q') %}
-  {% set results = craft.entries.section('resourcesEntries').search(query).orderBy('score') %}
-  {% set params = { section: 'resourcesEntries', search: query, orderBy: 'score' } %}
+  {% set results = craft.entries.section('ideasEntries').search(query).orderBy('score') %}
+  {% set params = { section: 'ideasEntries', search: query, orderBy: 'score' } %}
   {% if results|length %}
     {% set pageHeadline = results|length > 1 ? results|length ~ ' results found for “' ~ query ~ '”' : results|length ~ ' result found for “' ~ query ~ '”' %}
   {% else %}
     {% set pageHeadline = 'No results found for "' ~ query ~ '"' %}
   {% endif %}
-{% elseif baseSlug == 'topic' or baseSlug == 'tema' %}
-  {% set pageHeadline = 'topic'|t|capitalize ~ ': ' ~ category|replace('-', ' ')|title  %}
-{% elseif baseSlug == 'age' or baseSlug == 'edad' %}
-  {% set pageHeadline = 'ages'|t|capitalize ~ ': ' ~ category|replace('-', ' ')|title  %}
-{% elseif baseSlug == 'location' or baseSlug == 'ubicacion' %}
-  {% set pageHeadline = 'location'|t|title ~ ': ' ~ tag|replace('-', ' ')|title  %}
+{% elseif baseSlug == 'type' or baseSlug == 'tipo' %}
+  {% set typeHandle = slug|split('-') %}
+  {% if typeHandle|length > 1 %}
+    {% set typeString = [] %}
+    {% for word in typeHandle %}
+      {% if loop.index != 1 %}
+        {% set word = word|capitalize %}
+      {% endif %}
+      {% set typeString = typeString|merge([word]) %}
+    {% endfor %}
+    {% set typeHandle = typeString|join %}
+  {% endif %}
+  {% set pageHeadline = 'type'|t|capitalize ~ ': ' ~ slug|replace('-', ' ')|title %}
+{% elseif baseSlug == 'category' or baseSlug == 'tema' %}
+  {% set pageHeadline = 'category'|t|capitalize ~ ': ' ~ category|replace('-', ' ')|title  %}
+{% elseif baseSlug == 'tag' or baseSlug == 'ubicacion' %}
+  {% set pageHeadline = 'tag'|t|title ~ ': ' ~ tag|replace('-', ' ')|title  %}
 {% endif %}
 
 {% if baseSlug == 'all' %}
-  {% set featuredPosts = craft.entries.section('resourcesEntries').search('featuredPost:1').limit(3) %}
-  {% set params = { section: 'resourcesEntries', limit: limit } %}
+  {% set featuredPosts = craft.entries.section('ideasEntries').search('featuredPost:1').limit(3) %}
+  {% set params = { section: 'ideasEntries', limit: limit } %}
 {% elseif tag is defined %}
-  {% set featuredPosts = craft.entries.section('resourcesEntries').relatedTo(tag).search('featuredPost:1').limit(3) %}
-  {% set params = { section: 'resourcesEntries', limit: limit, relatedTo: tag } %}
+  {% set featuredPosts = craft.entries.section('ideasEntries').relatedTo(tag).search('featuredPost:1').limit(3) %}
+  {% set params = { section: 'ideasEntries', limit: limit, relatedTo: tag } %}
 {% elseif category is defined %}
-  {% set featuredPosts = craft.entries.section('resourcesEntries').relatedTo(category).search('featuredPost:1').limit(3) %}
-  {% set params = { section: 'resourcesEntries', limit: limit, relatedTo: category } %}
+  {% set featuredPosts = craft.entries.section('ideasEntries').relatedTo(category).search('featuredPost:1').limit(3) %}
+  {% set params = { section: 'ideasEntries', limit: limit, relatedTo: category } %}
+{% elseif baseSlug == 'type' or baseSlug == 'tipo' %}
+  {% set featuredPosts = craft.entries.section('ideasEntries').type(typeHandle).search('featuredPost:1').limit(3) %}
+  {% set params = { section: 'ideasEntries', limit: limit, type: typeHandle } %}
 {% endif %}
 
 {% block content %}
@@ -59,7 +73,7 @@
       {% endif %}
     {% endif %}
 
-    {% include 'resources/_filter.html' %}
+    {% include 'ideas/_filter.html' %}
 
   {% endif %}
 

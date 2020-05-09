@@ -143,7 +143,7 @@ categoryGroups:
     structure:
       maxLevels: 1
       uid: 57a02549-a05b-4d1d-8988-0230f4825164
-dateModified: 1588971554
+dateModified: 1589003025
 email:
   fromEmail: admin@ednavigator.com
   fromName: EdNavigator
@@ -725,6 +725,35 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\PlainText
+  5418ce8c-56f3-44c1-a4c8-274e916bc596:
+    contentColumnType: string
+    fieldGroup: c07eca58-32d2-42c5-9bc5-0149d5f91a25
+    handle: newsOutletLogo
+    instructions: 'Upload a logo for the news outlet. Ideally in solid black, the image will be treated to a gray.'
+    name: 'News Outlet Logo'
+    searchable: false
+    settings:
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: 'Choose a logo'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      singleUploadLocationSource: 'volume:d50b030c-521f-419d-b31c-0ed39a747450'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: ''
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
   56231315-115d-495f-9405-f1b3ec36da79:
     contentColumnType: text
     fieldGroup: b8065821-73bc-41b6-9331-08c71b8228ff
@@ -774,6 +803,26 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Matrix
+  604b3172-76dc-4162-a081-4f0566cd981b:
+    contentColumnType: string
+    fieldGroup: c07eca58-32d2-42c5-9bc5-0149d5f91a25
+    handle: featuredIdeasPost
+    instructions: ''
+    name: 'Featured Ideas Post'
+    searchable: true
+    settings:
+      limit: '1'
+      localizeRelations: ''
+      selectionLabel: 'Choose a post'
+      source: null
+      sources:
+        - 'section:524ea879-0552-4149-97b5-1c910292a200'
+      targetSiteId: null
+      validateRelatedElements: ''
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
   60fb224d-1163-4fda-8ccc-ec5f35830998:
     contentColumnType: string
     fieldGroup: 9aec6670-8753-4f2e-91d5-03ff2b4f3ef6
@@ -1175,6 +1224,24 @@ fields:
       placeholder: ''
     translationKeyFormat: null
     translationMethod: site
+    type: craft\fields\PlainText
+  a769dae3-5831-401a-a67a-986cb20cc2c7:
+    contentColumnType: text
+    fieldGroup: c07eca58-32d2-42c5-9bc5-0149d5f91a25
+    handle: newsOutletName
+    instructions: 'The name of the outlet or publication the article appears in.'
+    name: 'News Outlet Name'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
     type: craft\fields\PlainText
   a7ede9ae-ea0d-45e3-9ebb-978d24054eed:
     contentColumnType: string
@@ -1702,6 +1769,19 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\redactor\Field
+  fde54af9-735d-42f2-b5bd-94f11aa55de8:
+    contentColumnType: string(255)
+    fieldGroup: c07eca58-32d2-42c5-9bc5-0149d5f91a25
+    handle: articleUrl
+    instructions: 'URL to an external article.'
+    name: 'Article Url'
+    searchable: false
+    settings:
+      maxLength: '255'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
   fe6f2823-99c7-4956-9997-9a5129c325e5:
     contentColumnType: text
     fieldGroup: 9aec6670-8753-4f2e-91d5-03ff2b4f3ef6
@@ -3292,7 +3372,7 @@ matrixBlockTypes:
           showUnpermittedFiles: false
           showUnpermittedVolumes: false
           singleUploadLocationSource: 'volume:2cab35ea-e7c6-43b3-824c-befeac13bb2a'
-          singleUploadLocationSubpath: '{section}/{slug}_{id}'
+          singleUploadLocationSubpath: '{owner.section}/{owner.slug}_{id}'
           source: null
           sources: '*'
           targetSiteId: null
@@ -3690,7 +3770,7 @@ matrixBlockTypes:
           showUnpermittedFiles: false
           showUnpermittedVolumes: false
           singleUploadLocationSource: 'volume:2cab35ea-e7c6-43b3-824c-befeac13bb2a'
-          singleUploadLocationSubpath: '{section}/{slug}_{id}'
+          singleUploadLocationSubpath: '{owner.section}/{owner.slug}_{id}'
           source: null
           sources: '*'
           targetSiteId: null
@@ -5891,6 +5971,16 @@ routes:
     uriParts:
       - ideas/buscar
     uriPattern: ideas/buscar
+  ba52a8f3-b820-4e31-80e5-7d0f0763445d:
+    siteUid: null
+    sortOrder: 15
+    template: ideas/_browse
+    uriParts:
+      - ideas/type/
+      -
+        - slug
+        - '[^\/]+'
+    uriPattern: 'ideas/type/<slug:[^\/]+>'
   d83ad2a5-08a3-43e1-bbae-26126eb9ec73:
     siteUid: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
     sortOrder: 11
@@ -5918,9 +6008,18 @@ sections:
             tabs:
               -
                 fields:
-                  a85fabb2-a4f6-4f0c-aad1-4fede5a8bc3f:
+                  348f54c4-b833-4ced-bf8a-da9b48e36232:
+                    required: false
+                    sortOrder: 2
+                  604b3172-76dc-4162-a081-4f0566cd981b:
+                    required: false
+                    sortOrder: 4
+                  60fb224d-1163-4fda-8ccc-ec5f35830998:
                     required: false
                     sortOrder: 1
+                  aaf771f5-2db7-4257-b26d-b6ca2a58f2c8:
+                    required: false
+                    sortOrder: 3
                 name: Default
                 sortOrder: 1
         handle: blog
@@ -5967,31 +6066,34 @@ sections:
                 fields:
                   063f25bb-346d-4c6d-a357-1cff6c92b08f:
                     required: true
-                    sortOrder: 2
+                    sortOrder: 3
                   0742d16d-ff12-44c8-9946-48094b611af3:
                     required: false
-                    sortOrder: 1
+                    sortOrder: 2
                   2a183104-63d4-445d-9e90-de8bcd9938c4:
                     required: false
-                    sortOrder: 3
+                    sortOrder: 4
+                  39037932-db05-465e-aa9f-ac995dcf52a3:
+                    required: false
+                    sortOrder: 1
                   39a42cdc-d4b3-413a-affc-b6cb90cd0e99:
                     required: false
-                    sortOrder: 5
+                    sortOrder: 6
                   50364b57-8731-453d-b212-32fd8d30c25a:
                     required: true
-                    sortOrder: 4
+                    sortOrder: 5
                   63f7a8c3-67e0-4c08-83ab-05f0fbfddb76:
                     required: false
-                    sortOrder: 8
+                    sortOrder: 9
                   7e9473c0-d218-4bc9-aec1-3f8ecee77162:
                     required: true
-                    sortOrder: 7
+                    sortOrder: 8
                   84f5bbb9-8e54-46e9-97e3-908ad515c901:
                     required: true
-                    sortOrder: 6
+                    sortOrder: 7
                   fbd80904-a7d9-456b-8cd7-e08ad76a867f:
                     required: false
-                    sortOrder: 9
+                    sortOrder: 10
                 name: Settings
                 sortOrder: 1
               -
@@ -6018,9 +6120,9 @@ sections:
                     sortOrder: 1
                 name: 'Legacy Content'
                 sortOrder: 4
-        handle: standard
+        handle: newsUpdates
         hasTitleField: true
-        name: 'Standard '
+        name: 'News Updates '
         sortOrder: 1
         titleFormat: ''
         titleLabel: Title
@@ -6032,31 +6134,34 @@ sections:
                 fields:
                   063f25bb-346d-4c6d-a357-1cff6c92b08f:
                     required: true
-                    sortOrder: 2
+                    sortOrder: 3
                   0742d16d-ff12-44c8-9946-48094b611af3:
                     required: false
-                    sortOrder: 1
+                    sortOrder: 2
                   2a183104-63d4-445d-9e90-de8bcd9938c4:
                     required: false
-                    sortOrder: 3
+                    sortOrder: 4
+                  39037932-db05-465e-aa9f-ac995dcf52a3:
+                    required: false
+                    sortOrder: 1
                   39a42cdc-d4b3-413a-affc-b6cb90cd0e99:
                     required: false
-                    sortOrder: 5
+                    sortOrder: 6
                   50364b57-8731-453d-b212-32fd8d30c25a:
                     required: true
-                    sortOrder: 4
+                    sortOrder: 5
                   63f7a8c3-67e0-4c08-83ab-05f0fbfddb76:
                     required: false
-                    sortOrder: 8
+                    sortOrder: 9
                   7e9473c0-d218-4bc9-aec1-3f8ecee77162:
                     required: true
-                    sortOrder: 7
+                    sortOrder: 8
                   84f5bbb9-8e54-46e9-97e3-908ad515c901:
                     required: true
-                    sortOrder: 6
+                    sortOrder: 7
                   fbd80904-a7d9-456b-8cd7-e08ad76a867f:
                     required: false
-                    sortOrder: 9
+                    sortOrder: 10
                 name: Settings
                 sortOrder: 1
               -
@@ -6091,26 +6196,23 @@ sections:
             tabs:
               -
                 fields:
-                  063f25bb-346d-4c6d-a357-1cff6c92b08f:
-                    required: false
-                    sortOrder: 1
                   50364b57-8731-453d-b212-32fd8d30c25a:
                     required: false
-                    sortOrder: 2
-                  63f7a8c3-67e0-4c08-83ab-05f0fbfddb76:
-                    required: false
-                    sortOrder: 5
-                  7e9473c0-d218-4bc9-aec1-3f8ecee77162:
-                    required: false
-                    sortOrder: 3
-                  84f5bbb9-8e54-46e9-97e3-908ad515c901:
-                    required: false
                     sortOrder: 4
+                  5418ce8c-56f3-44c1-a4c8-274e916bc596:
+                    required: false
+                    sortOrder: 1
+                  a769dae3-5831-401a-a67a-986cb20cc2c7:
+                    required: true
+                    sortOrder: 2
+                  fde54af9-735d-42f2-b5bd-94f11aa55de8:
+                    required: true
+                    sortOrder: 3
                 name: Settings
                 sortOrder: 1
-        handle: newsAndPress
+        handle: inTheNews
         hasTitleField: true
-        name: 'News and Press'
+        name: 'In The News'
         sortOrder: 3
         titleFormat: ''
         titleLabel: Title
@@ -7266,6 +7368,15 @@ volumes:
     sortOrder: 2
     type: craft\volumes\Local
     url: null
+  d50b030c-521f-419d-b31c-0ed39a747450:
+    handle: newsOutlets
+    hasUrls: true
+    name: 'News Outlets'
+    settings:
+      path: uploads/news-outlets/
+    sortOrder: 13
+    type: craft\volumes\Local
+    url: /uploads/news-outlets/
   dbef2f54-301b-47da-b955-8b853381b632:
     handle: principals
     hasUrls: true
