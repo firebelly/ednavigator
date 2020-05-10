@@ -25,12 +25,16 @@
     {% if postType == 'resources'  %}
       {% set parentSlug = 'resources' %}
       {% set categories = post.resourceTopic %}
+      {% set categorySlug = 'topic' %}
       {% set tags = post.resourceLocations %}
+      {% set tagSlug = 'location' %}
       {% set transformedImage = craft.imager.transformImage(post.resourcesBannerImage.one(), { width: width, height: height }) %}
     {% else %}
       {% set parentSlug = 'ideas' %}
       {% set categories = post.ideasCategory %}
+      {% set categorySlug = 'category' %}
       {% set tags = post.ideasTags %}
+      {% set tagSlug = 'tag' %}
       {% set transformedImage = craft.imager.transformImage(post.ideasBannerImage.one(), { width: width, height: height }) %}
     {% endif %}
 
@@ -64,7 +68,7 @@
             <ul>
               <svg class="icon icon-tag" aria-hidden="true" role="presentation"><use xlink:href="#icon-tag"/></svg>
               {% for category in categories.all() %}
-                <li><a href="{{ category.url }}">{{ category.title }}</a>{{ loop.index < categories|length ? ', ' : '' }}</li>
+                <li><a href="{{ url(parentSlug ~ '/all?' ~ categorySlug ~ '=' ~ category.slug) }}">{{ category.title }}</a>{{ loop.index < categories|length ? ', ' : '' }}</li>
               {% endfor %}
             </ul>
           </div>
@@ -79,7 +83,7 @@
                 <svg class="icon icon-tag" aria-hidden="true" role="presentation"><use xlink:href="#icon-tag"/></svg>
               {% endif %}
               {% for tag in tags.all() %}
-                <li><a href="{{ url('{{ parentSlug }}/tag/'~tag.slug) }}">{{ tag.title }}</a>{{ loop.index < tags|length ? ', ' : '' }}</li>
+                <li><a href="{{ url(parentSlug ~ '/all?' ~ tagSlug ~ '=' ~ tag.slug) }}">{{ tag.title }}</a>{{ loop.index < tags|length ? ', ' : '' }}</li>
               {% endfor %}
             </ul>
           </div>

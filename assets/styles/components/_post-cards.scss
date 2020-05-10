@@ -131,6 +131,13 @@
         margin-bottom: 0;
       }
 
+      a {
+        &:hover,
+        &:focus {
+          color: $blue;
+        }
+      }
+
       > * {
         margin-top: $vertical-beat;
       }
