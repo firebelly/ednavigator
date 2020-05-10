@@ -32,7 +32,7 @@
       </div>
     {% endif %}
 
-    <p class="section-cta align-center"><a href="{{ url('/ideas/type/publication/') }}" class="inline-link"><span>Browse all Research / Publications</span></a></p>
+    <p class="section-cta align-center"><a href="{{ url('/ideas/all?type=publication') }}" class="inline-link"><span>Browse all Research / Publications</span></a></p>
 
   </div>
 
@@ -62,7 +62,7 @@
         {% endfor %}
 
         {% if recentNews|length > 6 %}
-          <p class="cta"><a href="{{ url('ideas/type/news-updates/') }}" class="inline-link"><span>All News & Updates</span></a></p>
+          <p class="cta"><a href="{{ url('ideas/all?type=news-updates') }}" class="inline-link"><span>All News & Updates</span></a></p>
         {% endif %}
       {% endif %}
     </div>

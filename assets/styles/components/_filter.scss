@@ -34,7 +34,7 @@
   }
 
   .filter {
-    + .filter {
+    + .filter:not(.filter-sort) {
       margin-top: $global-spacing;
     }
   }
@@ -48,7 +48,7 @@
     }
 
     .filter {
-      + .filter {
+      + .filter:not(.filter-sort) {
         margin-top: 0;
       }
     }
@@ -57,6 +57,11 @@
       flex-wrap: wrap;
       margin-left: -$global-spacing;
       width: calc(100% + #{$global-spacing * 2});
+
+      .flex-grid {
+        width: 100%;
+        margin-left: 0;
+      }
 
       .filter {
         padding: 0 $global-spacing;
@@ -91,6 +96,7 @@
       &:focus,
       &.-active {
         color: $blue;
+        text-decoration: underline;
         svg {
           fill: $blue;
         }
@@ -131,6 +137,13 @@
         }
       }
 
+      &:hover,
+      &:focus {
+        .checkbox {
+          border-color: $blue;
+        }
+      }
+
       &.-active {
         .checkbox {
           background-color: $blue;
@@ -163,6 +176,64 @@
       flex-basis: 66.666%;
       margin-right: 33.333%;
       padding-right: $global-spacing;
+    }
+  }
+}
+
+// Ideas Filter
+.ideas-filter {
+  .search {
+    @include media-lg {
+      margin-bottom: 30px;
+    }
+  }
+
+  .filter-sort {
+    margin-top: $global-spacing;
+    @include media-lg {
+      margin-top: $global-spacing * 2;
+    }
+  }
+
+  .type-filter {
+    margin-top: $global-spacing;
+    @include media-lg {
+      margin-top: 0;
+    }
+
+    > div {
+      + div {
+        margin-top: 20px;
+      }
+    }
+    a {
+      color: $gray-one;
+      text-decoration: none;
+      .radio {
+        width: 17px;
+        height: 17px;
+        bottom: -2px;
+        position: relative;
+        margin-right: 10px;
+        border-radius: 50%;
+        display: inline-block;
+        border: 1px solid $gray-one;
+      }
+
+      &:hover,
+      &:focus,
+      &.-active {
+        color: $blue;
+        text-decoration: underline;
+        .radio {
+          border-color: $blue;
+        }
+      }
+      &.-active {
+        .radio {
+          background-color: $blue;
+        }
+      }
     }
   }
 }

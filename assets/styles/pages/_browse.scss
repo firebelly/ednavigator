@@ -136,6 +136,12 @@ body.page-browse {
     }
   }
 
+  .posts-section {
+    .no-posts {
+      min-height: 200px;
+    }
+  }
+
   // Resources Browse page
   &.resources-browse {
     .featured-post-carousel,

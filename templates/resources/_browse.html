@@ -10,8 +10,7 @@
 
 {# set base params #}
 {% set params = {
-    section: 'resourcesEntries',
-    limit: limit
+    section: 'resourcesEntries'
 } %}
 
 {% set baseSlug = craft.app.request.getSegment(2) %}
@@ -92,6 +91,9 @@
   {% endif %}
 {% endif %}
 
+{% set results = craft.entries(params).all()|length %}
+{% set params = params|merge({limit: limit}) %}
+
 {% block content %}
 
   {% if not craft.app.request.isAjax %}
@@ -125,7 +127,7 @@
       {% if baseSlug == 'search' %}
         <p class="results-text">{{ pageHeadline }}</p>
       {% elseif queryString != '' %}
-        <p class="results-text">{{ articles|length }} results for "{{ pageHeadline|replace('Browsing all ', '') }}"</p>
+        <p class="results-text">{{ results }} results for "{{ pageHeadline|replace('Browsing all ', '') }}"</p>
       {% endif %}
   {% endif %}
 

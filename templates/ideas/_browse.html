@@ -1,25 +1,43 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
+{% set queryParams = craft.app.request.queryParams %}
+{% set queryString = craft.app.request.queryStringWithoutPath %}
+
 {% set limit = 9 %}
 
 {% set title = "Ideas" %}
 {% set bodyClass = 'page page-browse ideas-browse' %}
 
+{# set base params #}
+{% set params = {
+    section: 'ideasEntries'
+} %}
+
 {% set baseSlug = craft.app.request.getSegment(2) %}
-{% set taxSlug = craft.app.request.getSegment(3) %}
-{% if baseSlug == 'all' %}
-  {% set pageHeadline = 'Browse all Ideas' %}
-{% elseif baseSlug == 'search' or baseSlug == 'buscar' %}
+{% if baseSlug == 'search' or baseSlug == 'buscar' %}
   {% set query = craft.app.request.getParam('q') %}
   {% set results = craft.entries.section('ideasEntries').search(query).orderBy('score') %}
-  {% set params = { section: 'ideasEntries', search: query, orderBy: 'score' } %}
+  {% set params = { section: 'ideasEntries', orderBy: 'score', limit: null } %}
+  {% if queryParams.featured is defined %}
+    {% set searchParams = { search: query ~ ' featuredPost:1'} %}
+    {% set params = params|merge(searchParams) %}
+  {% else %}
+    {% set params = params|merge({search: query}) %}
+  {% endif %}
   {% if results|length %}
     {% set pageHeadline = results|length > 1 ? results|length ~ ' results found for “' ~ query ~ '”' : results|length ~ ' result found for “' ~ query ~ '”' %}
   {% else %}
     {% set pageHeadline = 'No results found for "' ~ query ~ '"' %}
   {% endif %}
-{% elseif baseSlug == 'type' or baseSlug == 'tipo' %}
-  {% set typeHandle = slug|split('-') %}
+{% else %}
+  {% set pageHeadline = 'Browse all Ideas' %}
+{% endif %}
+
+{% set featuredPosts = '' %}
+
+{# Set type #}
+{% if queryParams.type is defined %}
+  {% set typeHandle = queryParams.type|split('-') %}
   {% if typeHandle|length > 1 %}
     {% set typeString = [] %}
     {% for word in typeHandle %}
@@ -30,26 +48,64 @@
     {% endfor %}
     {% set typeHandle = typeString|join %}
   {% endif %}
-  {% set pageHeadline = 'Browsing all ' ~ slug|replace('-', ' ')|title ~ 's' %}
-{% elseif baseSlug == 'category' or baseSlug == 'tema' %}
-  {% set pageHeadline = 'category'|t|capitalize ~ ': ' ~ category|replace('-', ' ')|title  %}
-{% elseif baseSlug == 'tag' or baseSlug == 'ubicacion' %}
-  {% set pageHeadline = 'tag'|t|title ~ ': ' ~ tag|replace('-', ' ')|title  %}
+  {% set params = params|merge({type: typeHandle}) %}
+{% else %}
+  {% set params = params|merge({type: ['publication', 'newsUpdates']}) %}
 {% endif %}
 
-{% if baseSlug == 'all' %}
-  {% set featuredPosts = craft.entries.section('ideasEntries').search('featuredPost:1').limit(3) %}
-  {% set params = { section: 'ideasEntries', limit: limit } %}
-{% elseif tag is defined %}
-  {% set featuredPosts = craft.entries.section('ideasEntries').relatedTo(tag).search('featuredPost:1').limit(3) %}
-  {% set params = { section: 'ideasEntries', limit: limit, relatedTo: tag } %}
-{% elseif category is defined %}
-  {% set featuredPosts = craft.entries.section('ideasEntries').relatedTo(category).search('featuredPost:1').limit(3) %}
-  {% set params = { section: 'ideasEntries', limit: limit, relatedTo: category } %}
-{% elseif baseSlug == 'type' or baseSlug == 'tipo' %}
-  {% set featuredPosts = craft.entries.section('ideasEntries').type(typeHandle).search('featuredPost:1').limit(3) %}
-  {% set params = { section: 'ideasEntries', limit: limit, type: typeHandle } %}
+{# set relatedTo params #}
+{% set filterTitles = [] %}
+{% set relatedParams = ['and'] %}
+{% if queryParams.category is defined %}
+  {% set category = craft.categories.group('ideasCategories').slug(queryParams.category).one() %}
+  {% set filterTitles = filterTitles|merge([category.title]) %}
+  {% set relatedParams = relatedParams|merge([{ targetElement:category }]) %}
 {% endif %}
+{% if queryParams.tag is defined %}
+  {% set tag = craft.tags.group('ideasTags').slug(queryParams.tag).one() %}
+  {% set filterTitles = filterTitles|merge([tag.title]) %}
+  {% set relatedParams = relatedParams|merge([{ targetElement:tag }]) %}
+{% endif %}
+
+{# if there are any, add the to the base params #}
+{% if relatedParams|length > 1 %}
+  {% set filterTitles = filterTitles|join(', ', ' and ') ~ ' ideas' %}
+  {% set params = params|merge({'relatedTo':relatedParams}) %}
+{% endif %}
+{% set featuredPosts = craft.entries(params|merge({'search':'featuredPost:1'})) %}
+
+{# set sort params #}
+{% set sortParams = 'postDate DESC' %}
+{% if queryParams.sort is defined %}
+  {% if 'title' in queryParams.sort %}
+    {% set order = queryParams.sort|replace('title_', '') %}
+    {% set sortParams = 'title ' ~ order %}
+  {% elseif 'date' in queryParams.sort %}
+    {% set order = queryParams.sort|replace('date_', '') %}
+    {% set sortParams = 'postDate ' ~ order %}
+  {% endif %}
+{% endif %}
+{# aadd sortParams to params #}
+{% set params = params|merge({'orderBy':sortParams}) %}
+
+{# set featured param #}
+{% if queryParams.featured is defined %}
+  {% set filterTitles = filterTitles|length != 0 and filterTitles != '' ? filterTitles ~ ' that are featured' : 'featured ideas' %}
+  {% if queryParams.q is not defined %}
+    {% set params = params|merge({'search':'featuredPost:1'}) %}
+  {% endif %}
+{% endif %}
+
+{# Set the page headline if there are any filters applied #}
+{% if filterTitles|length %}
+  {% set pageHeadline = 'Browsing all ' ~ filterTitles %}
+  {% if queryParams.q is defined %}
+    {% set pageHeadline = 'Browsing all ' ~ filterTitles ~ ' matching “' ~ queryParams.q ~ '”' %}
+  {% endif %}
+{% endif %}
+
+{% set results = craft.entries(params).all()|length %}
+{% set params = params|merge({limit: limit}) %}
 
 {% block content %}
 
@@ -81,12 +137,10 @@
 
   {% if not craft.app.request.isAjax %}
     <div class="section posts-section">
-      {% if baseSlug != 'all' %}
-        {% if baseSlug == 'search' %}
-          <p class="results-text">{{ pageHeadline }}</p>
-        {% else %}
-          <p class="results-text">{{ articles|length }} results for "{{ pageHeadline }}"</p>
-        {% endif %}
+      {% if baseSlug == 'search' %}
+        <p class="results-text">{{ pageHeadline }}</p>
+      {% elseif queryString != '' %}
+        <p class="results-text">{{ results }} results for "{{ pageHeadline|replace('Browsing all ', '') }}"</p>
       {% endif %}
   {% endif %}
 
@@ -106,7 +160,7 @@
       {% if not craft.app.request.isAjax and baseSlug != 'search' and articles|length >= limit %}
         </div>
         <div class="load-more-section">
-          <button id="load-more" class="load-more button -big -blue with-icon" data-collection="resources" data-page="{{ pageInfo.currentPage + 1 }}" data-total-pages="{{ pageInfo.totalPages }}"><span>Load More</span> <svg class="icon" aria-hidden="true" role="presentation"><use xlink:href="#icon-cross"/></svg></button>
+          <button id="load-more" class="load-more button -big -blue with-icon" data-collection="ideas" data-params="{{ queryString }}" data-page="{{ pageInfo.currentPage + 1 }}" data-total-pages="{{ pageInfo.totalPages }}"><span>Load More</span> <svg class="icon" aria-hidden="true" role="presentation"><use xlink:href="#icon-cross"/></svg></button>
         </div>
       {% endif %}
     {% else %}
