@@ -124,7 +124,7 @@
     <div class="section posts-section">
       {% if baseSlug == 'search' %}
         <p class="results-text">{{ pageHeadline }}</p>
-      {% elseif queryParams != '' %}
+      {% elseif queryString != '' %}
         <p class="results-text">{{ articles|length }} results for "{{ pageHeadline|replace('Browsing all ', '') }}"</p>
       {% endif %}
   {% endif %}
