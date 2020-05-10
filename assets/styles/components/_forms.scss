@@ -9,7 +9,7 @@ form {
     border-radius: 0;
     appearance: none;
     background: none;
-    border-color: $black;
+    border-color: $gray-one;
     @extend .headline-three;
     border-width: 0 0 1px 0;
     transition: border-color .2s ease-out;
@@ -216,6 +216,7 @@ form {
     box-shadow: none;
     border-radius: 0;
     background: none;
+    color: $gray-one;
     border-style: solid;
     border-width: 0 0 1px 0;
     border-bottom-color: $gray-one;

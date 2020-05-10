@@ -30,7 +30,7 @@
     {% endfor %}
     {% set typeHandle = typeString|join %}
   {% endif %}
-  {% set pageHeadline = 'type'|t|capitalize ~ ': ' ~ slug|replace('-', ' ')|title %}
+  {% set pageHeadline = 'Browsing all ' ~ slug|replace('-', ' ')|title ~ 's' %}
 {% elseif baseSlug == 'category' or baseSlug == 'tema' %}
   {% set pageHeadline = 'category'|t|capitalize ~ ': ' ~ category|replace('-', ' ')|title  %}
 {% elseif baseSlug == 'tag' or baseSlug == 'ubicacion' %}

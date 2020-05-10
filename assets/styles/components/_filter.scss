@@ -5,20 +5,164 @@
   padding-left: $global-spacing;
   padding-right: $global-spacing;
 
-  .search {
-    @include media-lg {
-      padding-right: #{$col * 2};
+  &.accordion.-active {
+    .filter-toggle svg {
+      transform: rotate(-90deg);
     }
   }
 
-  .filter:first-of-type {
-    @include media-lg {
-      padding-right: #{$col * 4};
+  .filter-toggle {
+    position: relative;
+    padding: 10px 20px 10px 0;
+    border-bottom: 2px solid $gray-two;
+
+    svg {
+      right: 0;
+      top: 10px;
+      width: 10px;
+      height: 10px;
+      fill: $black;
+      position: absolute;
+      transform: rotate(90deg);
+      transition: transform 0.3s ease-out;
+    }
+  }
+
+  .filter-title {
+    @include headline-four;
+    margin: 0 0 $global-spacing;
+  }
+
+  .filter {
+    + .filter {
+      margin-top: $global-spacing;
     }
   }
 
   @include media-lg {
     padding-left: #{$global-spacing * 4};
     padding-right: #{$global-spacing * 4};
+
+    .filter-toggle {
+      display: none;
+    }
+
+    .filter {
+      + .filter {
+        margin-top: 0;
+      }
+    }
+
+    .flex-grid {
+      flex-wrap: wrap;
+      margin-left: -$global-spacing;
+      width: calc(100% + #{$global-spacing * 2});
+
+      .filter {
+        padding: 0 $global-spacing;
+      }
+    }
+  }
+
+  // Sort
+  .filter-sort {
+    margin-top: 30px;
+
+    > div {
+      + div {
+        margin-top: 20px;
+      }
+    }
+
+    a {
+      color: $gray-one;
+      margin-right: 20px;
+      display: inline-block;
+      text-decoration: none;
+
+      > svg {
+        width: 10px;
+        height: 10px;
+        fill: $gray-one;
+        margin-left: 10px;
+      }
+
+      &:hover,
+      &:focus,
+      &.-active {
+        color: $blue;
+        svg {
+          fill: $blue;
+        }
+      }
+
+      &.asc {
+        svg {
+          transform: rotate(-90deg);
+        }
+      }
+      &.desc {
+        svg {
+          transform: rotate(90deg);
+        }
+      }
+
+    }
+
+    .featured-toggle {
+      .checkbox {
+        width: 17px;
+        height: 17px;
+        bottom: -2px;
+        margin-left: 6px;
+        position: relative;
+        border-radius: 4px;
+        display: inline-block;
+        border: 1px solid $gray-one;
+
+        svg {
+          top: 1px;
+          left: 1px;
+          width: 14px;
+          height: 14px;
+          fill: $white;
+          display: none;
+          position: absolute;
+        }
+      }
+
+      &.-active {
+        .checkbox {
+          background-color: $blue;
+          svg {
+            display: block;
+          }
+        }
+      }
+    }
+
+    @include media-lg {
+      margin-top: 60px;
+
+      > div {
+        display: inline-block;
+        + div {
+          margin-top: 0;
+          margin-left: $global-spacing * 2;
+        }
+      }
+    }
+  }
+}
+
+// Resources Filter
+.resources-filter {
+  .search {
+    @include media-lg {
+      margin-bottom: 30px;
+      flex-basis: 66.666%;
+      margin-right: 33.333%;
+      padding-right: $global-spacing;
+    }
   }
 }

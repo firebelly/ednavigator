@@ -1,28 +1,65 @@
+{% set queryParams = craft.app.request.queryParams %}
+{% set queryString = craft.app.request.queryStringWithoutPath %}
+{% set pageUrl = craft.app.request.absoluteUrl|replace({(queryString): '', '?': ''}) %}
+
 {% set entryIds = craft.entries.section('resourcesEntries').ids() %}
-{% set topics = craft.categories.relatedTo({ sourceElement: entryIds }).group('resourcesTopics').all() %}
+
 {% if craft.app.language == "en-US" %}
   {% set actionUrl = url('resources/search') %}
 {% elseif craft.app.language == "es-US" %}
   {% set actionUrl = url('recursos/buscar') %}
 {% endif %}
 
-<div class="filter-section grid">
-  <div class="col-1">
+{% if queryParams.q is defined %}
+  {% set placeholder = queryParams.q %}
+{% else %}
+  {% set placeholder = 'Keyword(s)' %}
+{% endif %}
+
+<div id="filters" class="filter-section resources-filter accordion active-lg">
+  <h3 class="filter-title filter-toggle accordion-toggle">Filter & Sort <svg aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></h3>
+
+  <div class="accordion-content">
     <h3 class="filter-title">Filter By</h3>
-  </div>
+    <div class="flex-grid">
 
-  <div class="search col-1-2">
-    {% include 'partials/_search.html' with {'actionUrl': actionUrl, 'placeholder': 'Enter Keyword(s)'} %}
-  </div>
+      <div class="filter search">
+        {% include 'partials/_search.html' with {'actionUrl': actionUrl, 'placeholder': placeholder} %}
+      </div>
 
-  {% if searchOnly is not defined %}
-    <div class="col-1-2 grid">
-      <div class="filter topic col-1-2">
+      {% set topics = craft.categories.relatedTo({ sourceElement: entryIds }).group('resourcesTopics').all() %}
+      <div class="filter topic col-1-3">
         <div class="select-wrap">
           <select name="topic" id="topic">
-            <option value="null">{{ 'topic' | t | capitalize }}</option>
+            {% if queryParams.topic is defined %}
+              {% set allTopics = '?' ~ queryString|replace({('topic=' ~ queryParams.topic): ''})|trim('&', 'left')|trim('&', 'right') %}
+              {% set allTopics = allTopics == '' or allTopics == '?' ? pageUrl : allTopics %}
+            {% else %}
+              {% set allTopics = 'null' %}
+            {% endif %}
+
+            <option value="{{ allTopics }}">{{ queryParams.topic is defined ? 'all topics'|t|capitalize : 'topic'|t|capitalize }}</option>
             {% for topic in topics %}
-              <option value="{{ topic.url }}">{{ topic.title }}</option>
+              <option value="?{{ queryString == '' ? 'topic=' ~ topic.slug : queryParams.topic is defined ? queryString|replace({(queryParams.topic): topic.slug}) : queryString ~ '&topic=' ~ topic.slug }}"{{ queryParams.topic is defined and topic.slug in queryParams.topic ? 'selected' : '' }}>{{ topic.title }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      {% set ages = craft.categories.relatedTo({ sourceElement: entryIds }).group('ageGroups').all() %}
+      <div class="filter ages col-1-3">
+        <div class="select-wrap">
+          <select name="ages" id="ages">
+            {% if queryParams.age is defined %}
+              {% set allAges = '?' ~ queryString|replace({('age=' ~ queryParams.age): ''})|trim('&', 'left')|trim('&', 'right') %}
+              {% set allAges = allAges == '' or allAges == '?' ? pageUrl : allAges %}
+            {% else %}
+              {% set allAges = 'null' %}
+            {% endif %}
+
+            <option value="{{ allAges }}">{{ queryParams.age is defined ? 'all ages'|t|capitalize : 'ages'|t|capitalize }}</option>
+            {% for age in ages %}
+              <option value="?{{ queryString == '' ? 'age=' ~ age.slug : queryParams.age is defined ? queryString|replace({(queryParams.age): age.slug}) : queryString ~ '&age=' ~ age.slug }}"{{ queryParams.age is defined and age.slug in queryParams.age ? 'selected' : '' }}>{{ age.title }}</option>
             {% endfor %}
           </select>
         </div>
@@ -30,17 +67,82 @@
 
       {% set locationEntries = craft.entries.section('resourcesEntries').limit(null) %}
       {% set locations = craft.tags.group('resourcesLocations').relatedTo(locationEntries).indexBy('title') %}
-      <div class="filter location col-1-2">
+      <div class="filter location col-1-3">
         <div class="select-wrap">
           <select name="location" id="location" class="notranslate">
-            <option value="null">{{ 'locations'|t|capitalize }}</option>
+            {% if queryParams.location is defined %}
+              {% set allLocations = '?' ~ queryString|replace({('location=' ~ queryParams.location): ''})|trim('&', 'left')|trim('&', 'right') %}
+              {% set allLocations = allLocations == '' or allLocations == '?' ? pageUrl : allLocations %}
+            {% else %}
+              {% set allLocations = 'null' %}
+            {% endif %}
+
+            <option value="{{ allLocations }}">{{ queryParams.location is defined ? 'all locations'|t|capitalize : 'locations'|t|capitalize }}</option>
             {% for location in locations.all() %}
-              <option value="{{ siteUrl }}{{ 'resources'|t }}/{{ 'location'|t }}/{{ location.slug }}">{{ location.title }}</option>
+              <option value="?{{ queryString == '' ? 'location=' ~ location.slug : queryParams.location is defined ? queryString|replace({(queryParams.location): location.slug}) : queryString ~ '&location=' ~ location.slug }}"{{ queryParams.location is defined and location.slug in queryParams.location ? 'selected' : '' }}>{{ location.title }}</option>
             {% endfor %}
           </select>
         </div>
       </div>
+
     </div>
-  {% endif %}
+
+    <div class="filter-sort">
+      <h3 class="filter-title">Sort by</h3>
+
+      {% if queryParams.sort is defined %}
+        {% if 'title' in queryParams.sort %}
+          {% set titleSortClass = '-active desc' %}
+          {% set titleSortLabel = 'Z-A' %}
+          {% set titleSortString = queryString|replace({('sort=' ~ queryParams.sort): ''}) %}
+          {% set titleSortString = titleSortString == '' ? pageUrl : '?' ~ titleSortString|trim('&', 'left')|trim('&', 'right') %}
+
+          {% set dateSortClass = 'desc' %}
+          {% set dateSortLabel = 'Most Recent First' %}
+          {% set dateSortString = '?' ~ queryString|replace({(queryParams.sort): 'date_asc'}) %}
+        {% elseif 'date' in queryParams.sort %}
+          {% set dateSortClass = '-active asc' %}
+          {% set dateSortLabel = 'Oldest First' %}
+          {% set dateSortString = queryString|replace({('sort=' ~ queryParams.sort): ''}) %}
+          {% set dateSortString = dateSortString == '' ? pageUrl : '?' ~ dateSortString|trim('&', 'left')|trim('&', 'right') %}
+
+          {% set titleSortClass = 'asc' %}
+          {% set titleSortLabel = 'A-Z' %}
+          {% set titleSortString = '?' ~ queryString|replace({(queryParams.sort): 'title_desc'}) %}
+        {% endif %}
+      {% else %}
+        {% set titleSortClass = 'asc' %}
+        {% set titleSortLabel = 'A-Z' %}
+        {% set titleSortString = queryString == '' ? 'sort=title_desc' : '&sort=title_desc' %}
+        {% set titleSortString = '?' ~ queryString ~ titleSortString %}
+
+        {% set dateSortClass = 'desc' %}
+        {% set dateSortLabel = 'Most Recent First' %}
+        {% set dateSortString = queryString == '' ? 'sort=date_asc' : '&sort=date_asc' %}
+        {% set dateSortString = '?' ~ queryString ~ dateSortString %}
+      {% endif %}
+
+      <div>
+        <a href="{{ titleSortString }}" class="sort-toggle {{ titleSortClass }}">Title ({{ titleSortLabel }}) <svg aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a>
+      </div>
+
+      <div>
+        <a href="{{ dateSortString }}" class="sort-toggle {{ dateSortClass }}">Date ({{ dateSortLabel }}) <svg aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a>
+      </div>
+
+      {% if queryParams.featured is defined %}
+        {% set featuredClass = ' -active' %}
+        {% set featuredString = queryString|replace('featured=true', '') %}
+        {% set featuredString = featuredString == '' ? pageUrl : '?' ~ featuredString|trim('&', 'left')|trim('&', 'right') %}
+      {% else %}
+        {% set featuredClass = '' %}
+        {% set featuredString = queryString == '' ? '?featured=true' : '?' ~ queryString ~ '&featured=true' %}
+      {% endif %}
+      <div>
+        <a href="{{ featuredString }}" class="featured-toggle{{featuredClass}}">Featured <span class="checkbox"><svg aria-hidden="true" role="presentation"><use xlink:href="#icon-checkmark"/></svg></span></a>
+      </div>
+
+    </div>
+  </div>
 
 </div>

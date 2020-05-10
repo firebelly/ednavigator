@@ -130,10 +130,6 @@ body.page-browse {
   // Filter Section
   .filter-section {
     padding-bottom: $global-spacing;
-    .filter-title {
-      @include headline-four;
-      margin: 0;
-    }
 
     @include media-lg {
       padding-bottom: $global-spacing * 2;
