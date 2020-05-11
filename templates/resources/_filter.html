@@ -123,11 +123,11 @@
       {% endif %}
 
       <div>
-        <a href="{{ titleSortString }}" class="sort-toggle {{ titleSortClass }}">Title ({{ titleSortLabel }}) <svg aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a>
+        <a href="{{ dateSortString }}" class="sort-toggle {{ dateSortClass }}">Date ({{ dateSortLabel }}) <svg aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a>
       </div>
 
       <div>
-        <a href="{{ dateSortString }}" class="sort-toggle {{ dateSortClass }}">Date ({{ dateSortLabel }}) <svg aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a>
+        <a href="{{ titleSortString }}" class="sort-toggle {{ titleSortClass }}">Title ({{ titleSortLabel }}) <svg aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a>
       </div>
 
       {% if queryParams.featured is defined %}

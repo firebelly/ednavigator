@@ -118,13 +118,21 @@
         <div class="section featured-posts-section">
           <div class="featured-post-carousel">
             {% for featuredPost in featuredPosts.all() %}
-              {% include 'posts/_post-article.html' with { 'post': featuredPost, 'featured': true } %}
+              {% set args = { 'post': featuredPost, 'featured': true } %}
+              {% if featuredPost.type == 'publication' %}
+                {% set args = args|merge({ 'publication': true }) %}
+              {% endif %}
+              {% include 'posts/_post-article.html' with args %}
             {% endfor %}
           </div>
         </div>
       {% else %}
         <div class="section featured-post-section">
-          {% include 'posts/_post-article.html' with { 'post': featuredPosts.one(), 'featured': true } %}
+          {% set args = { 'post': featuredPosts.one(), 'featured': true } %}
+          {% if featuredPosts.one().type == 'publication' %}
+            {% set args = args|merge({ 'publication': true }) %}
+          {% endif %}
+          {% include 'posts/_post-article.html' with args %}
         </div>
       {% endif %}
     {% endif %}
@@ -150,10 +158,12 @@
           <div class="grid-sizer"></div>
       {% endif %}
         {% for post in articles %}
+          {% set args = { 'post': post } %}
           {% if post.featuredPost %}
-            {% set args = { 'post': post, 'featured': true } %}
-          {% else %}
-            {% set args = { 'post': post } %}
+            {% set args = args|merge({ 'featured': true }) %}
+          {% endif %}
+          {% if post.type == 'publication' %}
+            {% set args = args|merge({ 'publication': true }) %}
           {% endif %}
           {% include 'posts/_post-article.html' with args %}
         {% endfor %}

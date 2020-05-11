@@ -15,19 +15,31 @@
   <div class="section posts-section background-yellow">
 
     {% set featuredPost = entry.featuredIdeasPost.one() %}
+    {% set featuredPostId = entry.featuredIdeasPost.one().id %}
     {% if featuredPost %}
+      {% set args = { 'post': featuredPost, 'featured': true } %}
+      {% if featuredPost.type == 'publication' %}
+        {% set args = args|merge({ 'publication': true }) %}
+      {% endif %}
       <div class="featured-post-section">
         <h3><span>Featured</span></h3>
-        {% include 'posts/_post-article.html' with { 'post': featuredPost, 'featured': true } %}
+        {% include 'posts/_post-article.html' with args %}
       </div>
     {% endif %}
 
-    {% set recentPosts = craft.entries.section('ideasEntries').type('publication').limit(3) %}
+    {% set recentPosts = craft.entries.section('ideasEntries').type('publication').id('not ' ~ featuredPostId).limit(3) %}
     {% if recentPosts|length %}
       <h3><span>Recent Research/Publications</span></h3>
       <div class="post-grid grid spaced -small">
         {% for post in recentPosts.all() %}
-          {% include 'posts/_post-article.html' with { 'post': post, 'postClass': 'col-1-3' } %}
+          {% set args = { 'post': post, 'postClass': 'col-1-3' } %}
+          {% if post.featuredPost %}
+            {% set args = args|merge({ 'featured': true }) %}
+          {% endif %}
+          {% if post.type == 'publication' %}
+            {% set args = args|merge({ 'publication': true }) %}
+          {% endif %}
+          {% include 'posts/_post-article.html' with args %}
         {% endfor %}
       </div>
     {% endif %}
