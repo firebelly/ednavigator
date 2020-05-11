@@ -175,25 +175,24 @@
   }
 }
 
-.featured-post-section,
-.featured-post-carousel {
-  .post-card {
-    @include media-lg {
-      > .-inner {
-        display: flex;
-      }
-      .post-image {
-        width: 50%;
-        height: auto;
-        flex-basis: 50%;
-        max-height: none;
-        padding-bottom: 0;
-      }
-      .post-content {
-        width: 50%;
-        flex-basis: 50%;
-        padding: 80px #{$global-spacing * 4} 110px;
-      }
+.featured-post-section .post-card,
+.featured-post-carousel .post-card,
+.post-card.-large {
+  @include media-lg {
+    > .-inner {
+      display: flex;
+    }
+    .post-image {
+      width: 50%;
+      height: auto;
+      flex-basis: 50%;
+      max-height: none;
+      padding-bottom: 0;
+    }
+    .post-content {
+      width: 50%;
+      flex-basis: 50%;
+      padding: 80px #{$global-spacing * 4} 110px;
     }
   }
 }

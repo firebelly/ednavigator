@@ -119,11 +119,11 @@
             {% endif %}
 
             <div>
-              <a href="{{ dateSortString }}" class="sort-toggle {{ dateSortClass }}">Date ({{ dateSortLabel }}) <svg aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a>
+              <a href="{{ dateSortString }}" class="sort-toggle {{ dateSortClass }}">Date ({{ dateSortLabel }})<svg aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a>
             </div>
 
             <div>
-              <a href="{{ titleSortString }}" class="sort-toggle {{ titleSortClass }}">Title ({{ titleSortLabel }}) <svg aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a>
+              <a href="{{ titleSortString }}" class="sort-toggle {{ titleSortClass }}">Title ({{ titleSortLabel }})<svg aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></a>
             </div>
 
             {% if queryParams.featured is defined %}
@@ -135,7 +135,7 @@
               {% set featuredString = queryString == '' ? '?featured=true' : '?' ~ queryString ~ '&featured=true' %}
             {% endif %}
             <div>
-              <a href="{{ featuredString }}" class="featured-toggle{{featuredClass}}">Featured <span class="checkbox"><svg aria-hidden="true" role="presentation"><use xlink:href="#icon-checkmark"/></svg></span></a>
+              <a href="{{ featuredString }}" class="featured-toggle{{featuredClass}}">Featured<svg aria-hidden="true" role="presentation"><use xlink:href="#icon-star"/></svg></a>
             </div>
 
           </div>

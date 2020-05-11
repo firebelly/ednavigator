@@ -66,7 +66,11 @@
         {% if categories|length %}
           <div class="post-categories">
             <ul>
-              <svg class="icon icon-tag" aria-hidden="true" role="presentation"><use xlink:href="#icon-tag"/></svg>
+              {% if postType == 'ideas' %}
+                <svg class="icon icon-category" aria-hidden="true" role="presentation"><use xlink:href="#icon-category"/></svg>
+              {% else %}
+                <svg class="icon icon-tag" aria-hidden="true" role="presentation"><use xlink:href="#icon-tag"/></svg>
+              {% endif %}
               {% for category in categories.all() %}
                 <li><a href="{{ url(parentSlug ~ '/all?' ~ categorySlug ~ '=' ~ category.slug) }}">{{ category.title }}</a>{{ loop.index < categories|length ? ', ' : '' }}</li>
               {% endfor %}

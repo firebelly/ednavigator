@@ -93,13 +93,16 @@
       }
 
       &:hover,
-      &:focus,
-      &.-active {
+      &:focus {
         color: $blue;
         text-decoration: underline;
         svg {
           fill: $blue;
         }
+      }
+
+      &.-active {
+        text-decoration: underline;
       }
 
       &.asc {
@@ -116,40 +119,29 @@
     }
 
     .featured-toggle {
-      .checkbox {
-        width: 17px;
-        height: 17px;
+      svg {
+        fill: none;
+        width: 15px;
+        height: 15px;
         bottom: -2px;
         margin-left: 6px;
+        stroke: $gray-one;
+        stroke-width: 1px;
         position: relative;
-        border-radius: 4px;
         display: inline-block;
-        border: 1px solid $gray-one;
+      }
 
+      &.-active {
         svg {
-          top: 1px;
-          left: 1px;
-          width: 14px;
-          height: 14px;
-          fill: $white;
-          display: none;
-          position: absolute;
+          fill: $gray-one;
         }
       }
 
       &:hover,
       &:focus {
-        .checkbox {
-          border-color: $blue;
-        }
-      }
-
-      &.-active {
-        .checkbox {
-          background-color: $blue;
-          svg {
-            display: block;
-          }
+        svg {
+          fill: $blue;
+          stroke: $blue;
         }
       }
     }
