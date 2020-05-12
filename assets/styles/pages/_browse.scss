@@ -92,6 +92,13 @@ body.page-browse {
           color: $black;
         }
 
+        .post-meta a {
+          &:hover,
+          &:focus {
+            text-decoration: none;
+          }
+        }
+
         .cta .inline-link.-blue {
           border-color: $black;
           .icon {

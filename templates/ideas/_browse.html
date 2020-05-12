@@ -30,7 +30,7 @@
     {% set pageHeadline = 'No results found for "' ~ query ~ '"' %}
   {% endif %}
 {% else %}
-  {% set pageHeadline = 'Browse all Ideas' %}
+  {% set pageHeadline = 'Browsing all Ideas' %}
 {% endif %}
 
 {% set featuredPosts = '' %}
@@ -49,6 +49,13 @@
     {% set typeHandle = typeString|join %}
   {% endif %}
   {% set params = params|merge({type: typeHandle}) %}
+  {% if 'publication' in typeHandle %}
+    {% set typeLabel = 'publications' %}
+    {% set pageHeadline = 'Browsing all ' ~ queryParams.type|title ~ 's' %}
+  {% else %}
+    {% set typeLabel = 'news/updates' %}
+    {% set pageHeadline = 'Browsing all News/Updates' %}
+  {% endif %}
 {% else %}
   {% set params = params|merge({type: ['publication', 'newsUpdates']}) %}
 {% endif %}
@@ -102,6 +109,7 @@
   {% if queryParams.q is defined %}
     {% set pageHeadline = 'Browsing all ' ~ filterTitles ~ ' matching “' ~ queryParams.q ~ '”' %}
   {% endif %}
+  {% set pageHeadline = queryParams.type is defined ? pageHeadline ~ ' in ' ~ typeLabel|title : pageHeadline %}
 {% endif %}
 
 {% set results = craft.entries(params).all()|length %}
