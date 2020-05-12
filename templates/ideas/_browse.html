@@ -72,7 +72,7 @@
   {% set filterTitles = filterTitles|join(', ', ' and ') ~ ' Ideas' %}
   {% set params = params|merge({'relatedTo':relatedParams}) %}
 {% endif %}
-{% set featuredPosts = craft.entries(params|merge({'search':'featuredPost:1'})) %}
+{% set featuredPosts = craft.entries(params|merge({'search':'featuredPost:1', limit: 3})) %}
 
 {# set sort params #}
 {% set sortParams = 'postDate DESC' %}

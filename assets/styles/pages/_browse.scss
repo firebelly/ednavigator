@@ -5,7 +5,7 @@ body.page-browse {
   .featured-post-carousel {
     width: 100%;
     position: relative;
-    margin-bottom: 100px;
+    margin-bottom: 70px;
     &::after {
       left: 0;
       top: 100%;
@@ -118,15 +118,6 @@ body.page-browse {
     }
   }
 
-  // Singular Featured Post
-  .featured-post-section {
-    margin-bottom: $global-spacing;
-
-    @include media-lg {
-      margin-bottom: $global-spacing * 2;
-    }
-  }
-
   // Filter Section
   .filter-section {
     padding-bottom: $global-spacing;
@@ -166,6 +157,12 @@ body.page-browse {
       }
       .post-content {
         background-color: $yellow;
+      }
+      .flickity-prev-next-button {
+        color: $black;
+        svg path {
+          fill: $black;
+        }
       }
     }
   }
