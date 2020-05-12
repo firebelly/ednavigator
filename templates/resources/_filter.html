@@ -10,12 +10,6 @@
   {% set actionUrl = url('recursos/buscar') %}
 {% endif %}
 
-{% if queryParams.q is defined %}
-  {% set placeholder = queryParams.q %}
-{% else %}
-  {% set placeholder = 'Keyword(s)' %}
-{% endif %}
-
 <div id="filters" class="filter-section resources-filter accordion active-lg">
   <h3 class="filter-title filter-toggle accordion-toggle">Filter & Sort <svg aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></h3>
 
@@ -24,7 +18,11 @@
     <div class="flex-grid">
 
       <div class="filter search">
-        {% include 'partials/_search.html' with {'actionUrl': actionUrl, 'placeholder': placeholder} %}
+        {% set searchArgs = { 'actionUrl': actionUrl, 'placeholder': 'Keyword(s)' } %}
+        {% if queryParams.q is defined %}
+          {% set searchArgs = searchArgs|merge({ 'searchClass': '-active' }) %}
+        {% endif %}
+        {% include 'partials/_search.html' with searchArgs %}
       </div>
 
       {% set topics = craft.categories.relatedTo({ sourceElement: entryIds }).group('resourcesTopics').all() %}
@@ -91,35 +89,35 @@
       <h3 class="filter-title">Sort by</h3>
 
       {% if queryParams.sort is defined %}
-        {% if 'title' in queryParams.sort %}
-          {% set titleSortClass = '-active desc' %}
-          {% set titleSortLabel = 'Z-A' %}
-          {% set titleSortString = queryString|replace({('sort=' ~ queryParams.sort): ''}) %}
-          {% set titleSortString = titleSortString == '' ? pageUrl : '?' ~ titleSortString|trim('&', 'left')|trim('&', 'right') %}
-
-          {% set dateSortClass = 'desc' %}
-          {% set dateSortLabel = 'Most Recent First' %}
-          {% set dateSortString = '?' ~ queryString|replace({(queryParams.sort): 'date_asc'}) %}
-        {% elseif 'date' in queryParams.sort %}
+        {% if 'date' in queryParams.sort %}
           {% set dateSortClass = '-active asc' %}
           {% set dateSortLabel = 'Oldest First' %}
-          {% set dateSortString = queryString|replace({('sort=' ~ queryParams.sort): ''}) %}
+          {% set dateSortString = queryString|replace({('&sort=' ~ queryParams.sort): ''}) %}
           {% set dateSortString = dateSortString == '' ? pageUrl : '?' ~ dateSortString|trim('&', 'left')|trim('&', 'right') %}
 
           {% set titleSortClass = 'asc' %}
           {% set titleSortLabel = 'A-Z' %}
           {% set titleSortString = '?' ~ queryString|replace({(queryParams.sort): 'title_desc'}) %}
+        {% elseif 'title' in queryParams.sort %}
+          {% set titleSortClass = '-active desc' %}
+          {% set titleSortLabel = 'Z-A' %}
+          {% set titleSortString = queryString|replace({('&sort=' ~ queryParams.sort): ''}) %}
+          {% set titleSortString = titleSortString == '' ? pageUrl : '?' ~ titleSortString|trim('&', 'left')|trim('&', 'right') %}
+
+          {% set dateSortClass = 'desc' %}
+          {% set dateSortLabel = 'Most Recent First' %}
+          {% set dateSortString = '?' ~ queryString|replace({(queryParams.sort): 'date_asc'}) %}
         {% endif %}
       {% else %}
-        {% set titleSortClass = 'asc' %}
-        {% set titleSortLabel = 'A-Z' %}
-        {% set titleSortString = queryString == '' ? 'sort=title_desc' : '&sort=title_desc' %}
-        {% set titleSortString = '?' ~ queryString ~ titleSortString %}
-
         {% set dateSortClass = 'desc' %}
         {% set dateSortLabel = 'Most Recent First' %}
         {% set dateSortString = queryString == '' ? 'sort=date_asc' : '&sort=date_asc' %}
         {% set dateSortString = '?' ~ queryString ~ dateSortString %}
+
+        {% set titleSortClass = 'asc' %}
+        {% set titleSortLabel = 'A-Z' %}
+        {% set titleSortString = queryString == '' ? 'sort=title_desc' : '&sort=title_desc' %}
+        {% set titleSortString = '?' ~ queryString ~ titleSortString %}
       {% endif %}
 
       <div>

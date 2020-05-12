@@ -8,12 +8,6 @@
   {% set actionUrl = url('ideas/buscar') %}
 {% endif %}
 
-{% if queryParams.q is defined %}
-  {% set placeholder = queryParams.q %}
-{% else %}
-  {% set placeholder = 'Keyword(s)' %}
-{% endif %}
-
 {% if queryParams.type is defined %}
   {% set typeHandle = queryParams.type|split('-') %}
   {% if typeHandle|length > 1 %}
@@ -36,18 +30,22 @@
   <h3 class="filter-title filter-toggle accordion-toggle">Filter & Sort <svg aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow"/></svg></h3>
 
   <div class="accordion-content">
-    <h3 class="filter-title">Filter By</h3>
     <div class="flex-grid">
       <div class="col-2-3">
         <div class="flex-grid">
           <div class="filter search col-1">
-            {% include 'partials/_search.html' with {'actionUrl': actionUrl, 'placeholder': placeholder} %}
+            <h3 class="filter-title">Filter By</h3>
+            {% set searchArgs = { 'actionUrl': actionUrl, 'placeholder': 'Keyword(s)' } %}
+            {% if queryParams.q is defined %}
+              {% set searchArgs = searchArgs|merge({ 'searchClass': '-active' }) %}
+            {% endif %}
+            {% include 'partials/_search.html' with searchArgs %}
           </div>
 
           {% set categories = craft.categories.relatedTo({ sourceElement: entryIds }).group('ideasCategories').all() %}
           <div class="filter category col-1-2">
             <div class="select-wrap">
-              <select name="category" id="category">
+              <select name="category" id="category"{{ queryParams.category is defined ? ' class="-active"' : '' }}>
                 {% if queryParams.category is defined %}
                   {% set allTopics = '?' ~ queryString|replace({('category=' ~ queryParams.category): ''})|trim('&', 'left')|trim('&', 'right') %}
                   {% set allTopics = allTopics == '' or allTopics == '?' ? pageUrl : allTopics %}
@@ -67,7 +65,7 @@
           {% set tags = craft.tags.group('ideasTags').relatedTo(tagEntries).indexBy('title') %}
           <div class="filter tag col-1-2">
             <div class="select-wrap">
-              <select name="tag" id="tag" class="notranslate">
+              <select name="tag" id="tag" class="notranslate"{{ queryParams.tag is defined ? ' class="-active"' : '' }}>
                 {% if queryParams.tag is defined %}
                   {% set allTags = '?' ~ queryString|replace({('tag=' ~ queryParams.tag): ''})|trim('&', 'left')|trim('&', 'right') %}
                   {% set allTags = allTags == '' or allTags == '?' ? pageUrl : allTags %}
@@ -87,35 +85,35 @@
             <h3 class="filter-title">Sort by</h3>
 
             {% if queryParams.sort is defined %}
-              {% if 'title' in queryParams.sort %}
-                {% set titleSortClass = '-active desc' %}
-                {% set titleSortLabel = 'Z-A' %}
-                {% set titleSortString = queryString|replace({('sort=' ~ queryParams.sort): ''}) %}
-                {% set titleSortString = titleSortString == '' ? pageUrl : '?' ~ titleSortString|trim('&', 'left')|trim('&', 'right') %}
-
-                {% set dateSortClass = 'desc' %}
-                {% set dateSortLabel = 'Most Recent First' %}
-                {% set dateSortString = '?' ~ queryString|replace({(queryParams.sort): 'date_asc'}) %}
-              {% elseif 'date' in queryParams.sort %}
+              {% if 'date' in queryParams.sort %}
                 {% set dateSortClass = '-active asc' %}
                 {% set dateSortLabel = 'Oldest First' %}
-                {% set dateSortString = queryString|replace({('sort=' ~ queryParams.sort): ''}) %}
+                {% set dateSortString = queryString|replace({('&sort=' ~ queryParams.sort): ''}) %}
                 {% set dateSortString = dateSortString == '' ? pageUrl : '?' ~ dateSortString|trim('&', 'left')|trim('&', 'right') %}
 
                 {% set titleSortClass = 'asc' %}
                 {% set titleSortLabel = 'A-Z' %}
                 {% set titleSortString = '?' ~ queryString|replace({(queryParams.sort): 'title_desc'}) %}
+              {% elseif 'title' in queryParams.sort %}
+                {% set titleSortClass = '-active desc' %}
+                {% set titleSortLabel = 'Z-A' %}
+                {% set titleSortString = queryString|replace({('&sort=' ~ queryParams.sort): ''}) %}
+                {% set titleSortString = titleSortString == '' ? pageUrl : '?' ~ titleSortString|trim('&', 'left')|trim('&', 'right') %}
+
+                {% set dateSortClass = 'desc' %}
+                {% set dateSortLabel = 'Most Recent First' %}
+                {% set dateSortString = '?' ~ queryString|replace({(queryParams.sort): 'date_asc'}) %}
               {% endif %}
             {% else %}
-              {% set titleSortClass = 'asc' %}
-              {% set titleSortLabel = 'A-Z' %}
-              {% set titleSortString = queryString == '' ? 'sort=title_desc' : '&sort=title_desc' %}
-              {% set titleSortString = '?' ~ queryString ~ titleSortString %}
-
               {% set dateSortClass = 'desc' %}
               {% set dateSortLabel = 'Most Recent First' %}
               {% set dateSortString = queryString == '' ? 'sort=date_asc' : '&sort=date_asc' %}
               {% set dateSortString = '?' ~ queryString ~ dateSortString %}
+
+              {% set titleSortClass = 'asc' %}
+              {% set titleSortLabel = 'A-Z' %}
+              {% set titleSortString = queryString == '' ? 'sort=title_desc' : '&sort=title_desc' %}
+              {% set titleSortString = '?' ~ queryString ~ titleSortString %}
             {% endif %}
 
             <div>
@@ -149,8 +147,8 @@
 
           {% endif %}
 
-          <div><a href="{{ queryParams.type is defined and 'publication' in queryParams.type ? '?' ~ queryString|replace({('type=' ~ queryParams.type): ''})|trim('&', 'left')|trim('&', 'right') : queryParams.type is defined ? '?' ~ queryString|replace({(queryParams.type): 'publication'}) : '?' ~ queryString ~ '&type=publication' }}"{{ queryParams.type is defined and 'publication' in queryParams.type ? ' class="-active"' : '' }}><span class="radio"></span> Research / Publications</a></div>
-          <div><a href="{{ queryParams.type is defined and 'news-updates' in queryParams.type ? '?' ~ queryString|replace({('type=' ~ queryParams.type): ''})|trim('&', 'left')|trim('&', 'right') : queryParams.type is defined ? '?' ~ queryString|replace({(queryParams.type): 'news-updates'}) : '?' ~ queryString ~ '&type=news-updates' }}"{{ queryParams.type is defined and 'news-updates' in queryParams.type ? ' class="-active"' : '' }}><span class="radio"></span> News & Updates</a></div>
+          <div><a href="{{ queryParams.type is defined and 'publication' in queryParams.type ? '?' ~ queryString|replace({('type=' ~ queryParams.type): ''})|trim('&', 'left')|trim('&', 'right') : queryParams.type is defined ? '?' ~ queryString|replace({(queryParams.type): 'publication'}) : '?' ~ queryString ~ '&type=publication' }}"{{ queryParams.type is defined and 'publication' in queryParams.type ? ' class="-active"' : '' }}><span class="radio"></span>Research / Publications</a></div>
+          <div><a href="{{ queryParams.type is defined and 'news-updates' in queryParams.type ? '?' ~ queryString|replace({('type=' ~ queryParams.type): ''})|trim('&', 'left')|trim('&', 'right') : queryParams.type is defined ? '?' ~ queryString|replace({(queryParams.type): 'news-updates'}) : '?' ~ queryString ~ '&type=news-updates' }}"{{ queryParams.type is defined and 'news-updates' in queryParams.type ? ' class="-active"' : '' }}><span class="radio"></span>News & Updates</a></div>
         </div>
       </div>
 

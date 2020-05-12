@@ -69,7 +69,7 @@
 
 {# if there are any, add the to the base params #}
 {% if relatedParams|length > 1 %}
-  {% set filterTitles = filterTitles|join(', ', ' and ') ~ ' ideas' %}
+  {% set filterTitles = filterTitles|join(', ', ' and ') ~ ' Ideas' %}
   {% set params = params|merge({'relatedTo':relatedParams}) %}
 {% endif %}
 {% set featuredPosts = craft.entries(params|merge({'search':'featuredPost:1'})) %}
@@ -90,7 +90,7 @@
 
 {# set featured param #}
 {% if queryParams.featured is defined %}
-  {% set filterTitles = filterTitles|length != 0 and filterTitles != '' ? filterTitles ~ ' that are featured' : 'featured ideas' %}
+  {% set filterTitles = filterTitles|length != 0 and filterTitles != '' ? filterTitles ~ ' that are featured' : 'featured Ideas' %}
   {% if queryParams.q is not defined %}
     {% set params = params|merge({'search':'featuredPost:1'}) %}
   {% endif %}

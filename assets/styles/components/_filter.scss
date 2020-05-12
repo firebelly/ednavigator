@@ -39,7 +39,13 @@
     }
   }
 
+  input:hover,
+  input:focus {
+    border-bottom-color: $blue;
+  }
+
   @include media-lg {
+    padding-top: 80px;
     padding-left: #{$global-spacing * 4};
     padding-right: #{$global-spacing * 4};
 
@@ -67,6 +73,12 @@
         padding: 0 $global-spacing;
       }
     }
+  }
+
+  // Active Fields
+  select.-active {
+    color: $black;
+    border-color: $black;
   }
 
   // Sort
@@ -102,7 +114,19 @@
       }
 
       &.-active {
+        color: $black;
         text-decoration: underline;
+        svg {
+          fill: $black;
+        }
+        &:hover,
+        &:focus {
+          color: $gray-two;
+          text-decoration: none;
+          svg {
+            fill: $gray-two;
+          }
+        }
       }
 
       &.asc {
@@ -131,17 +155,25 @@
         display: inline-block;
       }
 
-      &.-active {
-        svg {
-          fill: $gray-one;
-        }
-      }
-
       &:hover,
       &:focus {
         svg {
           fill: $blue;
           stroke: $blue;
+        }
+      }
+
+      &.-active {
+        svg {
+          fill: $black;
+          stroke: $black;
+        }
+        &:hover,
+        &:focus {
+          svg {
+            fill: none;
+            stroke: $gray-two;
+          }
         }
       }
     }
@@ -213,17 +245,29 @@
       }
 
       &:hover,
-      &:focus,
-      &.-active {
+      &:focus {
         color: $blue;
         text-decoration: underline;
         .radio {
           border-color: $blue;
+          background-color: $blue;
         }
       }
       &.-active {
+        color: $black;
+        text-decoration: underline;
         .radio {
-          background-color: $blue;
+          border-color: $black;
+          background-color: $black;
+        }
+        &:hover,
+        &:focus {
+          color: $gray-two;
+          text-decoration: none;
+          .radio {
+            border-color: $gray-two;
+            background-color: transparent;
+          }
         }
       }
     }
