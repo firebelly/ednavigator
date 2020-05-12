@@ -165,6 +165,9 @@
           {% if post.type == 'publication' %}
             {% set args = args|merge({ 'publication': true }) %}
           {% endif %}
+          {% if loop.index == 1 %}
+            {% set args = args|merge({ 'postClass': '-large' }) %}
+          {% endif %}
           {% include 'posts/_post-article.html' with args %}
         {% endfor %}
       {% if not craft.app.request.isAjax and baseSlug != 'search' and articles|length >= limit %}

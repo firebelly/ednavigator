@@ -179,6 +179,8 @@
 .featured-post-carousel .post-card,
 .post-card.-large {
   @include media-lg {
+    width: 100%;
+
     > .-inner {
       display: flex;
     }
