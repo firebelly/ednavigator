@@ -297,12 +297,20 @@ body.single-post {
       }
 
       @include media-lg {
+        display: flex;
+        min-height: 500px;
+        flex-direction: column;
+        justify-content: space-between;
         padding-bottom: #{$global-spacing * 3};
       }
     }
 
     .sidebar-column {
       position: relative;
+
+      @include media-lg {
+        min-height: 500px;
+      }
     }
 
     .general-content-block .block-content,

@@ -146,6 +146,7 @@ const singlePost = {
           parent.location.hash = $(this).attr('href').replace('#','');
         });
 
+
         // Sticky Behavior
         $(window).scroll(function(e){
           var st = $window.scrollTop(),
@@ -153,10 +154,15 @@ const singlePost = {
               wrapIsBottomStuck = $wrap.is('.bottom-stuck'),
               stickyWrapTop = $stickyWrap.offset().top,
               stickyWrapBottom = $stickyWrap.offset().top + $stickyWrap.outerHeight(),
-              scrollPos = st + $siteHeader.outerHeight();
+              scrollPos = st + $siteHeader.outerHeight(),
+              translateOffset = 0;
+
+          if ($('html').is('.translated-ltr')) {
+            translateOffset = 38;
+          }
 
           // If elmeent isn't stuck and scroll is withiin the sticky wrap bounds, make it sticky
-          if (!wrapIsStuck && scrollPos >= stickyWrapTop && scrollPos + $wrap.outerHeight() < stickyWrapBottom) {
+          if (!wrapIsStuck && scrollPos > stickyWrapTop && scrollPos + $wrap.outerHeight() < stickyWrapBottom) {
 
             // Collapse the accordion if it's open
             if ($accordion.is('.-active')) {
@@ -168,7 +174,7 @@ const singlePost = {
               $wrap.parent().css('padding-top', $wrap.outerHeight() + 25 + 'px');
             }
 
-            $wrap.addClass('stuck').css('top', $siteHeader.outerHeight());
+            $wrap.addClass('stuck').css('top', $siteHeader.outerHeight() + translateOffset);
             $wrap.find('.section-navigation').velocity({
               translateY: [0, '-100%']
             });
