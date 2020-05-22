@@ -1,7 +1,9 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
-{% set locale = craft.app.locale %}
 {% set bodyClass = 'home' %}
+
+{% set language = craft.app.language %}
+{% set localizedEntry = craft.entries.id(entry.id).site('en_us') %}
 
 {% block content %}
 
@@ -26,8 +28,10 @@
 
     <div class="col-1-2 offset-bottom">
       <div class="block">
-        <h1 class="block-title">{{ entry.pageDescription }}</h1>
-        {{ entry.body }}
+        <h1 class="block-title{{ language != 'en-US' and localizedEntry[0].pageDescription != entry.pageDescription ? ' notranslate' : '' }}">{{ entry.pageDescription }}</h1>
+        <div{{ language != 'en-US' and localizedEntry[0].body != entry.body ? ' class="notranslate"' : '' }}>
+          {{ entry.body }}
+        </div>
       </div>
     </div>
   </div>
@@ -44,9 +48,9 @@
   <div id="what-we-do" class="what-we-do feature-section grid section">
     <div class="section-intro col-1-2">
       <h4 class="section-title">What We Do</h4>
-      <h5 class="section-headline">{{ entry.whatWeDoHeadline }}</h5>
+      <h5 class="section-headline{{ language != 'en-US' and localizedEntry[0].whatWeDoHeadline != entry.whatWeDoHeadline ? ' notranslate' : '' }}">{{ entry.whatWeDoHeadline }}</h5>
       {% if entry.whatWeDoText %}
-        <div class="section-description">
+        <div class="section-description{{ language != 'en-US' and localizedEntry[0].whatWeDoText != entry.whatWeDoText ? ' notranslate' : '' }}">
           {{ entry.whatWeDoText }}
         </div>
       {% endif %}
@@ -59,7 +63,7 @@
               </div>
             {% endif %}
             {% if award.awardText | length %}
-              <div class="award-text">{{ award.awardText }}</div>
+              <div class="award-text{{ language != 'en-US' and localizedEntry[0].awardShowcase[loop.index - 1].awardText != entry.awardShowcase[loop.index - 1].awardText ? ' notranslate' : '' }}">{{ award.awardText }}</div>
             {% endif %}
           </div>
         {% endfor %}
@@ -75,8 +79,8 @@
                 <img src="{{ feature.featureIcon.one().getUrl() }}">
               </div>
               <div class="feature-text">
-                <h6 class="feature-label">{{ feature.featureTitle }}</h6>
-                <p>{{ feature.featureDescription }}</p>
+                <h6 class="feature-label{{ language != 'en-US' and localizedEntry[0].whatWeDoFeatures[loop.index - 1].featureTitle != entry.whatWeDoFeatures[loop.index - 1].featureTitle ? ' notranslate' : '' }}"">{{ feature.featureTitle }}</h6>
+                <p{{ language != 'en-US' and localizedEntry[0].whatWeDoFeatures[loop.index - 1].featureDescription != entry.whatWeDoFeatures[loop.index - 1].featureDescription ? ' class="notranslate"' : '' }}">{{ feature.featureDescription }}</p>
               </div>
             </li>
           {% endfor %}
@@ -93,13 +97,13 @@
       <div class="-inner">
         <div>
           <h4 class="block-descriptor">How We Work</h4>
-          <h2 class="block-title">{{ howWeWork.headline|nl2br }}</h2>
+          <h2 class="block-title{{ language != 'en-US' and localizedEntry[0].howWeWorkSection.one().headline != entry.howWeWorkSection.one().headline ? ' notranslate' : '' }}">{{ howWeWork.headline|nl2br }}</h2>
           {% if howWeWork.description %}
-            <p>{{ howWeWork.description }}</p>
+            <p{{ language != 'en-US' and localizedEntry[0].howWeWorkSection.one().description != entry.howWeWorkSection.one().description ? ' class="notranslate"' : '' }}>{{ howWeWork.description }}</p>
           {% endif %}
         </div>
         {% if howWeWork.linkEntry %}
-          <p class="block-cta"><a href="{{ howWeWork.linkEntry.one().url }}" class="inline-link"><span>{{ howWeWork.linkLabel|nl2br }}</span></a></p>
+          <p class="block-cta"><a href="{{ howWeWork.linkEntry.one().url }}" class="inline-link"><span{{ language != 'en-US' and localizedEntry[0].howWeWorkSection.one().linkLabel != entry.howWeWorkSection.one().linkLabel ? ' class="notranslate"' : '' }}>{{ howWeWork.linkLabel|nl2br }}</span></a></p>
         {% endif %}
       </div>
     </div>
@@ -111,9 +115,9 @@
   <div id="what-we-do" class="what-we-do feature-section grid section">
     <div class="section-intro col-1-2">
       <h4 class="section-title">Sustainable Results</h4>
-      <h5 class="section-headline">{{ entry.sustainableResultsHeadline }}</h5>
+      <h5 class="section-headline{{ language != 'en-US' and localizedEntry[0].sustainableResultsHeadline != entry.sustainableResultsHeadline ? ' notranslate' : '' }}">{{ entry.sustainableResultsHeadline }}</h5>
       {% if entry.sustainableResultsText %}
-        <div class="section-description">
+        <div class="section-description{{ language != 'en-US' and localizedEntry[0].sustainableResultsText != entry.sustainableResultsText ? ' notranslate' : '' }}">
           {{ entry.sustainableResultsText }}
         </div>
       {% endif %}

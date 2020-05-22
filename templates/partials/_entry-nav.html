@@ -1,5 +1,5 @@
 {# Set parameters for prev/next elements list #}
-{% set entries = craft.entries.section(entry.section).level(entry.level) %}
+{% set entries = craft.entries.section(entry.section).level(entry.level).type('not inTheNews') %}
 {# Get the prev/next elements #}
 {% set prevEntry = entry.getPrev(entries) %}
 {% set nextEntry = entry.getNext(entries) %}

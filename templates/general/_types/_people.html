@@ -33,7 +33,7 @@
           {% for person in relatedPeople.all() %}
 
             {% if person.personImage|length %}
-              {% set image = person.personImage.one().getUrl('thumbnail') %}
+              {% set image = person.personImage.one().getUrl() %}
               {% if 'partners' in bodyId or 'socios-empresariales' in bodyId %}
                 {% set transformedImage = craft.imager.transformImage(image, { effects: { colorize: '#a3b0b2' } }) %}
               {% else %}

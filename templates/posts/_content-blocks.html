@@ -1,8 +1,14 @@
+{% import 'macros/notranslate.html' as notranslate %}
+
 {% set contentBlocks = entry.postContentBlocks.all() %}
+
+{% set language = craft.app.language %}
+{% set localizedEntry = craft.entries.id(entry.id).site('en_us') %}
 
 {% if contentBlocks|length %}
 
   {% for block in contentBlocks %}
+    {% set index = loop.index %}
     {% switch block.type %}
 
       {% case 'sectionHeading' %}
@@ -13,7 +19,7 @@
         </div>
 
       {% case 'generalContent' %}
-        <div class="content-block general-content-block{{ loop.index < 3 ? ' first-position' : '' }}">
+        <div class="content-block general-content-block{{ loop.index < 3 ? ' first-position' : '' }} {{ notranslate.check(language, localizedEntry[0].postContentBlocks[index - 1].contentBlock, block.contentBlock) }}">
           <div class="block-content -inner user-content">
             {{ block.contentBlock|footnotes }}
           </div>
@@ -29,10 +35,10 @@
                 {% endif %}
                 <h3 class="aside-subheading">Family Narrative</h3>
                 {% if block.familyNarrativeHeadline %}
-                  <h4 class="aside-heading">{{ block.familyNarrativeHeadline }}</h4>
+                  <h4 class="aside-heading {{ notranslate.check(language, localizedEntry[0].postContentBlocks[index - 1].familyNarrativeHeadline, block.familyNarrativeHeadline) }}">{{ block.familyNarrativeHeadline }}</h4>
                 {% endif %}
                 {% if block.familyNarrativeCopy %}
-                  <div class="aside-content user-content">
+                  <div class="aside-content user-content {{ notranslate.check(language, localizedEntry[0].postContentBlocks[index - 1].familyNarrativeCopy, block.familyNarrativeCopy) }}">
                     {{ block.familyNarrativeCopy }}
                   </div>
                 {% endif %}
@@ -45,7 +51,7 @@
               <button class="accordion-toggle"><span class="text">Quote</span> <span class="expand-contract"></span></button>
               <div class="accordion-content -inner">
                 <blockquote class="aside-blockquote">
-                  <p>“{{ block.asideQuote }}”</p>
+                  <p {{ notranslate.check(language, localizedEntry[0].postContentBlocks[index - 1].asideQuote, block.asideQuote, true) }}>“{{ block.asideQuote }}”</p>
                   {% if block.asideQuoteAttribution %}
                     <cite>{{ block.asideQuoteAttribution }}</cite>
                   {% endif %}
@@ -134,6 +140,15 @@
           </div>
         </div>
 
+      {% case 'video' %}
+        {% set embeddedAsset = craft.embeddedAssets.get(block.embed.one()) %}
+        <div class="content-block video-embed-block">
+          <div class="-inner">
+            <div class="content-block-video" style="padding-bottom:{{ embeddedAsset.aspectRatio }}%;">
+              {{ embeddedAsset ? embeddedAsset.html }}
+            </div>
+          </div>
+        </div>
 
     {% endswitch %}
   {% endfor %}

@@ -143,7 +143,7 @@ categoryGroups:
     structure:
       maxLevels: 1
       uid: 57a02549-a05b-4d1d-8988-0230f4825164
-dateModified: 1589092781
+dateModified: 1590091557
 email:
   fromEmail: admin@ednavigator.com
   fromName: EdNavigator
@@ -291,7 +291,7 @@ fields:
       multiline: ''
       placeholder: ''
     translationKeyFormat: null
-    translationMethod: none
+    translationMethod: site
     type: craft\fields\PlainText
   0d3e14a2-0c82-4a5f-b7ac-4e7ce75f352e:
     contentColumnType: string
@@ -1345,6 +1345,28 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
+  b0aefac7-6c72-4693-bb5a-2e79c46dd012:
+    contentColumnType: string
+    fieldGroup: 62d1d9b7-d1f6-4696-b71d-80e0cb0e167d
+    handle: contentSync
+    instructions: 'This field will be enabled by default. When adding English content to translatable fields, keeping this field "Enabled" will copy that content over to the translated fields, which will in turn be translated by google. *Turn this off when editing translations manually* so that your translations aren''t copied over to the english field counterpart.'
+    name: 'Content Sync'
+    searchable: false
+    settings:
+      defaults:
+        __assoc__:
+          -
+            - enabled
+            - '1'
+          -
+            - sources
+            - '*'
+          -
+            - overwrite
+            - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: timkelty\craftcms\sitesync\Field
   b102e59e-b7a3-419a-8d3d-17a4ae7d07d6:
     contentColumnType: text
     fieldGroup: a6a6a3b2-033c-4402-91de-5001380f4f70
@@ -2645,7 +2667,7 @@ matrixBlockTypes:
           multiline: ''
           placeholder: ''
         translationKeyFormat: null
-        translationMethod: language
+        translationMethod: site
         type: craft\fields\PlainText
     handle: sectionHeading
     name: 'Section Heading'
@@ -2833,7 +2855,7 @@ matrixBlockTypes:
           showUnpermittedFiles: false
           showUnpermittedVolumes: false
         translationKeyFormat: null
-        translationMethod: none
+        translationMethod: site
         type: craft\redactor\Field
       5ba1a24e-c161-4f48-b56b-669124f7fd92:
         contentColumnType: text
@@ -2938,7 +2960,7 @@ matrixBlockTypes:
           multiline: '1'
           placeholder: ''
         translationKeyFormat: null
-        translationMethod: language
+        translationMethod: site
         type: craft\fields\PlainText
     handle: pullquote
     name: Pullquote
@@ -3372,7 +3394,7 @@ matrixBlockTypes:
           showUnpermittedFiles: false
           showUnpermittedVolumes: false
           singleUploadLocationSource: 'volume:2cab35ea-e7c6-43b3-824c-befeac13bb2a'
-          singleUploadLocationSubpath: '{owner.section}/{owner.slug}_{id}'
+          singleUploadLocationSubpath: '{owner.section}/{owner.slug}_{owner.id}'
           source: null
           sources: '*'
           targetSiteId: null
@@ -3770,7 +3792,7 @@ matrixBlockTypes:
           showUnpermittedFiles: false
           showUnpermittedVolumes: false
           singleUploadLocationSource: 'volume:2cab35ea-e7c6-43b3-824c-befeac13bb2a'
-          singleUploadLocationSubpath: '{owner.section}/{owner.slug}_{id}'
+          singleUploadLocationSubpath: '{owner.section}/{owner.slug}_{owner.id}'
           source: null
           sources: '*'
           targetSiteId: null
@@ -3894,7 +3916,7 @@ matrixBlockTypes:
           showUnpermittedFiles: false
           showUnpermittedVolumes: false
           singleUploadLocationSource: 'volume:2cab35ea-e7c6-43b3-824c-befeac13bb2a'
-          singleUploadLocationSubpath: '{owner.section}/{owner.slug}_{id}'
+          singleUploadLocationSubpath: '{owner.section}/{owner.slug}_{owner.id}'
           source: null
           sources: '*'
           targetSiteId: null
@@ -3987,7 +4009,7 @@ matrixBlockTypes:
           multiline: '1'
           placeholder: ''
         translationKeyFormat: null
-        translationMethod: language
+        translationMethod: site
         type: craft\fields\PlainText
       402c2930-986e-4a1a-b2bf-502a8ec87982:
         contentColumnType: text
@@ -4010,7 +4032,7 @@ matrixBlockTypes:
           showUnpermittedFiles: false
           showUnpermittedVolumes: false
         translationKeyFormat: null
-        translationMethod: language
+        translationMethod: site
         type: craft\redactor\Field
       47f876c0-8679-4a55-b682-09d644b4f863:
         contentColumnType: string
@@ -4031,7 +4053,7 @@ matrixBlockTypes:
           showUnpermittedFiles: false
           showUnpermittedVolumes: false
           singleUploadLocationSource: 'volume:2cab35ea-e7c6-43b3-824c-befeac13bb2a'
-          singleUploadLocationSubpath: '{owner.section}/{owner.slug}_{id}'
+          singleUploadLocationSubpath: '{owner.section}/{owner.slug}_{owner.id}'
           source: null
           sources: '*'
           targetSiteId: null
@@ -4062,7 +4084,7 @@ matrixBlockTypes:
           showUnpermittedFiles: false
           showUnpermittedVolumes: false
         translationKeyFormat: null
-        translationMethod: none
+        translationMethod: site
         type: craft\redactor\Field
       976ed0f5-599b-4923-8e33-e4ebbdc72eb8:
         contentColumnType: text
@@ -4098,7 +4120,7 @@ matrixBlockTypes:
           multiline: ''
           placeholder: ''
         translationKeyFormat: null
-        translationMethod: language
+        translationMethod: site
         type: craft\fields\PlainText
       dd246ef6-dbb5-4f96-9c8e-e766a6fd1974:
         contentColumnType: text
@@ -5837,10 +5859,6 @@ plugins:
     licenseKey: null
     schemaVersion: 1.0.0
     settings: null
-  feed-me:
-    edition: standard
-    enabled: true
-    schemaVersion: 2.1.2
   field-manager:
     edition: standard
     enabled: true
@@ -6070,34 +6088,37 @@ sections:
                 fields:
                   063f25bb-346d-4c6d-a357-1cff6c92b08f:
                     required: true
-                    sortOrder: 3
+                    sortOrder: 4
                   0742d16d-ff12-44c8-9946-48094b611af3:
                     required: false
-                    sortOrder: 2
+                    sortOrder: 3
                   2a183104-63d4-445d-9e90-de8bcd9938c4:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 5
                   39037932-db05-465e-aa9f-ac995dcf52a3:
                     required: false
-                    sortOrder: 1
+                    sortOrder: 2
                   39a42cdc-d4b3-413a-affc-b6cb90cd0e99:
                     required: false
-                    sortOrder: 6
+                    sortOrder: 7
                   50364b57-8731-453d-b212-32fd8d30c25a:
                     required: true
-                    sortOrder: 5
+                    sortOrder: 6
                   63f7a8c3-67e0-4c08-83ab-05f0fbfddb76:
                     required: false
-                    sortOrder: 9
+                    sortOrder: 10
                   7e9473c0-d218-4bc9-aec1-3f8ecee77162:
                     required: true
-                    sortOrder: 8
+                    sortOrder: 9
                   84f5bbb9-8e54-46e9-97e3-908ad515c901:
                     required: true
-                    sortOrder: 7
+                    sortOrder: 8
+                  b0aefac7-6c72-4693-bb5a-2e79c46dd012:
+                    required: false
+                    sortOrder: 1
                   fbd80904-a7d9-456b-8cd7-e08ad76a867f:
                     required: false
-                    sortOrder: 10
+                    sortOrder: 11
                 name: Settings
                 sortOrder: 1
               -
@@ -6138,34 +6159,37 @@ sections:
                 fields:
                   063f25bb-346d-4c6d-a357-1cff6c92b08f:
                     required: true
-                    sortOrder: 3
+                    sortOrder: 4
                   0742d16d-ff12-44c8-9946-48094b611af3:
                     required: false
-                    sortOrder: 2
+                    sortOrder: 3
                   2a183104-63d4-445d-9e90-de8bcd9938c4:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 5
                   39037932-db05-465e-aa9f-ac995dcf52a3:
                     required: false
-                    sortOrder: 1
+                    sortOrder: 2
                   39a42cdc-d4b3-413a-affc-b6cb90cd0e99:
                     required: false
-                    sortOrder: 6
+                    sortOrder: 7
                   50364b57-8731-453d-b212-32fd8d30c25a:
                     required: true
-                    sortOrder: 5
+                    sortOrder: 6
                   63f7a8c3-67e0-4c08-83ab-05f0fbfddb76:
                     required: false
-                    sortOrder: 9
+                    sortOrder: 10
                   7e9473c0-d218-4bc9-aec1-3f8ecee77162:
                     required: true
-                    sortOrder: 8
+                    sortOrder: 9
                   84f5bbb9-8e54-46e9-97e3-908ad515c901:
                     required: true
-                    sortOrder: 7
+                    sortOrder: 8
+                  b0aefac7-6c72-4693-bb5a-2e79c46dd012:
+                    required: false
+                    sortOrder: 1
                   fbd80904-a7d9-456b-8cd7-e08ad76a867f:
                     required: false
-                    sortOrder: 10
+                    sortOrder: 11
                 name: Settings
                 sortOrder: 1
               -
