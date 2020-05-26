@@ -29,7 +29,7 @@
 
     {% set recentPosts = craft.entries.section('ideasEntries').type('publication').id('not ' ~ featuredPostId).limit(3) %}
     {% if recentPosts|length %}
-      <h3><span>Recent Research/Publications</span></h3>
+      <h3><span>Recent Publications</span></h3>
       <div class="post-grid grid spaced -small">
         {% for post in recentPosts.all() %}
           {% set args = { 'post': post, 'postClass': 'col-1-3' } %}
@@ -42,18 +42,18 @@
           {% include 'posts/_post-article.html' with args %}
         {% endfor %}
       </div>
-    {% endif %}
 
-    <p class="section-cta align-center"><a href="{{ url('/ideas/all?type=publication') }}" class="inline-link"><span>Browse all Research / Publications</span></a></p>
+      <p class="section-cta align-center"><a href="{{ url('/ideas/all?type=publication') }}" class="inline-link"><span>Browse all Publications</span></a></p>
+    {% endif %}
 
   </div>
 
-  <div class="section updates-news">
-    <div class="recent-news background-gray-four">
-      <h3>Recent News / Updates</h3>
-      {% set recentNews = craft.entries.section('ideasEntries').type('newsUpdates').limit(6) %}
-      {% if recentNews|length %}
-        {% for post in recentNews.all() %}
+  <div class="section blog-posts">
+    <div class="recent-posts background-gray-four">
+      <h3>Recent Blog Posts</h3>
+      {% set recentPosts = craft.entries.section('ideasEntries').type('blogPost').limit(6) %}
+      {% if recentPosts|length %}
+        {% for post in recentPosts.all() %}
           <article class="updates-post">
             <h4 class="post-title">{{ post.title }}</h4>
             <div class="post-meta">
@@ -73,8 +73,8 @@
           </article>
         {% endfor %}
 
-        {% if recentNews|length > 6 %}
-          <p class="cta"><a href="{{ url('ideas/all?type=news-updates') }}" class="inline-link"><span>All News & Updates</span></a></p>
+        {% if recentPosts|length > 6 %}
+          <p class="cta"><a href="{{ url('ideas/all?type=blog-post') }}" class="inline-link"><span>All Blog Posts</span></a></p>
         {% endif %}
       {% endif %}
     </div>

@@ -143,7 +143,7 @@ categoryGroups:
     structure:
       maxLevels: 1
       uid: 57a02549-a05b-4d1d-8988-0230f4825164
-dateModified: 1590091557
+dateModified: 1590508390
 email:
   fromEmail: admin@ednavigator.com
   fromName: EdNavigator
@@ -6145,9 +6145,9 @@ sections:
                     sortOrder: 1
                 name: 'Legacy Content'
                 sortOrder: 4
-        handle: newsUpdates
+        handle: blogPost
         hasTitleField: true
-        name: 'News Updates '
+        name: 'Blog Post'
         sortOrder: 1
         titleFormat: ''
         titleLabel: Title

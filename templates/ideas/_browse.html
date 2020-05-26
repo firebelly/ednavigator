@@ -53,11 +53,11 @@
     {% set typeLabel = 'publications' %}
     {% set pageHeadline = 'Browsing all ' ~ queryParams.type|title ~ 's' %}
   {% else %}
-    {% set typeLabel = 'news/updates' %}
-    {% set pageHeadline = 'Browsing all News/Updates' %}
+    {% set typeLabel = 'blog posts' %}
+    {% set pageHeadline = 'Browsing all Blog Posts' %}
   {% endif %}
 {% else %}
-  {% set params = params|merge({type: ['publication', 'newsUpdates']}) %}
+  {% set params = params|merge({type: ['publication', 'blogPost']}) %}
 {% endif %}
 
 {# set relatedTo params #}

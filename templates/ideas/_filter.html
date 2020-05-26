@@ -21,7 +21,7 @@
     {% set typeHandle = typeString|join %}
   {% endif %}
 {% else %}
-  {% set typeHandle = ['publication', 'newsUpdates'] %}
+  {% set typeHandle = ['publication', 'blogPost'] %}
 {% endif %}
 
 {% set entryIds = craft.entries.section('ideasEntries').type(typeHandle).ids() %}
@@ -147,8 +147,8 @@
 
           {% endif %}
 
-          <div><a href="{{ queryParams.type is defined and 'publication' in queryParams.type ? '?' ~ queryString|replace({('type=' ~ queryParams.type): ''})|trim('&', 'left')|trim('&', 'right') : queryParams.type is defined ? '?' ~ queryString|replace({(queryParams.type): 'publication'}) : '?' ~ queryString ~ '&type=publication' }}"{{ queryParams.type is defined and 'publication' in queryParams.type ? ' class="-active"' : '' }}><span class="radio"></span>Research / Publications</a></div>
-          <div><a href="{{ queryParams.type is defined and 'news-updates' in queryParams.type ? '?' ~ queryString|replace({('type=' ~ queryParams.type): ''})|trim('&', 'left')|trim('&', 'right') : queryParams.type is defined ? '?' ~ queryString|replace({(queryParams.type): 'news-updates'}) : '?' ~ queryString ~ '&type=news-updates' }}"{{ queryParams.type is defined and 'news-updates' in queryParams.type ? ' class="-active"' : '' }}><span class="radio"></span>News & Updates</a></div>
+          <div><a href="{{ queryParams.type is defined and 'publication' in queryParams.type ? '?' ~ queryString|replace({('type=' ~ queryParams.type): ''})|trim('&', 'left')|trim('&', 'right') : queryParams.type is defined ? '?' ~ queryString|replace({(queryParams.type): 'publication'}) : '?' ~ queryString ~ '&type=publication' }}"{{ queryParams.type is defined and 'publication' in queryParams.type ? ' class="-active"' : '' }}><span class="radio"></span>Publications</a></div>
+          <div><a href="{{ queryParams.type is defined and 'blog-post' in queryParams.type ? '?' ~ queryString|replace({('type=' ~ queryParams.type): ''})|trim('&', 'left')|trim('&', 'right') : queryParams.type is defined ? '?' ~ queryString|replace({(queryParams.type): 'blog-post'}) : '?' ~ queryString ~ '&type=blog-post' }}"{{ queryParams.type is defined and 'blog-post' in queryParams.type ? ' class="-active"' : '' }}><span class="radio"></span>Blog Posts</a></div>
         </div>
       </div>
 
