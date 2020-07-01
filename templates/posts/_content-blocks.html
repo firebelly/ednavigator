@@ -142,7 +142,7 @@
 
       {% case 'video' %}
         {% set embeddedAsset = craft.embeddedAssets.get(block.embed.one()) %}
-        <div class="content-block video-embed-block">
+        <div class="content-block video-embed-block{{ block.expanded == 'on' ? ' -expanded' : '' }}">
           <div class="-inner">
             <div class="content-block-video" style="padding-bottom:{{ embeddedAsset.aspectRatio }}%;">
               {{ embeddedAsset ? embeddedAsset.html }}

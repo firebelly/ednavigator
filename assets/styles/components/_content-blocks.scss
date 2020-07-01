@@ -381,6 +381,17 @@
 
 // Video Embed
 .video-embed-block {
+  + * {
+    margin-top: 30px;
+  }
+
+  &.-expanded {
+    .-inner {
+      padding: 0;
+      max-width: none;
+    }
+  }
+
   .content-block-video {
     height: 0;
     width: 100%;
