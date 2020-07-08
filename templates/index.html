@@ -107,14 +107,14 @@
         {% endif %}
       </div>
     </div>
-    {% set embeddedAsset = craft.embeddedAssets.get(howWeWork.video.one()) %}
-    {% if embeddedAsset %}
+    {% if howWeWork.video|length %}
+      {% set embeddedAsset = craft.embeddedAssets.get(howWeWork.video.one()) %}
       {% set backgroundImage = craft.imager.transformImage(embeddedAsset.image, { effects: { modulate: [100, 0, 100] } }) %}
     {% else %}
       {% set backgroundImage = howWeWork.image.one() %}
     {% endif %}
     <div class="image-block col-1-2" style="background-image:url({{ backgroundImage.getUrl() }});">
-      {% if embeddedAsset %}
+      {% if embeddedAsset is defined %}
         <button class="modal-video-play button play with-icon -blue" data-url="{{ embeddedAsset.getVideoUrl([]) }}">See how we work <svg class="icon-play" aria-hidden="true" role="presentation"><use xlink:href="#icon-play"/></svg></button>
       {% endif %}
     </div>
