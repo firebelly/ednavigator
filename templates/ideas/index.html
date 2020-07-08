@@ -19,7 +19,7 @@
     {% if featuredPost %}
       {% set args = { 'post': featuredPost, 'featured': true } %}
       {% if featuredPost.type == 'publication' %}
-        {% set args = args|merge({ 'publication': true }) %}
+        {% set args = args|merge({ 'publication': true, 'postClass': '-large' }) %}
       {% endif %}
       <div class="featured-post-section">
         <h3><span>Featured</span></h3>

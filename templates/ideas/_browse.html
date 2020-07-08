@@ -128,7 +128,7 @@
             {% for featuredPost in featuredPosts.all() %}
               {% set args = { 'post': featuredPost, 'featured': true } %}
               {% if featuredPost.type == 'publication' %}
-                {% set args = args|merge({ 'publication': true }) %}
+                {% set args = args|merge({ 'publication': true, 'postClass': '-large' }) %}
               {% endif %}
               {% include 'posts/_post-article.html' with args %}
             {% endfor %}

@@ -43,7 +43,7 @@
     {% if featuredResource %}
       <div class="featured-post-section">
         <h3><span>Featured Resource</span></h3>
-        {% include 'posts/_post-article.html' with { 'post': featuredResource, 'featured': true } %}
+        {% include 'posts/_post-article.html' with { 'post': featuredResource, 'featured': true, 'postClass': '-large' } %}
       </div>
     {% endif %}
 

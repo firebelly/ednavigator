@@ -105,13 +105,13 @@
         <div class="section featured-posts-section">
           <div class="featured-post-carousel">
             {% for featuredPost in featuredPosts.all() %}
-              {% include 'posts/_post-article.html' with { 'post': featuredPost, 'featured': true } %}
+              {% include 'posts/_post-article.html' with { 'post': featuredPost, 'featured': true, 'postClass': '-large' } %}
             {% endfor %}
           </div>
         </div>
       {% else %}
         <div class="section featured-post-section">
-          {% include 'posts/_post-article.html' with { 'post': featuredPosts.one(), 'featured': true } %}
+          {% include 'posts/_post-article.html' with { 'post': featuredPosts.one(), 'featured': true, 'postClass': '-large' } %}
         </div>
       {% endif %}
     {% endif %}

@@ -15,12 +15,10 @@
     </div>
     {% endif %}
 
-    {% if isFeatured and postClass is defined and postClass != 'col-1-3' %}
-      {% set width = 1000 %}
-      {% set height = 1240 %}
+    {% if isFeatured and postClass is defined and postClass != 'col-1-3' or postClass is defined and postClass != 'col-1-3' %}
+      {% set width = 1240 %}
     {% else %}
       {% set width = 960 %}
-      {% set height = 480 %}
     {% endif %}
     {% if postType == 'resources'  %}
       {% set parentSlug = 'resources' %}
@@ -28,14 +26,14 @@
       {% set categorySlug = 'topic' %}
       {% set tags = post.resourceLocations %}
       {% set tagSlug = 'location' %}
-      {% set transformedImage = craft.imager.transformImage(post.resourcesBannerImage.one(), { width: width, height: height }) %}
+      {% set transformedImage = craft.imager.transformImage(post.resourcesBannerImage.one(), { width: width }) %}
     {% else %}
       {% set parentSlug = 'ideas' %}
       {% set categories = post.ideasCategory %}
       {% set categorySlug = 'category' %}
       {% set tags = post.ideasTags %}
       {% set tagSlug = 'tag' %}
-      {% set transformedImage = craft.imager.transformImage(post.ideasBannerImage.one(), { width: width, height: height }) %}
+      {% set transformedImage = craft.imager.transformImage(post.ideasBannerImage.one(), { width: width }) %}
     {% endif %}
 
     <div class="post-image" style="background-image:url({{ transformedImage.getUrl() }});"></div>
