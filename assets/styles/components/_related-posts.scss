@@ -27,6 +27,7 @@
       bottom: -70px;
       display: flex;
       transform: none;
+      align-items: center;
 
       span {
         @include headline-four;
