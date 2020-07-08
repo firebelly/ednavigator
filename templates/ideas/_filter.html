@@ -65,7 +65,7 @@
           {% set tags = craft.tags.group('ideasTags').relatedTo(tagEntries).indexBy('title') %}
           <div class="filter tag col-1-2">
             <div class="select-wrap">
-              <select name="tag" id="tag" class="notranslate"{{ queryParams.tag is defined ? ' class="-active"' : '' }}>
+              <select name="tag" id="tag" {{ queryParams.tag is defined ? ' class="-active"' : '' }}>
                 {% if queryParams.tag is defined %}
                   {% set allTags = '?' ~ queryString|replace({('tag=' ~ queryParams.tag): ''})|trim('&', 'left')|trim('&', 'right') %}
                   {% set allTags = allTags == '' or allTags == '?' ? pageUrl : allTags %}

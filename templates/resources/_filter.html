@@ -28,7 +28,7 @@
       {% set topics = craft.categories.relatedTo({ sourceElement: entryIds }).group('resourcesTopics').all() %}
       <div class="filter topic col-1-3">
         <div class="select-wrap">
-          <select name="topic" id="topic">
+          <select name="topic" id="topic"{{ queryParams.topic is defined ? ' class="-active"' : '' }}>
             {% if queryParams.topic is defined %}
               {% set allTopics = '?' ~ queryString|replace({('topic=' ~ queryParams.topic): ''})|trim('&', 'left')|trim('&', 'right') %}
               {% set allTopics = allTopics == '' or allTopics == '?' ? pageUrl : allTopics %}
@@ -47,7 +47,7 @@
       {% set ages = craft.categories.relatedTo({ sourceElement: entryIds }).group('ageGroups').all() %}
       <div class="filter ages col-1-3">
         <div class="select-wrap">
-          <select name="ages" id="ages">
+          <select name="ages" id="ages"{{ queryParams.age is defined ? ' class="-active"' : '' }}>
             {% if queryParams.age is defined %}
               {% set allAges = '?' ~ queryString|replace({('age=' ~ queryParams.age): ''})|trim('&', 'left')|trim('&', 'right') %}
               {% set allAges = allAges == '' or allAges == '?' ? pageUrl : allAges %}
@@ -67,7 +67,7 @@
       {% set locations = craft.tags.group('resourcesLocations').relatedTo(locationEntries).indexBy('title') %}
       <div class="filter location col-1-3">
         <div class="select-wrap">
-          <select name="location" id="location" class="notranslate">
+          <select name="location" id="location" class="notranslate {{ queryParams.location is defined ? ' -active' : '' }}">
             {% if queryParams.location is defined %}
               {% set allLocations = '?' ~ queryString|replace({('location=' ~ queryParams.location): ''})|trim('&', 'left')|trim('&', 'right') %}
               {% set allLocations = allLocations == '' or allLocations == '?' ? pageUrl : allLocations %}

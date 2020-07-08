@@ -21,7 +21,7 @@
           <li class="col-1-3">
             <h4>{{ ageGroup.title }}</h4>
             <p>Ages {{ ageGroup.ageRange }}</p>
-            <p class="cta"><a href="{{ url('resources/age/'~ageGroup.slug) }}" class="inline-link borderless">See more</a></p>
+            <p class="cta"><a href="{{ url('resources/all?age='~ageGroup.slug) }}" class="inline-link borderless">See more</a></p>
           </li>
         {% endfor %}
       </ul>

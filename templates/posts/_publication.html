@@ -111,7 +111,7 @@
                       <h5>Categor{{ categories|length > 1 ? 'ies' : 'y' }}:</h5>
                       <ul>
                         {% for category in categories.all() %}
-                          <li><a href="{{ category.url }}">{{ category.title }}</a>{{ loop.index < categories|length ? ', ' : '' }}</li>
+                          <li><a href="{{ url(parentSlug ~ '/all?category=' ~ category.slug) }}">{{ category.title }}</a>{{ loop.index < categories|length ? ', ' : '' }}</li>
                         {% endfor %}
                       </ul>
                     </div>
@@ -122,7 +122,7 @@
                     <h5>Tag{{ tags|length > 1 ? 's' : '' }}:</h5>
                     <ul>
                       {% for tag in tags.all() %}
-                        <li><a href="{{ url('{{ parentSlug }}/tag/'~tag.slug) }}">{{ tag.title }}</a>{{ loop.index < tags|length ? ', ' : '' }}</li>
+                        <li><a href="{{ url(parentSlug ~ '/all?tag=' ~ tag.slug) }}">{{ tag.title }}</a>{{ loop.index < tags|length ? ', ' : '' }}</li>
                       {% endfor %}
                     </ul>
                   </div>
