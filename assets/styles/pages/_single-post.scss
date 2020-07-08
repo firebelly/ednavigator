@@ -405,10 +405,10 @@ body.single-post {
     .legacy-content-container {
       margin: 0 auto;
       max-width: 1000px;
-      padding: 0 $global-spacing $global-spacing;
+      padding: 0 $global-spacing;
 
       @include media-lg {
-        padding: 0 #{$global-spacing * 4} #{$global-spacing * 4};
+        padding: 0 #{$global-spacing * 4};
       }
     }
   }
@@ -550,6 +550,7 @@ body.single-post {
 
   // Post Nav
   .section-links {
+    margin-top: 80px;
     padding: 0 $global-spacing;
 
     @include media-lg {
