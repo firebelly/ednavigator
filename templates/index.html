@@ -113,7 +113,7 @@
     {% else %}
       {% set backgroundImage = howWeWork.image.one() %}
     {% endif %}
-    <div class="image-block col-1-2" style="background-image:url({{ backgroundImage.getUrl() }});">
+    <div class="image-block col-1-2{{ howWeWork.video|length ? ' with-video' : '' }}" style="background-image:url({{ backgroundImage.getUrl() }});">
       {% if embeddedAsset is defined %}
         <button class="modal-video-play button play with-icon -blue" data-url="{{ embeddedAsset.getVideoUrl([]) }}">See how we work <svg class="icon-play" aria-hidden="true" role="presentation"><use xlink:href="#icon-play"/></svg></button>
       {% endif %}

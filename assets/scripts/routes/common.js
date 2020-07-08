@@ -308,13 +308,14 @@ export default {
     }
 
     function _closeVideoModal() {
+      $('#video-modal #video').remove();
       _hideSiteOverlay();
       $('#video-modal').velocity(
         { opacity: 0 }, {
         display: "none",
         complete: function() {
           $('body').removeClass('video-modal-open');
-          $('#video-modal').removeClass('-active').find('#video').remove();
+          $('#video-modal').removeClass('-active');
         }
       });
     }

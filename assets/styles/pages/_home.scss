@@ -165,6 +165,12 @@ body.home {
 
     // Optional Video
     .image-block {
+      &.with-video {
+        &::before {
+          display: none;
+        }
+      }
+
       .play {
         top: 50%;
         left: 50%;
