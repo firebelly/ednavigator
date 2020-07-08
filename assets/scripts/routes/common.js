@@ -53,7 +53,7 @@ export default {
     _injectSvgIcons();
     _initMarkupTreatment();
     _initSiteNav();
-    _initBannerVideo();
+    _initVideoModal();
     _initCarousels();
     _initMasonry();
     _initLoadMore();
@@ -231,65 +231,63 @@ export default {
       $('.menu-toggle').removeClass('-active');
     }
 
-    function _initBannerVideo() {
+    function _initVideoModal() {
       if (!$('.banner-video').length) {
         return;
       }
 
-      var $video = $('#video');
-      var $container = $video.closest('.video-container');
+      var $container = $('#video-modal .video-container');
 
-      var options = {
-          responsive: true
-      };
-
-      if ($video[0].hasAttribute('data-url')) {
-        options['url'] = $video.attr('data-url');
-      } else {
-        options['id'] = $video.attr('data-id');
-      }
-
-      var player = new Player('video', options);
-
-      $('.banner-video-play').on('click', function() {
+      $('.modal-video-play').on('click', function() {
+        var videoUrl = $(this).attr('data-url');
         $container.addClass('playing');
-        _openVideoModal(player);
+        _openVideoModal(videoUrl);
       });
 
       // Open Modal if Video Play triggered
-      player.on('play', function() {
-        if (!$('#video-modal').is('.-active')) {
-          _openVideoModal(false);
-        }
-      })
-
-      // Close Modal when video ends
-      player.on('ended', function() {
-        _closeVideoModal(player);
-      });
+      // player.on('play', function() {
+      //   if (!$('#video-modal').is('.-active')) {
+      //     _openVideoModal(false);
+      //   }
+      // })
 
       // Close Video Modal
       $(document).keyup(function(e) {
         if (e.keyCode === 27) {
           if ($('#video-modal.-active').length) {
-            _closeVideoModal(player);
+            _closeVideoModal();
           }
         }
       });
 
       $(document).on('click', '.video-modal-close', function() {
-        _closeVideoModal(player);
+        _closeVideoModal();
       });
 
       $(document).on('click touchend', 'body.video-modal-open', function(e) {
         var $target = $(e.target);
         if (!$target.is('.video-container') && !$target.parents('.video-container').length) {
-          _closeVideoModal(player);
+          _closeVideoModal();
         }
       });
     }
 
-    function _openVideoModal(player) {
+    function _openVideoModal(videoUrl) {
+      if (!$('#video-modal').length) {
+        $body.append('<div id="video-modal"><div class="video-container"><button class="video-modal-close"><span class="sr-only">Close Video</span> <svg class="icon-close" aria-hidden="true" role="presentation"><use xlink:href="#icon-close"/></svg></button><div id="video" class="banner-video" data-url="' + videoUrl + '"></div></div></div>');
+      } else {
+        $('#video-modal .video-container').append('<div id="video" class="banner-video" data-url="' + videoUrl + '"></div>');
+      }
+
+      var $video = $('#video-modal #video');
+      var $container = $video.closest('.video-container');
+      var options = {
+          responsive: true,
+          url: videoUrl
+      };
+
+      var player = new Player('video', options);
+
       _showSiteOverlay();
       $('#video-modal').velocity(
         { opacity: 1 }, {
@@ -302,19 +300,21 @@ export default {
             }
           }
       });
+
+      // Close Modal when video ends
+      player.on('ended', function() {
+        _closeVideoModal();
+      });
     }
 
-    function _closeVideoModal(player) {
-      if (player.getPaused()) {
-        player.pause();
-      }
+    function _closeVideoModal() {
       _hideSiteOverlay();
       $('#video-modal').velocity(
         { opacity: 0 }, {
         display: "none",
         complete: function() {
           $('body').removeClass('video-modal-open');
-          $('#video-modal').removeClass('-active');
+          $('#video-modal').removeClass('-active').find('#video').remove();
         }
       });
     }

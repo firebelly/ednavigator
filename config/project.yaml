@@ -143,7 +143,7 @@ categoryGroups:
     structure:
       maxLevels: 1
       uid: 57a02549-a05b-4d1d-8988-0230f4825164
-dateModified: 1590508390
+dateModified: 1594139856
 email:
   fromEmail: admin@ednavigator.com
   fromName: EdNavigator
@@ -941,9 +941,10 @@ fields:
     settings:
       contentTable: '{{%matrixcontent_howweworksection}}'
       maxBlocks: '1'
+      minBlocks: ''
       propagationMethod: all
     translationKeyFormat: null
-    translationMethod: none
+    translationMethod: site
     type: craft\fields\Matrix
   73a2406b-1ed1-4a9b-b258-6ef9ed261e82:
     contentColumnType: string
@@ -4543,6 +4544,9 @@ matrixBlockTypes:
         tabs:
           -
             fields:
+              3cdbcb11-e949-4b9d-b62c-fb5dae6c2411:
+                required: false
+                sortOrder: 6
               6338e472-11ef-447b-b5a2-7470528af19a:
                 required: true
                 sortOrder: 1
@@ -4550,7 +4554,7 @@ matrixBlockTypes:
                 required: false
                 sortOrder: 4
               6e8294d1-9277-448b-8170-f4faecd41617:
-                required: true
+                required: false
                 sortOrder: 5
               8679637d-de3c-45d5-b1e5-2f9084c556ef:
                 required: false
@@ -4561,6 +4565,35 @@ matrixBlockTypes:
             name: Content
             sortOrder: 1
     fields:
+      3cdbcb11-e949-4b9d-b62c-fb5dae6c2411:
+        contentColumnType: string
+        fieldGroup: null
+        handle: video
+        instructions: 'Optionally display a video instead of an image'
+        name: Video
+        searchable: false
+        settings:
+          allowedKinds:
+            - json
+          defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+          defaultUploadLocationSubpath: ''
+          limit: '1'
+          localizeRelations: ''
+          restrictFiles: '1'
+          selectionLabel: 'Choose an embed asset'
+          showUnpermittedFiles: false
+          showUnpermittedVolumes: false
+          singleUploadLocationSource: 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
+          singleUploadLocationSubpath: '{owner.slug}'
+          source: null
+          sources: '*'
+          targetSiteId: null
+          useSingleFolder: true
+          validateRelatedElements: ''
+          viewMode: list
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\Assets
       6338e472-11ef-447b-b5a2-7470528af19a:
         contentColumnType: text
         fieldGroup: null
@@ -4569,7 +4602,9 @@ matrixBlockTypes:
         name: Headline
         searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
+          code: ''
           columnType: text
           initialRows: '2'
           multiline: '1'
@@ -4585,7 +4620,9 @@ matrixBlockTypes:
         name: 'Link Label'
         searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
+          code: ''
           columnType: text
           initialRows: '4'
           multiline: ''
@@ -4599,22 +4636,28 @@ matrixBlockTypes:
         handle: image
         instructions: ''
         name: Image
-        searchable: true
+        searchable: false
         settings:
+          allowedKinds: null
           defaultUploadLocationSource: 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
           defaultUploadLocationSubpath: '{owner.slug}'
           limit: '1'
-          localizeRelations: false
+          localizeRelations: ''
           restrictFiles: ''
           selectionLabel: 'Choose an image'
+          showUnpermittedFiles: false
+          showUnpermittedVolumes: true
           singleUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
           singleUploadLocationSubpath: ''
+          source: null
           sources:
             - 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
-          useSingleFolder: ''
+          targetSiteId: null
+          useSingleFolder: false
+          validateRelatedElements: ''
           viewMode: list
         translationKeyFormat: null
-        translationMethod: none
+        translationMethod: site
         type: craft\fields\Assets
       8679637d-de3c-45d5-b1e5-2f9084c556ef:
         contentColumnType: text
@@ -4624,7 +4667,9 @@ matrixBlockTypes:
         name: Description
         searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
+          code: ''
           columnType: text
           initialRows: '4'
           multiline: ''
@@ -4641,11 +4686,15 @@ matrixBlockTypes:
         searchable: true
         settings:
           limit: '1'
-          localizeRelations: false
+          localizeRelations: ''
           selectionLabel: 'Choose an entry'
+          source: null
           sources: '*'
+          targetSiteId: null
+          validateRelatedElements: ''
+          viewMode: null
         translationKeyFormat: null
-        translationMethod: none
+        translationMethod: site
         type: craft\fields\Entries
     handle: howWeWork
     name: 'How We Work'

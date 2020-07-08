@@ -162,6 +162,17 @@ body.home {
     .block {
       background-color: $blue;
     }
+
+    // Optional Video
+    .image-block {
+      .play {
+        top: 50%;
+        left: 50%;
+        z-index: 1;
+        position: absolute;
+        transform: translate(-50%, -50%);
+      }
+    }
   }
 
   .stats-section {

@@ -11,7 +11,7 @@
   <div id="video-modal">
     <div class="video-container">
       <button class="video-modal-close"><span class="sr-only">Close Video</span> <svg class="icon-close" aria-hidden="true" role="presentation"><use xlink:href="#icon-close"/></svg></button>
-      <div id="video" class="banner-video" data-url="{{ entry.bannerVideo }}"></div>
+      <div id="video" class="banner-video" ></div>
     </div>
   </div>
 {% endif %}
@@ -22,7 +22,7 @@
   <div class="-inner">
     {% if entry.bannerVideo %}
       <div class="video-play-container">
-        <button class="banner-video-play button play with-icon -blue">Watch the video <svg class="icon-play" aria-hidden="true" role="presentation"><use xlink:href="#icon-play"/></svg></button>
+        <button class="modal-video-play button play with-icon -blue" data-url="{{ entry.bannerVideo }}">Watch the video <svg class="icon-play" aria-hidden="true" role="presentation"><use xlink:href="#icon-play"/></svg></button>
       </div>
     {% endif %}
 
@@ -107,7 +107,17 @@
         {% endif %}
       </div>
     </div>
-    <div class="image-block col-1-2" style="background-image:url({{ howWeWork.image.one().getUrl('hero') }});"></div>
+    {% set embeddedAsset = craft.embeddedAssets.get(howWeWork.video.one()) %}
+    {% if embeddedAsset %}
+      {% set backgroundImage = craft.imager.transformImage(embeddedAsset.image, { effects: { modulate: [100, 0, 100] } }) %}
+    {% else %}
+      {% set backgroundImage = howWeWork.image.one() %}
+    {% endif %}
+    <div class="image-block col-1-2" style="background-image:url({{ backgroundImage.getUrl() }});">
+      {% if embeddedAsset %}
+        <button class="modal-video-play button play with-icon -blue" data-url="{{ embeddedAsset.getVideoUrl([]) }}">See how we work <svg class="icon-play" aria-hidden="true" role="presentation"><use xlink:href="#icon-play"/></svg></button>
+      {% endif %}
+    </div>
   </div>
 {% endif %}
 
