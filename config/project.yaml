@@ -143,7 +143,7 @@ categoryGroups:
     structure:
       maxLevels: 1
       uid: 57a02549-a05b-4d1d-8988-0230f4825164
-dateModified: 1594236125
+dateModified: 1594395828
 email:
   fromEmail: admin@ednavigator.com
   fromName: EdNavigator
@@ -3385,6 +3385,7 @@ matrixBlockTypes:
         name: Embed
         searchable: false
         settings:
+          allowSelfRelations: ''
           allowedKinds: null
           defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
           defaultUploadLocationSubpath: ''
@@ -3782,6 +3783,7 @@ matrixBlockTypes:
         name: Images
         searchable: false
         settings:
+          allowSelfRelations: ''
           allowedKinds:
             - image
           defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
@@ -3906,6 +3908,7 @@ matrixBlockTypes:
         name: Image(s)
         searchable: false
         settings:
+          allowSelfRelations: ''
           allowedKinds:
             - image
           defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
@@ -4043,6 +4046,7 @@ matrixBlockTypes:
         name: Image
         searchable: false
         settings:
+          allowSelfRelations: ''
           allowedKinds:
             - image
           defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
@@ -4573,12 +4577,13 @@ matrixBlockTypes:
         name: Video
         searchable: false
         settings:
+          allowSelfRelations: ''
           allowedKinds:
             - json
           defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
           defaultUploadLocationSubpath: ''
           limit: '1'
-          localizeRelations: ''
+          localizeRelations: '1'
           restrictFiles: '1'
           selectionLabel: 'Choose an embed asset'
           showUnpermittedFiles: false
@@ -4638,6 +4643,7 @@ matrixBlockTypes:
         name: Image
         searchable: false
         settings:
+          allowSelfRelations: ''
           allowedKinds: null
           defaultUploadLocationSource: 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
           defaultUploadLocationSubpath: '{owner.slug}'
@@ -4685,6 +4691,7 @@ matrixBlockTypes:
         name: 'Link Entry'
         searchable: true
         settings:
+          allowSelfRelations: ''
           limit: '1'
           localizeRelations: ''
           selectionLabel: 'Choose an entry'
@@ -5500,6 +5507,134 @@ matrixBlockTypes:
     handle: generalContent
     name: 'General Content'
     sortOrder: 1
+  f693e655-5c7a-49cb-85c2-9bd562528ec3:
+    field: 0d3e14a2-0c82-4a5f-b7ac-4e7ce75f352e
+    fieldLayouts:
+      10690689-55cf-44d8-bf62-f892ce388d30:
+        tabs:
+          -
+            fields:
+              13e21086-3fad-45fd-a03b-cb075d664030:
+                required: true
+                sortOrder: 1
+              801a92a0-933b-46ca-ba61-3c865479edb3:
+                required: false
+                sortOrder: 3
+              ce8989db-7ceb-45b3-a805-9d901c47a8f5:
+                required: true
+                sortOrder: 2
+              ddd5f13b-c690-49f5-92aa-daede3c2b417:
+                required: false
+                sortOrder: 4
+            name: Content
+            sortOrder: 1
+    fields:
+      13e21086-3fad-45fd-a03b-cb075d664030:
+        contentColumnType: text
+        fieldGroup: null
+        handle: resourceTitle
+        instructions: ''
+        name: 'Resource Title'
+        searchable: true
+        settings:
+          byteLimit: null
+          charLimit: null
+          code: ''
+          columnType: null
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\PlainText
+      801a92a0-933b-46ca-ba61-3c865479edb3:
+        contentColumnType: text
+        fieldGroup: null
+        handle: resourceDescription
+        instructions: ''
+        name: 'Resource Description'
+        searchable: true
+        settings:
+          availableTransforms: ''
+          availableVolumes: ''
+          cleanupHtml: true
+          columnType: text
+          purifierConfig: ''
+          purifyHtml: '1'
+          redactorConfig: ''
+          removeEmptyTags: '1'
+          removeInlineStyles: '1'
+          removeNbsp: '1'
+          showUnpermittedFiles: false
+          showUnpermittedVolumes: false
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\redactor\Field
+      ce8989db-7ceb-45b3-a805-9d901c47a8f5:
+        contentColumnType: string
+        fieldGroup: null
+        handle: resourceFile
+        instructions: 'The downloadable resource file'
+        name: 'Resource File'
+        searchable: false
+        settings:
+          allowSelfRelations: ''
+          allowedKinds:
+            - image
+            - pdf
+            - text
+          defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+          defaultUploadLocationSubpath: ''
+          limit: '1'
+          localizeRelations: ''
+          restrictFiles: ''
+          selectionLabel: 'Choose a resourse'
+          showUnpermittedFiles: false
+          showUnpermittedVolumes: false
+          singleUploadLocationSource: 'volume:29886f22-df3f-4b4b-956f-43bf5949c205'
+          singleUploadLocationSubpath: '{owner.slug}'
+          source: null
+          sources: '*'
+          targetSiteId: null
+          useSingleFolder: true
+          validateRelatedElements: ''
+          viewMode: list
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\Assets
+      ddd5f13b-c690-49f5-92aa-daede3c2b417:
+        contentColumnType: string
+        fieldGroup: null
+        handle: resourceThumbnail
+        instructions: 'A thumbnail of the pdf or resource (optional)'
+        name: 'Resource Thumbnail'
+        searchable: true
+        settings:
+          allowSelfRelations: ''
+          allowedKinds:
+            - image
+          defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+          defaultUploadLocationSubpath: ''
+          limit: '1'
+          localizeRelations: ''
+          restrictFiles: '1'
+          selectionLabel: 'Choose a thumbnail'
+          showUnpermittedFiles: false
+          showUnpermittedVolumes: false
+          singleUploadLocationSource: 'volume:29886f22-df3f-4b4b-956f-43bf5949c205'
+          singleUploadLocationSubpath: '{owner.slug}'
+          source: null
+          sources: '*'
+          targetSiteId: null
+          useSingleFolder: true
+          validateRelatedElements: ''
+          viewMode: list
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\Assets
+    handle: resourceDownload
+    name: 'Resource Download'
+    sortOrder: 9
   f749324c-fa2e-40a9-97d0-c38e3cb2ec89:
     field: aec03031-025c-478a-a913-6bbffef82502
     fieldLayouts:
@@ -5839,7 +5974,7 @@ plugins:
   contact-form-extensions:
     edition: standard
     enabled: true
-    schemaVersion: 1.0.0
+    schemaVersion: 1.0.1
     settings:
       confirmationSubject: ''
       confirmationTemplate: ''

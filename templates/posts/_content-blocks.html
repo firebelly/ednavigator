@@ -157,6 +157,28 @@
           </div>
         </div>
 
+      {% case 'resourceDownload' %}
+        <div class="content-block resource-downloads">
+          <div class="resource-download{{ block.resourceThumbnail|length ? ' has-thumb' : '' }}">
+            {% if block.resourceThumbnail|length %}
+              <a class="download-thumb" href="{{ block.resourceFile.one().getUrl() }}">
+                <img src="{{ block.resourceThumbnail.one().getUrl('thumbnail') }}" alt="{{ block.resourceTitle }}">
+              </a>
+            {% endif %}
+            <div class="resource-info">
+              <h3><a href="{{ block.resourceFile.one().getUrl() }}" class="ga-download" target="_blank" data-resourceTitle="{{ block.resourceTitle }}">{{ block.resourceTitle }}</a></h3>
+              {% if block.resourceDescription %}
+                {{ block.resourceDescription }}
+              {% endif %}
+
+              <div class="resource-link">
+                <a href="{{ block.resourceFile.one().getUrl() }}" class="button -big with-icon -blue ga-download" target="_blank" data-resourceTitle="{{ block.resourceTitle }}"><span>Download</span> <svg class="icon" aria-hidden="true" role="presentation"><use xlink:href="#icon-download"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
     {% endswitch %}
   {% endfor %}
 {% endif %}

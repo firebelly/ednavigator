@@ -481,7 +481,9 @@ body.single-post {
     }
 
     @include media-md {
-      padding: 30px;
+      &:not(.content-block) {
+        padding: 30px;
+      }
 
       .resource-info {
         flex: 1;
