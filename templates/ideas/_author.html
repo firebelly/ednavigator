@@ -19,20 +19,20 @@
     <div class="grid">
       <h1 class="page-headline">{{ title }}</h1>
 
-      {% include "blog/_subscribe" %}
+      {% include "ideas/_subscribe" %}
     </div>
 
-    {% include "blog/_filter" %}
+    {% include "ideas/_filter" %}
 
   </section>
 
-  {% set articles = craft.entries.section('blogEntries').authorId(user.id) %}
+  {% set articles = craft.entries.section('ideasEntries').authorId(user.id) %}
 
   <div class="article-list">
 
     {% if articles | length %}
       {% for article in articles.all() %}
-        {% include "blog/_article" %}
+        {% include "ideas/_article" %}
       {% endfor %}
     {% else %}
       <p>No entries could be found with that tag.</p>

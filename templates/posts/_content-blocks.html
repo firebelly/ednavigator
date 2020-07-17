@@ -3,7 +3,7 @@
 {% set contentBlocks = entry.postContentBlocks.all() %}
 
 {% set language = craft.app.language %}
-{% set localizedEntry = craft.entries.id(entry.id).site('en_us') %}
+{% set localizedEntry = craft.entries.id(entry.id).site('en') %}
 
 {% if contentBlocks|length %}
 

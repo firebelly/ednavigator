@@ -24,7 +24,7 @@
             {% endif %}
             <div class="-inner">
               {% if postImage|length %}
-                {% set transformedImage = craft.imager.transformImage(postImage, { width: 1200, ratio: 60/23, position: '50% 25%' }) %}
+                {% set transformedImage = craft.imager.transformImage(postImage, { width: 1200, ratio: 60/23 }) %}
                 <div class="post-image-container">
                   <div class="post-image" style="background-image:url('{{ transformedImage.getUrl() }}');"></div>
                 </div>

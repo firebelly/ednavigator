@@ -143,7 +143,7 @@ categoryGroups:
     structure:
       maxLevels: 1
       uid: 57a02549-a05b-4d1d-8988-0230f4825164
-dateModified: 1594395828
+dateModified: 1595011787
 email:
   fromEmail: admin@ednavigator.com
   fromName: EdNavigator
@@ -6089,14 +6089,14 @@ plugins:
 routes:
   13905a66-cf44-42f8-af85-df52c101dce5:
     siteUid: ed2e38d9-d86c-40c4-b682-df89fc90f62d
-    sortOrder: 16
+    sortOrder: 15
     template: ideas/_browse
     uriParts:
       - ideas/todo
     uriPattern: ideas/todo
   186a16fb-71d2-40ce-a167-a38cd8a330fe:
     siteUid: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
-    sortOrder: 2
+    sortOrder: 3
     template: resources/_browse
     uriParts:
       - resources/location/
@@ -6106,39 +6106,28 @@ routes:
     uriPattern: 'resources/location/<tag:[^\/]+>'
   1e421956-ca6e-42ea-b43d-b12ccc581647:
     siteUid: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
-    sortOrder: 9
+    sortOrder: 8
     template: resources/_browse
     uriParts:
       - resources/all
     uriPattern: resources/all
   23d112fc-ef89-4ca9-92a9-96d6a9519de4:
     siteUid: ed2e38d9-d86c-40c4-b682-df89fc90f62d
-    sortOrder: 12
+    sortOrder: 11
     template: resources/_browse
     uriParts:
       - recursos/buscar
     uriPattern: recursos/buscar
   39dbfef2-d361-42a6-8dd9-e5228cd1784d:
     siteUid: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
-    sortOrder: 13
+    sortOrder: 12
     template: ideas/_browse
     uriParts:
       - ideas/search
     uriPattern: ideas/search
-  3fac891f-8bf0-4477-b35a-f1d7eafb7cc3:
-    siteUid: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
-    sortOrder: 6
-    template: posts/_pdf
-    uriParts:
-      0: ideas/
-      1:
-        - slug
-        - '[^\/]+'
-      3: /pdf
-    uriPattern: 'ideas/<slug:[^\/]+>/pdf'
   5a7b3319-7ac5-4f38-9500-8d254f3096b0:
     siteUid: ed2e38d9-d86c-40c4-b682-df89fc90f62d
-    sortOrder: 10
+    sortOrder: 9
     template: resources/_browse
     uriParts:
       - recursos/todo
@@ -6165,7 +6154,7 @@ routes:
     uriPattern: 'ideas/tag/<tag:[^\/]+>'
   b1005693-be13-4768-826d-bf2f7d6f263d:
     siteUid: ed2e38d9-d86c-40c4-b682-df89fc90f62d
-    sortOrder: 3
+    sortOrder: 4
     template: resources/_browse
     uriParts:
       - recursos/ubicacion/
@@ -6175,28 +6164,38 @@ routes:
     uriPattern: 'recursos/ubicacion/<tag:[^\/]+>'
   b7b0c4d8-8a82-4734-8f09-765f40a635c1:
     siteUid: ed2e38d9-d86c-40c4-b682-df89fc90f62d
-    sortOrder: 14
+    sortOrder: 13
     template: ideas/_browse
     uriParts:
       - ideas/buscar
     uriPattern: ideas/buscar
   ba52a8f3-b820-4e31-80e5-7d0f0763445d:
     siteUid: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
-    sortOrder: 15
+    sortOrder: 14
     template: ideas/_browse
     uriParts:
       - ideas/all
     uriPattern: ideas/all
   d83ad2a5-08a3-43e1-bbae-26126eb9ec73:
     siteUid: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
-    sortOrder: 11
+    sortOrder: 10
     template: resources/_browse
     uriParts:
       - resources/search
     uriPattern: resources/search
+  e2b470b7-b9bb-4be3-92ad-4aaea9572049:
+    siteUid: ed2e38d9-d86c-40c4-b682-df89fc90f62d
+    sortOrder: 6
+    template: ideas/_author
+    uriParts:
+      - ideas/autor/
+      -
+        - slug
+        - '[^\/]+'
+    uriPattern: 'ideas/autor/<slug:[^\/]+>'
   f49be77b-6cd6-4c6c-9c4c-2c71fd204f9f:
     siteUid: ed2e38d9-d86c-40c4-b682-df89fc90f62d
-    sortOrder: 4
+    sortOrder: 2
     template: ideas/_tag
     uriParts:
       - ideas/etiqueta/
@@ -6982,19 +6981,22 @@ sections:
                 fields:
                   32044766-4b09-4e5c-a620-b18d4dbe3ffb:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 5
                   60fb224d-1163-4fda-8ccc-ec5f35830998:
                     required: false
-                    sortOrder: 1
+                    sortOrder: 2
                   61e64fbf-76d0-4008-b09b-94e98cbac5f6:
                     required: false
-                    sortOrder: 2
+                    sortOrder: 3
+                  b0aefac7-6c72-4693-bb5a-2e79c46dd012:
+                    required: false
+                    sortOrder: 1
                   b16265b0-cb4e-4558-8cc7-36917aa93b69:
                     required: false
-                    sortOrder: 7
+                    sortOrder: 6
                   fbb9d500-a777-4fc0-bb23-f3863056a4ee:
                     required: false
-                    sortOrder: 3
+                    sortOrder: 4
                 name: 'Page Header'
                 sortOrder: 1
               -
@@ -7433,7 +7435,7 @@ siteGroups:
 sites:
   84ea1cc0-8139-4b33-b94a-1c02700fc1ef:
     baseUrl: '@web'
-    handle: en_us
+    handle: en
     hasUrls: true
     language: en-US
     name: EdNavigator
@@ -7442,7 +7444,7 @@ sites:
     sortOrder: 1
   ed2e38d9-d86c-40c4-b682-df89fc90f62d:
     baseUrl: '@web/es/'
-    handle: es_us
+    handle: es
     hasUrls: true
     language: es-US
     name: 'EdNavigator (Español)'

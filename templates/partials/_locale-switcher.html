@@ -1,29 +1,69 @@
 {% set langSwitcher = craft.app.sites.getAllSites() %}
+{# Map the corresponding routes #}
+{% set routes = [
+  { 'en-US': 'ideas/tag', 'es-US': 'ideas/etiqueta' },
+  { 'en-US': 'resources/location', 'es-US': 'recursos/ubicacion' },
+  { 'en-US': 'ideas/author', 'es-US': 'ideas/autor' },
+  { 'en-US': 'resources/all', 'es-US': 'recursos/todo' },
+  { 'en-US': 'ideas/all', 'es-US': 'ideas/todo' },
+  { 'en-US': 'resources/search', 'es-US': 'recursos/buscar' },
+  { 'en-US': 'ideas/search', 'es-US': 'ideas/buscar' }
+] %}
+
 <ul class="locale">
   {% for lang in langSwitcher %}
     {% set locale = craft.app.i18n.getLocaleById(lang.language|slice(0,2)) %}
     {# Set homepage as default #}
     {% set url = lang.getBaseUrl() %}
+
     {# Entry is defined #}
     {% if entry is defined %}
       {# Check if that entry exists in other locale #}
       {% set otherLocaleEntry = craft.entries.siteId(lang.id).id(entry.id).one() %}
+
       {% if otherLocaleEntry %}
         {% set url = otherLocaleEntry.url %}
       {% endif %}
-    {# Category is defined #}
-    {% elseif category is defined %}
-      {# Check if that entry exists in other locale #}
-      {% set otherLocaleCat = craft.categories.siteId(lang.id).id(category.id).one() %}
-      {% if otherLocaleCat %}
-        {% set url = otherLocaleCat.url %}
+
+    {% else %}
+      {# Get URL segments #}
+      {% set segments = craft.request.getSegments %}
+      {# Set var before loop #}
+      {% set noRoute = true %}
+      {# Loop routes array #}
+      {% for prop in routes %}
+
+        {# Check if URL segments match a route #}
+        {% if prop[craft.locale]|split('/') == segments %}
+          {# set query string if it exists #}
+          {% set query = craft.app.request.queryStringWithoutPath %}
+          {% if query %}
+            {% set queryString = '?' ~ query %}
+          {% else %}
+            {% set queryString = '' %}
+          {% endif %}
+
+          {% set url = lang.getBaseUrl() ~ prop[lang.language] ~ queryString %}
+          {# Switch var value #}
+          {% set noRoute = false %}
+
+        {% endif %}
+
+      {% endfor %}
+
+      {# No route found --> output a link to the homepage #}
+      {% if noRoute %}
+        {% set url = lang.getBaseUrl() %}
       {% endif %}
+
     {% endif %}
+
     <li{% if lang.id == currentSite.id %} class="current-locale"{% endif %}>
       <a href="{{url}}">{{ locale.displayName }}</a>
       {% if not loop.last %}
-        <span>/</span>
+        <span class="notranslate">/</span>
       {% endif %}
     </li>
+
   {% endfor %}
 </ul>

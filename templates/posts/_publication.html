@@ -33,7 +33,7 @@
 {% endif %}
 
 {% if craft.app.language != "en-US" %}
-  {% set localizedEntry = craft.entries.id(entry.id).site('en_us') %}
+  {% set localizedEntry = craft.entries.id(entry.id).site('en') %}
 {% endif %}
 
 {% block content %}

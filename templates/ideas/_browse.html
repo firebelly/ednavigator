@@ -16,7 +16,7 @@
 {% set baseSlug = craft.app.request.getSegment(2) %}
 {% if baseSlug == 'search' or baseSlug == 'buscar' %}
   {% set query = craft.app.request.getParam('q') %}
-  {% set results = craft.entries.section('ideasEntries').search(query).orderBy('score') %}
+  {% set results = craft.entries.section('ideasEntries').search(query).orderBy('score').all() %}
   {% set params = { section: 'ideasEntries', orderBy: 'score', limit: null } %}
   {% if queryParams.featured is defined %}
     {% set searchParams = { search: query ~ ' featuredPost:1'} %}
@@ -92,7 +92,7 @@
     {% set sortParams = 'postDate ' ~ order %}
   {% endif %}
 {% endif %}
-{# aadd sortParams to params #}
+{# add sortParams to params #}
 {% set params = params|merge({'orderBy':sortParams}) %}
 
 {# set featured param #}
@@ -113,7 +113,9 @@
 {% endif %}
 
 {% set results = craft.entries(params).all()|length %}
-{% set params = params|merge({limit: limit}) %}
+{% if baseSlug != 'search' and baseSlug != 'buscar' %}
+  {% set params = params|merge({limit: limit}) %}
+{% endif %}
 
 {% block content %}
 

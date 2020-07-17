@@ -134,6 +134,10 @@ body.home {
 
   // What We Do Section
   .what-we-do {
+    .section-headline {
+      margin-bottom: 0;
+    }
+
     .award-showcase {
       display: flex;
       margin-top: $global-spacing * 2;
