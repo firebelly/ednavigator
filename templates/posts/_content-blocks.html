@@ -2,13 +2,12 @@
 
 {% set contentBlocks = entry.postContentBlocks.all() %}
 
-{% set language = craft.app.language %}
 {% set localizedEntry = craft.entries.id(entry.id).site('en') %}
 
 {% if contentBlocks|length %}
 
   {% for block in contentBlocks %}
-    {% set index = loop.index %}
+    {% set blockIndex = loop.index - 1 %}
     {% switch block.type %}
 
       {% case 'sectionHeading' %}
@@ -19,7 +18,7 @@
         </div>
 
       {% case 'generalContent' %}
-        <div class="content-block general-content-block{{ loop.index < 3 ? ' first-position' : '' }} {{ notranslate.check(language, localizedEntry[0].postContentBlocks[index - 1].contentBlock, block.contentBlock) }}">
+        <div class="content-block general-content-block{{ loop.index < 3 ? ' first-position' : '' }} {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].contentBlock, block.contentBlock) }}">
           <div class="block-content -inner user-content">
             {{ block.contentBlock|footnotes }}
           </div>
@@ -35,10 +34,10 @@
                 {% endif %}
                 <h3 class="aside-subheading">Family Narrative</h3>
                 {% if block.familyNarrativeHeadline %}
-                  <h4 class="aside-heading {{ notranslate.check(language, localizedEntry[0].postContentBlocks[index - 1].familyNarrativeHeadline, block.familyNarrativeHeadline) }}">{{ block.familyNarrativeHeadline }}</h4>
+                  <h4 class="aside-heading {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].familyNarrativeHeadline, block.familyNarrativeHeadline) }}">{{ block.familyNarrativeHeadline }}</h4>
                 {% endif %}
                 {% if block.familyNarrativeCopy %}
-                  <div class="aside-content user-content {{ notranslate.check(language, localizedEntry[0].postContentBlocks[index - 1].familyNarrativeCopy, block.familyNarrativeCopy) }}">
+                  <div class="aside-content user-content {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].familyNarrativeCopy, block.familyNarrativeCopy) }}">
                     {{ block.familyNarrativeCopy }}
                   </div>
                 {% endif %}
@@ -51,9 +50,9 @@
               <button class="accordion-toggle"><span class="text">Quote</span> <span class="expand-contract"></span></button>
               <div class="accordion-content -inner">
                 <blockquote class="aside-blockquote">
-                  <p {{ notranslate.check(language, localizedEntry[0].postContentBlocks[index - 1].asideQuote, block.asideQuote, true) }}>“{{ block.asideQuote }}”</p>
+                  <p {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].asideQuote, block.asideQuote, true) }}>“{{ block.asideQuote }}”</p>
                   {% if block.asideQuoteAttribution %}
-                    <cite>{{ block.asideQuoteAttribution }}</cite>
+                    <cite {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].asideQuoteAttribution, block.asideQuoteAttribution, true) }}>{{ block.asideQuoteAttribution }}</cite>
                   {% endif %}
                 </blockquote>
                 {% set urlLength = entry.url|length %}
@@ -71,7 +70,7 @@
                 <dl class="stat">
                   <dd class="figure">{{ block.asideStatFigure }}</dd>
                   {% if block.asideStatAttribution %}
-                    <dt>{{ block.asideStatAttribution }}</dt>
+                    <dt {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].asideStatAttribution, block.asideStatAttribution, true) }}>{{ block.asideStatAttribution }}</dt>
                   {% endif %}
                 </dl>
               </div>
@@ -84,9 +83,9 @@
           <div class="content-block pullquote-content-block">
             <div class="-inner">
               <blockquote>
-                <p>“{{ block.quote }}”</p>
+                <p {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].quote, block.quote, true) }}>“{{ block.quote }}”</p>
                 {% if block.attribution %}
-                  <cite>—{{ block.attribution }}</cite>
+                  <cite {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].attribution, block.attribution, true) }}>—{{ block.attribution }}</cite>
                 {% endif %}
               </blockquote>
             </div>
@@ -100,7 +99,7 @@
               <dl class="stat">
                 <dd class="figure">{{ block.statFigure }}</dd>
                 {% if block.statDescription %}
-                  <dt>{{ block.statDescription }}</dt>
+                  <dt {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].statDescription, block.statDescription, true) }}>{{ block.statDescription }}</dt>
                 {% endif %}
               </dl>
             </div>
@@ -111,13 +110,14 @@
         <div class="content-block image-content-block{{ block.expanded == 'on' ? ' -expanded' : '' }}">
           <div class="-inner">
             {% for image in block.images.all() %}
+              {% set imageIndex = loop.index - 1 %}
               <figure>
                 {% if image.displayTitle %}
-                  <h5 class="figure-title">{{ image.displayTitle }}</h5>
+                  <h5 class="figure-title {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].images[imageIndex].displayTitle, image.displayTitle) }}">{{ image.displayTitle }}</h5>
                 {% endif %}
                 <img src="{{ image.getUrl('postImage') }}" alt="{{ image.title }}">
                 {% if image.caption %}
-                  <figcaption>{{ image.caption }}</figcaption>
+                  <figcaption {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].images[imageIndex].caption, image.caption, true) }}>{{ image.caption }}</figcaption>
                 {% endif %}
               </figure>
             {% endfor %}
@@ -129,10 +129,11 @@
           <div class="-inner">
             <div class="content-block-carousel">
               {% for image in block.images.all() %}
+                {% set imageIndex = loop.index - 1 %}
                 <figure>
                   <img src="{{ image.getUrl('postCarousel') }}" alt="{{ image.title }}">
                   {% if image.caption %}
-                    <figcaption>{{ image.caption }}</figcaption>
+                    <figcaption {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].images[imageIndex].caption, image.caption, true) }}>{{ image.caption }}</figcaption>
                   {% endif %}
                 </figure>
               {% endfor %}
@@ -166,9 +167,11 @@
               </a>
             {% endif %}
             <div class="resource-info">
-              <h3><a href="{{ block.resourceFile.one().getUrl() }}" class="ga-download" target="_blank" data-resourceTitle="{{ block.resourceTitle }}">{{ block.resourceTitle }}</a></h3>
+              <h3><a href="{{ block.resourceFile.one().getUrl() }}" class="ga-download {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].resourceTitle, block.resourceTitle) }}" target="_blank" data-resourceTitle="{{ block.resourceTitle }}">{{ block.resourceTitle }}</a></h3>
               {% if block.resourceDescription %}
-                {{ block.resourceDescription }}
+                <div {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].resourceDescription, block.resourceDescription, true) }}>
+                  {{ block.resourceDescription }}
+                </div>
               {% endif %}
 
               <div class="resource-link">
@@ -177,7 +180,6 @@
             </div>
           </div>
         </div>
-
 
     {% endswitch %}
   {% endfor %}

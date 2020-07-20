@@ -1,0 +1,23 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set title = "500: Undergoing Maintenance" %}
+{% set bodyClass = 'page page-blog four-oh-four' %}
+
+{% block content %}
+
+  <section class="intro-section">
+    <div class="grid">
+      <h2 class="page-description">
+        500: We're Currently Undergoing Maintenance. Please check back soon.
+      </h2>
+
+      {% include "ideas/_subscribe" %}
+    </div>
+
+    <h2>Try searching:</h2>
+
+    {% include "ideas/_filter" %}
+
+  </section>
+
+{% endblock %}

@@ -27,14 +27,14 @@
 
     {% else %}
       {# Get URL segments #}
-      {% set segments = craft.request.getSegments %}
+      {% set segments = craft.app.request.segments %}
       {# Set var before loop #}
       {% set noRoute = true %}
       {# Loop routes array #}
       {% for prop in routes %}
 
         {# Check if URL segments match a route #}
-        {% if prop[craft.locale]|split('/') == segments %}
+        {% if prop[craft.app.language]|split('/') == segments %}
           {# set query string if it exists #}
           {% set query = craft.app.request.queryStringWithoutPath %}
           {% if query %}

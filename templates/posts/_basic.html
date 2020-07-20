@@ -1,5 +1,8 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
+{% import 'macros/notranslate.html' as notranslate %}
+{% set localizedEntry = craft.entries.id(entry.id).site('en') %}
+
 {% set title = entry.title %}
 {% set bodyClass = 'single-post basic-post ' ~ entry.section.handle|lower|replace('entries', '') ~ '-post' %}
 
@@ -17,12 +20,17 @@
 {# Set Post Type Vars #}
 {% set bannerImage, postType, categories, tags, relatedEntries = '', '', '', '', '' %}
 {% if entry.section.handle == 'resourcesEntries' %}
-  {% set parentSlug = 'resources' %}
+  {% if craft.app.language == 'en-US' %}
+    {% set parentSlug = 'resources' %}
+  {% elseif craft.app.language == 'es-US' %}
+    {% set parentSlug = 'recursos' %}
+  {% endif %}
   {% set bannerImage = entry.resourcesBannerImage.one() %}
   {% set postType = entry.resourcePostType.one() %}
   {% set categories = entry.resourceTopic %}
   {% set tags = entry.resourceLocations %}
   {% set tagsLabel = 'Location' %}
+  {% set tagSlug = 'location' %}
   {% set relatedEntries = craft.entries.section('resourcesEntries').relatedTo(['or', {targetElement: categories}, {targetElement: tags}]).id('not ' ~ entry.id).limit(12) %}
 {% elseif entry.section.handle == 'ideasEntries' %}
   {% set parentSlug = 'ideas' %}
@@ -31,11 +39,17 @@
   {% set categories = entry.ideasCategory %}
   {% set tags = entry.ideasTags %}
   {% set tagsLabel = 'Tag' %}
+  {% set tagSlug = 'tag' %}
   {% set relatedEntries = craft.entries.section('ideasEntries').relatedTo(['or', {targetElement: categories}, {targetElement: tags}]).id('not ' ~ entry.id).limit(12) %}
 {% endif %}
 
-{% if craft.app.language != "en-US" %}
-  {% set localizedEntry = craft.entries.id(entry.id).site('en') %}
+{# set link to browse all depending on current site language #}
+{% if craft.app.language == 'en-US' %}
+  {% set authorPath = 'author' %}
+  {% set browsePath = '/all' %}
+{% elseif craft.app.language == 'es-US' %}
+  {% set authorPath = 'autor' %}
+  {% set browsePath = '/todo' %}
 {% endif %}
 
 {% block content %}
@@ -58,26 +72,10 @@
             <p class="type-date">{{ postType }} / Published {{ entryDate }}</p>
 
             <div class="entry-title">
-              {% if craft.app.language != "en-US" %}
-                {% if localizedEntry[0].title == entry.title %}
-                  <h1>{{ entry.title }}</h1>
-                {% else %}
-                  <h1 class="notranslate">{{ entry.title }}</h1>
-                {% endif %}
-              {% else %}
-                  <h1>{{ entry.title }}</h1>
-              {% endif %}
+              <h1 {{ notranslate.check(localizedEntry[0].title, entry.title, true) }}>{{ entry.title }}</h1>
 
               {% if entry.subtitle %}
-                {% if craft.app.language != "en-US" %}
-                  {% if localizedEntry[0].subtitle == entry.subtitle %}
-                    <h2>{{ entry.subtitle }}</h2>
-                  {% else %}
-                    <h2 class="notranslate">{{ entry.subtitle }}</h2>
-                  {% endif %}
-                {% else %}
-                    <h2>{{ entry.subtitle }}</h2>
-                {% endif %}
+                <h2 {{ notranslate.check(localizedEntry[0].subtitle, entry.subtitle, true) }}>{{ entry.subtitle }}</h2>
               {% endif %}
             </div>
 
@@ -91,7 +89,7 @@
                     {% if entry.author.getPhoto()|length %}
                       <img src="{{ entry.author.getPhoto().getUrl() }}" alt="Profile photo of {{ entry.author.name }}" class="author-image">
                     {% endif %}
-                    <a href="/{{ parentSlug }}/author/{{ entry.author.firstName|lower }}{{ entry.author.lastName ? '-' ~ entry.author.lastName|lower : '' }}">{{ entry.author.name }}</a>
+                    <a href="{{ url(parentSlug ~ '/' ~ authorPath ~ '/' ~ entry.author.firstName|lower) }}{{ entry.author.lastName ? '-' ~ entry.author.lastName|lower : '' }}">{{ entry.author.name }}</a>
                   </li>
                   {% if authors|length %}
                     {% for author in authors %}
@@ -101,7 +99,7 @@
                         {% else %}
                           <img src="{{ rev('/images/marketplace.png') }}" alt="Author photo not available" class="author-image">
                         {% endif %}
-                        <a href="/{{ parentSlug }}/author/{{ author.firstName|lower }}{{ author.lastName ? '-' ~ author.lastName|lower : '' }}">{{ author.name }}</a>
+                        <a href="{{ url(parentSlug ~ '/' ~ authorPath ~ '/' ~ author.firstName|lower) }}{{ author.lastName ? '-' ~ author.lastName|lower : '' }}">{{ author.name }}</a>
                       </li>
                     {% endfor %}
                   {% endif %}
@@ -114,7 +112,7 @@
                     <h5>Categor{{ categories|length > 1 ? 'ies' : 'y' }}</h5>
                     <ul>
                       {% for category in categories.all() %}
-                        <li><a href="{{ url(parentSlug ~ '/all?category=' ~ category.slug) }}">{{ category.title }}</a>{{ loop.index < categories|length ? ', ' : '' }}</li>
+                        <li><a href="{{ category.url }}">{{ category.title }}</a>{{ loop.index < categories|length ? ', ' : '' }}</li>
                       {% endfor %}
                     </ul>
                   </div>
@@ -125,7 +123,7 @@
                   <h5>{{ tagsLabel }}{{ tags|length > 1 ? 's' : '' }}</h5>
                   <ul>
                     {% for tag in tags.all() %}
-                      <li><a href="{{ url(parentSlug ~ '/all?tag=' ~ tag.slug) }}">{{ tag.title }}</a>{{ loop.index < tags|length ? ', ' : '' }}</li>
+                      <li><a href="{{ url(parentSlug ~ browsePath ~ '?' ~ tagSlug ~ '=' ~ tag.slug) }}">{{ tag.title }}</a>{{ loop.index < tags|length ? ', ' : '' }}</li>
                     {% endfor %}
                   </ul>
                 </div>
@@ -138,7 +136,7 @@
                     <h5>Age{{ entry.ageGroups|length > 1 ? 's' : '' }}</h5>
                     <ul>
                       {% for ageGroup in entry.ageGroups.all() %}
-                        <li><a href="{{ url(parentSlug ~ '/all?age=' ~ ageGroup.slug) }}">{{ ageGroup.title }} ({{ ageGroup.ageRange }})</a></li>
+                        <li><a href="{{ url(parentSlug ~ browsePath ~ '?age=' ~ ageGroup.slug) }}">{{ ageGroup.title }} ({{ ageGroup.ageRange }})</a></li>
                       {% endfor %}
                     </ul>
                   </div>

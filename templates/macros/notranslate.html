@@ -1,8 +1,8 @@
 {# add notranslate class to items #}
 
-{% macro check(language, localizedField, translatedField, noClass = false) %}
+{% macro check(localizedField, translatedField, noClass = false) %}
 {% spaceless %}
-  {% if language != 'en-US' %}
+  {% if craft.app.language != 'en-US' %}
     {% if noClass == true %}
       {{ localizedField != translatedField ? ' class="notranslate"' : '' }}
     {% else %}

@@ -10,8 +10,8 @@
   {% set user = craft.users().anyStatus().firstName(fullname.0 | capitalize).one() %}
 {% endif %}
 
-{% set title = "Ideas Posts by "~user.name %}
-{% set bodyClass = 'page page-browse ideas-browse page-author' %}
+{% set title = "Resources Posts by "~user.name %}
+{% set bodyClass = 'page page-browse resources-browse page-author' %}
 
 {% block content %}
 
@@ -21,7 +21,7 @@
 
   </section>
 
-  {% set articles = craft.entries.section('ideasEntries').authorId(user.id) %}
+  {% set articles = craft.entries.section('resourcesEntries').authorId(user.id) %}
 
   <div class="section posts-section">
     {% if articles|length %}

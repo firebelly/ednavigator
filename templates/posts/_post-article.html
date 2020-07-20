@@ -21,7 +21,11 @@
       {% set width = 960 %}
     {% endif %}
     {% if postType == 'resources'  %}
-      {% set parentSlug = 'resources' %}
+      {% if craft.app.language == 'en-US' %}
+        {% set parentSlug = 'resources' %}
+      {% elseif craft.app.language == 'es-US' %}
+        {% set parentSlug = 'recursos' %}
+      {% endif %}
       {% set categories = post.resourceTopic %}
       {% set categorySlug = 'topic' %}
       {% set tags = post.resourceLocations %}
@@ -70,7 +74,7 @@
                 <svg class="icon icon-tag" aria-hidden="true" role="presentation"><use xlink:href="#icon-tag"/></svg>
               {% endif %}
               {% for category in categories.all() %}
-                <li><a href="{{ url(parentSlug ~ '/all?' ~ categorySlug ~ '=' ~ category.slug) }}">{{ category.title }}</a>{{ loop.index < categories|length ? ', ' : '' }}</li>
+                <li><a href="{{ category.url }}">{{ category.title }}</a>{{ loop.index < categories|length ? ', ' : '' }}</li>
               {% endfor %}
             </ul>
           </div>
@@ -85,7 +89,14 @@
                 <svg class="icon icon-tag" aria-hidden="true" role="presentation"><use xlink:href="#icon-tag"/></svg>
               {% endif %}
               {% for tag in tags.all() %}
-                <li><a href="{{ url(parentSlug ~ '/all?' ~ tagSlug ~ '=' ~ tag.slug) }}">{{ tag.title }}</a>{{ loop.index < tags|length ? ', ' : '' }}</li>
+                {# set link to browse all depending on current site language #}
+                {% if craft.app.language == 'en-US' %}
+                  {% set browsePath = '/all' %}
+                {% elseif craft.app.language == 'es-US' %}
+                  {% set browsePath = '/todo' %}
+                {% endif %}
+
+                <li><a href="{{ url(parentSlug ~ browsePath ~ '?' ~ tagSlug ~ '=' ~ tag.slug) }}">{{ tag.title }}</a>{{ loop.index < tags|length ? ', ' : '' }}</li>
               {% endfor %}
             </ul>
           </div>

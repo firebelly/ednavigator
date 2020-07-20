@@ -43,7 +43,14 @@
         {% endfor %}
       </div>
 
-      <p class="section-cta align-center"><a href="{{ url('/ideas/all?type=publication') }}" class="inline-link"><span>Browse all Publications</span></a></p>
+      {# set link to browse all depending on current site language #}
+      {% if craft.app.language == 'en-US' %}
+        {% set browseLink = '/ideas/all' %}
+      {% elseif craft.app.language == 'es-US' %}
+        {% set browseLink = '/es/ideas/todo' %}
+      {% endif %}
+
+      <p class="section-cta align-center"><a href="{{ browseLink }}?type=publication" class="inline-link"><span>Browse all Publications</span></a></p>
     {% endif %}
 
   </div>
@@ -74,7 +81,7 @@
         {% endfor %}
 
         {% if recentPosts|length > 6 %}
-          <p class="cta"><a href="{{ url('ideas/all?type=blog-post') }}" class="inline-link"><span>All Blog Posts</span></a></p>
+          <p class="cta"><a href="{{ browseLink }}?type=blog-post" class="inline-link"><span>All Blog Posts</span></a></p>
         {% endif %}
       {% endif %}
     </div>

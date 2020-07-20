@@ -1,0 +1,11 @@
+// Author Page template
+
+body.page-author {
+  .posts-section {
+    padding-top: $global-spacing;
+
+    @include media-lg {
+      padding-top: $global-spacing * 4;
+    }
+  }
+}

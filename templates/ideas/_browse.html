@@ -123,7 +123,7 @@
 
     {% include 'partials/_intro-section.html' with {'customHeadline': pageHeadline} %}
 
-    {% if baseSlug != 'search' and featuredPosts|length %}
+    {% if baseSlug != 'search' and baseSlug != 'buscar' and featuredPosts|length %}
       {% if featuredPosts|length > 1 %}
         <div class="section featured-posts-section">
           <div class="featured-post-carousel">
