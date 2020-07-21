@@ -1,0 +1,12 @@
+// Spanish Translation Modifications
+
+html[lang=es] {
+
+  form {
+    // Reuired Styles
+    .input-wrap.required::after {
+      content: '*Necesario';
+    }
+  }
+
+}
