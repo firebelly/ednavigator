@@ -143,7 +143,7 @@ categoryGroups:
     structure:
       maxLevels: 1
       uid: 57a02549-a05b-4d1d-8988-0230f4825164
-dateModified: 1595234043
+dateModified: 1595362201
 email:
   fromEmail: admin@ednavigator.com
   fromName: EdNavigator
@@ -434,10 +434,11 @@ fields:
     searchable: true
     settings:
       contentTable: '{{%matrixcontent_principles}}'
-      maxBlocks: null
+      maxBlocks: ''
+      minBlocks: ''
       propagationMethod: all
     translationKeyFormat: null
-    translationMethod: none
+    translationMethod: site
     type: craft\fields\Matrix
   2a183104-63d4-445d-9e90-de8bcd9938c4:
     contentColumnType: text
@@ -1202,13 +1203,15 @@ fields:
     name: 'Principles Section Label'
     searchable: true
     settings:
-      charLimit: ''
+      byteLimit: null
+      charLimit: null
+      code: ''
       columnType: text
       initialRows: '4'
       multiline: ''
       placeholder: ''
     translationKeyFormat: null
-    translationMethod: site
+    translationMethod: language
     type: craft\fields\PlainText
   a480320b-7e79-4243-b471-7ecba3d54940:
     contentColumnType: text
@@ -3860,13 +3863,15 @@ matrixBlockTypes:
         name: 'Principle Label'
         searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
+          code: ''
           columnType: text
           initialRows: '4'
           multiline: ''
           placeholder: ''
         translationKeyFormat: null
-        translationMethod: site
+        translationMethod: language
         type: craft\fields\PlainText
       cc643937-5162-43e6-bd97-5b5cf67471d3:
         contentColumnType: text
@@ -3876,13 +3881,15 @@ matrixBlockTypes:
         name: 'Principle Description'
         searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
+          code: ''
           columnType: text
           initialRows: '4'
           multiline: ''
           placeholder: ''
         translationKeyFormat: null
-        translationMethod: site
+        translationMethod: language
         type: craft\fields\PlainText
       f91a780c-2d3f-4e61-992a-a374c9ec2761:
         contentColumnType: string
@@ -3892,19 +3899,26 @@ matrixBlockTypes:
         name: 'Principle Icon'
         searchable: true
         settings:
+          allowSelfRelations: ''
+          allowedKinds: null
           defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
           defaultUploadLocationSubpath: ''
           limit: '1'
-          localizeRelations: false
+          localizeRelations: ''
           restrictFiles: ''
           selectionLabel: ''
+          showUnpermittedFiles: false
+          showUnpermittedVolumes: true
           singleUploadLocationSource: 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
           singleUploadLocationSubpath: '{owner.slug}'
+          source: null
           sources: '*'
-          useSingleFolder: '1'
+          targetSiteId: null
+          useSingleFolder: true
+          validateRelatedElements: ''
           viewMode: large
         translationKeyFormat: null
-        translationMethod: none
+        translationMethod: site
         type: craft\fields\Assets
     handle: principle
     name: Principle
@@ -6268,16 +6282,19 @@ sections:
                 fields:
                   348f54c4-b833-4ced-bf8a-da9b48e36232:
                     required: false
-                    sortOrder: 2
+                    sortOrder: 3
                   604b3172-76dc-4162-a081-4f0566cd981b:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 5
                   60fb224d-1163-4fda-8ccc-ec5f35830998:
                     required: false
-                    sortOrder: 1
+                    sortOrder: 2
                   aaf771f5-2db7-4257-b26d-b6ca2a58f2c8:
                     required: false
-                    sortOrder: 3
+                    sortOrder: 4
+                  b0aefac7-6c72-4693-bb5a-2e79c46dd012:
+                    required: false
+                    sortOrder: 1
                 name: Default
                 sortOrder: 1
         handle: blog
@@ -6525,16 +6542,19 @@ sections:
                 fields:
                   15eeedeb-4db5-4499-b869-f35d749fa2c5:
                     required: false
-                    sortOrder: 2
+                    sortOrder: 3
                   a85fabb2-a4f6-4f0c-aad1-4fede5a8bc3f:
                     required: false
-                    sortOrder: 1
+                    sortOrder: 2
                   aec03031-025c-478a-a913-6bbffef82502:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 5
+                  b0aefac7-6c72-4693-bb5a-2e79c46dd012:
+                    required: false
+                    sortOrder: 1
                   b16265b0-cb4e-4558-8cc7-36917aa93b69:
                     required: false
-                    sortOrder: 3
+                    sortOrder: 4
                 name: Main
                 sortOrder: 1
               -
@@ -6589,16 +6609,19 @@ sections:
                 fields:
                   348f54c4-b833-4ced-bf8a-da9b48e36232:
                     required: false
-                    sortOrder: 1
+                    sortOrder: 2
                   60fb224d-1163-4fda-8ccc-ec5f35830998:
                     required: false
-                    sortOrder: 2
+                    sortOrder: 3
                   a7ede9ae-ea0d-45e3-9ebb-978d24054eed:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 5
                   aaf771f5-2db7-4257-b26d-b6ca2a58f2c8:
                     required: false
-                    sortOrder: 3
+                    sortOrder: 4
+                  b0aefac7-6c72-4693-bb5a-2e79c46dd012:
+                    required: false
+                    sortOrder: 1
                 name: Settings
                 sortOrder: 1
         handle: resources
@@ -7170,16 +7193,19 @@ sections:
                 fields:
                   15eeedeb-4db5-4499-b869-f35d749fa2c5:
                     required: false
-                    sortOrder: 3
+                    sortOrder: 4
                   a85fabb2-a4f6-4f0c-aad1-4fede5a8bc3f:
                     required: false
-                    sortOrder: 1
+                    sortOrder: 2
                   aec03031-025c-478a-a913-6bbffef82502:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 5
+                  b0aefac7-6c72-4693-bb5a-2e79c46dd012:
+                    required: false
+                    sortOrder: 1
                   bfbeec58-7143-463d-a0d2-2aeb37ada1b8:
                     required: false
-                    sortOrder: 2
+                    sortOrder: 3
                 name: Main
                 sortOrder: 1
               -
@@ -7222,16 +7248,19 @@ sections:
                 fields:
                   15eeedeb-4db5-4499-b869-f35d749fa2c5:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 5
                   348f54c4-b833-4ced-bf8a-da9b48e36232:
                     required: false
-                    sortOrder: 2
+                    sortOrder: 3
                   60fb224d-1163-4fda-8ccc-ec5f35830998:
                     required: false
-                    sortOrder: 1
+                    sortOrder: 2
                   aaf771f5-2db7-4257-b26d-b6ca2a58f2c8:
                     required: false
-                    sortOrder: 3
+                    sortOrder: 4
+                  b0aefac7-6c72-4693-bb5a-2e79c46dd012:
+                    required: false
+                    sortOrder: 1
                 name: 'Page Header'
                 sortOrder: 1
               -
@@ -7285,13 +7314,16 @@ sections:
                 fields:
                   348f54c4-b833-4ced-bf8a-da9b48e36232:
                     required: false
-                    sortOrder: 2
+                    sortOrder: 3
                   60fb224d-1163-4fda-8ccc-ec5f35830998:
                     required: false
-                    sortOrder: 1
+                    sortOrder: 2
                   aaf771f5-2db7-4257-b26d-b6ca2a58f2c8:
                     required: false
-                    sortOrder: 3
+                    sortOrder: 4
+                  b0aefac7-6c72-4693-bb5a-2e79c46dd012:
+                    required: false
+                    sortOrder: 1
                 name: 'Page Header'
                 sortOrder: 1
               -
@@ -7402,16 +7434,19 @@ sections:
                 fields:
                   15eeedeb-4db5-4499-b869-f35d749fa2c5:
                     required: false
-                    sortOrder: 2
+                    sortOrder: 3
                   3c5b1db6-07cb-449e-991f-2bcbf56ce465:
                     required: false
-                    sortOrder: 3
+                    sortOrder: 4
                   a85fabb2-a4f6-4f0c-aad1-4fede5a8bc3f:
+                    required: false
+                    sortOrder: 2
+                  b0aefac7-6c72-4693-bb5a-2e79c46dd012:
                     required: false
                     sortOrder: 1
                   b16265b0-cb4e-4558-8cc7-36917aa93b69:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 5
                 name: Main
                 sortOrder: 1
               -
@@ -7441,19 +7476,22 @@ sections:
                 fields:
                   348f54c4-b833-4ced-bf8a-da9b48e36232:
                     required: false
-                    sortOrder: 2
+                    sortOrder: 3
                   60fb224d-1163-4fda-8ccc-ec5f35830998:
                     required: false
-                    sortOrder: 1
+                    sortOrder: 2
                   aaf771f5-2db7-4257-b26d-b6ca2a58f2c8:
                     required: false
-                    sortOrder: 3
+                    sortOrder: 4
+                  b0aefac7-6c72-4693-bb5a-2e79c46dd012:
+                    required: false
+                    sortOrder: 1
                   b6085a80-628f-4124-b670-314554126e4a:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 5
                   bb3370b5-8dad-4734-b503-b8b3b1b31338:
                     required: false
-                    sortOrder: 5
+                    sortOrder: 6
                 name: Main
                 sortOrder: 1
               -
@@ -7473,7 +7511,7 @@ sections:
         hasTitleField: true
         name: Index
         sortOrder: 2
-        titleFormat: null
+        titleFormat: ''
         titleLabel: Title
     handle: getStarted
     name: 'Get Started'

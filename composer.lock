@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b9535d1845482d25c41b26dc2c777e2",
+    "content-hash": "01f0cbea4883e9d83b93d20103587356",
     "packages": [
         {
             "name": "aelvan/imager",
@@ -573,11 +573,11 @@
         },
         {
             "name": "craftcms/cms",
-            "version": "3.4.28.1",
+            "version": "3.4.29",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/34c8dd510522b6108a17aa6172ec7aa5ad84e30e",
-                "reference": "34c8dd510522b6108a17aa6172ec7aa5ad84e30e",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/62f9fa2705090ab061db374924377ac5a5d42362",
+                "reference": "62f9fa2705090ab061db374924377ac5a5d42362",
                 "shasum": ""
             },
             "require": {
@@ -658,7 +658,7 @@
                 "docs": "https://docs.craftcms.com/v3/",
                 "rss": "https://github.com/craftcms/cms/releases.atom"
             },
-            "time": "2020-07-16T14:28:18+00:00"
+            "time": "2020-07-21T15:06:10+00:00"
         },
         {
             "name": "craftcms/contact-form",
@@ -4317,11 +4317,11 @@
         },
         {
             "name": "spicyweb/craft-embedded-assets",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spicywebau/craft-embedded-assets/zipball/fd424ddd24c92980450612e12454ef627a05aa16",
-                "reference": "fd424ddd24c92980450612e12454ef627a05aa16",
+                "url": "https://api.github.com/repos/spicywebau/craft-embedded-assets/zipball/3394493b3439bf1a115226adba0dff44aac5c5ea",
+                "reference": "3394493b3439bf1a115226adba0dff44aac5c5ea",
                 "shasum": ""
             },
             "require": {
@@ -4369,7 +4369,7 @@
                 "docs": "https://github.com/spicywebau/craft-embedded-assets/wiki",
                 "rss": "https://github.com/spicywebau/craft-embedded-assets/commits/master.atom"
             },
-            "time": "2020-07-10T10:29:00+00:00"
+            "time": "2020-07-20T13:07:53+00:00"
         },
         {
             "name": "ssnepenthe/color-utils",

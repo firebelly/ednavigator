@@ -1,5 +1,8 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
+{% import 'macros/notranslate.html' as notranslate %}
+{% set localizedEntry = craft.entries.id(entry.id).site('en') %}
+
 {% set title = entry.title %}
 {% if entry.seoTitle %}{% set seoTitle = entry.seoTitle %}{% endif %}
 {% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
@@ -14,15 +17,15 @@
   {% include 'partials/_intro-section.html' %}
 
   <section class="operating-principles section">
-    <h3 class="headline-rule"><span>{{ entry.principlesSectionLabel }}</span></h3>
+    <h3 class="headline-rule {{ notranslate.check(localizedEntry[0].principlesSectionLabel, entry.principlesSectionLabel) }}"><span>{{ entry.principlesSectionLabel }}</span></h3>
     <div class="principles grid spaced">
       {% for principle in entry.principles.all() %}
         <div class="principle col-1-3">
           <div class="principle-icon">
             <img src="{{ principle.principleIcon.one().getUrl() }}">
           </div>
-          <h4>{{ principle.principleLabel }}</h4>
-          <div class="principle-content user-content">
+          <h4 {{ notranslate.check(localizedEntry[0].principles[loop.index - 1].principleLabel, principle.principleLabel, true) }}>{{ principle.principleLabel }}</h4>
+          <div class="principle-content user-content {{ notranslate.check(localizedEntry[0].principles[loop.index - 1].principleDescription, principle.principleDescription, true) }}">
             {{ principle.principleDescription }}
           </div>
         </div>
