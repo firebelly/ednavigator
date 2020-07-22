@@ -179,7 +179,7 @@ body.page {
 
     .section-photo-container {
       @include treatedImage;
-      padding-bottom: 18.3333%;
+      height: 220px;
     }
 
     .stat {
@@ -199,6 +199,12 @@ body.page {
           border-top: none;
           border-left: 1px solid $white;
         }
+      }
+    }
+
+    @include media-md {
+      .section-photo-container {
+        padding-bottom: 18.3333%;
       }
     }
   }
