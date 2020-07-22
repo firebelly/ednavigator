@@ -8,6 +8,13 @@
 
 {% set ideasEntries = craft.entries.section('ideasEntries').all() %}
 
+{# set link to browse all depending on current site language #}
+{% if craft.app.language == 'en-US' %}
+  {% set browseLink = '/ideas/all' %}
+{% elseif craft.app.language == 'es-US' %}
+  {% set browseLink = '/es/ideas/todo' %}
+{% endif %}
+
 {% block content %}
 
   {% include 'partials/_banner-page-header.html' %}
@@ -42,13 +49,6 @@
           {% include 'posts/_post-article.html' with args %}
         {% endfor %}
       </div>
-
-      {# set link to browse all depending on current site language #}
-      {% if craft.app.language == 'en-US' %}
-        {% set browseLink = '/ideas/all' %}
-      {% elseif craft.app.language == 'es-US' %}
-        {% set browseLink = '/es/ideas/todo' %}
-      {% endif %}
 
       <p class="section-cta align-center"><a href="{{ browseLink }}?type=publication" class="inline-link"><span>Browse all Publications</span></a></p>
     {% endif %}
