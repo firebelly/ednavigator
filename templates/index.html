@@ -1,7 +1,11 @@
+{% import 'macros/notranslate.html' as notranslate %}
+
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
-{% set locale = craft.app.locale %}
 {% set bodyClass = 'home' %}
+
+{% set language = craft.app.language %}
+{% set localizedEntry = craft.entries.id(entry.id).site('en') %}
 
 {% block content %}
 
@@ -9,7 +13,7 @@
   <div id="video-modal">
     <div class="video-container">
       <button class="video-modal-close"><span class="sr-only">Close Video</span> <svg class="icon-close" aria-hidden="true" role="presentation"><use xlink:href="#icon-close"/></svg></button>
-      <div id="video" class="banner-video" data-url="{{ entry.bannerVideo }}"></div>
+      <div id="video" class="banner-video" ></div>
     </div>
   </div>
 {% endif %}
@@ -20,14 +24,16 @@
   <div class="-inner">
     {% if entry.bannerVideo %}
       <div class="video-play-container">
-        <button class="banner-video-play button play with-icon -blue">Watch the video <svg class="icon-play" aria-hidden="true" role="presentation"><use xlink:href="#icon-play"/></svg></button>
+        <button class="modal-video-play button play with-icon -blue" data-url="{{ entry.bannerVideo }}">Watch the video <svg class="icon-play" aria-hidden="true" role="presentation"><use xlink:href="#icon-play"/></svg></button>
       </div>
     {% endif %}
 
     <div class="col-1-2 offset-bottom">
       <div class="block">
-        <h1 class="block-title">{{ entry.pageDescription }}</h1>
-        {{ entry.body }}
+        <h1 class="block-title {{ notranslate.check(localizedEntry[0].pageDescription, entry.pageDescription) }}">{{ entry.pageDescription }}</h1>
+        <div {{ notranslate.check(localizedEntry[0].body, entry.body, true) }}>
+          {{ entry.body }}
+        </div>
       </div>
     </div>
   </div>
@@ -44,22 +50,23 @@
   <div id="what-we-do" class="what-we-do feature-section grid section">
     <div class="section-intro col-1-2">
       <h4 class="section-title">What We Do</h4>
-      <h5 class="section-headline">{{ entry.whatWeDoHeadline }}</h5>
+      <h5 class="section-headline {{ notranslate.check(localizedEntry[0].whatWeDoHeadline, entry.whatWeDoHeadline) }}">{{ entry.whatWeDoHeadline }}</h5>
       {% if entry.whatWeDoText %}
-        <div class="section-description">
+        <div class="section-description {{ notranslate.check(localizedEntry[0].whatWeDoText, entry.whatWeDoText) }}">
           {{ entry.whatWeDoText }}
         </div>
       {% endif %}
-      {% if entry.awardShowcase | length %}
+      {% if entry.awardShowcase|length %}
         {% for award in entry.awardShowcase.all() %}
+          {% set index = loop.index %}
           <div class="award-showcase">
             {% if award.awardImage %}
               <div class="award-image">
                 <img src="{{ award.awardImage.one().getUrl() }}" alt="{{ award.awardImage.one().title }}">
               </div>
             {% endif %}
-            {% if award.awardText | length %}
-              <div class="award-text">{{ award.awardText }}</div>
+            {% if award.awardText|length %}
+              <div class="award-text {{ notranslate.check(localizedEntry[0].awardShowcase[index - 1].awardText, award.awardText) }}">{{ award.awardText }}</div>
             {% endif %}
           </div>
         {% endfor %}
@@ -75,8 +82,8 @@
                 <img src="{{ feature.featureIcon.one().getUrl() }}">
               </div>
               <div class="feature-text">
-                <h6 class="feature-label">{{ feature.featureTitle }}</h6>
-                <p>{{ feature.featureDescription }}</p>
+                <h6 class="feature-label {{ notranslate.check(localizedEntry[0].whatWeDoFeatures[loop.index - 1].featureTitle, feature.featureTitle) }}">{{ feature.featureTitle }}</h6>
+                <p {{ notranslate.check(localizedEntry[0].whatWeDoFeatures[loop.index - 1].featureDescription, feature.featureDescription, true) }}>{{ feature.featureDescription }}</p>
               </div>
             </li>
           {% endfor %}
@@ -93,17 +100,27 @@
       <div class="-inner">
         <div>
           <h4 class="block-descriptor">How We Work</h4>
-          <h2 class="block-title">{{ howWeWork.headline|nl2br }}</h2>
+          <h2 class="block-title {{ notranslate.check(localizedEntry[0].howWeWorkSection.one().headline, howWeWork.headline) }}">{{ howWeWork.headline|nl2br }}</h2>
           {% if howWeWork.description %}
-            <p>{{ howWeWork.description }}</p>
+            <p {{ notranslate.check(localizedEntry[0].howWeWorkSection.one().description, howWeWork.description, true) }}>{{ howWeWork.description }}</p>
           {% endif %}
         </div>
         {% if howWeWork.linkEntry %}
-          <p class="block-cta"><a href="{{ howWeWork.linkEntry.one().url }}" class="inline-link"><span>{{ howWeWork.linkLabel|nl2br }}</span></a></p>
+          <p class="block-cta"><a href="{{ howWeWork.linkEntry.one().url }}" class="inline-link"><span {{ notranslate.check(localizedEntry[0].howWeWorkSection.one().linkLabel, howWeWork.linkLabel, true) }}>{{ howWeWork.linkLabel|nl2br }}</span></a></p>
         {% endif %}
       </div>
     </div>
-    <div class="image-block col-1-2" style="background-image:url({{ howWeWork.image.one().getUrl('hero') }});"></div>
+    {% if howWeWork.video|length %}
+      {% set embeddedAsset = craft.embeddedAssets.get(howWeWork.video.one()) %}
+      {% set backgroundImage = craft.imager.transformImage(embeddedAsset.image, { effects: { modulate: [100, 0, 100] } }) %}
+    {% else %}
+      {% set backgroundImage = howWeWork.image.one() %}
+    {% endif %}
+    <div class="image-block col-1-2{{ howWeWork.video|length ? ' with-video' : '' }}" style="background-image:url({{ backgroundImage.getUrl() }});">
+      {% if embeddedAsset is defined %}
+        <button class="modal-video-play button play with-icon -blue" data-url="{{ embeddedAsset.getVideoUrl([]) }}">See how we work <svg class="icon-play" aria-hidden="true" role="presentation"><use xlink:href="#icon-play"/></svg></button>
+      {% endif %}
+    </div>
   </div>
 {% endif %}
 
@@ -111,9 +128,9 @@
   <div id="what-we-do" class="what-we-do feature-section grid section">
     <div class="section-intro col-1-2">
       <h4 class="section-title">Sustainable Results</h4>
-      <h5 class="section-headline">{{ entry.sustainableResultsHeadline }}</h5>
+      <h5 class="section-headline {{ notranslate.check(localizedEntry[0].sustainableResultsHeadline, entry.sustainableResultsHeadline) }}">{{ entry.sustainableResultsHeadline }}</h5>
       {% if entry.sustainableResultsText %}
-        <div class="section-description">
+        <div class="section-description {{ notranslate.check(localizedEntry[0].sustainableResultsText, entry.sustainableResultsText) }}">
           {{ entry.sustainableResultsText }}
         </div>
       {% endif %}
@@ -128,8 +145,8 @@
                 <img src="{{ feature.featureIcon.one().getUrl() }}">
               </div>
               <div class="feature-text">
-                <h6 class="feature-label">{{ feature.featureTitle }}</h6>
-                <p>{{ feature.featureDescription }}</p>
+                <h6 class="feature-label {{ notranslate.check(localizedEntry[0].sustainableResultsFeatures[loop.index - 1].featureTitle, feature.featureTitle) }}">{{ feature.featureTitle }}</h6>
+                <p {{ notranslate.check(localizedEntry[0].sustainableResultsFeatures[loop.index - 1].featureDescription, feature.featureDescription, true) }}>{{ feature.featureDescription }}</p>
               </div>
             </li>
           {% endfor %}
@@ -143,8 +160,8 @@
   <div id="stats" class="stats-section section flex-grid">
     {% for stat in entry.stats.all() %}
       <div class="stat col-1-2{{ loop.last ? ' offset-bottom' }}">
-        <p class="stat-figure">{{ stat.statFigure }}</p>
-        <p class="stat-description">{{ stat.statDescription }}</p>
+        <p class="stat-figure {{ notranslate.check(localizedEntry[0].stats[loop.index - 1].statFigure, stat.statFigure) }}">{{ stat.statFigure }}</p>
+        <p class="stat-description {{ notranslate.check(localizedEntry[0].stats[loop.index - 1].statDescription, stat.statDescription) }}">{{ stat.statDescription }}</p>
       </div>
     {% endfor %}
   </div>
@@ -155,14 +172,14 @@
     <div class="block col-1-2{{ loop.last ? ' offset-bottom' }}">
       <div class="-inner">
         <div>
-          <h3 class="block-descriptor">{{ userPath.pathTitle }}</h3>
-          <h2 class="block-title"><a href="{{ userPath.pathPage.one().url }}">{{ userPath.pathHeadline|nl2br }}</a></h2>
+          <h3 class="block-descriptor {{ notranslate.check(localizedEntry[0].userPaths[loop.index - 1].pathTitle, userPath.pathTitle) }}">{{ userPath.pathTitle }}</h3>
+          <h2 class="block-title"><a href="{{ userPath.pathPage.one().url }}" {{ notranslate.check(localizedEntry[0].userPaths[loop.index - 1].pathHeadline, userPath.pathHeadline, true) }}>{{ userPath.pathHeadline|nl2br }}</a></h2>
           {% if userPath.pathDescription %}
-            <p>{{ userPath.pathDescription }}</p>
+            <p {{ notranslate.check(localizedEntry[0].userPaths[loop.index - 1].pathDescription, userPath.pathDescription, true) }}>{{ userPath.pathDescription }}</p>
           {% endif %}
         </div>
         {% if userPath.pathLinkText and userPath.pathPage|length %}
-          <p class="block-cta"><a href="{{ userPath.pathPage.one().url }}" class="inline-link"><span>{{ userPath.pathLinkText|nl2br }}</span></a></p>
+          <p class="block-cta"><a href="{{ userPath.pathPage.one().url }}" class="inline-link"><span {{ notranslate.check(localizedEntry[0].userPaths[loop.index - 1].pathLinkText, userPath.pathLinkText, true) }}>{{ userPath.pathLinkText|nl2br }}</span></a></p>
         {% endif %}
       </div>
     </div>
@@ -171,7 +188,7 @@
 
 {% if craft.app.language == 'en-US' %}
   {% set partnersEntry = craft.entries().section('whoWeAre').slug('our-partners').one() %}
-{% else  %}
+{% elseif craft.app.language == 'es-US' %}
   {% set partnersEntry = craft.entries().section('whoWeAre').slug('socios-empresariales').one() %}
 {% endif %}
 

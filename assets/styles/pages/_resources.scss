@@ -2,116 +2,87 @@
 
 body.page-resources {
 
-  .intro-section {
-    background: $offwhite;
-  }
-
-  .tools-and-bundles {
-    flex-wrap: wrap;
-    background: $offwhite;
+  .browse-by-age {
+    background-color: $green;
+    padding: #{$global-spacing * 2} $global-spacing;
 
     h3 {
-      @extend .headline-two;
-      margin: $vertical-beat 0 #{$vertical-beat * 3};
+      @include headline-rule($black, $green);
+      margin-top: 0;
+      margin-bottom: 30px;
     }
 
-    h4 {
-      @include headline-four;
-      margin: 0;
-    }
+    ul {
+      padding: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      list-style: none;
 
-    .tool {
-      background: $yellow;
-      padding: $global-spacing;
-
-      @include media-lg {
-        padding: #{$global-spacing * 2};
-      }
-    }
-
-    .bundle {
-      position: relative;
-      padding: $global-spacing;
-
-      .bundle-content {
-        z-index: 1;
-        position: relative;
+      li + li {
+        margin-top: 30px;
       }
 
-      .bundle-image {
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 0;
-        position: absolute;
-        background-size: cover;
-        background-color: $gray;
+      h4 {
+        @include headline-two;
+        margin: 0;
+        font-size: 22px;
+        font-height: 30px;
 
-        &::after {
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          opacity: .8;
-          content: '';
-          background: $gray;
-          position: absolute;
-          transition: .5s ease-out;
+        + p {
+          margin-top: 0;
         }
       }
 
-      &:nth-of-type(odd) {
-        background-color: $gray-light;
+      .cta {
+        margin-bottom: 0;
 
-        .bundle-image {
-          &::after {
-            background: $gray-light;
-          }
-        }
-      }
-
-      @include media-md {
-        .bundle-image {
-          &::after {
-            opacity: 1;
-          }
-        }
-        &:hover {
-          .bundle-image {
-            &::after {
-              opacity: .8;
+        .inline-link {
+          &:hover,
+          &:focus {
+            span {
+              color: $yellow-text;
             }
           }
         }
       }
+    }
 
-      @include media-lg {
-        padding: #{$global-spacing * 2};
+    @include media-lg {
+      padding: 80px #{$global-spacing * 4} 30px;
+
+      h3 {
+        margin-bottom: $global-spacing * 2;
+      }
+
+      ul {
+        li {
+          margin-bottom: $global-spacing * 2;
+          + li {
+            margin-top: 0;
+          }
+        }
+
+        h4 {
+          font-size: 32px;
+          line-height: 40px;
+        }
       }
 
     }
   }
 
-  .filter-section {
+  .search-section {
     background: $offwhite;
     padding: $global-spacing;
 
     @include media-lg {
-      padding: #{$global-spacing * 2};
+      padding: #{$global-spacing * 2} #{$global-spacing * 4};
     }
   }
 
-}
-
-// Resource Bundle Page
-body.page-resource-bundle {
-  .intro-section {
-    .page-headline {
-      padding-bottom: 0;
-    }
-    .category-description {
-      max-width: 800px;
+  .posts-section {
+    h3 {
+      @include headline-rule($black, $gray-three)
     }
   }
 }

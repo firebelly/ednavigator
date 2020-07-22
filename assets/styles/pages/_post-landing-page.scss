@@ -1,0 +1,29 @@
+// Post Landing Page Template
+body.post-landing-page {
+  .page-banner {
+    .banner-headline {
+      color: $blue;
+    }
+    .banner-content {
+      padding-bottom: $global-spacing;
+    }
+
+    @include media-lg {
+      .banner-content {
+        padding-bottom: 80px;
+      }
+    }
+  }
+
+  .posts-section {
+    padding: #{$global-spacing * 2} $global-spacing;
+
+    .featured-post-section {
+      margin-bottom: $global-spacing * 2;
+    }
+
+    @include media-lg {
+      padding: 80px #{$global-spacing * 4};
+    }
+  }
+}

@@ -1,0 +1,65 @@
+  // Publication Post Template
+
+body.single-post.publication-post {
+  .entry-header {
+    .header-main {
+      > .-inner {
+        padding: $global-spacing;
+      }
+
+      @include media-lg {
+        > .-inner {
+          padding: 80px #{$global-spacing * 4} #{$global-spacing * 4};
+        }
+      }
+    }
+
+    .header-sidebar {
+      padding: $global-spacing 0;
+      background-color: $gray-three;
+
+      .share-section {
+        padding: 0 $global-spacing;
+      }
+
+      @include media-lg {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: #{$global-spacing * 2} 0 70px;
+
+        .share-section {
+          display: block;
+          padding: 0 #{$global-spacing * 2};
+        }
+      }
+
+      @media screen and (min-width: 1100px) {
+        .share-section {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  .related-posts {
+    background-color: $yellow;
+    article {
+      border-left-color: $yellow;
+    }
+  }
+  .general-content-block .content-aside {
+    .aside-tag,
+    .accordion-toggle,
+    .-inner {
+      background-color: $yellow;
+    }
+    &.family-narrative {
+      @include media-lg {
+        a[data-readmore-toggle] {
+          background-image: linear-gradient(to left, rgba($yellow, 1), rgba($yellow, 1) 80%, rgba($yellow, 0));
+        }
+      }
+    }
+  }
+}

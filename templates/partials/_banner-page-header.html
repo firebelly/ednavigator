@@ -1,10 +1,13 @@
+{% import 'macros/notranslate.html' as notranslate %}
+{% set localizedEntry = craft.entries.id(entry.id).site('en') %}
+
 {% set transformedImage = craft.imager.transformImage(entry.bannerImage.one(), { width: 1200, height: 600 }) %}
 <section class="page-banner">
   <div class="banner-image" style="background-image: url('{{ transformedImage.getUrl() }}');"></div>
   <div class="banner-content">
-    <h1 class="banner-headline">{{ entry.bannerHeadline|nl2br }}</h1>
+    <h1 class="banner-headline {{ notranslate.check(localizedEntry[0].bannerHeadline, entry.bannerHeadline) }}">{{ entry.bannerHeadline|nl2br }}</h1>
     {% if entry.bannerText %}
-      <p class="banner-text">{{ entry.bannerText }}</p>
+      <p class="banner-text {{ notranslate.check(localizedEntry[0].bannerText, entry.bannerText) }}">{{ entry.bannerText }}</p>
     {% endif %}
   </div>
 </section>

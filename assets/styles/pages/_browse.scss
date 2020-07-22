@@ -1,0 +1,177 @@
+// Browse Template
+// Shared between Resources and Ideas sections
+
+body.page-browse {
+  .featured-post-carousel {
+    width: 100%;
+    position: relative;
+    margin-bottom: 70px;
+    &::after {
+      left: 0;
+      top: 100%;
+      width: 100%;
+      content: '';
+      height: 70px;
+      position: absolute;
+      border-top: 1px solid $white;
+    }
+
+    .flickity-prev-next-button {
+      top: auto;
+      left: auto;
+      padding: 0;
+      z-index: 1;
+      width: auto;
+      height: 70px;
+      color: $white;
+      bottom: -70px;
+      display: flex;
+      transform: none;
+      align-items: center;
+
+      span {
+        @include headline-four;
+        line-height: 32px;
+        vertical-align: top;
+        display: inline-block;
+      }
+
+      svg  {
+        path {
+          fill: $white;
+        }
+      }
+
+      &.previous {
+        left: 20px;
+      }
+      &.next {
+        right: 20px;
+      }
+
+      @include media-lg {
+        display: flex;
+
+        .flickity-slider {
+          display: flex;
+        }
+
+        &.previous {
+          left: auto;
+          right: 306px;
+        }
+        &.next {
+          right: #{($global-spacing * 4) - 10px};
+        }
+      }
+    }
+
+    &.flickity-resize .post-card {
+      display: flex;
+      min-height: 100%;
+
+      > .-inner {
+        width: 100%;
+      }
+    }
+
+    .post-card {
+      width: 100%;
+      margin-bottom: 0;
+    }
+  }
+
+  // Singular and Carousel Featured Post Treatment
+  .featured-post-section,
+  .featured-post-carousel {
+    .featured-post {
+      .post-content {
+        &,
+        a,
+        .post-excerpt,
+        .post-meta {
+          color: $black;
+        }
+
+        .post-meta a {
+          &:hover,
+          &:focus {
+            text-decoration: none;
+          }
+        }
+
+        .cta .inline-link.-blue {
+          border-color: $black;
+          .icon {
+            &::after {
+              background-color: $black;
+            }
+            svg {
+              fill: $black;
+            }
+          }
+          &:hover,
+          &:focus {
+            .icon {
+              &::after {
+                background-color: $black;
+              }
+              svg {
+                fill: $black;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Filter Section
+  .filter-section {
+    padding-bottom: $global-spacing;
+
+    @include media-lg {
+      padding-bottom: $global-spacing * 2;
+    }
+  }
+
+  .posts-section {
+    .no-posts {
+      min-height: 200px;
+    }
+  }
+
+  // Resources Browse page
+  &.resources-browse {
+    .featured-post-carousel,
+    .featured-post-section .featured-post {
+      &,
+      &::after {
+        background-color: $green;
+      }
+      .post-content {
+        background-color: $green;
+      }
+    }
+  }
+
+  // Resources Browse page
+  &.ideas-browse {
+    .featured-post-carousel,
+    .featured-post-section .featured-post {
+      &,
+      &::after {
+        background-color: $yellow;
+      }
+      .post-content {
+        background-color: $yellow;
+      }
+      .flickity-prev-next-button {
+        color: $black;
+        svg path {
+          fill: $black;
+        }
+      }
+    }
+  }
+}

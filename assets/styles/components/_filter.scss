@@ -2,16 +2,274 @@
 
 .filter-section {
   padding-top: $global-spacing;
+  padding-left: $global-spacing;
+  padding-right: $global-spacing;
 
-  .search {
-    @include media-lg {
-      padding-right: #{$col * 2};
+  &.accordion.-active {
+    .filter-toggle svg {
+      transform: rotate(-90deg);
     }
   }
 
-  .filter:first-of-type {
+  .filter-toggle {
+    position: relative;
+    padding: 10px 20px 10px 0;
+    border-bottom: 2px solid $gray-two;
+
+    svg {
+      right: 0;
+      top: 10px;
+      width: 10px;
+      height: 10px;
+      fill: $black;
+      position: absolute;
+      transform: rotate(90deg);
+      transition: transform 0.3s ease-out;
+    }
+  }
+
+  .filter-title {
+    @include headline-four;
+    margin: 0 0 $global-spacing;
+  }
+
+  .filter {
+    + .filter:not(.filter-sort) {
+      margin-top: $global-spacing;
+    }
+  }
+
+  input:hover,
+  input:focus {
+    border-bottom-color: $blue;
+  }
+
+  @include media-lg {
+    padding-top: 80px;
+    padding-left: #{$global-spacing * 4};
+    padding-right: #{$global-spacing * 4};
+
+    .filter-toggle {
+      display: none;
+    }
+
+    .filter {
+      + .filter:not(.filter-sort) {
+        margin-top: 0;
+      }
+    }
+
+    .flex-grid {
+      flex-wrap: wrap;
+      margin-left: -$global-spacing;
+      width: calc(100% + #{$global-spacing * 2});
+
+      .flex-grid {
+        width: 100%;
+        margin-left: 0;
+      }
+
+      .filter {
+        padding: 0 $global-spacing;
+      }
+    }
+  }
+
+  // Active Fields
+  select.-active {
+    color: $black;
+    border-color: $black;
+  }
+
+  // Sort
+  .filter-sort {
+    margin-top: 30px;
+
+    > div {
+      + div {
+        margin-top: 20px;
+      }
+    }
+
+    a {
+      color: $gray-one;
+      margin-right: 20px;
+      display: inline-block;
+      text-decoration: none;
+
+      > svg {
+        width: 10px;
+        height: 10px;
+        fill: $gray-one;
+        margin-left: 10px;
+      }
+
+      &:hover,
+      &:focus {
+        color: $blue;
+        text-decoration: underline;
+        svg {
+          fill: $blue;
+        }
+      }
+
+      &.-active {
+        color: $black;
+        text-decoration: underline;
+        svg {
+          fill: $black;
+        }
+        &:hover,
+        &:focus {
+          color: $gray-two;
+          text-decoration: none;
+          svg {
+            fill: $gray-two;
+          }
+        }
+      }
+
+      &.asc {
+        svg {
+          transform: rotate(-90deg);
+        }
+      }
+      &.desc {
+        svg {
+          transform: rotate(90deg);
+        }
+      }
+
+    }
+
+    .featured-toggle {
+      svg {
+        fill: none;
+        width: 15px;
+        height: 15px;
+        bottom: -2px;
+        margin-left: 6px;
+        stroke: $gray-one;
+        stroke-width: 1px;
+        position: relative;
+        display: inline-block;
+      }
+
+      &:hover,
+      &:focus {
+        svg {
+          fill: $blue;
+          stroke: $blue;
+        }
+      }
+
+      &.-active {
+        svg {
+          fill: $black;
+          stroke: $black;
+        }
+        &:hover,
+        &:focus {
+          svg {
+            fill: none;
+            stroke: $gray-two;
+          }
+        }
+      }
+    }
+
     @include media-lg {
-      padding-right: #{$col * 4};
+      margin-top: 60px;
+
+      > div {
+        display: inline-block;
+        + div {
+          margin-top: 0;
+          margin-left: $global-spacing * 2;
+        }
+      }
+    }
+  }
+}
+
+// Resources Filter
+.resources-filter {
+  .search {
+    @include media-lg {
+      margin-bottom: 30px;
+      flex-basis: 66.666%;
+      margin-right: 33.333%;
+      padding-right: $global-spacing;
+    }
+  }
+}
+
+// Ideas Filter
+.ideas-filter {
+  .search {
+    @include media-lg {
+      margin-bottom: 30px;
+    }
+  }
+
+  .filter-sort {
+    margin-top: $global-spacing;
+    @include media-lg {
+      margin-top: $global-spacing * 2;
+    }
+  }
+
+  .type-filter {
+    margin-top: $global-spacing;
+    @include media-lg {
+      margin-top: 0;
+    }
+
+    > div {
+      + div {
+        margin-top: 20px;
+      }
+    }
+    a {
+      color: $gray-one;
+      text-decoration: none;
+      .radio {
+        width: 17px;
+        height: 17px;
+        bottom: -2px;
+        position: relative;
+        margin-right: 10px;
+        border-radius: 50%;
+        display: inline-block;
+        border: 1px solid $gray-one;
+      }
+
+      &:hover,
+      &:focus {
+        color: $blue;
+        text-decoration: underline;
+        .radio {
+          border-color: $blue;
+          background-color: $blue;
+        }
+      }
+      &.-active {
+        color: $black;
+        text-decoration: underline;
+        .radio {
+          border-color: $black;
+          background-color: $black;
+        }
+        &:hover,
+        &:focus {
+          color: $gray-two;
+          text-decoration: none;
+          .radio {
+            border-color: $gray-two;
+            background-color: transparent;
+          }
+        }
+      }
     }
   }
 }

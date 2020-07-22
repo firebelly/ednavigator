@@ -12,18 +12,19 @@
     {% endif %}
       {% for featuredPost in featuredPosts.all() %}
         <article class="{{ featuredPost.type }} block">
+          {% set postImage = '' %}
           {% if featuredPost.type == "blogResourcePost" %}
             {% set featuredEntry = featuredPost.postEntry.one() %}
-            {% if featuredEntry.type == 'blogEntry' %}
-              {% set postType = 'Blog Post' %}
-              {% set postImage = featuredEntry.blogBannerImage.one() %}
+            {% if featuredEntry.section.handle == 'ideasEntries' %}
+              {% set postType = 'Ideas Post' %}
+              {% set postImage = featuredEntry.ideasBannerImage.one() %}
             {% elseif featuredEntry.type == 'resources' %}
               {% set postType = 'Family Resource' %}
               {% set postImage = featuredEntry.resourcesBannerImage.one() %}
             {% endif %}
             <div class="-inner">
               {% if postImage|length %}
-                {% set transformedImage = craft.imager.transformImage(postImage, { width: 1200, ratio: 60/23, position: '50% 25%' }) %}
+                {% set transformedImage = craft.imager.transformImage(postImage, { width: 1200, ratio: 60/23 }) %}
                 <div class="post-image-container">
                   <div class="post-image" style="background-image:url('{{ transformedImage.getUrl() }}');"></div>
                 </div>
@@ -32,7 +33,7 @@
               <h2 class="block-title"><a href="{{ featuredEntry.url }}">{{ featuredEntry.title }}</a></h2>
               <p>{{ featuredEntry.excerpt|raw }}</p>
             </div>
-            <p class="block-cta"><a href="{{ featuredEntry.url }}" class="inline-link borderless -blue"><span>Read More</span></a></p>
+            <p class="block-cta"><a href="{{ featuredEntry.url }}" class="inline-link -blue"><span>Read More</span></a></p>
           {% else %}
             <div class="-inner">
               {% if featuredPost.articleImage|length %}
@@ -55,7 +56,7 @@
                 <p>{{ featuredPost.articleDescription }}</p>
               {% endif %}
             </div>
-            <p class="block-cta"><a href="{{ featuredPost.articleUrl }}" target="_blank" class="text-link -blue"><span>View article</span> <svg class="icon-linkout" aria-hidden="true" role="presentation"><use xlink:href="#icon-linkout"/></svg></a></p>
+            <p class="block-cta"><a href="{{ featuredPost.articleUrl }}" target="_blank" class="inline-link -blue"><span>View article</span> <svg class="icon-linkout" aria-hidden="true" role="presentation"><use xlink:href="#icon-linkout"/></svg></a></p>
           {% endif %}
         </article>
       {% endfor %}

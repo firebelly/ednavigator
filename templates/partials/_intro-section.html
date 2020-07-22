@@ -1,16 +1,25 @@
-{% if entry.pageHeadline or entry.introSections|length %}
-  <section class="intro-section{{ entry.pageHeadline ? ' with-headline' : '' }}">
-    {% if entry.pageHeadline %}
+{% import 'macros/notranslate.html' as notranslate %}
+{% if entry is defined %}
+  {% set localizedEntry = craft.entries.id(entry.id).site('en') %}
+{% endif %}
+
+{% if customHeadline is defined or entry is defined and entry.pageHeadline or entry.introSections|length %}
+  <section class="intro-section{{ entry is defined and entry.pageHeadline or customHeadline is defined ? ' with-headline' : '' }}">
+    {% if customHeadline is defined or entry is defined and entry.pageHeadline %}
       <div class="page-headline">
-        <h1>{{ entry.pageHeadline }}</h1>
+        {% if entry is defined and entry.pageHeadline %}
+          <h1 {{ notranslate.check(localizedEntry[0].pageHeadline, entry.pageHeadline, true) }}>{{ entry.pageHeadline }}</h1>
+        {% else %}
+          <h1>{{ customHeadline }}</h1>
+        {% endif %}
       </div>
     {% endif %}
-    {% if entry.introSections|length and entry.introSections|length %}
+    {% if entry is defined and entry.introSections|length %}
       <div class="intro-sections grid spaced">
         {% for introSection in entry.introSections.all() %}
           <div class="col-1-2">
-            <h4>{{ introSection.sectionTitle }}</h4>
-            <div class="intro-section-content user-content">
+            <h4 {{ notranslate.check(localizedEntry[0].introSections[loop.index - 1].sectionTitle, introSection.sectionTitle, true) }}>{{ introSection.sectionTitle }}</h4>
+            <div class="intro-section-content user-content {{ notranslate.check(localizedEntry[0].introSections[loop.index - 1].sectionContent, entry.sectionContent) }}">
               {{ introSection.sectionContent }}
             </div>
           </div>

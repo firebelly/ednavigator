@@ -14,7 +14,7 @@ body.page-payment {
     margin-top: $global-spacing;
     @include media-md {
       max-width: 450px;
-      margin-top: #{$global-spacing * 2};
+      margin-top: #{$global-spacing * 4};
     }
   }
 }
@@ -26,7 +26,8 @@ body.page-payment {
   @include media-lg {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -#{$global-spacing / 2};
+    margin-left: -$global-spacing;
+    width: calc(100% + #{$global-spacing * 2});
   }
 
   .payment-option {
@@ -35,7 +36,7 @@ body.page-payment {
     border-radius: 10px;
     border: 1px solid $black;
     padding: $global-spacing;
-    margin-top: $global-spacing;
+    margin-top: $global-spacing * 2;
     transition: background .2s ease-out, border-color .2s ease-out;
     &:hover {
       background: $brand-primary;
@@ -64,14 +65,15 @@ body.page-payment {
     }
 
     @include media-lg {
-      max-width: calc(50% - #{$global-spacing});
-      flex-basis: calc(50% - #{$global-spacing});
-      margin: 0 #{$global-spacing / 2} $global-spacing;
+      padding: $global-spacing * 2;
+      max-width: calc(50% - #{$global-spacing * 2});
+      flex-basis: calc(50% - #{$global-spacing * 2});
+      margin: 0 $global-spacing #{$global-spacing * 2};
     }
 
     @include media-xl {
-      max-width: calc(33.3333% - #{$global-spacing});
-      flex-basis: calc(33.3333% - #{$global-spacing});
+      max-width: calc(33.3333% - #{$global-spacing * 2});
+      flex-basis: calc(33.3333% - #{$global-spacing * 2});
     }
 
     h3 {

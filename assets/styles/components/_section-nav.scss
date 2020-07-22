@@ -1,0 +1,103 @@
+// Section Navigation
+
+.section-navigation-wrap {
+  &:not(.stuck) {
+    @include media-lg {
+      .section-navigation {
+        button {
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
+  &.stuck {
+    z-index: 10;
+    width: 100%;
+    position: fixed;
+
+    .section-navigation.accordion .accordion-content .share-section {
+      display: none;
+    }
+
+    .section-navigation {
+      button {
+        border-bottom: none;
+      }
+    }
+  }
+
+  @include media-lg {
+    &.stuck {
+      right: 0;
+      width: 33.3333%;
+    }
+    &.bottom-stuck {
+      position: fixed;
+    }
+  }
+}
+
+.section-navigation {
+  padding: 0 $global-spacing;
+  background-color: $gray-three;
+
+  &.-active {
+    button svg {
+      transform: translateY(-50%) rotate(-90deg);
+    }
+  }
+
+  button {
+    @include headline-four;
+    width: 100%;
+    border: none;
+    text-align: left;
+    appearance: none;
+    background: none;
+    position: relative;
+    padding: 15px 20px 15px 0;
+    border-bottom: 1px solid $gray-two;
+    &:focus {
+      outline: none;
+    }
+
+    svg {
+      top: 50%;
+      right: 0;
+      width: 10px;
+      fill: $black;
+      height: 10px;
+      position: absolute;
+      transition: transform .2s ease-out;
+      transform: translateY(-50%) rotate(90deg);
+    }
+  }
+
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      border-top: 1px solid $gray-two;
+      a {
+        display: block;
+        padding: 15px 0;
+        text-decoration: none;
+        &:hover,
+        &:focus {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  @include media-lg {
+    padding: 0 $global-spacing * 2;
+
+    button {
+      border-bottom: 0;
+    }
+  }
+}

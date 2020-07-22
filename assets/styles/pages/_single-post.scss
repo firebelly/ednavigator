@@ -3,8 +3,9 @@
 // Entry
 body.single-post {
 
+  // Shared Styles Among Single Posts
   .entry {
-    background: $gray-light;
+    background: $gray-four;
     margin-top: $header-height-small;
 
     @include media-lg {
@@ -13,19 +14,13 @@ body.single-post {
 
     .entry-body {
       background: $offwhite;
-      padding-bottom: #{$global-spacing * 2};
-
-      @include media-lg {
-        padding-bottom: #{$global-spacing * 3};
-      }
     }
 
     .featured-image {
-      height: 0;
+      height: 250px;
       position: relative;
-      padding-bottom: 55%;
       background-size: cover;
-      background-position: top center;
+      background-position: center center;
 
       .icon {
         top: 50%;
@@ -97,26 +92,49 @@ body.single-post {
           }
         }
       }
+
+      @include media-lg {
+        height: 500px;
+      }
     }
 
     .entry-header {
       position: relative;
-      padding: $global-spacing;
 
-      .category {
-        margin: 0;
-        color: $gray-dark;
-        @extend .headline-three;
+      .type-date {
+        @include headline-four;
+        margin-top: 0;
+      }
+
+      .entry-title {
+        margin-bottom: $global-spacing;
+        @include media-md {
+          margin-bottom: $global-spacing * 2;
+        }
       }
 
       h1 {
+        margin: 0;
         color: $black;
         margin-top: $vertical-beat;
         margin-bottom: $global-spacing;
       }
 
+      h2 {
+        @include headline-three;
+        margin: 0;
+      }
+    }
+
+    .entry-meta {
+      h5 {
+        @include headline-four;
+        margin: 0 0 $vertical-beat;
+      }
+
       @include media-lg {
-        padding: #{$global-spacing * 2};
+        position: relative;
+        align-items: flex-start;
       }
     }
 
@@ -128,59 +146,55 @@ body.single-post {
         margin-bottom: 0;
       }
 
+      .authors {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+          display: flex;
+          align-items: center;
+
+          + li {
+            margin-top: 12px;
+          }
+        }
+
+        a {
+          color: $blue;
+        }
+      }
+
       .author-image {
-        float: left;
+        width: 30px;
+        height: 30px;
         overflow: hidden;
         border-radius: 50%;
         display: inline-block;
-        width: $global-spacing;
-        height: $global-spacing;
         margin-right: $vertical-beat;
+        border: 1px solid $yellow-text;
 
         img {
           max-width: 100%;
           vertical-align: top;
         }
       }
-
-      .author-content {
-        float: left;
-        @extend .headline-four;
-        margin: .5em 0 0 0;
-
-        span {
-          display: block;
-          line-height: 2;
-          @extend .headline-descriptor;
-        }
-      }
     }
 
-    .entry-cats-tags {
-      padding-top: 6px;
-      > div {
-        display: table;
-      }
+    .entry-cats-tags,
+    .age-groups {
+      margin-top: 40px;
 
-      h5 {
-        margin-top: 0;
-        min-width: 80px;
-        margin-bottom: 0;
-        @extend .headline-descriptor;
-        margin: 0 $vertical-beat 0 0;
-
-        @include media-lg {
-          min-width: #{$global-spacing * 2};
-        }
+      div + div {
+        margin-top: $vertical-beat * 4;
       }
 
       ul {
         margin: 0;
         padding: 0;
         list-style: none;
-        display: table-cell;
         li {
-          line-height: 20px;
+          display: inline-block;
         }
       }
 
@@ -188,184 +202,361 @@ body.single-post {
         color: $blue;
         transition: color .2s ease-out;
         &:hover {
-          color: $gray;
+          color: $gray-two;
         }
+      }
+
+      @include media-lg {
+        margin-top: 0;
       }
     }
 
-    .entry-content {
-      max-width: 1000px;
-      padding: 0 $global-spacing $global-spacing;
+    // Age Groups
+    .age-groups {
+      ul {
+        li {
+          display: block;
+          color: $gray-one;
+        }
+      }
 
       @include media-lg {
-        padding: 0 #{$global-spacing * 2} #{$global-spacing * 2};
+        padding-left: $global-spacing;
+      }
+    }
+
+    // Sharing links
+    .share-section {
+      @include shareLinksFlex;
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: inline-block;
+        li {
+          display: inline-block;
+          + li {
+            margin-left: $vertical-beat;
+          }
+        }
+      }
+
+      a {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        border-radius: 50%;
+        border: 1px solid $black;
+        transition: background-color .2s ease-out;
+        &:hover,
+        &:focus {
+          background-color: $yellow;
+        }
+      }
+
+      .icon {
+        width: 15px;
+        height: 15px;
+        margin: auto;
+        &.icon-twitter {
+          width: 18px;
+          height: 15px;
+        }
+      }
+
+      @include media-lg {
+        > div + div {
+          margin-left: 0;
+          padding-left: 0;
+          margin-top: 20px;
+          &::before {
+            display: none;
+          }
+        }
+      }
+
+      @media screen and (min-width: 1100px) {
+        @include shareLinksFlex;
       }
     }
   }
 
   // Content Styles
   .entry-content {
+    position: relative;
 
-    h1, h2, h3, h4, h5, h6 {
-      color: $black;
-      margin: #{$vertical-beat * 4} 0 #{$vertical-beat * 3};
-    }
+    .content-column {
+      z-index: 1;
+      padding-top: 30px;
+      position: relative;
+      padding-bottom: #{$global-spacing * 4};
 
-    h1 {
-      @extend .headline-two;
+      .content-block:first-child .-inner > *:first-child {
+        margin-top: 0;
+      }
 
-      + h2 {
-        margin-top: -30px;
+      @include media-lg {
+        display: flex;
+        min-height: 500px;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-bottom: #{$global-spacing * 3};
       }
     }
 
-    h2 {
-      @extend .headline-three;
-      color: $gray-dark;
-      @include media-md {
-        font-size: 22px;
-        line-height: 30px;
+    .sidebar-column {
+      position: relative;
+
+      @include media-lg {
+        min-height: 500px;
       }
     }
 
-    h3, h4, h5, h6 {
-      @extend .headline-inline;
-      margin: 0;
-      > span {
+    .general-content-block .block-content,
+    .legacy-content-container {
+      h1, h2, h3, h4, h5, h6 {
+        color: $black;
+        margin: #{$vertical-beat * 4} 0 #{$vertical-beat * 3};
+      }
+
+      h1 {
+        @extend .headline-two;
+
+        + h2 {
+          margin-top: -30px;
+        }
+      }
+
+      h2 {
+        @extend .headline-three;
+        color: $gray-one;
+        @include media-md {
+          font-size: 22px;
+          line-height: 30px;
+        }
+      }
+
+      h3, h4, h5, h6 {
+        @extend .headline-inline;
+        margin: 0;
+        > span {
+          display: inline-block;
+          background-color: $white;
+        }
+
+        + p {
+          margin-top: 6px;
+        }
+      }
+
+      p {
+        margin: #{$vertical-beat * 3} 0;
+
+        + figcaption {
+          margin-top: -#{$vertical-beat * 2};
+        }
+      }
+
+      strong {
+        font-weight: normal;
+        font-family: $font-bold;
+      }
+
+      a:not(.inline-link) {
+        color: $blue;
+        transition: color .2s ease-out;
+        &:hover {
+          color: $yellow-text;
+        }
+      }
+
+      sup.footnote {
+        top: auto;
+        color: $blue;
+        font-size: 100%;
+        position: relative;
         display: inline-block;
-        background-color: $white;
+        &::before {
+          content: '[';
+        }
+        &::after {
+          content: ']';
+        }
+        a {
+          padding: 0 1px;
+        }
       }
 
-      + p {
-        margin-top: 6px;
+      figcaption {
+        font-size: 10px;
       }
-    }
 
-    p {
-      margin: #{$vertical-beat * 3} 0;
-
-      + figcaption {
-        margin-top: -#{$vertical-beat * 2};
-      }
-    }
-
-    strong {
-      font-weight: normal;
-      font-family: $font-bold;
-    }
-
-    a:not(.inline-link) {
-      color: $blue;
-      transition: color .2s ease-out;
-      &:hover {
-        color: $yellow-text;
+      blockquote:not(.aside-blockquote) {
+        @extend .body-copy;
+        padding: 15px 20px;
+        border-radius: 20px;
+        border: 1px solid $yellow;
+        margin: #{$vertical-beat * 3} 0;
       }
     }
 
-    figcaption {
-      font-size: 10px;
+    // Legacy Content Styles
+    .legacy-content-container {
+      margin: 0 auto;
+      max-width: 1000px;
+      padding: 0 $global-spacing;
+
+      @include media-lg {
+        padding: 0 #{$global-spacing * 4};
+      }
+    }
+  }
+
+  // Sidebar newsletter signup
+  .sidebar-newsletter {
+    padding: $global-spacing;
+    background-color: $gray-four;
+
+    h5 {
+      @include headline-four;
+      margin: 0 0 30px;
+      color: $gray-one;
     }
 
-    blockquote {
-      @extend .body-copy;
-      padding: 15px 20px;
-      border-radius: 20px;
-      border: 1px solid $yellow;
-      margin: #{$vertical-beat * 3} 0;
+    .button {
+      width: auto;
     }
 
+    @include media-lg {
+      left: 0;
+      bottom: 0;
+      position: absolute;
+      padding: $global-spacing * 2;
+    }
   }
 
   .resource-downloads {
-    border-top: 1px solid $gray;
-    margin-top: $global-spacing;
-    padding-top: $global-spacing;
+    max-width: 1000px;
+    padding: 0 $global-spacing;
+    margin: #{$global-spacing * 2} 0;
 
     .resource-download {
-      @include clearfix;
-      margin-top: $global-spacing;
-      padding-top: $global-spacing;
-      border-top: 1px solid $gray-light;
-      &:first-of-type {
-        margin-top: 0;
-        border-top: 0;
-        padding-top: 0;
+      display: flex;
+      border-radius: 10px;
+      padding: $global-spacing;
+      border: 1px solid $gray-three;
+      + .resource-download {
+        margin-top: 30px;
       }
-    }
 
-    h3 {
-      margin-top: 0;
+      .button {
+        svg {
+          margin-left: $global-spacing * 2;
+        }
+      }
     }
 
     .download-thumb {
-      display: inline-block;
-      margin-bottom: #{$vertical-beat * 3};
+      display: none;
+    }
+
+    h3 {
+      @include headline-five;
+      margin: 0 0 $vertical-beat;
+      a {
+        color: $blue;
+        text-decoration: none;
+        &:hover,
+        &:focus {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .resource-info {
+      p {
+        margin-top: 0;
+      }
     }
 
     @include media-md {
+      &:not(.content-block) {
+        padding: 30px;
+      }
+
+      .resource-info {
+        flex: 1;
+        margin-left: 30px;
+      }
+
       .download-thumb {
-        float: left;
-        width: 200px;
+        width: 120px;
+        display: block;
         margin-bottom: 0;
+        flex-basis: 120px;
         img {
           max-width: 100%;
+          border-radius: 50%;
           vertical-align: top;
         }
       }
+    }
 
-      .resource-download.has-thumb {
-        .resource-info {
-          float: right;
-          width: calc(100% - 200px - #{$global-spacing});
+    @include media-lg {
+      padding-left: 100px;
+      padding-right: 100px;
+    }
+  }
+
+  // Endnotes
+  .endnotes {
+    padding-bottom: 30px;
+
+    h2 {
+      margin: 30px 0;
+    }
+
+    ol {
+      padding: 0;
+      width: 100%;
+      display: table;
+      list-style-type: none;
+
+      li {
+        display: table-row;
+        > * {
+          display: table-cell;
+        }
+
+        + li {
+          > * {
+            padding-top: 30px;
+          }
         }
       }
     }
 
-
-  }
-
-  // Sharing links
-  .share-section {
-    padding: 0 $global-spacing;
-
-    @include media-lg {
-      padding: 0 #{$global-spacing * 2};
-    }
-
-    h6 {
-      display: inline-block;
-      @extend .headline-descriptor;
-      margin: 3px #{$vertical-beat * 2} 0 0;
-    }
-
-    ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: inline-block;
-      li {
-        display: inline-block;
-        margin-right: $vertical-beat;
+    a {
+      color: $blue;
+      &:hover,
+      &:focus {
+        text-decoration: none;
       }
     }
 
-    .icon {
-      width: 15px;
-      height: 18px;
-      vertical-align: top;
+    .index {
+      width: 35px;
     }
   }
 
   // Post Nav
   .section-links {
+    margin-top: 80px;
     padding: 0 $global-spacing;
 
     @include media-lg {
-      padding: 0 #{$global-spacing * 2};
-    }
-
-    .entry-nav {
-      margin-top: #{$global-spacing * 2};
+      padding: 0 #{$global-spacing * 4};
     }
   }
 
@@ -373,7 +564,7 @@ body.single-post {
     padding: $global-spacing;
 
     @include media-lg {
-      padding: #{$global-spacing * 2};
+      padding: #{$global-spacing * 4};
     }
 
     h4 {
@@ -382,17 +573,68 @@ body.single-post {
     }
   }
 
-  .related-posts {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
-    li {
-      margin-top: $global-spacing;
-      &:first-of-type {
-        margin-top: 0;
+  // Resource Post
+  &.resources-post {
+    .related-posts {
+      background-color: $green;
+      h4 {
+        color: $white;
+      }
+      article {
+        border-left-color: $green;
+      }
+    }
+    .general-content-block .content-aside {
+      color: $white;
+      .aside-tag,
+      .accordion-toggle,
+      .-inner {
+        color: $white;
+        background-color: $green;
+      }
+      svg {
+        fill: $white;
+      }
+      &.family-narrative {
+        @include media-lg {
+          a[data-readmore-toggle] {
+            background-image: linear-gradient(to left, rgba($green, 1), rgba($green, 1) 80%, rgba($green, 0));
+          }
+        }
       }
     }
   }
 
+  // Basic Post Template
+  &.basic-post {
+    .entry-header {
+      .-inner {
+        padding: $global-spacing;
+      }
+
+      @include media-lg {
+        .-inner {
+          padding: 80px #{$global-spacing * 4};
+        }
+      }
+    }
+
+    .share-section {
+      margin-top: $vertical-beat * 4;
+
+      @include media-lg {
+        top: 100%;
+        z-index: 2;
+        display: block;
+        margin-top: 105px;
+        position: absolute;
+        right: -$global-spacing * 4;
+        width: calc(33.3333% + 67px);
+        padding: 0 $global-spacing 0 #{$global-spacing * 2};
+      }
+      @media screen and (min-width: 1100px) {
+        @include shareLinksFlex;
+      }
+    }
+  }
 }

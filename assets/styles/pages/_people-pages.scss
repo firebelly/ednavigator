@@ -47,7 +47,7 @@ body.people-page-template {
 
   .person {
     @include clearfix;
-    margin-bottom: #{$global-spacing * 2};
+    margin-bottom: #{$global-spacing * 4};
 
     @include media-lg {
       max-width: 50%;
@@ -58,8 +58,8 @@ body.people-page-template {
       overflow: hidden;
       position: relative;
       border-radius: 50%;
-      width: #{$global-spacing * 3};
-      height: #{$global-spacing * 3};
+      width: #{$global-spacing * 6};
+      height: #{$global-spacing * 6};
       margin-bottom: #{$vertical-beat * 3};
 
       &::after {
@@ -89,7 +89,7 @@ body.people-page-template {
     .person-content {
       @include media-xl {
         float: right;
-        width: calc(100% - #{$global-spacing * 4});
+        width: calc(100% - #{$global-spacing * 8});
       }
     }
 
@@ -101,8 +101,8 @@ body.people-page-template {
 
     h5 {
       @include headline-four;
-      max-width: #{$global-spacing * 5};
       margin: 0 0 #{$vertical-beat * 3};
+      max-width: #{$global-spacing * 10};
     }
 
     .person-description {
@@ -124,7 +124,7 @@ body.page-socios-empresariales {
       .person-image {
         height: 70px;
         border-radius: 0;
-        width: #{$global-spacing * 2};
+        width: #{$global-spacing * 4};
 
         &::after {
           display: none;
@@ -139,7 +139,7 @@ body.page-socios-empresariales {
 
       .person-content {
         @include media-xl {
-          width: calc(100% - #{$global-spacing * 3});
+          width: calc(100% - #{$global-spacing * 6});
         }
       }
 

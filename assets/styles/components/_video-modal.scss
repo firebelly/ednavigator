@@ -9,8 +9,8 @@
   right: $global-spacing;
   transform: translateY(-50%);
   @include media-md {
-    left: $global-spacing * 2;
-    right: $global-spacing * 2;
+    left: $global-spacing * 4;
+    right: $global-spacing * 4;
   }
 
   .video-container {

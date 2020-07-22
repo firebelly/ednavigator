@@ -1,29 +1,122 @@
 // Blog Page
 
-body.page-blog {
-  .intro-section {
-    background: $offwhite;
-
-    .page-headline {
-      @include media-lg {
-        float: left;
-      }
-    }
-
-    .subscribe {
-      h4 {
-        color: $yellow;
-        margin: 22px 0 30px;
-        @extend .headline-two;
-      }
-
-      @include media-lg {
-        float: right;
-        width: #{$col * 4};
-      }
+body.page-ideas {
+  .posts-section {
+    h3 {
+      @include headline-rule($black, $yellow)
     }
   }
 
+  .blog-posts {
+    > div {
+      padding: $global-spacing;
+
+      h3 {
+        @include headline-two;
+        margin: 0 0 $global-spacing;
+      }
+    }
+
+    article {
+      + article {
+        margin-top: $global-spacing;
+      }
+    }
+
+    .recent-posts {
+      > .cta {
+        margin-top: $global-spacing * 2;
+      }
+    }
+
+    .updates-post {
+      h4 {
+        @include headline-five;
+        margin-top: 0;
+      }
+
+      .post-meta {
+        &,
+        a {
+          color: $gray-one;
+        }
+
+        > p {
+          margin-bottom: 0;
+        }
+
+        > * {
+          margin-top: $vertical-beat;
+        }
+
+        svg {
+          width: 15px;
+          height: 15px;
+          fill: $black;
+          margin-right: 10px;
+        }
+
+        ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          li {
+            display: inline-block;
+          }
+        }
+      }
+    }
+
+    .in-the-news-post {
+      img {
+        max-width: 100%;
+        max-height: 70px;
+      }
+
+      .post-title {
+        @include headline-five;
+      }
+
+      .cta {
+        a {
+          @include headline-four;
+          color: $blue;
+
+          svg {
+            fill: $blue;
+            width: 10px;
+            height: 10px;
+            margin-left: 15px;
+          }
+
+          &:hover,
+          &:focus {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
+    @include media-lg {
+      display: flex;
+
+      > div {
+        max-width: 50%;
+        flex-basis: 50%;
+        padding: $global-spacing * 4;
+
+        h3 {
+          margin-bottom: $global-spacing * 2;
+        }
+      }
+
+      article {
+        + article {
+          margin-top: $global-spacing * 2;
+        }
+      }
+    }
+  }
 }
 
 .article-list {
@@ -123,7 +216,7 @@ body.page-blog {
       padding: #{$global-spacing * 1.5} $global-spacing;
 
       @include media-md {
-        padding: #{$global-spacing * 2};
+        padding: #{$global-spacing * 4};
       }
     }
 
@@ -204,56 +297,6 @@ body.page-blog {
   }
 
   @include media-md {
-    right: #{$global-spacing * 2};
-  }
-}
-
-// Load More Section
-.load-more-section {
-  text-align: center;
-  position: relative;
-  background: $offwhite;
-  padding: $global-spacing;
-
-  @include media-lg {
-    padding: #{$global-spacing * 2};
-  }
-
-  .load-more {
-    padding: 0;
-    border: none;
-    margin: 0 auto;
-    background: none;
-    display: inline-block;
-    @extend .headline-descriptor;
-
-    .icon {
-      width: 80px;
-      height: 80px;
-      display: block;
-      position: relative;
-      border-radius: 50%;
-      border: 1px solid $black;
-      margin-top: $vertical-beat;
-
-      .icon-arrow {
-        left: 0;
-        top: 31px;
-        width: 15px;
-        height: 15px;
-        fill: $black;
-        position: relative;
-        transform: rotate(90deg);
-      }
-    }
-
-    &:focus {
-      outline: none;
-    }
-    &:hover {
-      .icon-arrow {
-        animation: scrollHover 1s linear infinite;
-      }
-    }
+    right: #{$global-spacing * 4};
   }
 }

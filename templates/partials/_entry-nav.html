@@ -1,5 +1,5 @@
 {# Set parameters for prev/next elements list #}
-{% set entries = craft.entries.section(entry.section).level(entry.level) %}
+{% set entries = craft.entries.section(entry.section).level(entry.level).type('not inTheNews') %}
 {# Get the prev/next elements #}
 {% set prevEntry = entry.getPrev(entries) %}
 {% set nextEntry = entry.getNext(entries) %}
@@ -10,14 +10,14 @@
       {# And make sure to only output the links if the element exists #}
       {% if prevEntry %}
         <li class="previous">
-          <p>Previous</p>
-          <a class="inline-link borderless -left" href="{{ prevEntry.url }}"><span>{{ prevEntry.title }}</span></a>
+          <p><svg class="icon-arrow-dotted-left" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow-dotted-left"/></svg> Previous</p>
+          <a href="{{ prevEntry.url }}"><span>{{ prevEntry.title }}</span></a>
         </li>
       {% endif %}
       {% if nextEntry %}
         <li class="next">
-          <p>Next</p>
-          <a class="inline-link borderless" href="{{ nextEntry.url }}"><span>{{ nextEntry.title }}</span></a>
+          <p>Next <svg class="icon-arrow-dotted" aria-hidden="true" role="presentation"><use xlink:href="#icon-arrow-dotted"/></svg></p>
+          <a href="{{ nextEntry.url }}"><span>{{ nextEntry.title }}</span></a>
         </li>
       {% endif %}
     </ul>

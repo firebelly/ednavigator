@@ -1,0 +1,52 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{# Get the username from the uri #}
+{% set fullname = craft.app.request.getSegment(3) | split('-') %}
+
+{# Then, grab the user based on the username #}
+{% if fullname|length > 1 %}
+  {% set user = craft.users().anyStatus().firstName(fullname.0 | capitalize).lastName(fullname.1 | capitalize).one() %}
+{% else %}
+  {% set user = craft.users().anyStatus().firstName(fullname.0 | capitalize).one() %}
+{% endif %}
+
+{% set title = "Ideas Posts by "~user.name %}
+{% set bodyClass = 'page page-browse ideas-browse page-author' %}
+
+{% block content %}
+
+  <section class="intro-section with-headline">
+    <div class="grid">
+      <h1 class="page-headline">{{ title }}</h1>
+
+  </section>
+
+  {% set articles = craft.entries.section('ideasEntries').authorId(user.id) %}
+
+  <div class="section posts-section">
+    {% if articles|length %}
+      {% if not craft.app.request.isAjax %}
+        <div class="post-grid masonry">
+          <div class="grid-sizer"></div>
+      {% endif %}
+        {% for post in articles.all() %}
+          {% set args = { 'post': post } %}
+          {% if post.featuredPost %}
+            {% set args = args|merge({ 'featured': true }) %}
+          {% endif %}
+          {% if post.type == 'publication' %}
+            {% set args = args|merge({ 'publication': true }) %}
+          {% endif %}
+          {% if loop.index == 1 %}
+            {% set args = args|merge({ 'postClass': '-large' }) %}
+          {% endif %}
+          {% include 'posts/_post-article.html' with args %}
+        {% endfor %}
+    {% else %}
+      <div class="no-posts">
+        <h2>There are no posts that match that query.</h2>
+      </div>
+    {% endif %}
+  </div>
+
+{% endblock %}

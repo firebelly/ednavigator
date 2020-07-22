@@ -1,0 +1,201 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set queryParams = craft.app.request.queryParams %}
+{% set queryString = craft.app.request.queryStringWithoutPath %}
+
+{% set limit = 9 %}
+
+{% set title = "Ideas" %}
+{% set bodyClass = 'page page-browse ideas-browse' %}
+
+{# set base params #}
+{% set params = {
+    section: 'ideasEntries'
+} %}
+
+{% set baseSlug = craft.app.request.getSegment(2) %}
+{% if baseSlug == 'search' or baseSlug == 'buscar' %}
+  {% set query = craft.app.request.getParam('q') %}
+  {% set results = craft.entries.section('ideasEntries').search(query).orderBy('score').all() %}
+  {% set params = { section: 'ideasEntries', orderBy: 'score', limit: null } %}
+  {% if queryParams.featured is defined %}
+    {% set searchParams = { search: query ~ ' featuredPost:1'} %}
+    {% set params = params|merge(searchParams) %}
+  {% else %}
+    {% set params = params|merge({search: query}) %}
+  {% endif %}
+  {% if results|length %}
+    {% set pageHeadline = results|length > 1 ? results|length ~ ' results found for “' ~ query ~ '”' : results|length ~ ' result found for “' ~ query ~ '”' %}
+  {% else %}
+    {% set pageHeadline = 'No results found for "' ~ query ~ '"' %}
+  {% endif %}
+{% else %}
+  {% set pageHeadline = 'Browsing all Ideas' %}
+{% endif %}
+
+{% set featuredPosts = '' %}
+
+{# Set type #}
+{% if queryParams.type is defined %}
+  {% set typeHandle = queryParams.type|split('-') %}
+  {% if typeHandle|length > 1 %}
+    {% set typeString = [] %}
+    {% for word in typeHandle %}
+      {% if loop.index != 1 %}
+        {% set word = word|capitalize %}
+      {% endif %}
+      {% set typeString = typeString|merge([word]) %}
+    {% endfor %}
+    {% set typeHandle = typeString|join %}
+  {% endif %}
+  {% set params = params|merge({type: typeHandle}) %}
+  {% if 'publication' in typeHandle %}
+    {% set typeLabel = 'publications' %}
+    {% set pageHeadline = 'Browsing all ' ~ queryParams.type|title ~ 's' %}
+  {% else %}
+    {% set typeLabel = 'blog posts' %}
+    {% set pageHeadline = 'Browsing all Blog Posts' %}
+  {% endif %}
+{% else %}
+  {% set params = params|merge({type: ['publication', 'blogPost']}) %}
+{% endif %}
+
+{# set relatedTo params #}
+{% set filterTitles = [] %}
+{% set relatedParams = ['and'] %}
+{% if queryParams.category is defined %}
+  {% set category = craft.categories.group('ideasCategories').slug(queryParams.category).one() %}
+  {% set filterTitles = filterTitles|merge([category.title]) %}
+  {% set relatedParams = relatedParams|merge([{ targetElement:category }]) %}
+{% endif %}
+{% if queryParams.tag is defined %}
+  {% set tag = craft.tags.group('ideasTags').slug(queryParams.tag).one() %}
+  {% set filterTitles = filterTitles|merge([tag.title]) %}
+  {% set relatedParams = relatedParams|merge([{ targetElement:tag }]) %}
+{% endif %}
+
+{# if there are any, add the to the base params #}
+{% if relatedParams|length > 1 %}
+  {% set filterTitles = filterTitles|join(', ', ' and ') ~ ' Ideas' %}
+  {% set params = params|merge({'relatedTo':relatedParams}) %}
+{% endif %}
+{% set featuredPosts = craft.entries(params|merge({'search':'featuredPost:1', limit: 3})) %}
+
+{# set sort params #}
+{% set sortParams = 'postDate DESC' %}
+{% if queryParams.sort is defined %}
+  {% if 'title' in queryParams.sort %}
+    {% set order = queryParams.sort|replace('title_', '') %}
+    {% set sortParams = 'title ' ~ order %}
+  {% elseif 'date' in queryParams.sort %}
+    {% set order = queryParams.sort|replace('date_', '') %}
+    {% set sortParams = 'postDate ' ~ order %}
+  {% endif %}
+{% endif %}
+{# add sortParams to params #}
+{% set params = params|merge({'orderBy':sortParams}) %}
+
+{# set featured param #}
+{% if queryParams.featured is defined %}
+  {% set filterTitles = filterTitles|length != 0 and filterTitles != '' ? filterTitles ~ ' that are featured' : 'featured Ideas' %}
+  {% if queryParams.q is not defined %}
+    {% set params = params|merge({'search':'featuredPost:1'}) %}
+  {% endif %}
+{% endif %}
+
+{# Set the page headline if there are any filters applied #}
+{% if filterTitles|length %}
+  {% set pageHeadline = 'Browsing all ' ~ filterTitles %}
+  {% if queryParams.q is defined %}
+    {% set pageHeadline = 'Browsing all ' ~ filterTitles ~ ' matching “' ~ queryParams.q ~ '”' %}
+  {% endif %}
+  {% set pageHeadline = queryParams.type is defined ? pageHeadline ~ ' in ' ~ typeLabel|title : pageHeadline %}
+{% endif %}
+
+{% set results = craft.entries(params).all()|length %}
+{% if baseSlug != 'search' and baseSlug != 'buscar' %}
+  {% set params = params|merge({limit: limit}) %}
+{% endif %}
+
+{% block content %}
+
+  {% if not craft.app.request.isAjax %}
+
+    {% include 'partials/_intro-section.html' with {'customHeadline': pageHeadline} %}
+
+    {% if baseSlug != 'search' and baseSlug != 'buscar' and featuredPosts|length %}
+      {% if featuredPosts|length > 1 %}
+        <div class="section featured-posts-section">
+          <div class="featured-post-carousel">
+            {% for featuredPost in featuredPosts.all() %}
+              {% set args = { 'post': featuredPost, 'featured': true } %}
+              {% if featuredPost.type == 'publication' %}
+                {% set args = args|merge({ 'publication': true, 'postClass': '-large' }) %}
+              {% endif %}
+              {% include 'posts/_post-article.html' with args %}
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        <div class="section featured-post-section">
+          {% set args = { 'post': featuredPosts.one(), 'featured': true } %}
+          {% if featuredPosts.one().type == 'publication' %}
+            {% set args = args|merge({ 'publication': true }) %}
+          {% endif %}
+          {% include 'posts/_post-article.html' with args %}
+        </div>
+      {% endif %}
+    {% endif %}
+
+    {% include 'ideas/_filter.html' %}
+
+  {% endif %}
+
+  {% paginate craft.entries(params) as pageInfo, articles %}
+
+  {% if not craft.app.request.isAjax %}
+    <div class="section posts-section">
+      {% if baseSlug == 'search' %}
+        <p class="results-text">{{ pageHeadline }}</p>
+      {% elseif queryString != '' %}
+        <p class="results-text">{{ results }} results for "{{ pageHeadline|replace('Browsing all ', '') }}"</p>
+      {% endif %}
+  {% endif %}
+
+    {% if articles|length %}
+      {% if not craft.app.request.isAjax %}
+        <div class="post-grid masonry">
+          <div class="grid-sizer"></div>
+      {% endif %}
+        {% for post in articles %}
+          {% set args = { 'post': post } %}
+          {% if post.featuredPost %}
+            {% set args = args|merge({ 'featured': true }) %}
+          {% endif %}
+          {% if post.type == 'publication' %}
+            {% set args = args|merge({ 'publication': true }) %}
+          {% endif %}
+          {% if loop.index == 1 %}
+            {% set args = args|merge({ 'postClass': '-large' }) %}
+          {% endif %}
+          {% include 'posts/_post-article.html' with args %}
+        {% endfor %}
+      {% if not craft.app.request.isAjax and baseSlug != 'search' and articles|length >= limit %}
+        </div>
+        <div class="load-more-section">
+          <button id="load-more" class="load-more button -big -blue with-icon" data-collection="ideas" data-params="{{ queryString }}" data-page="{{ pageInfo.currentPage + 1 }}" data-total-pages="{{ pageInfo.totalPages }}"><span>Load More</span> <svg class="icon" aria-hidden="true" role="presentation"><use xlink:href="#icon-cross"/></svg></button>
+        </div>
+      {% endif %}
+    {% else %}
+      {% if not craft.app.request.isAjax %}
+        <div class="no-posts">
+          <h2>There are no posts that match that query.</h2>
+        </div>
+      {% endif %}
+    {% endif %}
+
+  {% if not craft.app.request.isAjax %}
+    </div>
+  {% endif %}
+
+{% endblock %}

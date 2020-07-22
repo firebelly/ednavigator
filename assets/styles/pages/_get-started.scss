@@ -19,11 +19,11 @@ body.get-started-template {
     input:not([type=submit]),
     textarea {
       padding-top: 13px;
-      color: $gray-dark;
+      color: $gray-one;
       padding-bottom: 6px;
 
       &::placeholder {
-        color: $gray-dark;
+        color: $gray-one;
       }
     }
 
@@ -35,10 +35,10 @@ body.get-started-template {
       &.spaced {
         @include media-lg {
           padding: 0;
-          margin-left: -$global-spacing;
-          width: calc(100% + #{$global-spacing * 2});
+          margin-left: -$global-spacing * 2;
+          width: calc(100% + #{$global-spacing * 4});
           > * {
-            padding: 0 $global-spacing;
+            padding: 0 $global-spacing * 2;
           }
         }
       }
@@ -99,10 +99,10 @@ body.get-started-template {
     background-color: $yellow;
 
     @include media-md {
-      padding: $global-spacing * 2;
+      padding: $global-spacing * 4;
 
       > .-inner {
-        padding-right: $global-spacing * 2;
+        padding-right: $global-spacing * 4;
       }
     }
   }

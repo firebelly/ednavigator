@@ -1,4 +1,28 @@
-// Section Carousels
+// Carousels
+
+// Shared Flickity Styles
+.flickity-prev-next-button {
+  background: none;
+
+  .flickity-button-icon {
+    top: auto;
+    left: auto;
+    width: 30px;
+    height: 30px;
+    position: relative;
+  }
+
+  .arrow {
+    fill: $black;
+  }
+
+  &:hover {
+    background: none;
+  }
+  &:focus {
+    box-shadow: none;
+  }
+}
 
 .page-section-carousel {
   background-color: $offwhite;
@@ -22,7 +46,7 @@
 
     .block {
       width: 100%;
-      padding-bottom: $global-spacing * 2;
+      padding-bottom: $global-spacing * 4;
       @include media-lg {
         min-height: 0;
         padding-bottom: #{$global-spacing * 3};
@@ -65,62 +89,41 @@
 
   }
 
-}
-
-// Flickity style overrides
-.flickity-viewport:focus {
-  outline: 20px solid red;
-}
-.flickity-prev-next-button {
-  top: auto;
-  bottom: 0;
-  width: 78px;
-  background: none;
-  @include media-md {
+  // Flickity style overrides
+  .flickity-viewport:focus {
+    outline: 20px solid red;
+  }
+  .flickity-prev-next-button {
     top: auto;
-    bottom: 10px;
-  }
-
-  svg {
-    top: auto;
-    left: auto;
-    width: 30px;
-    height: 30px;
-    position: relative;
-  }
-
-  span {
-    @include headline-four;
-    line-height: 32px;
-    vertical-align: top;
-    display: inline-block;
-  }
-
-  .arrow {
-    fill: $black;
-  }
-
-  &:hover {
-    background: none;
-  }
-  &:focus {
-    box-shadow: none;
-  }
-
-  &.next {
-    left: 138px;
+    bottom: 0;
+    width: 78px;
     @include media-md {
-      left: 189px;
+      top: auto;
+      bottom: 10px;
+    }
+
+    span {
+      @include headline-four;
+      line-height: 32px;
+      vertical-align: top;
+      display: inline-block;
+    }
+
+    &.next {
+      left: 138px;
+      @include media-md {
+        left: 189px;
+      }
+    }
+    &.previous {
+      left: 30px;
+      @include media-md {
+        left: 81px;
+      }
     }
   }
-  &.previous {
-    left: 30px;
-    @include media-md {
-      left: 81px;
-    }
-  }
-}
 
-.flickity-viewport {
-  transition: height .2s ease-out;
+  .flickity-viewport {
+    transition: height .2s ease-out;
+  }
 }

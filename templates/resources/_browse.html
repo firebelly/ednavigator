@@ -1,0 +1,165 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set queryParams = craft.app.request.queryParams %}
+{% set queryString = craft.app.request.queryStringWithoutPath %}
+
+{% set limit = 9 %}
+
+{% set title = "Resources" %}
+{% set bodyClass = 'page page-browse resources-browse' %}
+
+{# set base params #}
+{% set params = {
+    section: 'resourcesEntries'
+} %}
+
+{% set baseSlug = craft.app.request.getSegment(2) %}
+{% if baseSlug == 'search' or baseSlug == 'buscar' %}
+  {% set query = craft.app.request.getParam('q') %}
+  {% set results = craft.entries.section('resourcesEntries').search(query).orderBy('score') %}
+  {% set params = { section: 'resourcesEntries', orderBy: 'score', limit: null } %}
+  {% if queryParams.featured is defined %}
+    {% set searchParams = { search: query ~ ' featuredPost:1'} %}
+    {% set params = params|merge(searchParams) %}
+  {% else %}
+    {% set params = params|merge({search: query}) %}
+  {% endif %}
+  {% if results|length %}
+    {% set pageHeadline = results|length > 1 ? results|length ~ ' results found for “' ~ query ~ '”' : results|length ~ ' result found for “' ~ query ~ '”' %}
+  {% else %}
+    {% set pageHeadline = 'No results found for "' ~ query ~ '"' %}
+  {% endif %}
+{% else %}
+  {% set pageHeadline = 'Browsing all Resources' %}
+{% endif %}
+
+{% set featuredPosts = '' %}
+
+{# set relatedTo params #}
+{% set filterTitles = [] %}
+{% set relatedParams = ['and'] %}
+{% if queryParams.topic is defined %}
+  {% set topic = craft.categories.group('resourcesTopics').slug(queryParams.topic).one() %}
+  {% set filterTitles = filterTitles|merge([topic.title]) %}
+  {% set relatedParams = relatedParams|merge([{ targetElement:topic }]) %}
+{% endif %}
+{% if queryParams.age is defined %}
+  {% set age = craft.categories.group('ageGroups').slug(queryParams.age).one() %}
+  {% set filterTitles = filterTitles|merge([age.title]) %}
+  {% set relatedParams = relatedParams|merge([{ targetElement:age }]) %}
+{% endif %}
+{% if queryParams.location is defined %}
+  {% set location = craft.tags.group('resourcesLocations').slug(queryParams.location).one() %}
+  {% set filterTitles = filterTitles|merge([location.title]) %}
+  {% set relatedParams = relatedParams|merge([{ targetElement:location }]) %}
+{% endif %}
+
+{# if there are any, add the to the base params #}
+{% if relatedParams|length > 1 %}
+  {% set filterTitles = filterTitles|join(', ', ' and ') ~ ' Resources' %}
+  {% set params = params|merge({'relatedTo':relatedParams}) %}
+{% endif %}
+{% set featuredPosts = craft.entries(params|merge({'search':'featuredPost:1', limit: 3})) %}
+
+{# set sort params #}
+{% set sortParams = 'postDate DESC' %}
+{% if queryParams.sort is defined %}
+  {% if 'title' in queryParams.sort %}
+    {% set order = queryParams.sort|replace('title_', '') %}
+    {% set sortParams = 'title ' ~ order %}
+  {% elseif 'date' in queryParams.sort %}
+    {% set order = queryParams.sort|replace('date_', '') %}
+    {% set sortParams = 'postDate ' ~ order %}
+  {% endif %}
+{% endif %}
+{# aadd sortParams to params #}
+{% set params = params|merge({'orderBy':sortParams}) %}
+
+{# set featured param #}
+{% if queryParams.featured is defined %}
+  {% set filterTitles = filterTitles|length != 0 and filterTitles != '' ? filterTitles ~ ' that are featured' : 'featured Resources' %}
+  {% if queryParams.q is not defined %}
+    {% set params = params|merge({'search':'featuredPost:1'}) %}
+  {% endif %}
+{% endif %}
+
+{# Set the page headline if there are any filters applied #}
+{% if filterTitles|length %}
+  {% set pageHeadline = 'Browsing all ' ~ filterTitles %}
+  {% if queryParams.q is defined %}
+    {% set pageHeadline = 'Browsing all ' ~ filterTitles ~ ' matching “' ~ queryParams.q ~ '”' %}
+  {% endif %}
+{% endif %}
+
+{% set results = craft.entries(params).all()|length %}
+{% set params = params|merge({limit: limit}) %}
+
+{% block content %}
+
+  {% if not craft.app.request.isAjax %}
+
+    {% include 'partials/_intro-section.html' with {'customHeadline': pageHeadline} %}
+
+    {% if baseSlug != 'search' and baseSlug != 'buscar' and featuredPosts|length %}
+      {% if featuredPosts|length > 1 %}
+        <div class="section featured-posts-section">
+          <div class="featured-post-carousel">
+            {% for featuredPost in featuredPosts.all() %}
+              {% include 'posts/_post-article.html' with { 'post': featuredPost, 'featured': true, 'postClass': '-large' } %}
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        <div class="section featured-post-section">
+          {% include 'posts/_post-article.html' with { 'post': featuredPosts.one(), 'featured': true, 'postClass': '-large' } %}
+        </div>
+      {% endif %}
+    {% endif %}
+
+    {% include 'resources/_filter.html' %}
+
+  {% endif %}
+
+  {% paginate craft.entries(params) as pageInfo, articles %}
+
+  {% if not craft.app.request.isAjax %}
+    <div class="section posts-section">
+      {% if baseSlug == 'search' %}
+        <p class="results-text">{{ pageHeadline }}</p>
+      {% elseif queryString != '' %}
+        <p class="results-text">{{ results }} results for "{{ pageHeadline|replace('Browsing all ', '') }}"</p>
+      {% endif %}
+  {% endif %}
+
+    {% if articles|length %}
+      {% if not craft.app.request.isAjax %}
+        <div class="post-grid masonry">
+          <div class="grid-sizer"></div>
+      {% endif %}
+        {% for post in articles %}
+          {% if post.featuredPost %}
+            {% set args = { 'post': post, 'featured': true } %}
+          {% else %}
+            {% set args = { 'post': post } %}
+          {% endif %}
+          {% include 'posts/_post-article.html' with args %}
+        {% endfor %}
+      {% if not craft.app.request.isAjax and baseSlug != 'search' and articles|length >= limit %}
+        </div>
+        <div class="load-more-section">
+          <button id="load-more" class="load-more button -big -blue with-icon" data-collection="resources" data-params="{{ queryString }}" data-page="{{ pageInfo.currentPage + 1 }}" data-total-pages="{{ pageInfo.totalPages }}"><span>Load More</span> <svg class="icon" aria-hidden="true" role="presentation"><use xlink:href="#icon-cross"/></svg></button>
+        </div>
+      {% endif %}
+    {% else %}
+      {% if not craft.app.request.isAjax %}
+        <div class="no-posts">
+          <h2>There are no posts that match that query.</h2>
+        </div>
+      {% endif %}
+    {% endif %}
+
+  {% if not craft.app.request.isAjax %}
+    </div>
+  {% endif %}
+
+{% endblock %}

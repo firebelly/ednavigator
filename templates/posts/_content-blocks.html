@@ -1,0 +1,186 @@
+{% import 'macros/notranslate.html' as notranslate %}
+
+{% set contentBlocks = entry.postContentBlocks.all() %}
+
+{% set localizedEntry = craft.entries.id(entry.id).site('en') %}
+
+{% if contentBlocks|length %}
+
+  {% for block in contentBlocks %}
+    {% set blockIndex = loop.index - 1 %}
+    {% switch block.type %}
+
+      {% case 'sectionHeading' %}
+        <div class="content-block sectionHeading section">
+          <div class="-inner">
+            <h2 class="section-heading" id="{{ block.heading|lower|replace(' ', '-')|replace('/[^a-zA-Z\d\s-]+/', '') }}">{{ block.heading }}</h2>
+          </div>
+        </div>
+
+      {% case 'generalContent' %}
+        <div class="content-block general-content-block{{ loop.index < 3 ? ' first-position' : '' }} {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].contentBlock, block.contentBlock) }}">
+          <div class="block-content -inner user-content">
+            {{ block.contentBlock|footnotes }}
+          </div>
+
+          {# Family Narrative Aside #}
+          {% if block.familyNarrativeHeadline and block.familyNarrativeCopy %}
+            <aside class="content-aside family-narrative accordion active-lg">
+              <div class="aside-tag"><svg class="icon-family" aria-hidden="true" role="presentation"><use xlink:href="#icon-family"/></svg></div>
+              <button class="accordion-toggle"><span class="text">Family Narrative</span> <span class="expand-contract"></span></button>
+              <div class="accordion-content -inner">
+                {% if block.familyNarrativeImage %}
+                  <img src="{{ block.familyNarrativeImage.one().getUrl('thumbnail') }}" alt="{{ block.familyNarrativeImage.one().title }}" class="aside-image">
+                {% endif %}
+                <h3 class="aside-subheading">Family Narrative</h3>
+                {% if block.familyNarrativeHeadline %}
+                  <h4 class="aside-heading {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].familyNarrativeHeadline, block.familyNarrativeHeadline) }}">{{ block.familyNarrativeHeadline }}</h4>
+                {% endif %}
+                {% if block.familyNarrativeCopy %}
+                  <div class="aside-content user-content {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].familyNarrativeCopy, block.familyNarrativeCopy) }}">
+                    {{ block.familyNarrativeCopy }}
+                  </div>
+                {% endif %}
+              </div>
+            </aside>
+          {# Aside Quote #}
+          {% elseif block.asideQuote %}
+            <aside class="content-aside quote-aside accordion active-lg">
+              <div class="aside-tag"><svg class="icon-quote" aria-hidden="true" role="presentation"><use xlink:href="#icon-quote"/></svg></div>
+              <button class="accordion-toggle"><span class="text">Quote</span> <span class="expand-contract"></span></button>
+              <div class="accordion-content -inner">
+                <blockquote class="aside-blockquote">
+                  <p {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].asideQuote, block.asideQuote, true) }}>“{{ block.asideQuote }}”</p>
+                  {% if block.asideQuoteAttribution %}
+                    <cite {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].asideQuoteAttribution, block.asideQuoteAttribution, true) }}>{{ block.asideQuoteAttribution }}</cite>
+                  {% endif %}
+                </blockquote>
+                {% set urlLength = entry.url|length %}
+                {% set tweetAttr = block.asideQuoteAttribution ? ' — ' ~ block.asideQuoteAttribution : '' %}
+                {% set tweetText = '“' ~ block.asideQuote ~ '”' ~ tweetAttr %}
+                <p class="share"><a href="http://twitter.com/share?url=http://{{ entry.url }}&amp;text={{ tweetText|length > 262 - urlLength ? tweetText|slice(0, 262 - urlLength) ~ '...' : tweetText }} via @ednavigate" target="_blank">Share<svg class="icon icon-twitter" aria-hidden="true" role="presentation"><use xlink:href="#icon-twitter"/></svg></a></p>
+              </div>
+            </aside>
+          {# Aside Stat #}
+          {% elseif block.asideStatFigure %}
+            <aside class="content-aside stat-aside accordion active-lg">
+              <div class="aside-tag"><svg class="icon-stat" aria-hidden="true" role="presentation"><use xlink:href="#icon-stat"/></svg></div>
+              <button class="accordion-toggle"><span class="text">Stat</span> <span class="expand-contract"></span></button>
+              <div class="accordion-content -inner">
+                <dl class="stat">
+                  <dd class="figure">{{ block.asideStatFigure }}</dd>
+                  {% if block.asideStatAttribution %}
+                    <dt {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].asideStatAttribution, block.asideStatAttribution, true) }}>{{ block.asideStatAttribution }}</dt>
+                  {% endif %}
+                </dl>
+              </div>
+            </aside>
+          {% endif %}
+        </div>
+
+      {% case 'pullquote' %}
+        {% if block.quote %}
+          <div class="content-block pullquote-content-block">
+            <div class="-inner">
+              <blockquote>
+                <p {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].quote, block.quote, true) }}>“{{ block.quote }}”</p>
+                {% if block.attribution %}
+                  <cite {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].attribution, block.attribution, true) }}>—{{ block.attribution }}</cite>
+                {% endif %}
+              </blockquote>
+            </div>
+          </div>
+        {% endif %}
+
+      {% case 'statBlock' %}
+        {% if block.statFigure %}
+          <div class="content-block stat-content-block">
+            <div class="-inner">
+              <dl class="stat">
+                <dd class="figure">{{ block.statFigure }}</dd>
+                {% if block.statDescription %}
+                  <dt {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].statDescription, block.statDescription, true) }}>{{ block.statDescription }}</dt>
+                {% endif %}
+              </dl>
+            </div>
+          </div>
+        {% endif %}
+
+      {% case 'imageBlock' %}
+        <div class="content-block image-content-block{{ block.expanded == 'on' ? ' -expanded' : '' }}">
+          <div class="-inner">
+            {% for image in block.images.all() %}
+              {% set imageIndex = loop.index - 1 %}
+              <figure>
+                {% if image.displayTitle %}
+                  <h5 class="figure-title {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].images[imageIndex].displayTitle, image.displayTitle) }}">{{ image.displayTitle }}</h5>
+                {% endif %}
+                <img src="{{ image.getUrl('postImage') }}" alt="{{ image.title }}">
+                {% if image.caption %}
+                  <figcaption {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].images[imageIndex].caption, image.caption, true) }}>{{ image.caption }}</figcaption>
+                {% endif %}
+              </figure>
+            {% endfor %}
+          </div>
+        </div>
+
+      {% case 'imageCarousel' %}
+        <div class="content-block image-carousel-block{{ block.expanded == 'on' ? ' -expanded' : '' }}">
+          <div class="-inner">
+            <div class="content-block-carousel">
+              {% for image in block.images.all() %}
+                {% set imageIndex = loop.index - 1 %}
+                <figure>
+                  <img src="{{ image.getUrl('postCarousel') }}" alt="{{ image.title }}">
+                  {% if image.caption %}
+                    <figcaption {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].images[imageIndex].caption, image.caption, true) }}>{{ image.caption }}</figcaption>
+                  {% endif %}
+                </figure>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+      {% case 'video' %}
+        {% set embeddedAsset = craft.embeddedAssets.get(block.embed.one()) %}
+        <div class="content-block video-embed-block{{ block.expanded == 'on' ? ' -expanded' : '' }}">
+          <div class="-inner">
+            <div class="content-block-video" style="padding-bottom:{{ embeddedAsset.aspectRatio }}%;">
+              {{ embeddedAsset ? embeddedAsset.html }}
+            </div>
+          </div>
+        </div>
+
+      {% case 'horizontalRule' %}
+        <div class="content-block">
+          <div class="-inner">
+            <hr>
+          </div>
+        </div>
+
+      {% case 'resourceDownload' %}
+        <div class="content-block resource-downloads">
+          <div class="resource-download{{ block.resourceThumbnail|length ? ' has-thumb' : '' }}">
+            {% if block.resourceThumbnail|length %}
+              <a class="download-thumb" href="{{ block.resourceFile.one().getUrl() }}">
+                <img src="{{ block.resourceThumbnail.one().getUrl('thumbnail') }}" alt="{{ block.resourceTitle }}">
+              </a>
+            {% endif %}
+            <div class="resource-info">
+              <h3><a href="{{ block.resourceFile.one().getUrl() }}" class="ga-download {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].resourceTitle, block.resourceTitle) }}" target="_blank" data-resourceTitle="{{ block.resourceTitle }}">{{ block.resourceTitle }}</a></h3>
+              {% if block.resourceDescription %}
+                <div {{ notranslate.check(localizedEntry[0].postContentBlocks[blockIndex].resourceDescription, block.resourceDescription, true) }}>
+                  {{ block.resourceDescription }}
+                </div>
+              {% endif %}
+
+              <div class="resource-link">
+                <a href="{{ block.resourceFile.one().getUrl() }}" class="button -big with-icon -blue ga-download" target="_blank" data-resourceTitle="{{ block.resourceTitle }}"><span>Download</span> <svg class="icon" aria-hidden="true" role="presentation"><use xlink:href="#icon-download"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    {% endswitch %}
+  {% endfor %}
+{% endif %}

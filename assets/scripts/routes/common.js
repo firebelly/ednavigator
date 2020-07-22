@@ -1,20 +1,19 @@
+import jQueryBridget from 'jquery-bridget';
+import Masonry from 'masonry-layout';
 import Player from '@vimeo/player';
 import Velocity from 'velocity-animate';
 import Flickity from 'flickity-sync';
+require('flickity-imagesloaded');
 import Inputmask from 'inputmask';
+import ImagesLoaded from 'imagesloaded';
 
 import appState from '../util/appState';
+import scrollBody from '../util/scrollBody';
+import accordions from '../util/accordions';
 
 export default {
   init() {
-    var breakpointIndicatorString,
-        breakpoint_xl,
-        breakpoint_nav,
-        breakpoint_lg,
-        breakpoint_md,
-        breakpoint_sm,
-        breakpoint_xs,
-        resizeTimer,
+    var resizeTimer,
         slideEasing = [0.65, 0, 0.35, 1],
         $document,
         $body,
@@ -24,6 +23,10 @@ export default {
         overlayTimer,
         loadingTimer,
         transitionElements;
+
+    // jQueryify
+    jQueryBridget( 'masonry', Masonry, $ );
+    ImagesLoaded.makeJQueryPlugin($);
 
     // Cache some common DOM queries
     $document = $(document);
@@ -42,21 +45,27 @@ export default {
     transitionElements = [$siteNav];
 
     // Init functions
+    if ($('.accordion').length) {
+      accordions.init();
+    }
+
     _initActiveToggle();
     _injectSvgIcons();
     _initMarkupTreatment();
     _initSiteNav();
-    _initBannerVideo();
+    _initVideoModal();
     _initCarousels();
+    _initMasonry();
     _initLoadMore();
-    _initShareLinks();
     _initVideoPlayers();
     _initNewsletterForm();
     _initFormFunctions();
     _snapScrolling();
-    _initBlogFilter();
+    _initFilters();
     _initGAEventTracking();
-    _initStripeCheckout();
+    if ($('form#stripe-checkout').length) {
+      _initStripeCheckout();
+    }
 
     // Esc handlers
     $(document).keyup(function(e) {
@@ -69,16 +78,8 @@ export default {
     $('a.smoothscroll').click(function(e) {
       e.preventDefault();
       var href = $(this).attr('href');
-      _scrollBody($(href));
+      scrollBody($(href));
     });
-
-    function _scrollBody(element, duration, delay, offset) {
-      element.velocity("scroll", {
-        duration: duration,
-        delay: delay,
-        offset: -offset
-      }, "easeOutSine");
-    }
 
     function _initActiveToggle() {
       $(document).on('click', '[data-active-toggle]', function(e) {
@@ -165,11 +166,11 @@ export default {
 
     function _initMarkupTreatment() {
       // Inject a span for user-content h2
-      $('body.single-post .entry-content h3').each(function() {
-        var headlineText = $(this).text();
-        $(this).empty();
-        $(this).append('<span>' + headlineText + '</span');
-      });
+      // $('body.single-post .entry-content h3').each(function() {
+      //   var headlineText = $(this).text();
+      //   $(this).empty();
+      //   $(this).append('<span>' + headlineText + '</span');
+      // });
     }
 
     function _initSiteNav() {
@@ -188,7 +189,7 @@ export default {
       $siteNav.find('.has-children').append('<button class="subnav-toggle" aria-hidden="true" data-active-toggle></button>');
 
       $siteNav.on('click', '.has-children > .subnav-toggle', function(e) {
-        if (!breakpoint_nav) {
+        if (!appState.breakpoints.nav) {
           e.preventDefault();
           var $childNav = $(this).closest('.has-children').find('.subnav');
 
@@ -230,65 +231,63 @@ export default {
       $('.menu-toggle').removeClass('-active');
     }
 
-    function _initBannerVideo() {
+    function _initVideoModal() {
       if (!$('.banner-video').length) {
         return;
       }
 
-      var $video = $('#video');
-      var $container = $video.closest('.video-container');
+      var $container = $('#video-modal .video-container');
 
-      var options = {
-          responsive: true
-      };
-
-      if ($video[0].hasAttribute('data-url')) {
-        options['url'] = $video.attr('data-url');
-      } else {
-        options['id'] = $video.attr('data-id');
-      }
-
-      var player = new Player('video', options);
-
-      $('.banner-video-play').on('click', function() {
+      $('.modal-video-play').on('click', function() {
+        var videoUrl = $(this).attr('data-url');
         $container.addClass('playing');
-        _openVideoModal(player);
+        _openVideoModal(videoUrl);
       });
 
       // Open Modal if Video Play triggered
-      player.on('play', function() {
-        if (!$('#video-modal').is('.-active')) {
-          _openVideoModal(false);
-        }
-      })
-
-      // Close Modal when video ends
-      player.on('ended', function() {
-        _closeVideoModal(player);
-      });
+      // player.on('play', function() {
+      //   if (!$('#video-modal').is('.-active')) {
+      //     _openVideoModal(false);
+      //   }
+      // })
 
       // Close Video Modal
       $(document).keyup(function(e) {
         if (e.keyCode === 27) {
           if ($('#video-modal.-active').length) {
-            _closeVideoModal(player);
+            _closeVideoModal();
           }
         }
       });
 
       $(document).on('click', '.video-modal-close', function() {
-        _closeVideoModal(player);
+        _closeVideoModal();
       });
 
       $(document).on('click touchend', 'body.video-modal-open', function(e) {
         var $target = $(e.target);
         if (!$target.is('.video-container') && !$target.parents('.video-container').length) {
-          _closeVideoModal(player);
+          _closeVideoModal();
         }
       });
     }
 
-    function _openVideoModal(player) {
+    function _openVideoModal(videoUrl) {
+      if (!$('#video-modal').length) {
+        $body.append('<div id="video-modal"><div class="video-container"><button class="video-modal-close"><span class="sr-only">Close Video</span> <svg class="icon-close" aria-hidden="true" role="presentation"><use xlink:href="#icon-close"/></svg></button><div id="video" class="banner-video" data-url="' + videoUrl + '"></div></div></div>');
+      } else {
+        $('#video-modal .video-container').append('<div id="video" class="banner-video" data-url="' + videoUrl + '"></div>');
+      }
+
+      var $video = $('#video-modal #video');
+      var $container = $video.closest('.video-container');
+      var options = {
+          responsive: true,
+          url: videoUrl
+      };
+
+      var player = new Player('video', options);
+
       _showSiteOverlay();
       $('#video-modal').velocity(
         { opacity: 1 }, {
@@ -301,12 +300,15 @@ export default {
             }
           }
       });
+
+      // Close Modal when video ends
+      player.on('ended', function() {
+        _closeVideoModal();
+      });
     }
 
-    function _closeVideoModal(player) {
-      if (player.getPaused()) {
-        player.pause();
-      }
+    function _closeVideoModal() {
+      $('#video-modal #video').remove();
       _hideSiteOverlay();
       $('#video-modal').velocity(
         { opacity: 0 }, {
@@ -370,6 +372,39 @@ export default {
         $featuredNewsCarousel.find('button.previous').append('<span>Prev</span>');
         $featuredNewsCarousel.find('button.next').prepend('<span>Next</span>');
       }
+
+      if ($('.featured-post-carousel').length) {
+        var $featuredPostCarousel = $('.featured-post-carousel');
+        Flickity.prototype._createResizeClass = function() {
+          this.element.classList.add('flickity-resize');
+        };
+
+        Flickity.createMethods.push('_createResizeClass');
+
+        var resize = Flickity.prototype.resize;
+        Flickity.prototype.resize = function() {
+          this.element.classList.remove('flickity-resize');
+          resize.call( this );
+          this.element.classList.add('flickity-resize');
+        };
+
+        var featuredPostCarousel = new Flickity('.featured-post-carousel', {
+          cellSelector: 'article',
+          pageDots: false,
+          arrowShape: 'M33.4 47.7l30.8-15.4c2.1-1.1 4.7 1.1 3.6 3.6l-6.4 12.9c-.7.7-.7 1.4-.4 2.1l6.4 13.2c1.1 2.1-1.1 4.7-3.6 3.6L33 52.3c-1.4-1-1.4-3.9.4-4.6'
+        });
+
+        $featuredPostCarousel.find('button.previous').append('<span>Prev</span>');
+        $featuredPostCarousel.find('button.next').prepend('<span>Next</span>');
+      }
+    }
+
+    function _initMasonry() {
+      $('.masonry').masonry({
+        itemSelector: 'article',
+        columnWidth: '.grid-sizer',
+        percentPosition: true,
+      });
     }
 
     function _initLoadMore() {
@@ -380,57 +415,50 @@ export default {
         var pageLimit = $loadmore.attr('data-total-pages');
 
         $loadmore.on('click', function(e) {
-          var page = $(this).attr('data-page'),
-              collection = $(this).attr('data-collection');
           e.preventDefault();
+          var loadMoreUrl,
+              page = $(this).attr('data-page'),
+              collection = $(this).attr('data-collection'),
+              params = $(this).attr('data-params');
+
+          if (params !== '') {
+            loadMoreUrl = '/'+collection+'/all/p'+page+'?'+params;
+          } else {
+            loadMoreUrl = "/"+collection+"/all/p"+page;
+          }
 
           $loadmoreSection.append('<div class="loading"><svg class="ednavigator-mark" role="img"><use xlink:href="#ednavigator-mark" /></svg></div>');
           $loadmore.addClass('hidden');
 
-          $.get( "/"+collection+"/p"+page, function(data) {
+          $.ajax({
+              url: loadMoreUrl,
+              type: 'GET',
+              success: function(data) {
+                var $data = $(data);
+                $('.post-grid').append($data);
+                $('.post-grid').masonry('appended', $data, true)
 
-            $( ".article-list" ).append(data);
+                page++;
 
-            page++;
+                $loadmore.attr('data-page', page);
+                _injectSvgIcons();
+                _initVideoPlayers();
 
-            $loadmore.attr('data-page', page);
-            _injectSvgIcons();
-            _initVideoPlayers();
+                $loadmore.removeClass('hidden');
+                $('.loading').remove();
 
-            $loadmore.removeClass('hidden');
-            $('.loading').remove();
-
-            if (page > pageLimit) {
-              $loadmoreSection.addClass('hidden');
-            }
+                if (page > pageLimit) {
+                  $loadmoreSection.addClass('hidden');
+                }
+              },
+              error: function(data) {
+                console.log(data.responseText);
+              }
           });
 
         });
       }
 
-    }
-
-    function _initShareLinks() {
-      $.fn.sharePopup = function (e, intWidth, intHeight, blnResize) {
-        // Prevent default anchor event
-        e.preventDefault();
-
-        // Set values for window
-        intWidth = intWidth || '500';
-        intHeight = intHeight || '400';
-        strResize = (blnResize ? 'yes' : 'no');
-        var left = (screen.width/2)-(intWidth/2);
-        var top = (screen.height/2)-(intHeight/2);
-
-        // Set title and open popup with focus on it
-        var strTitle = ((typeof this.attr('title') !== 'undefined') ? this.attr('title') : 'Social Share'),
-        strParam = 'width=' + intWidth + ',height=' + intHeight + ',resizable=' + strResize + ',left=' + left + ',top=' + top,
-        objWindow = window.open(this.attr('href'), strTitle, strParam).focus();
-      }
-
-      $('a.share').on("click", function(e) {
-        $(this).sharePopup(e);
-      });
     }
 
     function _initVideoPlayers() {
@@ -483,7 +511,7 @@ export default {
       $('.subscribe-link').on('click', function(e) {
         e.preventDefault();
 
-        _scrollBody($('.newsletter-form'));
+        scrollBody($('.newsletter-form'));
         setTimeout(function() {
           $('.newsletter-form input').first().focus();
         }, 0);
@@ -551,17 +579,24 @@ export default {
             }
             $(this).find('.section-advance').on('click', function(e) {
               e.preventDefault();
-              _scrollBody($(this).closest('.snap-section').next('.snap-section'), 350, 0, $('.site-header').outerHeight());
+              scrollBody($(this).closest('.snap-section').next('.snap-section'), 350, 0, $('.site-header').outerHeight());
             });
           }
         });
       }
     }
 
-    function _initBlogFilter() {
+    function _initFilters() {
       $document.on('change', '.filter select', function(e) {
         window.location.href = this.value;
       });
+
+      // if ($body.is('.resources-browse') || $body.is('.ideas-browse')) {
+      //   var url = window.location.href;
+      //   if (url.indexOf('?') != -1) {
+      //     window.scrollTo(0, $('#filters').offset().top - $siteHeader.outerHeight());
+      //   }
+      // }
     }
 
     function _initGAEventTracking() {
@@ -650,27 +685,14 @@ export default {
 
     // Called in quick succession as window is resized
     function _resize() {
-      // Check breakpoint indicator in DOM ( :after { content } is controlled by CSS media queries )
-      breakpointIndicatorString = window.getComputedStyle(
-        document.querySelector('#breakpoint-indicator'), ':after'
-      ).getPropertyValue('content')
-      .replace(/['"]+/g, '');
-
-      // Determine current breakpoint
-      breakpoint_xl = breakpointIndicatorString === 'xl';
-      breakpoint_nav = breakpointIndicatorString === 'nav' || breakpoint_xl;
-      breakpoint_lg = breakpointIndicatorString === 'lg' || breakpoint_nav;
-      breakpoint_md = breakpointIndicatorString === 'md' || breakpoint_lg;
-      breakpoint_sm = breakpointIndicatorString === 'sm' || breakpoint_md;
-      breakpoint_xs = breakpointIndicatorString === 'xs' || breakpoint_sm;
 
       // Close Nav
-      if ($siteNav.is('.-active') && breakpoint_nav) {
+      if ($siteNav.is('.-active') && appState.breakpoints.nav) {
         _closeSiteNav();
       }
 
       // Reset inline styles for navigation for medium breakpoint
-      if (breakpoint_nav) {
+      if (appState.breakpoints.nav) {
         $('.site-nav .-active, .menu-toggle').removeClass('-active');
         $('.site-nav .subnav[style]').attr('style', '');
       }

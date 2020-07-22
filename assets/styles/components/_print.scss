@@ -1,0 +1,49 @@
+// Print Styles!
+
+@media print {
+  // Hide Stuff
+  .sr-only,
+  .site-footer,
+  .related-posts,
+  .flickity-button,
+  body.single-post .entry-content .sidebar-column,
+  .entry-nav,
+  body.single-post .entry-header .header-sidebar,
+  body.single-post .entry-header .featured-image,
+  .share-section {
+    display: none!important;
+  }
+
+  // Header
+  .site-header {
+    position: absolute;
+  }
+
+  // Single Post adjustments
+  body.single-post {
+    .entry {
+      .entry-meta {
+        @include clearfix;
+
+        [class*='col-'] {
+          margin-top: 0;
+          float: left;
+
+          + [class*='col-'] {
+            margin-left: 30px;
+          }
+        }
+
+        .age-groups {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  .entry-content {
+    .content-aside {
+      display: none;
+    }
+  }
+}

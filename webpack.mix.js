@@ -15,7 +15,7 @@ mix
   // });
 
 // Browsersync
-mix.browserSync('ednavigator-3.localhost');
+mix.browserSync('ednavigator.localhost');
 
 // Styles
 mix.sass(src`styles/main.scss`, 'styles');

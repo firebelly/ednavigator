@@ -1,0 +1,7 @@
+{% if entry.type == 'newsAndPress' %}
+  {% include 'posts/_basic.html' %}
+{% elseif entry.type == 'publication' %}
+  {% include 'posts/_publication' %}
+{% else %}
+  {% include 'posts/_basic.html' %}
+{% endif %}

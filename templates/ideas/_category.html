@@ -4,7 +4,7 @@
 {% set params = { limit: limit, relatedTo: category } %}
 
 {% set title = "Blog" %}
-{% set bodyClass = 'page page-blog page-category' %}
+{% set bodyClass = 'page page-ideas page-category' %}
 
 {% block content %}
 
@@ -14,10 +14,10 @@
         {{ 'category' | t | capitalize }}:<br> {{ category.title }}
       </h1>
 
-      {% include "blog/_subscribe" %}
+      {% include "ideas/_subscribe" %}
     </div>
 
-    {% include "blog/_filter" %}
+    {% include "ideas/_filter" %}
 
   </section>
 
@@ -26,7 +26,7 @@
   <div class="article-list">
 
     {% for article in articles.all() %}
-      {% include "blog/_article" %}
+      {% include "ideas/_article" %}
     {% endfor %}
 
   </div>

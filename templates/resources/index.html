@@ -4,47 +4,73 @@
 {% set params = { section: 'resourcesEntries', limit: limit} %}
 
 {% set title = "Resources" %}
-{% set bodyClass = 'page page-' ~ entry.slug %}
+{% set bodyClass = 'page post-landing-page page-' ~ entry.slug %}
+
+{% set resourcesEntries = craft.entries.section('resourcesEntries').all() %}
+{% set ageGroups = craft.categories.group('ageGroups').relatedTo(resourcesEntries) %}
 
 {% block content %}
 
-  {% if not craft.app.request.isAjax %}
+  {% include 'partials/_banner-page-header.html' %}
 
-    <section class="intro-section with-headline">
-      <div class="page-headline">
-        <h2>
-          {% if craft.app.language != "en-US" and entry.pageHeadline is empty %}
-            {% set enDescription = craft.entries.id(entry.id).site("en_us").one().pageHeadline %}
-            {{ enDescription }}
-          {% else %}
-            {{ entry.pageHeadline }}
-          {% endif %}
-        </h2>
-      </div>
-    </section>
-
-    {% include "resources/_tools-and-bundles" %}
-
-    {% include "resources/_filter" %}
-
-
+  {% if ageGroups|length %}
+    <div class="browse-by-age section">
+      <h3><span>Browse Resources by Age</span></h3>
+      <ul class="age-groups grid spaced">
+        {% for ageGroup in ageGroups.all() %}
+          <li class="col-1-3">
+            <h4>{{ ageGroup.title }}</h4>
+            <p>Ages {{ ageGroup.ageRange }}</p>
+            <p class="cta"><a href="{{ craft.app.request.absoluteUrl ~ '/all?age=' ~ageGroup.slug }}" class="inline-link borderless">See more</a></p>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
   {% endif %}
 
-  {% paginate craft.entries(params) as pageInfo, articles %}
+  <div class="search-section section">
+    <h3 class="section-title">Search all resources</h3>
+    <div class="grid">
+      <div class="col-1-2">
+        {% if craft.app.language == "en-US" %}
+          {% set actionUrl = url('resources/search') %}
+        {% elseif craft.app.language == "es-US" %}
+          {% set actionUrl = url('recursos/buscar') %}
+        {% endif %}
+        {% include 'partials/_search.html' with {'actionUrl': actionUrl, 'placeholder': 'Enter Keyword(s)' } %}
+      </div>
+    </div>
+  </div>
 
-    {% if not craft.app.request.isAjax %}
-    <div class="article-list">
+  <div class="section posts-section background-gray-three">
+
+    {% set featuredResource = entry.featuredResourcePost.one() %}
+    {% if featuredResource %}
+      <div class="featured-post-section">
+        <h3><span>Featured Resource</span></h3>
+        {% include 'posts/_post-article.html' with { 'post': featuredResource, 'featured': true, 'postClass': '-large' } %}
+      </div>
     {% endif %}
 
-      {% for article in articles %}
-        {% include "resources/_article" %}
-      {% endfor %}
-
-    {% if not craft.app.request.isAjax and articles|length >= limit %}
-      </div>
-      <div class="load-more-section">
-        <button id="load-more" class="load-more" data-collection="resources" data-page="{{ pageInfo.currentPage + 1 }}" data-total-pages="{{ pageInfo.totalPages }}">Load More<span class="icon"><svg class="icon-arrow" role="img"><use xlink:href="#icon-arrow" /></span></button>
+    {% set recentPosts = craft.entries.section('resourcesEntries').limit(3) %}
+    {% if recentPosts|length %}
+      <h3><span>Recently Added</span></h3>
+      <div class="post-grid grid spaced -small">
+        {% for post in recentPosts.all() %}
+          {% include 'posts/_post-article.html' with { 'post': post, 'postClass': 'col-1-3' } %}
+        {% endfor %}
       </div>
     {% endif %}
+
+    {# set link to browse all depending on current site language #}
+    {% if craft.app.language == 'en-US' %}
+      {% set browseLink = '/resources/all' %}
+    {% elseif craft.app.language == 'es-US' %}
+      {% set browseLink = '/es/recursos/todo' %}
+    {% endif %}
+
+    <p class="section-cta align-center"><a href="{{ browseLink }}" class="inline-link"><span>Browse all resources</span></a></p>
+
+  </div>
 
 {% endblock %}

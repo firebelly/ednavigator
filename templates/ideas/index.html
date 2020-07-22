@@ -1,0 +1,109 @@
+{% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% set limit = 9 %}
+{% set params = { section: 'ideasEntries', limit: limit} %}
+
+{% set title = "Ideas" %}
+{% set bodyClass = 'page post-landing-page page-' ~ entry.slug %}
+
+{% set ideasEntries = craft.entries.section('ideasEntries').all() %}
+
+{# set link to browse all depending on current site language #}
+{% if craft.app.language == 'en-US' %}
+  {% set browseLink = '/ideas/all' %}
+{% elseif craft.app.language == 'es-US' %}
+  {% set browseLink = '/es/ideas/todo' %}
+{% endif %}
+
+{% block content %}
+
+  {% include 'partials/_banner-page-header.html' %}
+
+  <div class="section posts-section background-yellow">
+
+    {% set featuredPost = entry.featuredIdeasPost.one() %}
+    {% set featuredPostId = entry.featuredIdeasPost.one().id %}
+    {% if featuredPost %}
+      {% set args = { 'post': featuredPost, 'featured': true } %}
+      {% if featuredPost.type == 'publication' %}
+        {% set args = args|merge({ 'publication': true, 'postClass': '-large' }) %}
+      {% endif %}
+      <div class="featured-post-section">
+        <h3><span>Featured</span></h3>
+        {% include 'posts/_post-article.html' with args %}
+      </div>
+    {% endif %}
+
+    {% set recentPosts = craft.entries.section('ideasEntries').type('publication').id('not ' ~ featuredPostId).limit(3) %}
+    {% if recentPosts|length %}
+      <h3><span>Recent Publications</span></h3>
+      <div class="post-grid grid spaced -small">
+        {% for post in recentPosts.all() %}
+          {% set args = { 'post': post, 'postClass': 'col-1-3' } %}
+          {% if post.featuredPost %}
+            {% set args = args|merge({ 'featured': true }) %}
+          {% endif %}
+          {% if post.type == 'publication' %}
+            {% set args = args|merge({ 'publication': true }) %}
+          {% endif %}
+          {% include 'posts/_post-article.html' with args %}
+        {% endfor %}
+      </div>
+
+      <p class="section-cta align-center"><a href="{{ browseLink }}?type=publication" class="inline-link"><span>Browse all Publications</span></a></p>
+    {% endif %}
+
+  </div>
+
+  <div class="section blog-posts">
+    <div class="recent-posts background-gray-four">
+      <h3>Recent Blog Posts</h3>
+      {% set recentPosts = craft.entries.section('ideasEntries').type('blogPost').limit(6) %}
+      {% if recentPosts|length %}
+        {% for post in recentPosts.all() %}
+          <article class="updates-post">
+            <h4 class="post-title">{{ post.title }}</h4>
+            <div class="post-meta">
+              <p class="post-date"><svg class="icon icon-calendar" aria-hidden="true" role="presentation"><use xlink:href="#icon-calendar"/></svg> {{ post.postDate.format('M d, Y') }}</p>
+              {% if post.ideasCategory|length %}
+                <div class="post-categories">
+                  <ul>
+                    <svg class="icon icon-tag" aria-hidden="true" role="presentation"><use xlink:href="#icon-tag"/></svg>
+                    {% for category in post.ideasCategory.all() %}
+                      <li><a href="{{ category.url }}">{{ category.title }}</a>{{ loop.index < post.ideasCategory.all()|length ? ', ' : '' }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+            </div>
+            <p class="cta"><a href="{{ post.url }}" class="inline-link borderless"><span>Read More</span></a></p>
+          </article>
+        {% endfor %}
+
+        {% if recentPosts|length > 6 %}
+          <p class="cta"><a href="{{ browseLink }}?type=blog-post" class="inline-link"><span>All Blog Posts</span></a></p>
+        {% endif %}
+      {% endif %}
+    </div>
+
+    <div class="in-the-news background-white">
+      <h3>EdNav In The News</h3>
+      {% set inTheNews = craft.entries.section('ideasEntries').type('inTheNews').all() %}
+      {% if inTheNews|length %}
+        {% for post in inTheNews %}
+          <article class="in-the-news-post">
+            {% if post.newsOutletLogo %}
+              {% set transformedImage = craft.imager.transformImage(post.newsOutletLogo.one(), { height: 150, effects: { modulate: [100, 0, 100], colorize: '#cccccc' } }) %}
+              <img src="{{ transformedImage.getUrl() }}" alt="{{ post.newsOutletName }}" class="outlet-logo">
+            {% endif %}
+            <h4 class="post-title">{{ post.title }}</h4>
+            <p class="cta"><a href="{{ post.articleUrl }}">Read on {{ post.newsOutletName }} <svg aria-hidden="true" role="presentation"><use xlink:href="#icon-linkout"/></svg></a></p>
+          </article>
+        {% endfor %}
+      {% else %}
+
+      {% endif %}
+    </div>
+  </div>
+
+{% endblock %}

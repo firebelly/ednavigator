@@ -56,14 +56,23 @@
     }
   }
 
-  @include media-md {
-    padding: #{$global-spacing * 2};
-  }
-
   @include media-lg {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: #{$global-spacing * 4};
+
+    .block-title {
+      margin-bottom: $global-spacing * 2;
+    }
+
+    .block-cta {
+      margin: #{$global-spacing * 2} 0 0;
+    }
+
+    .inline-links-container {
+      margin-top: $global-spacing * 2;
+    }
   }
 }
 

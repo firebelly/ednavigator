@@ -19,6 +19,8 @@
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
     # Custom redirects
+    RewriteRule ^blog/?$ /ideas [R=301,L]
+    RewriteRule ^blog/(.*)$ /ideas/$1 [R=301,L]
     RewriteRule ^covid19 /resources/bundle/covid-19 [R=301,L]
     RewriteRule ^family-resources/?$ /resources [R=301,L]
     RewriteRule ^family-resources/(.*)$ /resources/$1 [R=301,L]

@@ -134,15 +134,19 @@ body.home {
 
   // What We Do Section
   .what-we-do {
+    .section-headline {
+      margin-bottom: 0;
+    }
+
     .award-showcase {
       display: flex;
-      margin-top: $global-spacing;
+      margin-top: $global-spacing * 2;
 
       img {
         max-width: 100px;
         vertical-align: top;
         display: inline-block;
-        margin-right: $global-spacing;
+        margin-right: $global-spacing * 2;
       }
 
       .award-text {
@@ -162,15 +166,32 @@ body.home {
     .block {
       background-color: $blue;
     }
+
+    // Optional Video
+    .image-block {
+      &.with-video {
+        &::before {
+          display: none;
+        }
+      }
+
+      .play {
+        top: 50%;
+        left: 50%;
+        z-index: 1;
+        position: absolute;
+        transform: translate(-50%, -50%);
+      }
+    }
   }
 
   .stats-section {
     .stat {
       text-align: center;
-      padding: $global-spacing;
       background-color: $offwhite;
+      padding: $global-spacing * 2;
       @include media-lg {
-        padding: $global-spacing * 2;
+        padding: $global-spacing * 4;
 
         &:first-of-type {
           border-right: 1px solid $white;
@@ -204,7 +225,7 @@ body.home {
 
       &.offset-bottom {
         @include media-lg {
-          padding-top: $global-spacing * 4;
+          padding-top: $global-spacing * 8;
         }
       }
 
@@ -242,9 +263,9 @@ body.home {
   // Partners Section
   .partners-section {
     background-color: $offwhite;
-    padding: $global-spacing $global-spacing #{($global-spacing * 2) - 20px};
+    padding: $global-spacing $global-spacing #{($global-spacing * 4) - 20px};
     @include media-lg {
-      padding: $global-spacing * 2;
+      padding: $global-spacing * 4;
     }
 
     .partners {
