@@ -34,8 +34,12 @@
         width: 5px;
         height: 5px;
         content: '';
-        left: -22px;
+        left: -14px;
         background: url('../svgs/icon-arrow.svg');
+
+        @include media-lg {
+          left: -22px;
+        }
       }
     }
   }

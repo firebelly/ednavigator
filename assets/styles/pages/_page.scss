@@ -114,19 +114,12 @@ body.page {
       }
     }
 
-    @include media-md {
-      .banner-content {
-        padding: $global-spacing * 4;
-      }
-    }
-
     @include media-lg {
       display: flex;
       min-height: 600px;
       position: relative;
       align-items: flex-end;
       background-color: $white;
-      margin-top: $header-height;
 
       .banner-image {
         top: 0;
@@ -141,10 +134,14 @@ body.page {
       .banner-content {
         z-index: 1;
         max-width: 50%;
-        padding-bottom: 0;
         margin-top: 300px;
         position: relative;
+        padding: #{$global-spacing * 4} #{$global-spacing * 4} 0;
       }
+    }
+
+    @include media-nav {
+      margin-top: $header-height;
     }
   }
 
