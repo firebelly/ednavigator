@@ -1,4 +1,10 @@
 {% if relatedEntries|length %}
+  {% if craft.app.language == 'en-US' %}
+    {% set browsePath = '/all' %}
+  {% elseif craft.app.language == 'es-US' %}
+    {% set browsePath = '/todo' %}
+  {% endif %}
+
   <div class="related-posts">
     <h4>Related Posts</h4>
     <div class="related-posts-carousel">
@@ -14,7 +20,12 @@
           <ul class="topics">
             <svg class="icon" aria-hidden="true" role="presentation"><use xlink:href="#icon-tag"/></svg>
             {% for topic in relatedEntryTopics.all() %}
-              <li><a href="{{ topic.url }}">{{ topic.title }}{{ loop.index < relatedEntryTopics.all()|length ? ', ' : '' }}</a></li>
+              {% if entry.section.handle == 'resourcesEntries' %}
+                {% set topicUrl = topic.url %}
+              {% else %}
+                {% set topicUrl = url('ideas' ~ browsePath ~ '?tag=' ~ topic.slug) %}
+              {% endif %}
+              <li><a href="{{ topicUrl }}">{{ topic.title }}{{ loop.index < relatedEntryTopics.all()|length ? ', ' : '' }}</a></li>
             {% endfor %}
           </ul>
         </article>
