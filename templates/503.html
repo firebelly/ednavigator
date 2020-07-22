@@ -1,6 +1,6 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 
-{% set title = "500: Undergoing Maintenance" %}
+{% set title = "503: Undergoing Maintenance" %}
 {% set bodyClass = 'page page-blog four-oh-four' %}
 
 {% block content %}
@@ -8,7 +8,7 @@
 <section class="intro-section with-headline">
   <div class="grid">
     <h1 class="page-description">
-      500: We're Currently Undergoing Maintenance. Please check back soon.
+      503: We're Currently Undergoing Maintenance. Please check back soon.
     </h1>
   </div>
 </section>
