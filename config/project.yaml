@@ -143,7 +143,7 @@ categoryGroups:
     structure:
       maxLevels: 1
       uid: 57a02549-a05b-4d1d-8988-0230f4825164
-dateModified: 1595362201
+dateModified: 1596041439
 email:
   fromEmail: admin@ednavigator.com
   fromName: EdNavigator
@@ -2686,7 +2686,7 @@ matrixBlockTypes:
           multiline: ''
           placeholder: ''
         translationKeyFormat: null
-        translationMethod: site
+        translationMethod: language
         type: craft\fields\PlainText
     handle: sectionHeading
     name: 'Section Heading'
@@ -4052,7 +4052,7 @@ matrixBlockTypes:
           multiline: '1'
           placeholder: ''
         translationKeyFormat: null
-        translationMethod: site
+        translationMethod: language
         type: craft\fields\PlainText
       402c2930-986e-4a1a-b2bf-502a8ec87982:
         contentColumnType: text
@@ -4075,7 +4075,7 @@ matrixBlockTypes:
           showUnpermittedFiles: false
           showUnpermittedVolumes: false
         translationKeyFormat: null
-        translationMethod: site
+        translationMethod: language
         type: craft\redactor\Field
       47f876c0-8679-4a55-b682-09d644b4f863:
         contentColumnType: string
@@ -4128,7 +4128,7 @@ matrixBlockTypes:
           showUnpermittedFiles: false
           showUnpermittedVolumes: false
         translationKeyFormat: null
-        translationMethod: site
+        translationMethod: language
         type: craft\redactor\Field
       976ed0f5-599b-4923-8e33-e4ebbdc72eb8:
         contentColumnType: text
@@ -4164,7 +4164,7 @@ matrixBlockTypes:
           multiline: ''
           placeholder: ''
         translationKeyFormat: null
-        translationMethod: site
+        translationMethod: language
         type: craft\fields\PlainText
       dd246ef6-dbb5-4f96-9c8e-e766a6fd1974:
         contentColumnType: text
