@@ -143,7 +143,7 @@ categoryGroups:
     structure:
       maxLevels: 1
       uid: 57a02549-a05b-4d1d-8988-0230f4825164
-dateModified: 1598305378
+dateModified: 1598366459
 email:
   fromEmail: support@ednavigator.com
   fromName: EdNavigator
@@ -151,12 +151,12 @@ email:
   template: ''
   transportSettings:
     encryptionMethod: tls
-    host: smtp.office365.com
-    password: N@vig8te
+    host: $SMTP_HOST
+    password: $SMTP_PASSWORD
     port: '587'
     timeout: '30'
     useAuthentication: '1'
-    username: support@ednavigator.com
+    username: $SMTP_USER
   transportType: craft\mail\transportadapters\Smtp
 fieldGroups:
   0200d286-aa37-4a58-9853-7f8a1aeb6cc3:
