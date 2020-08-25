@@ -1,0 +1,65 @@
+field: 5caf08d9-f15c-4580-a38d-e3b1c796dac5
+fieldLayouts:
+  73756028-4d9f-479e-9ac3-a2dcf4c7d2a2:
+    tabs:
+      -
+        fields:
+          172e5810-6bfe-4794-a1d9-434cc7bd653a:
+            required: false
+            sortOrder: 2
+          b02fe813-e0c3-4c18-a65d-d9510fd850a4:
+            required: false
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  172e5810-6bfe-4794-a1d9-434cc7bd653a:
+    contentColumnType: text
+    fieldGroup: null
+    handle: awardText
+    instructions: 'Brief text explaining award, ideally with some text linking to a post or external article.'
+    name: 'Award Text'
+    searchable: false
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: ''
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\redactor\Field
+  b02fe813-e0c3-4c18-a65d-d9510fd850a4:
+    contentColumnType: string
+    fieldGroup: null
+    handle: awardImage
+    instructions: 'Image to be displayed with Award.'
+    name: 'Award Image'
+    searchable: false
+    settings:
+      allowedKinds: null
+      defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: ''
+      selectionLabel: 'Choose an image'
+      singleUploadLocationSource: 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
+      singleUploadLocationSubpath: '{owner.slug}'
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: '1'
+      validateRelatedElements: ''
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+handle: award
+name: Award
+sortOrder: 1

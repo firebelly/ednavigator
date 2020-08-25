@@ -1,0 +1,9 @@
+handle: careers
+hasUrls: true
+name: Careers
+settings:
+  path: uploads/careers/
+  url: /uploads/careers/
+sortOrder: 10
+type: craft\volumes\Local
+url: null

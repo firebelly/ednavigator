@@ -1,0 +1,21 @@
+contentColumnType: string
+fieldGroup: 0200d286-aa37-4a58-9853-7f8a1aeb6cc3
+handle: ageGroups
+instructions: ''
+name: 'Age Groups'
+searchable: true
+settings:
+  allowLimit: false
+  allowMultipleSources: false
+  branchLimit: ''
+  limit: null
+  localizeRelations: ''
+  selectionLabel: 'Add an age group'
+  source: 'group:3caf2470-30cc-44f1-8cbf-bcaae081988e'
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: ''
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Categories

@@ -1,0 +1,93 @@
+field: 18134add-de35-4220-b22a-063bfdfdc08f
+fieldLayouts:
+  a4dea5a4-fbc6-4f8a-9b74-e1aad8c2d6df:
+    tabs:
+      -
+        fields:
+          08c14434-c121-4010-a36c-5f89e2d3bc27:
+            required: false
+            sortOrder: 2
+          33d706e9-3ec6-4463-b2e5-02af632da492:
+            required: false
+            sortOrder: 3
+          6db45d10-8fc0-4ba7-83e3-7f21d47762c5:
+            required: true
+            sortOrder: 1
+          f54dec5e-74bd-4fef-8754-d5b0a8019559:
+            required: false
+            sortOrder: 4
+        name: Content
+        sortOrder: 1
+fields:
+  08c14434-c121-4010-a36c-5f89e2d3bc27:
+    contentColumnType: string
+    fieldGroup: null
+    handle: linkLocation
+    instructions: 'The location the link will go to. If linking to an external source, leave this field blank and continue to the External Link field.'
+    name: 'Link Location'
+    searchable: true
+    settings:
+      limit: '1'
+      localizeRelations: false
+      selectionLabel: 'Select an entry'
+      sources: '*'
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Entries
+  33d706e9-3ec6-4463-b2e5-02af632da492:
+    contentColumnType: text
+    fieldGroup: null
+    handle: externalLink
+    instructions: "A link to an external source outside of the site. Include the full url (including \"http://\").\r\nIf linking to a file, leave this field blank and continue on to the File Link field."
+    name: 'External Link'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: 'http://external-link.com'
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  6db45d10-8fc0-4ba7-83e3-7f21d47762c5:
+    contentColumnType: text
+    fieldGroup: null
+    handle: linkLabel
+    instructions: 'The text the visitor will click on'
+    name: 'Link Label'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  f54dec5e-74bd-4fef-8754-d5b0a8019559:
+    contentColumnType: string
+    fieldGroup: null
+    handle: fileLink
+    instructions: 'Link directly to a file.'
+    name: 'File Link'
+    searchable: true
+    settings:
+      defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      restrictFiles: ''
+      selectionLabel: 'Select a file to link to'
+      singleUploadLocationSource: 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
+      singleUploadLocationSubpath: '{slug}/'
+      sources: '*'
+      useSingleFolder: '1'
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Assets
+handle: linkItem
+name: 'Link Item'
+sortOrder: 1

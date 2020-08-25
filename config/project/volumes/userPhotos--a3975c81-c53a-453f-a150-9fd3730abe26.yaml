@@ -1,0 +1,8 @@
+handle: userPhotos
+hasUrls: true
+name: 'User Photos'
+settings:
+  path: uploads/people/users/
+sortOrder: 11
+type: craft\volumes\Local
+url: /uploads/people/users/

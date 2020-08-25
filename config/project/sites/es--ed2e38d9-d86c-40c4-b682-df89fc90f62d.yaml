@@ -1,0 +1,8 @@
+baseUrl: '@web/es/'
+handle: es
+hasUrls: true
+language: es-US
+name: 'EdNavigator (Español)'
+primary: false
+siteGroup: e3e8c6d8-6467-43db-b698-0b9eb5fde950
+sortOrder: 2

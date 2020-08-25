@@ -1,0 +1,61 @@
+fieldLayouts:
+  847e9a92-838c-4c8a-be37-21a115cf1333:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: b0aefac7-6c72-4693-bb5a-2e79c46dd012
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: a85fabb2-a4f6-4f0c-aad1-4fede5a8bc3f
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: a480320b-7e79-4243-b471-7ecba3d54940
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: f68bd23e-cdef-4a93-bc69-d799858a5e37
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: Main
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: 60fb224d-1163-4fda-8ccc-ec5f35830998
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 32044766-4b09-4e5c-a620-b18d4dbe3ffb
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: fe6f2823-99c7-4956-9997-9a5129c325e5
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Landing Page Settings'
+        sortOrder: 2
+      -
+        elements:
+          -
+            fieldUid: 8dd0581c-6902-4a9c-8ddd-e11ce7656351
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 7a978b7f-cab5-448c-88dc-d4e1a9d281cf
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: SEO
+        sortOrder: 3
+handle: people
+hasTitleField: true
+name: People
+section: bbc987b8-a57f-4ea5-9a26-913ec9199524
+sortOrder: 2
+titleFormat: ''

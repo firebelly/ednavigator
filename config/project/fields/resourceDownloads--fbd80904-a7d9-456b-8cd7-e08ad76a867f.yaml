@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: c07eca58-32d2-42c5-9bc5-0149d5f91a25
+handle: resourceDownloads
+instructions: 'Links to downloadable resources'
+name: 'Resource Downloads'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_resourcedownloads}}'
+  maxBlocks: ''
+  minBlocks: ''
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

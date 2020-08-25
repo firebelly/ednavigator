@@ -1,0 +1,266 @@
+field: aec03031-025c-478a-a913-6bbffef82502
+fieldLayouts:
+  a33bf12a-2bcb-4761-8226-eef784fee337:
+    tabs:
+      -
+        fields:
+          0a2892d1-726a-40e2-b156-2beee32c389b:
+            required: false
+            sortOrder: 5
+          1f91c866-ffea-4015-a233-23ba20d4edfc:
+            required: true
+            sortOrder: 8
+          60d8c70b-47f2-41c9-a839-e6bcbc8a41af:
+            required: true
+            sortOrder: 7
+          8aa9a934-b4e1-4c3f-ba28-1ac20ad80a59:
+            required: false
+            sortOrder: 4
+          9f973d75-aa1e-4abc-9f4b-b19738072831:
+            required: true
+            sortOrder: 2
+          b4d95200-bb51-4e6e-888e-dc4ef1ef074b:
+            required: false
+            sortOrder: 6
+          c4404e85-fbdd-458f-a144-0c51a4f598e7:
+            required: true
+            sortOrder: 1
+          fb84fae7-c01f-4200-a154-1ed62dbbc348:
+            required: false
+            sortOrder: 3
+        name: Content
+        sortOrder: 1
+fields:
+  0a2892d1-726a-40e2-b156-2beee32c389b:
+    contentColumnType: string
+    fieldGroup: null
+    handle: internalLink
+    instructions: 'Link to another page or post on the site. If linking to an external source, leave blank and move on to External Link field.'
+    name: 'Internal Link'
+    searchable: true
+    settings:
+      allowSelfRelations: ''
+      limit: '1'
+      localizeRelations: ''
+      selectionLabel: 'Select an entry'
+      source: null
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: ''
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  1f91c866-ffea-4015-a233-23ba20d4edfc:
+    contentColumnType: string
+    fieldGroup: null
+    handle: sectionColor
+    instructions: 'The background color of the section'
+    name: 'Section Color'
+    searchable: true
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Gray
+            -
+              - value
+              - background-gray
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Blue
+            -
+              - value
+              - background-blue
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Green
+            -
+              - value
+              - background-green
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Yellow
+            -
+              - value
+              - background-yellow
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  60d8c70b-47f2-41c9-a839-e6bcbc8a41af:
+    contentColumnType: string
+    fieldGroup: null
+    handle: image
+    instructions: 'Image to be shown next to the stat.'
+    name: Image
+    searchable: true
+    settings:
+      allowSelfRelations: ''
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: 'Select an image'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: false
+      validateRelatedElements: ''
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  8aa9a934-b4e1-4c3f-ba28-1ac20ad80a59:
+    contentColumnType: text
+    fieldGroup: null
+    handle: linkText
+    instructions: 'The text the visitor clicks on to go to the link'
+    name: 'Link Text'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  9f973d75-aa1e-4abc-9f4b-b19738072831:
+    contentColumnType: string
+    fieldGroup: null
+    handle: headlineStyle
+    instructions: 'The style of headline.'
+    name: 'Headline Style'
+    searchable: true
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Regular
+            -
+              - value
+              - regular
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - 'Large Numeral'
+            -
+              - value
+              - largeNumeral
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Quote
+            -
+              - value
+              - quote
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  b4d95200-bb51-4e6e-888e-dc4ef1ef074b:
+    contentColumnType: text
+    fieldGroup: null
+    handle: externalLink
+    instructions: 'Link to an external source. Include the full url, including "http://".'
+    name: 'External Link'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: 'ex: "http://external-link.com"'
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  c4404e85-fbdd-458f-a144-0c51a4f598e7:
+    contentColumnType: text
+    fieldGroup: null
+    handle: headline
+    instructions: 'The main stat headline'
+    name: Headline
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '1'
+      multiline: '1'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  fb84fae7-c01f-4200-a154-1ed62dbbc348:
+    contentColumnType: text
+    fieldGroup: null
+    handle: description
+    instructions: 'A brief description of the stat.'
+    name: Description
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Simple.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+handle: statWithPhoto
+name: 'Stat with Photo'
+sortOrder: 5

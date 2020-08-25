@@ -1,0 +1,59 @@
+field: aec03031-025c-478a-a913-6bbffef82502
+fieldLayouts:
+  ea7d0c16-a1b3-4de5-92c0-cb839fc1fcba:
+    tabs:
+      -
+        fields:
+          03c2fb75-486c-4b68-b03d-7596c0a9190e:
+            required: false
+            sortOrder: 1
+          5149aa3f-c6f4-45a9-adb8-7c67484b1a89:
+            required: true
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  03c2fb75-486c-4b68-b03d-7596c0a9190e:
+    contentColumnType: text
+    fieldGroup: null
+    handle: sectionTitle
+    instructions: 'A title separating this section from others (optional)'
+    name: 'Section Title'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  5149aa3f-c6f4-45a9-adb8-7c67484b1a89:
+    contentColumnType: text
+    fieldGroup: null
+    handle: sectionContent
+    instructions: ''
+    name: 'Section Content'
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: ''
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\redactor\Field
+handle: singleColumnSection
+name: 'Single-column Section'
+sortOrder: 2

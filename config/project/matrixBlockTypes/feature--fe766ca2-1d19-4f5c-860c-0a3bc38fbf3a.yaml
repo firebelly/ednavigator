@@ -1,0 +1,77 @@
+field: c95314c3-b3d1-4f5c-9cb8-109f49fdfd68
+fieldLayouts:
+  0783e6c6-26d3-4c83-97bb-69f24a8f0d3f:
+    tabs:
+      -
+        fields:
+          7387a8f9-805c-4836-bea4-e405541f457c:
+            required: true
+            sortOrder: 1
+          78a6e180-64f0-42ca-8789-89e73988ea42:
+            required: true
+            sortOrder: 3
+          f16422ec-a1a8-4406-b428-f3505a3ecdbe:
+            required: true
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  7387a8f9-805c-4836-bea4-e405541f457c:
+    contentColumnType: text
+    fieldGroup: null
+    handle: featureTitle
+    instructions: ''
+    name: 'Feature Title'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  78a6e180-64f0-42ca-8789-89e73988ea42:
+    contentColumnType: string
+    fieldGroup: null
+    handle: featureIcon
+    instructions: ''
+    name: 'Feature Icon'
+    searchable: true
+    settings:
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      restrictFiles: '1'
+      selectionLabel: 'Choose an icon'
+      singleUploadLocationSource: 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
+      singleUploadLocationSubpath: '{owner.slug}'
+      sources: '*'
+      useSingleFolder: '1'
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Assets
+  f16422ec-a1a8-4406-b428-f3505a3ecdbe:
+    contentColumnType: text
+    fieldGroup: null
+    handle: featureDescription
+    instructions: ''
+    name: 'Feature Description'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+handle: feature
+name: Feature
+sortOrder: 1

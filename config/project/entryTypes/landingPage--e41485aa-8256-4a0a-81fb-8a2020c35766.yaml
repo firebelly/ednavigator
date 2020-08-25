@@ -1,0 +1,29 @@
+fieldLayouts:
+  a9748b97-ebd5-4770-9fb3-04ba09629f04:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: 8dd0581c-6902-4a9c-8ddd-e11ce7656351
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 1b46cfbb-c65a-4e89-afd3-750e238e31c1
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 7a978b7f-cab5-448c-88dc-d4e1a9d281cf
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: SEO
+        sortOrder: 1
+handle: landingPage
+hasTitleField: true
+name: 'Landing Page'
+section: bbc987b8-a57f-4ea5-9a26-913ec9199524
+sortOrder: 6
+titleFormat: null

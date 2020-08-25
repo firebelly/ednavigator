@@ -1,0 +1,50 @@
+field: 5125ded7-c2b6-4957-9cb0-ebb93b3299d7
+fieldLayouts:
+  5600cdc2-97d4-4b56-ac35-5095c70e3e8d:
+    tabs:
+      -
+        fields:
+          04ee24cd-5532-481f-a513-df165617d2e4:
+            required: true
+            sortOrder: 1
+          9eeaa736-b3dd-4025-a11e-7e32b349a66e:
+            required: true
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  04ee24cd-5532-481f-a513-df165617d2e4:
+    contentColumnType: text
+    fieldGroup: null
+    handle: statFigure
+    instructions: ''
+    name: 'Stat Figure'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  9eeaa736-b3dd-4025-a11e-7e32b349a66e:
+    contentColumnType: text
+    fieldGroup: null
+    handle: statDescription
+    instructions: ''
+    name: 'Stat Description'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+handle: stat
+name: Stat
+sortOrder: 1

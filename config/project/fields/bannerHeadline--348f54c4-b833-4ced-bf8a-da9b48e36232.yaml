@@ -1,0 +1,15 @@
+contentColumnType: text
+fieldGroup: 9aec6670-8753-4f2e-91d5-03ff2b4f3ef6
+handle: bannerHeadline
+instructions: 'A short headline that appears over the page banner image.'
+name: 'Banner Headline'
+searchable: true
+settings:
+  charLimit: ''
+  columnType: text
+  initialRows: '2'
+  multiline: '1'
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText

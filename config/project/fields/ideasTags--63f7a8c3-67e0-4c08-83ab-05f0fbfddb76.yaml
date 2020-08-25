@@ -1,0 +1,20 @@
+contentColumnType: string
+fieldGroup: c07eca58-32d2-42c5-9bc5-0149d5f91a25
+handle: ideasTags
+instructions: ''
+name: 'Ideas Tags'
+searchable: true
+settings:
+  allowLimit: false
+  allowMultipleSources: false
+  limit: null
+  localizeRelations: ''
+  selectionLabel: ''
+  source: 'taggroup:f0b4c718-a8db-4468-a07b-a9bf7092e1a5'
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: ''
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Tags

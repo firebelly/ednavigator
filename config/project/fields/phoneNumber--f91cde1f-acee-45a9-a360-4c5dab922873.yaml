@@ -1,0 +1,15 @@
+contentColumnType: text
+fieldGroup: b8065821-73bc-41b6-9331-08c71b8228ff
+handle: phoneNumber
+instructions: 'The actual number that is used for the telephone link that is attached to the ''Phone Number Display'' field in the footer'
+name: 'Phone Number'
+searchable: true
+settings:
+  charLimit: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

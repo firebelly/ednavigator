@@ -1,0 +1,9 @@
+handle: principals
+hasUrls: true
+name: Principals
+settings:
+  path: uploads/principals/
+  url: /uploads/principals/
+sortOrder: 5
+type: craft\volumes\Local
+url: null

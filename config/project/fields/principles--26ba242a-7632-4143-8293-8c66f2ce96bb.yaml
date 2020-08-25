@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: c76d81fd-6544-4c75-a833-9f6f2a7a0149
+handle: principles
+instructions: ''
+name: Principles
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_principles}}'
+  maxBlocks: ''
+  minBlocks: ''
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

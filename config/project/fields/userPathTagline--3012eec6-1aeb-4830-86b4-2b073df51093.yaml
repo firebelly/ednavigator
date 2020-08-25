@@ -1,0 +1,15 @@
+contentColumnType: text
+fieldGroup: 217f9a1d-fbe7-4a59-a7ef-45684f8b7220
+handle: userPathTagline
+instructions: 'The tagline that appears above each section title (ex: "For Employers")'
+name: 'User Path Tagline'
+searchable: true
+settings:
+  charLimit: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText

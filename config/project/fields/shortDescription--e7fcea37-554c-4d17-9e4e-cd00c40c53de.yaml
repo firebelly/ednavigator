@@ -1,0 +1,15 @@
+contentColumnType: text
+fieldGroup: 0200d286-aa37-4a58-9853-7f8a1aeb6cc3
+handle: shortDescription
+instructions: 'Displayed along with the link on the Resources landing page'
+name: 'Short Description'
+searchable: true
+settings:
+  charLimit: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText

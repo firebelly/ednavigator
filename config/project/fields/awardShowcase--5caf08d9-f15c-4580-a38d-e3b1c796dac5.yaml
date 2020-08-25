@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: 906608b2-91ed-4a3f-af22-d10f34202903
+handle: awardShowcase
+instructions: 'Optional award showcase(s) listing awards, award icons, and short text describing award and optionally linking to a post or article.'
+name: 'Award Showcase'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_awardshowcase}}'
+  maxBlocks: ''
+  minBlocks: ''
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

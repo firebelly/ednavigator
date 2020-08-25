@@ -1,0 +1,51 @@
+field: ed4e7985-d384-4104-b9b7-17a01c7add34
+fieldLayouts:
+  29eeb2b1-9edd-4fda-a8e1-2ef2f11fbc9f:
+    tabs:
+      -
+        fields:
+          a431d242-3d1f-4d45-9daa-4ddadba482a8:
+            required: false
+            sortOrder: 1
+          b7a4c141-49bc-4543-88e0-9545224e9e89:
+            required: false
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  a431d242-3d1f-4d45-9daa-4ddadba482a8:
+    contentColumnType: text
+    fieldGroup: null
+    handle: stepTitle
+    instructions: ''
+    name: 'Step Title'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '1'
+      multiline: '1'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  b7a4c141-49bc-4543-88e0-9545224e9e89:
+    contentColumnType: string
+    fieldGroup: null
+    handle: stepContent
+    instructions: ''
+    name: 'Step Content'
+    searchable: true
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      cleanupHtml: '1'
+      columnType: text
+      configFile: Simple.json
+      purifyHtml: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+handle: step
+name: Step
+sortOrder: 1

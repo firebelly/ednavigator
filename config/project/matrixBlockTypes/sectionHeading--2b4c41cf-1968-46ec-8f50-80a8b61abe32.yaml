@@ -1,0 +1,33 @@
+field: 0d3e14a2-0c82-4a5f-b7ac-4e7ce75f352e
+fieldLayouts:
+  4c95271e-a08a-406f-a030-9931831b5863:
+    tabs:
+      -
+        fields:
+          95daaefe-674f-4332-b285-585a9297b76e:
+            required: false
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  95daaefe-674f-4332-b285-585a9297b76e:
+    contentColumnType: text
+    fieldGroup: null
+    handle: heading
+    instructions: 'A section heading will generate a jump-to link to this section.'
+    name: Heading
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+handle: sectionHeading
+name: 'Section Heading'
+sortOrder: 1

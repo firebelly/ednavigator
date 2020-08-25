@@ -1,0 +1,156 @@
+dateModified: 1598388752
+email:
+  fromEmail: support@ednavigator.com
+  fromName: EdNavigator
+  replyToEmail: null
+  template: ''
+  transportSettings:
+    encryptionMethod: tls
+    host: $SMTP_HOST
+    password: $SMTP_PASSWORD
+    port: '587'
+    timeout: '30'
+    useAuthentication: '1'
+    username: $SMTP_USER
+  transportType: craft\mail\transportadapters\Smtp
+plugins:
+  am-nav:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.7.4
+    settings:
+      canDoActions: '1'
+      pluginName: 'Site Navigation'
+      quietErrors: ''
+  array-unique:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  asset-rev:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  assetrev:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  contact-form:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings:
+      allowAttachments: ''
+      prependSender: 'On behalf of'
+      prependSubject: 'New Get Started form submission'
+      successFlashMessage: 'Thank you, your message has been sent!'
+      toEmail: info@ednavigator.com
+  contact-form-extensions:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.1
+    settings:
+      confirmationSubject: ''
+      confirmationTemplate: ''
+      enableConfirmationEmail: ''
+      enableDatabase: '1'
+      enableTemplateOverwrite: ''
+      notificationTemplate: ''
+      recaptcha: ''
+      recaptchaDataBadge: bottomright
+      recaptchaDebug: ''
+      recaptchaHideBadge: ''
+      recaptchaSecretKey: ''
+      recaptchaSiteKey: ''
+      recaptchaThreshold: '0.5'
+      recaptchaTimeout: '5'
+      recaptchaVersion: ''
+  contact-form-honeypot:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+    settings:
+      honeypotParam: honeyhoneyhoney
+  cp-field-inspect:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  cp-sort-cols:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: '1.0'
+    settings: null
+  ed-nav-payment:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  ednavstripecheckout:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  embeddedassets:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  export:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  field-manager:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  footnotes:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+    settings:
+      enableAnchorLinks: '1'
+      enableDuplicateFootnotes: ''
+  imager:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 2.0.0
+    settings: null
+  import:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  lj--dynamic-fields:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  matrixmate:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
+  redirect-manager:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  site-sync:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: pro
+  live: true
+  name: EdNavigator
+  schemaVersion: 3.5.13
+  timeZone: America/Chicago
+users:
+  allowPublicRegistration: false
+  defaultGroup: ''
+  photoSubpath: '{username}'
+  photoVolumeUid: a3975c81-c53a-453f-a150-9fd3730abe26
+  requireEmailVerification: true

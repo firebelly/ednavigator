@@ -1,0 +1,37 @@
+fieldLayouts:
+  6f9034d6-6586-4405-985f-f7f7f98e2e69:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: b0aefac7-6c72-4693-bb5a-2e79c46dd012
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 348f54c4-b833-4ced-bf8a-da9b48e36232
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 60fb224d-1163-4fda-8ccc-ec5f35830998
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: aaf771f5-2db7-4257-b26d-b6ca2a58f2c8
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: a7ede9ae-ea0d-45e3-9ebb-978d24054eed
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: Settings
+        sortOrder: 1
+handle: resources
+hasTitleField: true
+name: Resources
+section: ac76d036-741b-4323-9631-053facb7f887
+sortOrder: 1
+titleFormat: ''

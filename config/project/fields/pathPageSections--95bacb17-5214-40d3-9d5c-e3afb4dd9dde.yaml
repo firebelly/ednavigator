@@ -1,0 +1,13 @@
+contentColumnType: string
+fieldGroup: 217f9a1d-fbe7-4a59-a7ef-45684f8b7220
+handle: pathPageSections
+instructions: ''
+name: 'Path Page Sections'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_pathpagesections}}'
+  maxBlocks: null
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Matrix

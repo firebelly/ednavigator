@@ -1,0 +1,86 @@
+field: 26ba242a-7632-4143-8293-8c66f2ce96bb
+fieldLayouts:
+  e28cd076-ee13-4f46-bde4-c6d5375df914:
+    tabs:
+      -
+        fields:
+          920975d9-9e93-4ddc-a0b7-88731ac66117:
+            required: false
+            sortOrder: 2
+          cc643937-5162-43e6-bd97-5b5cf67471d3:
+            required: false
+            sortOrder: 3
+          f91a780c-2d3f-4e61-992a-a374c9ec2761:
+            required: false
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  920975d9-9e93-4ddc-a0b7-88731ac66117:
+    contentColumnType: text
+    fieldGroup: null
+    handle: principleLabel
+    instructions: ''
+    name: 'Principle Label'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  cc643937-5162-43e6-bd97-5b5cf67471d3:
+    contentColumnType: text
+    fieldGroup: null
+    handle: principleDescription
+    instructions: ''
+    name: 'Principle Description'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  f91a780c-2d3f-4e61-992a-a374c9ec2761:
+    contentColumnType: string
+    fieldGroup: null
+    handle: principleIcon
+    instructions: 'The svg icon associated with the principle'
+    name: 'Principle Icon'
+    searchable: true
+    settings:
+      allowSelfRelations: ''
+      allowedKinds: null
+      defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: ''
+      selectionLabel: ''
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
+      singleUploadLocationSubpath: '{owner.slug}'
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: ''
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+handle: principle
+name: Principle
+sortOrder: 1

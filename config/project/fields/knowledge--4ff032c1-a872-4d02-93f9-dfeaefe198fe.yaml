@@ -1,0 +1,13 @@
+contentColumnType: string
+fieldGroup: a6a6a3b2-033c-4402-91de-5001380f4f70
+handle: knowledge
+instructions: ''
+name: 'Our Knowledge'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_knowledge}}'
+  maxBlocks: null
+  propagationMethod: none
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Matrix

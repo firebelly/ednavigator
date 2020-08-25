@@ -1,0 +1,13 @@
+contentColumnType: string
+fieldGroup: 0200d286-aa37-4a58-9853-7f8a1aeb6cc3
+handle: resourceLocations
+instructions: ''
+name: 'Resource Locations'
+searchable: true
+settings:
+  localizeRelations: false
+  selectionLabel: ''
+  source: 'taggroup:9901c0d3-2825-4a17-ab9a-927713d5dd14'
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Tags

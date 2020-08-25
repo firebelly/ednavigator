@@ -1,0 +1,201 @@
+field: dd868fe1-3a50-4146-be40-157b12e3f0dc
+fieldLayouts:
+  29e57e93-9988-4429-96aa-a205e793e6c8:
+    tabs:
+      -
+        fields:
+          069648c0-ede4-4949-8bd2-6014b197d8b9:
+            required: false
+            sortOrder: 5
+          08894b40-1321-470d-8ad1-3b84a9ee3969:
+            required: true
+            sortOrder: 1
+          0ba79951-d93e-45e5-917b-974a539fb039:
+            required: false
+            sortOrder: 3
+          3016ffd0-a3f3-474a-a16b-14503fddf538:
+            required: false
+            sortOrder: 7
+          683b1434-a7f7-49f3-836a-5d67b7a849ec:
+            required: false
+            sortOrder: 6
+          bb360f34-1837-4170-9275-b3df0426c21d:
+            required: false
+            sortOrder: 4
+          ec00fe2e-8bf3-4916-9d37-41dc2b9b3508:
+            required: false
+            sortOrder: 8
+          f7405695-18b3-4d29-81db-784abc830015:
+            required: false
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  069648c0-ede4-4949-8bd2-6014b197d8b9:
+    contentColumnType: text
+    fieldGroup: null
+    handle: familyNarrativeCopy
+    instructions: ''
+    name: 'Narrative Copy'
+    searchable: true
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Simple.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\redactor\Field
+  08894b40-1321-470d-8ad1-3b84a9ee3969:
+    contentColumnType: text
+    fieldGroup: null
+    handle: contentBlock
+    instructions: ''
+    name: Content
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Standard.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\redactor\Field
+  0ba79951-d93e-45e5-917b-974a539fb039:
+    contentColumnType: text
+    fieldGroup: null
+    handle: asideQuote
+    instructions: ''
+    name: Quote
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '3'
+      multiline: '1'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  3016ffd0-a3f3-474a-a16b-14503fddf538:
+    contentColumnType: text
+    fieldGroup: null
+    handle: familyNarrativeHeadline
+    instructions: ''
+    name: Heading
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  683b1434-a7f7-49f3-836a-5d67b7a849ec:
+    contentColumnType: text
+    fieldGroup: null
+    handle: asideQuoteAttribution
+    instructions: ''
+    name: Attribution
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  bb360f34-1837-4170-9275-b3df0426c21d:
+    contentColumnType: string
+    fieldGroup: null
+    handle: familyNarrativeImage
+    instructions: ''
+    name: Image
+    searchable: true
+    settings:
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: 'Choose an image'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      singleUploadLocationSource: 'volume:1e3bbacb-6818-4f7f-8516-ae22e47c8b82'
+      singleUploadLocationSubpath: '{owner.slug}'
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: ''
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  ec00fe2e-8bf3-4916-9d37-41dc2b9b3508:
+    contentColumnType: text
+    fieldGroup: null
+    handle: asideStatAttribution
+    instructions: ''
+    name: Attribution
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  f7405695-18b3-4d29-81db-784abc830015:
+    contentColumnType: string(32)
+    fieldGroup: null
+    handle: asideStatFigure
+    instructions: ''
+    name: Figure
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: 8
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: '99,999'
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: generalContent
+name: 'General Content'
+sortOrder: 1

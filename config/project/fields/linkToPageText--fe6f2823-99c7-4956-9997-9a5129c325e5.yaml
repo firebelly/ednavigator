@@ -1,0 +1,15 @@
+contentColumnType: text
+fieldGroup: 9aec6670-8753-4f2e-91d5-03ff2b4f3ef6
+handle: linkToPageText
+instructions: 'When a link to this appears elsewhere on the site, as on a landing page, the text that appears. If left blank it will default to "Learn More".'
+name: 'Link To Page Text'
+searchable: true
+settings:
+  charLimit: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: 'Learn More'
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText

@@ -1,0 +1,119 @@
+field: aec03031-025c-478a-a913-6bbffef82502
+fieldLayouts:
+  396df285-fa09-49ae-8161-2c93022c2816:
+    tabs:
+      -
+        fields:
+          2835d461-4382-4264-86d8-58b5365c33f9:
+            required: false
+            sortOrder: 5
+          549cd9a1-1153-4603-bebf-7e01a735f4c7:
+            required: false
+            sortOrder: 2
+          81f5de31-56a3-4d15-9468-cb0151c133c3:
+            required: false
+            sortOrder: 1
+          ad28aae9-24ea-4f7f-ab97-6b0bc9e6ba62:
+            required: false
+            sortOrder: 4
+          ef8fcfc8-62b0-47de-8aad-f1af153a926b:
+            required: true
+            sortOrder: 3
+        name: Content
+        sortOrder: 1
+fields:
+  2835d461-4382-4264-86d8-58b5365c33f9:
+    contentColumnType: text
+    fieldGroup: null
+    handle: actionLinkExternal
+    instructions: 'A link to an external source or email. Enter in the full url, including "http://". If linking to an email, add "mailto:" to the front of the address, example: "mailto:info@ednavigator.com"'
+    name: 'External Action Link'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: 'ex: http://website.com'
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  549cd9a1-1153-4603-bebf-7e01a735f4c7:
+    contentColumnType: text
+    fieldGroup: null
+    handle: introText
+    instructions: 'Introductory text to the CTA. Should be a short paragraph or sentence. '
+    name: 'Intro Text'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '1'
+      multiline: '1'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  81f5de31-56a3-4d15-9468-cb0151c133c3:
+    contentColumnType: text
+    fieldGroup: null
+    handle: sectionTitle
+    instructions: 'Optional Section Title'
+    name: 'Section Title'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  ad28aae9-24ea-4f7f-ab97-6b0bc9e6ba62:
+    contentColumnType: string
+    fieldGroup: null
+    handle: actionLinkInternal
+    instructions: 'The page/post that you want the CTA to link to. If linking to an external source or an email, leave this field blank and continue on to the External Action Link Field'
+    name: 'Internal Action Link'
+    searchable: true
+    settings:
+      allowSelfRelations: ''
+      limit: '1'
+      localizeRelations: ''
+      selectionLabel: 'Select an entry to link to'
+      source: null
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: ''
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  ef8fcfc8-62b0-47de-8aad-f1af153a926b:
+    contentColumnType: text
+    fieldGroup: null
+    handle: actionText
+    instructions: 'The text that appears on the CTA button'
+    name: 'Action Text'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+handle: callToAction
+name: 'Call To Action'
+sortOrder: 3

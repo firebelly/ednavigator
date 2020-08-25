@@ -1,0 +1,131 @@
+field: f68bd23e-cdef-4a93-bc69-d799858a5e37
+fieldLayouts:
+  65507e65-2f3f-42a8-85d6-b4fd0459bc97:
+    tabs:
+      -
+        fields:
+          0a33cf4a-e767-459d-80ad-67047568db1e:
+            required: false
+            sortOrder: 1
+          32d1563f-f3da-49ce-a3cd-94b7e7315608:
+            required: false
+            sortOrder: 5
+          8c2775de-f70f-4f07-b5c3-161c0f83715a:
+            required: false
+            sortOrder: 3
+          8f7d6df0-566a-4c34-b6da-6d9850f19621:
+            required: false
+            sortOrder: 4
+          e7d409d4-2f29-4388-9755-f6ab096c7c7f:
+            required: false
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  0a33cf4a-e767-459d-80ad-67047568db1e:
+    contentColumnType: text
+    fieldGroup: null
+    handle: personName
+    instructions: ''
+    name: 'Person Name'
+    searchable: true
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  32d1563f-f3da-49ce-a3cd-94b7e7315608:
+    contentColumnType: string
+    fieldGroup: null
+    handle: locations
+    instructions: ''
+    name: Locations
+    searchable: false
+    settings:
+      allowLimit: false
+      allowMultipleSources: false
+      branchLimit: ''
+      limit: null
+      localizeRelations: ''
+      selectionLabel: 'Choose a location'
+      source: 'group:e1705694-00c3-4568-a2e3-42121c2ca237'
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: ''
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Categories
+  8c2775de-f70f-4f07-b5c3-161c0f83715a:
+    contentColumnType: text
+    fieldGroup: null
+    handle: personDescription
+    instructions: ''
+    name: 'Person Description'
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Standard.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  8f7d6df0-566a-4c34-b6da-6d9850f19621:
+    contentColumnType: string
+    fieldGroup: null
+    handle: personImage
+    instructions: ''
+    name: 'Person Image'
+    searchable: true
+    settings:
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: ''
+      singleUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources: '*'
+      targetSiteId: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
+      useSingleFolder: '1'
+      validateRelatedElements: ''
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  e7d409d4-2f29-4388-9755-f6ab096c7c7f:
+    contentColumnType: text
+    fieldGroup: null
+    handle: personTitle
+    instructions: ''
+    name: 'Person Title'
+    searchable: true
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+handle: person
+name: Person
+sortOrder: 1

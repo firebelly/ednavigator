@@ -1,0 +1,13 @@
+contentColumnType: string
+fieldGroup: 505ca01b-7dd1-4745-a63c-26cfdba42aa0
+handle: paymentOptions
+instructions: ''
+name: 'Payment Options'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_paymentoptions}}'
+  maxBlocks: null
+  propagationMethod: none
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Matrix

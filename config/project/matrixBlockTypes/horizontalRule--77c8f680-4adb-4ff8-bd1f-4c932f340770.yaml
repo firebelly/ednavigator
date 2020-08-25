@@ -1,0 +1,27 @@
+field: 0d3e14a2-0c82-4a5f-b7ac-4e7ce75f352e
+fieldLayouts:
+  1bb6bc53-a447-4e6f-b8d8-b4e4c2f0eeb0:
+    tabs:
+      -
+        fields:
+          cedb6bde-41a2-43bb-819d-7ee537c080df:
+            required: false
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  cedb6bde-41a2-43bb-819d-7ee537c080df:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: visible
+    instructions: 'Unchecking this field will hide the horizontal rule.'
+    name: 'Visible?'
+    searchable: false
+    settings:
+      default: '1'
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+handle: horizontalRule
+name: 'Horizontal Rule'
+sortOrder: 8

@@ -1,0 +1,11 @@
+contentColumnType: boolean
+fieldGroup: 62d1d9b7-d1f6-4696-b71d-80e0cb0e167d
+handle: featuredPost
+instructions: 'Should this post be featured?'
+name: 'Featured Post'
+searchable: true
+settings:
+  default: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

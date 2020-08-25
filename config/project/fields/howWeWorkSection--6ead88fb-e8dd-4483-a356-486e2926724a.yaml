@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: 906608b2-91ed-4a3f-af22-d10f34202903
+handle: howWeWorkSection
+instructions: ''
+name: 'How We Work Section'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_howweworksection}}'
+  maxBlocks: '1'
+  minBlocks: ''
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

@@ -1,0 +1,33 @@
+fieldLayouts:
+  48512e08-0da4-4643-9268-3b29019780a2:
+    tabs:
+      -
+        fields:
+          362e8e24-13a8-46a9-9ddd-32ddacf925a1:
+            required: false
+            sortOrder: 3
+          60fb224d-1163-4fda-8ccc-ec5f35830998:
+            required: false
+            sortOrder: 1
+          cfd62712-2106-44c2-bd7a-806750669d71:
+            required: false
+            sortOrder: 4
+          e7fcea37-554c-4d17-9e4e-cd00c40c53de:
+            required: false
+            sortOrder: 2
+        name: 'Bundle Information'
+        sortOrder: 1
+handle: resourceBundle
+name: 'Resource Bundle'
+siteSettings:
+  84ea1cc0-8139-4b33-b94a-1c02700fc1ef:
+    hasUrls: true
+    template: resources/_bundle
+    uriFormat: '{% if object.level == 1 %}resources/bundle/{slug}{% else %}{parent.uri}/{slug}{% endif %}'
+  ed2e38d9-d86c-40c4-b682-df89fc90f62d:
+    hasUrls: true
+    template: resources/_bundle
+    uriFormat: '{% if object.level == 1 %}recursos/paquete/{slug}{% else %}{parent.uri}/{slug}{% endif %}'
+structure:
+  maxLevels: null
+  uid: 03439496-d25a-44b8-b3b0-8c8c33c42190

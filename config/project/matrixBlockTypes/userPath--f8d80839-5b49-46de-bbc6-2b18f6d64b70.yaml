@@ -1,0 +1,109 @@
+field: 85a1f5ab-b896-40e8-a681-884f3bc63023
+fieldLayouts:
+  aaa5b63d-5422-4fb9-80f0-a1764ff3f325:
+    tabs:
+      -
+        fields:
+          2b29443f-f11c-4c40-bde9-bd0217ec66e8:
+            required: true
+            sortOrder: 1
+          2d60a7d0-63ac-4bb2-9eb0-e63c0b7bce18:
+            required: false
+            sortOrder: 3
+          3d6b1b6b-d16e-41a5-a8ac-898b4d58f045:
+            required: true
+            sortOrder: 2
+          587383f8-60df-49ec-8d23-b1f190d45809:
+            required: false
+            sortOrder: 5
+          d9044559-ef04-48f0-b273-1761b6f2bd18:
+            required: false
+            sortOrder: 4
+        name: Content
+        sortOrder: 1
+fields:
+  2b29443f-f11c-4c40-bde9-bd0217ec66e8:
+    contentColumnType: text
+    fieldGroup: null
+    handle: pathTitle
+    instructions: 'Example: ''For Employers'''
+    name: 'Path Title'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '2'
+      multiline: '1'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  2d60a7d0-63ac-4bb2-9eb0-e63c0b7bce18:
+    contentColumnType: text
+    fieldGroup: null
+    handle: pathDescription
+    instructions: 'A short description of the user path.'
+    name: 'Path Description'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  3d6b1b6b-d16e-41a5-a8ac-898b4d58f045:
+    contentColumnType: text
+    fieldGroup: null
+    handle: pathHeadline
+    instructions: 'Main headline'
+    name: 'Path Headline'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '2'
+      multiline: '1'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  587383f8-60df-49ec-8d23-b1f190d45809:
+    contentColumnType: string
+    fieldGroup: null
+    handle: pathPage
+    instructions: ''
+    name: 'Path Page'
+    searchable: true
+    settings:
+      limit: '1'
+      localizeRelations: true
+      selectionLabel: ''
+      sources:
+        - 'section:d834f44a-1ff7-4e43-88e5-7fb1bf17b13c'
+        - singles
+        - 'section:bbc987b8-a57f-4ea5-9a26-913ec9199524'
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Entries
+  d9044559-ef04-48f0-b273-1761b6f2bd18:
+    contentColumnType: text
+    fieldGroup: null
+    handle: pathLinkText
+    instructions: "Example: 'Invest in your greatest asset —\_your people'"
+    name: 'Path Link Text'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '1'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+handle: userPath
+name: 'User Path'
+sortOrder: 1

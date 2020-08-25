@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: 906608b2-91ed-4a3f-af22-d10f34202903
+handle: sustainableResultsFeatures
+instructions: ''
+name: 'Sustainable Results Features'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_sustainableresultsfeatures}}'
+  maxBlocks: ''
+  minBlocks: ''
+  propagationMethod: siteGroup
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

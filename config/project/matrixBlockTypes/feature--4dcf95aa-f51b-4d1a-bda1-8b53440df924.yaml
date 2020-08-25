@@ -1,0 +1,82 @@
+field: 20ffa328-2013-4f18-8dd3-1f14164fba2d
+fieldLayouts:
+  9a24a4dc-e5f6-4131-98db-7f55939542a9:
+    tabs:
+      -
+        fields:
+          acea4a2a-2af6-4dbd-b3a5-02483fa15b5b:
+            required: true
+            sortOrder: 3
+          f4615451-cc2a-4eb3-a6fb-cb1bdb8dab2b:
+            required: true
+            sortOrder: 1
+          f52c970e-f53a-483e-9eaa-c301582b987a:
+            required: true
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  acea4a2a-2af6-4dbd-b3a5-02483fa15b5b:
+    contentColumnType: string
+    fieldGroup: null
+    handle: featureIcon
+    instructions: ''
+    name: 'Feature Icon'
+    searchable: true
+    settings:
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: 'Choose an icon'
+      singleUploadLocationSource: 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
+      singleUploadLocationSubpath: '{owner.slug}'
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: '1'
+      validateRelatedElements: ''
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  f4615451-cc2a-4eb3-a6fb-cb1bdb8dab2b:
+    contentColumnType: text
+    fieldGroup: null
+    handle: featureTitle
+    instructions: ''
+    name: 'Feature Title'
+    searchable: true
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  f52c970e-f53a-483e-9eaa-c301582b987a:
+    contentColumnType: text
+    fieldGroup: null
+    handle: featureDescription
+    instructions: ''
+    name: 'Feature Description'
+    searchable: true
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+handle: feature
+name: Feature
+sortOrder: 1

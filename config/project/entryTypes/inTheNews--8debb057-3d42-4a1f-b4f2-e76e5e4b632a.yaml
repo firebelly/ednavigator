@@ -1,0 +1,33 @@
+fieldLayouts:
+  6a6ca2cd-cd4f-4b69-9d18-0e10150f113e:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: 5418ce8c-56f3-44c1-a4c8-274e916bc596
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: a769dae3-5831-401a-a67a-986cb20cc2c7
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: fde54af9-735d-42f2-b5bd-94f11aa55de8
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 50364b57-8731-453d-b212-32fd8d30c25a
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: Settings
+        sortOrder: 1
+handle: inTheNews
+hasTitleField: true
+name: 'In The News'
+section: 524ea879-0552-4149-97b5-1c910292a200
+sortOrder: 3
+titleFormat: ''

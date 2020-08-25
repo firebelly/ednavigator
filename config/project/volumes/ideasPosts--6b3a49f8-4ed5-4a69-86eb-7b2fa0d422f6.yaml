@@ -1,0 +1,21 @@
+fieldLayouts:
+  dd9a54f1-8491-4cf3-8683-79e4cbe7d459:
+    tabs:
+      -
+        fields:
+          033c51c3-9ce3-4ca5-9be9-a957bec922bf:
+            required: false
+            sortOrder: 2
+          59634ba7-ce29-47f3-8f83-30d2037eeacb:
+            required: false
+            sortOrder: 1
+        name: Settings
+        sortOrder: 1
+handle: ideasPosts
+hasUrls: true
+name: 'Ideas Posts'
+settings:
+  path: uploads/ideas/
+sortOrder: 7
+type: craft\volumes\Local
+url: /uploads/ideas/

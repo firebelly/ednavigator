@@ -1,0 +1,24 @@
+contentColumnType: string
+fieldGroup: c76d81fd-6544-4c75-a833-9f6f2a7a0149
+handle: userProfilePhoto
+instructions: 'The profile photo associated with the user in blog/resources posts'
+name: 'User Profile Photo'
+searchable: true
+settings:
+  allowedKinds:
+    - image
+  defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+  defaultUploadLocationSubpath: ''
+  limit: ''
+  localizeRelations: false
+  restrictFiles: '1'
+  selectionLabel: 'Choose Profile Photo'
+  singleUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+  singleUploadLocationSubpath: ''
+  sources:
+    - 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+  useSingleFolder: ''
+  viewMode: large
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Assets

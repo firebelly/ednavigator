@@ -1,0 +1,13 @@
+contentColumnType: string
+fieldGroup: 906608b2-91ed-4a3f-af22-d10f34202903
+handle: whatWeDoFeatures
+instructions: ''
+name: 'What We Do Features'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_whatwedofeatures}}'
+  maxBlocks: null
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Matrix

@@ -1,0 +1,23 @@
+enableVersioning: true
+handle: howWeHelp
+name: 'How We Help'
+previewTargets:
+  -
+    label: 'Primary entry page'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  84ea1cc0-8139-4b33-b94a-1c02700fc1ef:
+    enabledByDefault: true
+    hasUrls: true
+    template: how-we-help
+    uriFormat: '{% if object.level == 1 %}how-we-help{% else %}{parent.uri}/{slug}{% endif %}'
+  ed2e38d9-d86c-40c4-b682-df89fc90f62d:
+    enabledByDefault: true
+    hasUrls: true
+    template: how-we-help
+    uriFormat: '{% if object.level == 1 %}como-ayudamos{% else %}{parent.uri}/{slug}{% endif %}'
+structure:
+  maxLevels: 2
+  uid: 9202ed9b-5f37-4d29-9fb0-ef1a302dbfd9
+type: structure

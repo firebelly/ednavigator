@@ -1,0 +1,9 @@
+handle: pages
+hasUrls: true
+name: Pages
+settings:
+  path: uploads/pages/
+  url: /uploads/pages/
+sortOrder: 6
+type: craft\volumes\Local
+url: null

@@ -1,0 +1,59 @@
+field: 0d3e14a2-0c82-4a5f-b7ac-4e7ce75f352e
+fieldLayouts:
+  0ee5d383-c500-4eef-b0fe-a3683f8f7cf4:
+    tabs:
+      -
+        fields:
+          698977d6-f614-48da-9318-1f60f5e8c475:
+            required: false
+            sortOrder: 2
+          ac5a1fd3-a633-4b14-90c0-95edd9252bd3:
+            required: false
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  698977d6-f614-48da-9318-1f60f5e8c475:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: expanded
+    instructions: 'Setting this field to "on" will make the video expand outside the content container.'
+    name: 'Expanded?'
+    searchable: false
+    settings:
+      default: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  ac5a1fd3-a633-4b14-90c0-95edd9252bd3:
+    contentColumnType: string
+    fieldGroup: null
+    handle: embed
+    instructions: ''
+    name: Embed
+    searchable: false
+    settings:
+      allowSelfRelations: ''
+      allowedKinds: null
+      defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: ''
+      selectionLabel: 'Choose an embed'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      singleUploadLocationSource: 'volume:2cab35ea-e7c6-43b3-824c-befeac13bb2a'
+      singleUploadLocationSubpath: '{owner.section}/{owner.slug}_{owner.id}'
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: ''
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+handle: video
+name: Video
+sortOrder: 7

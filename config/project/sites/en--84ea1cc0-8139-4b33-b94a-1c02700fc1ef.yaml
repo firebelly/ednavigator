@@ -1,0 +1,8 @@
+baseUrl: '@web'
+handle: en
+hasUrls: true
+language: en-US
+name: EdNavigator
+primary: true
+siteGroup: e3e8c6d8-6467-43db-b698-0b9eb5fde950
+sortOrder: 1

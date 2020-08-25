@@ -1,0 +1,60 @@
+field: 0d3e14a2-0c82-4a5f-b7ac-4e7ce75f352e
+fieldLayouts:
+  a832c04e-59f8-4ea3-a7a3-e9e1403e946a:
+    tabs:
+      -
+        fields:
+          0733f1c9-77e3-477c-ab82-a6944d25734f:
+            required: false
+            sortOrder: 2
+          1c248ceb-f84d-4c01-a003-603af9b909d0:
+            required: true
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  0733f1c9-77e3-477c-ab82-a6944d25734f:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: expanded
+    instructions: 'Setting this field to "on" will make the image carousel expand outside the content container.'
+    name: 'Expanded?'
+    searchable: false
+    settings:
+      default: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  1c248ceb-f84d-4c01-a003-603af9b909d0:
+    contentColumnType: string
+    fieldGroup: null
+    handle: images
+    instructions: ''
+    name: Images
+    searchable: false
+    settings:
+      allowSelfRelations: ''
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      defaultUploadLocationSubpath: ''
+      limit: ''
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: 'Add an image'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      singleUploadLocationSource: 'volume:2cab35ea-e7c6-43b3-824c-befeac13bb2a'
+      singleUploadLocationSubpath: '{owner.section}/{owner.slug}_{owner.id}'
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: ''
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+handle: imageCarousel
+name: 'Image Carousel'
+sortOrder: 6

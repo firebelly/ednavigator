@@ -1,0 +1,128 @@
+field: aec03031-025c-478a-a913-6bbffef82502
+fieldLayouts:
+  15f8dbd8-7287-4ca0-94e2-ac05a5c2b3e6:
+    tabs:
+      -
+        fields:
+          1a85899a-d3b9-4d02-82fe-0570d3050572:
+            required: false
+            sortOrder: 3
+          20138bb4-f514-4da0-b308-ba923d83ba10:
+            required: false
+            sortOrder: 4
+          660a74a1-b814-457b-b2bb-e0ecc998beca:
+            required: false
+            sortOrder: 2
+          74dba5db-cad8-414e-b681-b1b391e267dd:
+            required: false
+            sortOrder: 5
+          b9c8fea2-5ee3-4d7e-a321-303cf1617778:
+            required: false
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  1a85899a-d3b9-4d02-82fe-0570d3050572:
+    contentColumnType: text
+    fieldGroup: null
+    handle: leftColumnStatDescription
+    instructions: ''
+    name: 'Left Column Stat Description'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  20138bb4-f514-4da0-b308-ba923d83ba10:
+    contentColumnType: text
+    fieldGroup: null
+    handle: rightColumnStatFigure
+    instructions: ''
+    name: 'Right Column Stat Figure'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  660a74a1-b814-457b-b2bb-e0ecc998beca:
+    contentColumnType: text
+    fieldGroup: null
+    handle: leftColumnStatFigure
+    instructions: ''
+    name: 'Left Column Stat Figure'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  74dba5db-cad8-414e-b681-b1b391e267dd:
+    contentColumnType: text
+    fieldGroup: null
+    handle: rightColumnStatDescription
+    instructions: ''
+    name: 'Right Column Stat Description'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  b9c8fea2-5ee3-4d7e-a321-303cf1617778:
+    contentColumnType: string
+    fieldGroup: null
+    handle: sectionPhoto
+    instructions: 'Optional section photo that appears above the stat columns.'
+    name: 'Section Photo'
+    searchable: true
+    settings:
+      allowSelfRelations: ''
+      allowedKinds: null
+      defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: ''
+      selectionLabel: 'Choose an image'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
+      singleUploadLocationSubpath: '{owner.slug}'
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: ''
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+handle: twoColumnStatWithPhoto
+name: 'Two-column Stat with Photo'
+sortOrder: 6

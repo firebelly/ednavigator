@@ -1,0 +1,21 @@
+fieldLayouts:
+  a8fd0d19-740d-4009-bdb4-130df2362721:
+    tabs:
+      -
+        fields:
+          17a4bb9c-7d8c-49da-b192-85b000c7b38d:
+            required: false
+            sortOrder: 2
+          a3418340-8df9-494d-a2e0-cbc666702ffc:
+            required: false
+            sortOrder: 1
+          afb9c72a-3911-46c1-a3d1-1943fef3dc00:
+            required: false
+            sortOrder: 3
+          c71e1868-f3f3-4cd7-a727-1f0fbbbd4320:
+            required: false
+            sortOrder: 4
+        name: Content
+        sortOrder: 1
+handle: socialMediaLinks
+name: 'Social Media Links'

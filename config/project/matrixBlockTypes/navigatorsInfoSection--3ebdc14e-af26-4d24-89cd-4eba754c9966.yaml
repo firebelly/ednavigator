@@ -1,0 +1,51 @@
+field: cab006ad-ca17-4fb9-8992-5843f87d1477
+fieldLayouts:
+  ca6ecc06-2a4a-40d8-a142-304d36c06838:
+    tabs:
+      -
+        fields:
+          1038647a-11c7-45e2-9a42-99a6df338b11:
+            required: false
+            sortOrder: 2
+          8a240c1d-8064-4bfa-bd90-6f676e0a6406:
+            required: false
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  1038647a-11c7-45e2-9a42-99a6df338b11:
+    contentColumnType: string
+    fieldGroup: null
+    handle: sectionContent
+    instructions: ''
+    name: 'Section Content'
+    searchable: true
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      cleanupHtml: '1'
+      columnType: text
+      configFile: ''
+      purifyHtml: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  8a240c1d-8064-4bfa-bd90-6f676e0a6406:
+    contentColumnType: text
+    fieldGroup: null
+    handle: sectionTitle
+    instructions: ''
+    name: 'Section Title'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+handle: navigatorsInfoSection
+name: 'Navigators Info Section'
+sortOrder: 1

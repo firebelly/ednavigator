@@ -1,0 +1,58 @@
+field: 31e55dcd-fd69-46b4-bc0a-6da055adf5b2
+fieldLayouts:
+  27449f53-8abb-4801-854c-8c45c5ad8d71:
+    tabs:
+      -
+        fields:
+          79fb0e67-6609-4ab0-9036-c28f60456501:
+            required: true
+            sortOrder: 2
+          96f036a5-364c-49a0-9c8f-21bbaf59fa83:
+            required: true
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  79fb0e67-6609-4ab0-9036-c28f60456501:
+    contentColumnType: string
+    fieldGroup: null
+    handle: pdf
+    instructions: ''
+    name: 'Position PDF'
+    searchable: true
+    settings:
+      allowedKinds:
+        - pdf
+      defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      restrictFiles: '1'
+      selectionLabel: 'Add PDF'
+      singleUploadLocationSource: 'volume:2a9541aa-21a4-4bad-990e-f0551e25392b'
+      singleUploadLocationSubpath: ''
+      sources: '*'
+      useSingleFolder: '1'
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Assets
+  96f036a5-364c-49a0-9c8f-21bbaf59fa83:
+    contentColumnType: text
+    fieldGroup: null
+    handle: positionTitle
+    instructions: ''
+    name: 'Position Title'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: position
+name: Position
+sortOrder: 1

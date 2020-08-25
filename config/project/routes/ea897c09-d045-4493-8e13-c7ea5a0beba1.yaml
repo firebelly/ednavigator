@@ -1,0 +1,9 @@
+siteUid: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
+sortOrder: 7
+template: resources/_author
+uriParts:
+  - resources/author/
+  -
+    - slug
+    - '[^\/]+'
+uriPattern: 'resources/author/<slug:[^\/]+>'

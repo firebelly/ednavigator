@@ -1,0 +1,18 @@
+fieldLayouts:
+  79914f1e-c7c6-41b5-a18e-dac94eef359c:
+    tabs:
+      -
+        fields:
+          2b10aa28-ae74-4b90-905c-6f06374cf854:
+            required: false
+            sortOrder: 1
+          56231315-115d-495f-9405-f1b3ec36da79:
+            required: false
+            sortOrder: 3
+          84025821-dba2-4d0e-a43d-541887241764:
+            required: false
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+handle: appInformation
+name: 'App Information'

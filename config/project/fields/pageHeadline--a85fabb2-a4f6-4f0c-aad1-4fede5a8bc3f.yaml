@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 9aec6670-8753-4f2e-91d5-03ff2b4f3ef6
+handle: pageHeadline
+instructions: 'Main headline to appear on page header without a banner image'
+name: 'Page Headline'
+searchable: false
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '3'
+  multiline: '1'
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: language
+type: craft\fields\PlainText

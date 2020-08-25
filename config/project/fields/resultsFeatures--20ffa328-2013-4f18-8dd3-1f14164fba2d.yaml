@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: a6a6a3b2-033c-4402-91de-5001380f4f70
+handle: resultsFeatures
+instructions: ''
+name: 'Results Features'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_resultsfeatures}}'
+  maxBlocks: ''
+  minBlocks: ''
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

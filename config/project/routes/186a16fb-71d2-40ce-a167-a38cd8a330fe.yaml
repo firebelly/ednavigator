@@ -1,0 +1,9 @@
+siteUid: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
+sortOrder: 3
+template: resources/_browse
+uriParts:
+  - resources/location/
+  -
+    - tag
+    - '[^\/]+'
+uriPattern: 'resources/location/<tag:[^\/]+>'

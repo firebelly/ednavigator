@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 906608b2-91ed-4a3f-af22-d10f34202903
+handle: whatWeDoHeadline
+instructions: ''
+name: 'What We Do Headline'
+searchable: false
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: language
+type: craft\fields\PlainText

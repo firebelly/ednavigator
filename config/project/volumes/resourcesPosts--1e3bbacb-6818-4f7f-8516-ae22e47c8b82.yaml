@@ -1,0 +1,21 @@
+fieldLayouts:
+  26c69f0a-f3e8-4744-81fa-ccd65e6b0456:
+    tabs:
+      -
+        fields:
+          033c51c3-9ce3-4ca5-9be9-a957bec922bf:
+            required: false
+            sortOrder: 2
+          59634ba7-ce29-47f3-8f83-30d2037eeacb:
+            required: false
+            sortOrder: 1
+        name: Settings
+        sortOrder: 1
+handle: resourcesPosts
+hasUrls: true
+name: 'Resources Posts'
+settings:
+  path: uploads/resources/
+sortOrder: 8
+type: craft\volumes\Local
+url: /uploads/resources/

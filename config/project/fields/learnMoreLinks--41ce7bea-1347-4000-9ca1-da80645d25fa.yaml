@@ -1,0 +1,16 @@
+contentColumnType: string
+fieldGroup: 9aec6670-8753-4f2e-91d5-03ff2b4f3ef6
+handle: learnMoreLinks
+instructions: 'Links to resources at the bottom of the page (each on a new line)'
+name: 'Learn More Links'
+searchable: true
+settings:
+  availableTransforms: '*'
+  availableVolumes: '*'
+  cleanupHtml: '1'
+  columnType: text
+  configFile: ''
+  purifyHtml: '1'
+translationKeyFormat: null
+translationMethod: site
+type: craft\redactor\Field

@@ -1,0 +1,9 @@
+format: jpg
+handle: postImage
+height: 1800
+interlace: none
+mode: fit
+name: 'Post Image'
+position: center-center
+quality: 82
+width: 1800

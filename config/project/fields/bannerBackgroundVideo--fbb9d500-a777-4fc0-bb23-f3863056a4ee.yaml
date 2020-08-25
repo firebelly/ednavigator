@@ -1,0 +1,17 @@
+contentColumnType: integer(10)
+fieldGroup: 906608b2-91ed-4a3f-af22-d10f34202903
+handle: bannerBackgroundVideo
+instructions: 'Enter in the vimeo video ID (ID only, not the full url) to be used as the background video in the banner.'
+name: 'Banner Background Video'
+searchable: false
+settings:
+  decimals: 0
+  defaultValue: null
+  max: null
+  min: '0'
+  prefix: 'https://vimeo.com/'
+  size: null
+  suffix: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Number

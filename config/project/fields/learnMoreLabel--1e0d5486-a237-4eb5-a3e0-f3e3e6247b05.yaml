@@ -1,0 +1,15 @@
+contentColumnType: text
+fieldGroup: c76d81fd-6544-4c75-a833-9f6f2a7a0149
+handle: learnMoreLabel
+instructions: 'The text that introduces the child pages'
+name: 'Learn More Label'
+searchable: true
+settings:
+  charLimit: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText

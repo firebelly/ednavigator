@@ -1,0 +1,15 @@
+contentColumnType: string
+fieldGroup: a6a6a3b2-033c-4402-91de-5001380f4f70
+handle: navigatorsButtonLink
+instructions: 'The navigators entry'
+name: 'Navigators Button Link'
+searchable: true
+settings:
+  limit: '1'
+  localizeRelations: true
+  selectionLabel: 'Choose the Navigators Entry'
+  sources:
+    - 'section:bbc987b8-a57f-4ea5-9a26-913ec9199524'
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Entries

@@ -1,0 +1,60 @@
+field: 0d3e14a2-0c82-4a5f-b7ac-4e7ce75f352e
+fieldLayouts:
+  fc1d25e7-8e4f-4bdd-b93f-a4b98a1e324e:
+    tabs:
+      -
+        fields:
+          1fc939a2-dc5e-43c5-be7d-c3f68cf213f5:
+            required: false
+            sortOrder: 1
+          e144406b-78fd-4eec-9e98-4c42cd18b8d0:
+            required: false
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  1fc939a2-dc5e-43c5-be7d-c3f68cf213f5:
+    contentColumnType: string
+    fieldGroup: null
+    handle: images
+    instructions: 'Add one image, or multiple images.'
+    name: Image(s)
+    searchable: false
+    settings:
+      allowSelfRelations: ''
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      defaultUploadLocationSubpath: ''
+      limit: ''
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: 'Add an image'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      singleUploadLocationSource: 'volume:2cab35ea-e7c6-43b3-824c-befeac13bb2a'
+      singleUploadLocationSubpath: '{owner.section}/{owner.slug}_{owner.id}'
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: ''
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  e144406b-78fd-4eec-9e98-4c42cd18b8d0:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: expanded
+    instructions: 'Setting this field to "on" will make the image block expand outside the content container.'
+    name: 'Expanded?'
+    searchable: false
+    settings:
+      default: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+handle: imageBlock
+name: 'Image Block'
+sortOrder: 5

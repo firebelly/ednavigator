@@ -1,0 +1,69 @@
+fieldLayouts:
+  16b19881-4729-40a5-a0a8-8bb6d378a245:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: b0aefac7-6c72-4693-bb5a-2e79c46dd012
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: a85fabb2-a4f6-4f0c-aad1-4fede5a8bc3f
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 15eeedeb-4db5-4499-b869-f35d749fa2c5
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: a41fed7b-632f-4b80-8b1d-e46ea30e9e00
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 26ba242a-7632-4143-8293-8c66f2ce96bb
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: aec03031-025c-478a-a913-6bbffef82502
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Who We Are'
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: 32044766-4b09-4e5c-a620-b18d4dbe3ffb
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 60fb224d-1163-4fda-8ccc-ec5f35830998
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: fe6f2823-99c7-4956-9997-9a5129c325e5
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Landing Page Settings'
+        sortOrder: 2
+      -
+        elements:
+          -
+            fieldUid: 8dd0581c-6902-4a9c-8ddd-e11ce7656351
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 7a978b7f-cab5-448c-88dc-d4e1a9d281cf
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: SEO
+        sortOrder: 3
+handle: mission
+hasTitleField: true
+name: Mission
+section: bbc987b8-a57f-4ea5-9a26-913ec9199524
+sortOrder: 1
+titleFormat: ''

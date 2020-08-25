@@ -1,0 +1,7 @@
+handle: navigationType
+hasTitleField: true
+name: 'Navigation Type'
+section: c4130fa4-4c8a-4370-9d15-d659f9ddbaa4
+sortOrder: 1
+titleFormat: ''
+titleLabel: 'Navigation Type Name'

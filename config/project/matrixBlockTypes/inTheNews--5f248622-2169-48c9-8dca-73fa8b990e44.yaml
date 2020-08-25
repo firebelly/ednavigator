@@ -1,0 +1,112 @@
+field: bb3370b5-8dad-4734-b503-b8b3b1b31338
+fieldLayouts:
+  c68c3abf-a0ba-4b51-aec5-05ff83c249d8:
+    tabs:
+      -
+        fields:
+          00c3b57b-2339-44e5-a689-f81cc0b989e9:
+            required: true
+            sortOrder: 3
+          0f785668-10c2-4281-9d2c-168a9c8b3b47:
+            required: false
+            sortOrder: 4
+          70f6b86e-f59e-407a-b79e-09abdd981562:
+            required: false
+            sortOrder: 2
+          ee287044-3f04-4485-b7b7-9acbf785e098:
+            required: true
+            sortOrder: 1
+          ef7cce33-c477-47e0-8bee-d4b2a0c5ec23:
+            required: true
+            sortOrder: 5
+        name: Content
+        sortOrder: 1
+fields:
+  00c3b57b-2339-44e5-a689-f81cc0b989e9:
+    contentColumnType: text
+    fieldGroup: null
+    handle: articleTitle
+    instructions: 'The title of the article'
+    name: 'Article Title'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  0f785668-10c2-4281-9d2c-168a9c8b3b47:
+    contentColumnType: text
+    fieldGroup: null
+    handle: articleDescription
+    instructions: 'A short description of the article'
+    name: 'Article Description'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  70f6b86e-f59e-407a-b79e-09abdd981562:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: logoTreatment
+    instructions: 'If the image you uploaded to be displayed with this article is the publication''s logo please toggle this field so the logo will get the proper treatment, otherwise it will be treated as the other posts images are.'
+    name: 'Logo Treatment'
+    searchable: true
+    settings:
+      default: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  ee287044-3f04-4485-b7b7-9acbf785e098:
+    contentColumnType: string
+    fieldGroup: null
+    handle: articleImage
+    instructions: 'An image to associate with the article — it could be an image taken from the article, or a logo of the article''s publication.'
+    name: 'Article Image'
+    searchable: true
+    settings:
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      restrictFiles: '1'
+      selectionLabel: 'Choose an image'
+      singleUploadLocationSource: 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
+      singleUploadLocationSubpath: '{owner.slug}'
+      sources: '*'
+      targetSiteId: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
+      useSingleFolder: '1'
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Assets
+  ef7cce33-c477-47e0-8bee-d4b2a0c5ec23:
+    contentColumnType: text
+    fieldGroup: null
+    handle: articleUrl
+    instructions: ''
+    name: 'Article Url'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: inTheNews
+name: 'In The News'
+sortOrder: 2

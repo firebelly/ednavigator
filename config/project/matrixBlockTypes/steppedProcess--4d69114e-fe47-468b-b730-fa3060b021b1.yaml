@@ -1,0 +1,94 @@
+field: aec03031-025c-478a-a913-6bbffef82502
+fieldLayouts:
+  c78bd368-2792-456b-b00d-4399cf810edc:
+    tabs:
+      -
+        fields:
+          d44cc029-f4e0-48ae-89d2-e3ed8d474074:
+            required: false
+            sortOrder: 1
+          db26ab51-927d-4335-988e-e24dbe90d5c4:
+            required: true
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  d44cc029-f4e0-48ae-89d2-e3ed8d474074:
+    contentColumnType: text
+    fieldGroup: null
+    handle: sectionTitle
+    instructions: 'A title separating this section from others (optional)'
+    name: 'Section Title'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  db26ab51-927d-4335-988e-e24dbe90d5c4:
+    contentColumnType: text
+    fieldGroup: null
+    handle: steps
+    instructions: ''
+    name: Steps
+    searchable: true
+    settings:
+      addRowLabel: 'Add a row'
+      columnType: text
+      columns:
+        __assoc__:
+          -
+            - col1
+            -
+              __assoc__:
+                -
+                  - heading
+                  - 'Step Label (1-6 Words)'
+                -
+                  - handle
+                  - stepLabel
+                -
+                  - width
+                  - 25%
+                -
+                  - type
+                  - singleline
+          -
+            - col2
+            -
+              __assoc__:
+                -
+                  - heading
+                  - 'Step Content (250 char max)'
+                -
+                  - handle
+                  - stepContent
+                -
+                  - width
+                  - 75%
+                -
+                  - type
+                  - multiline
+      defaults:
+        -
+          __assoc__:
+            -
+              - col1
+              - '1-6 Word Short Title'
+            -
+              - col2
+              - '250 character maximum text'
+      maxRows: ''
+      minRows: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\Table
+handle: steppedProcess
+name: 'Stepped Process'
+sortOrder: 4

@@ -1,0 +1,164 @@
+field: 6ead88fb-e8dd-4483-a356-486e2926724a
+fieldLayouts:
+  0f3b527e-564b-4c86-beb0-e117691c4e90:
+    tabs:
+      -
+        fields:
+          3cdbcb11-e949-4b9d-b62c-fb5dae6c2411:
+            required: false
+            sortOrder: 6
+          6338e472-11ef-447b-b5a2-7470528af19a:
+            required: true
+            sortOrder: 1
+          6d9a4e72-cc25-4534-b699-002c5f688e68:
+            required: false
+            sortOrder: 4
+          6e8294d1-9277-448b-8170-f4faecd41617:
+            required: false
+            sortOrder: 5
+          8679637d-de3c-45d5-b1e5-2f9084c556ef:
+            required: false
+            sortOrder: 2
+          c912bc20-76fb-4928-b611-36b54b9208a8:
+            required: false
+            sortOrder: 3
+        name: Content
+        sortOrder: 1
+fields:
+  3cdbcb11-e949-4b9d-b62c-fb5dae6c2411:
+    contentColumnType: string
+    fieldGroup: null
+    handle: video
+    instructions: 'Optionally display a video instead of an image'
+    name: Video
+    searchable: false
+    settings:
+      allowSelfRelations: ''
+      allowedKinds:
+        - json
+      defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: '1'
+      restrictFiles: '1'
+      selectionLabel: 'Choose an embed asset'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      singleUploadLocationSource: 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
+      singleUploadLocationSubpath: '{owner.slug}'
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: ''
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  6338e472-11ef-447b-b5a2-7470528af19a:
+    contentColumnType: text
+    fieldGroup: null
+    handle: headline
+    instructions: ''
+    name: Headline
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '2'
+      multiline: '1'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  6d9a4e72-cc25-4534-b699-002c5f688e68:
+    contentColumnType: text
+    fieldGroup: null
+    handle: linkLabel
+    instructions: ''
+    name: 'Link Label'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  6e8294d1-9277-448b-8170-f4faecd41617:
+    contentColumnType: string
+    fieldGroup: null
+    handle: image
+    instructions: ''
+    name: Image
+    searchable: false
+    settings:
+      allowSelfRelations: ''
+      allowedKinds: null
+      defaultUploadLocationSource: 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
+      defaultUploadLocationSubpath: '{owner.slug}'
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: ''
+      selectionLabel: 'Choose an image'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources:
+        - 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
+      targetSiteId: null
+      useSingleFolder: false
+      validateRelatedElements: ''
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  8679637d-de3c-45d5-b1e5-2f9084c556ef:
+    contentColumnType: text
+    fieldGroup: null
+    handle: description
+    instructions: ''
+    name: Description
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  c912bc20-76fb-4928-b611-36b54b9208a8:
+    contentColumnType: string
+    fieldGroup: null
+    handle: linkEntry
+    instructions: ''
+    name: 'Link Entry'
+    searchable: true
+    settings:
+      allowSelfRelations: ''
+      limit: '1'
+      localizeRelations: ''
+      selectionLabel: 'Choose an entry'
+      source: null
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: ''
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+handle: howWeWork
+name: 'How We Work'
+sortOrder: 1

@@ -1,0 +1,8 @@
+handle: newsOutlets
+hasUrls: true
+name: 'News Outlets'
+settings:
+  path: uploads/news-outlets/
+sortOrder: 13
+type: craft\volumes\Local
+url: /uploads/news-outlets/

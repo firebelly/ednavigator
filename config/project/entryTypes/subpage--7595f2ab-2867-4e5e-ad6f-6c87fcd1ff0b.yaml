@@ -1,0 +1,69 @@
+fieldLayouts:
+  42e0ffcb-7088-4da1-b111-b45109da641f:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: b0aefac7-6c72-4693-bb5a-2e79c46dd012
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: a85fabb2-a4f6-4f0c-aad1-4fede5a8bc3f
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: bfbeec58-7143-463d-a0d2-2aeb37ada1b8
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 15eeedeb-4db5-4499-b869-f35d749fa2c5
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: aec03031-025c-478a-a913-6bbffef82502
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: Main
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: 60fb224d-1163-4fda-8ccc-ec5f35830998
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 32044766-4b09-4e5c-a620-b18d4dbe3ffb
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: fe6f2823-99c7-4956-9997-9a5129c325e5
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Landing Page Settings'
+        sortOrder: 2
+      -
+        elements:
+          -
+            fieldUid: 8dd0581c-6902-4a9c-8ddd-e11ce7656351
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 1b46cfbb-c65a-4e89-afd3-750e238e31c1
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 7a978b7f-cab5-448c-88dc-d4e1a9d281cf
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: SEO
+        sortOrder: 3
+handle: subpage
+hasTitleField: true
+name: Subpage
+section: d834f44a-1ff7-4e43-88e5-7fb1bf17b13c
+sortOrder: 7
+titleFormat: ''

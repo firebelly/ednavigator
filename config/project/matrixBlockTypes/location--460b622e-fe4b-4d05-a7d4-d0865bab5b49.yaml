@@ -1,0 +1,31 @@
+field: bc1eb461-6c04-456b-9186-1d4186aa13f9
+fieldLayouts:
+  e6cbb71f-894c-4552-998c-45319febd1dc:
+    tabs:
+      -
+        fields:
+          81ba36f6-8bad-4053-a0d1-3a504ae50254:
+            required: true
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  81ba36f6-8bad-4053-a0d1-3a504ae50254:
+    contentColumnType: text
+    fieldGroup: null
+    handle: locationName
+    instructions: ''
+    name: 'Location Name'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: location
+name: Location
+sortOrder: 1

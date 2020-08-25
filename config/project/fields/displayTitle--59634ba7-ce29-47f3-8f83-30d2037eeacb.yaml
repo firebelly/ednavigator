@@ -1,0 +1,17 @@
+contentColumnType: text
+fieldGroup: 459e00f7-e21e-4375-9fdf-cb0b072fbb98
+handle: displayTitle
+instructions: 'Title displayed above images in blog posts (example: "Figure 1")'
+name: 'Display Title'
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: language
+type: craft\fields\PlainText

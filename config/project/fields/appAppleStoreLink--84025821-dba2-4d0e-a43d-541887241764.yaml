@@ -1,0 +1,15 @@
+contentColumnType: text
+fieldGroup: b8065821-73bc-41b6-9331-08c71b8228ff
+handle: appAppleStoreLink
+instructions: 'The url to the download page for the app in the Apple store'
+name: 'App Apple Store Link'
+searchable: true
+settings:
+  charLimit: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

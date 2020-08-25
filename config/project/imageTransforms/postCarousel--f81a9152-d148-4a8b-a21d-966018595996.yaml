@@ -1,0 +1,9 @@
+format: jpg
+handle: postCarousel
+height: 900
+interlace: none
+mode: crop
+name: 'Post Carousel'
+position: center-center
+quality: 82
+width: 1800

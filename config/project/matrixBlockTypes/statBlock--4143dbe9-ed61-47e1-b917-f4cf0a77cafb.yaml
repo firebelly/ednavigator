@@ -1,0 +1,59 @@
+field: 0d3e14a2-0c82-4a5f-b7ac-4e7ce75f352e
+fieldLayouts:
+  c2a5dece-572f-4bfd-ba9b-d47b3d155aa0:
+    tabs:
+      -
+        fields:
+          4573cd72-3c9d-4f51-b50f-954c3b825540:
+            required: false
+            sortOrder: 2
+          5ba1a24e-c161-4f48-b56b-669124f7fd92:
+            required: true
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  4573cd72-3c9d-4f51-b50f-954c3b825540:
+    contentColumnType: text
+    fieldGroup: null
+    handle: statDescription
+    instructions: 'A short description to give context to the stat figure.'
+    name: 'Stat Description'
+    searchable: true
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Simple.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  5ba1a24e-c161-4f48-b56b-669124f7fd92:
+    contentColumnType: text
+    fieldGroup: null
+    handle: statFigure
+    instructions: ''
+    name: 'Stat Figure'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+handle: statBlock
+name: 'Stat Block'
+sortOrder: 4

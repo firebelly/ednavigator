@@ -1,0 +1,53 @@
+fieldLayouts:
+  db065e9e-298c-4c0b-b67c-5f20e1c9185a:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: b0aefac7-6c72-4693-bb5a-2e79c46dd012
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: a85fabb2-a4f6-4f0c-aad1-4fede5a8bc3f
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 15eeedeb-4db5-4499-b869-f35d749fa2c5
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 3c5b1db6-07cb-449e-991f-2bcbf56ce465
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: b16265b0-cb4e-4558-8cc7-36917aa93b69
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: Main
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: 8dd0581c-6902-4a9c-8ddd-e11ce7656351
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 1b46cfbb-c65a-4e89-afd3-750e238e31c1
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 7a978b7f-cab5-448c-88dc-d4e1a9d281cf
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: SEO
+        sortOrder: 2
+handle: payment
+hasTitleField: true
+name: 'Payment Page'
+section: e15c85a7-c70b-4d37-9227-c796679485fb
+sortOrder: 1
+titleFormat: ''

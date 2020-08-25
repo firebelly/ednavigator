@@ -1,0 +1,16 @@
+contentColumnType: string
+fieldGroup: 9aec6670-8753-4f2e-91d5-03ff2b4f3ef6
+handle: body
+instructions: 'The body copy'
+name: Body
+searchable: true
+settings:
+  availableTransforms: '*'
+  availableVolumes: '*'
+  cleanupHtml: ''
+  columnType: text
+  configFile: Standard.json
+  purifyHtml: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\redactor\Field

@@ -1,0 +1,89 @@
+fieldLayouts:
+  ed218355-f4a3-4351-8e11-452689527a45:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: b0aefac7-6c72-4693-bb5a-2e79c46dd012
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 60fb224d-1163-4fda-8ccc-ec5f35830998
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 348f54c4-b833-4ced-bf8a-da9b48e36232
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: aaf771f5-2db7-4257-b26d-b6ca2a58f2c8
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Page Header'
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: 3cce47f3-6d20-4247-bfbf-4902a5e25900
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: fce78d83-3749-49f0-81e5-30e0ef2b9e57
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 20ffa328-2013-4f18-8dd3-1f14164fba2d
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: aec03031-025c-478a-a913-6bbffef82502
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Page Blocks'
+        sortOrder: 2
+      -
+        elements:
+          -
+            fieldUid: bb3370b5-8dad-4734-b503-b8b3b1b31338
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Featured Posts'
+        sortOrder: 3
+      -
+        elements:
+          -
+            fieldUid: 32044766-4b09-4e5c-a620-b18d4dbe3ffb
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: fe6f2823-99c7-4956-9997-9a5129c325e5
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Landing Page Settings'
+        sortOrder: 4
+      -
+        elements:
+          -
+            fieldUid: 7a978b7f-cab5-448c-88dc-d4e1a9d281cf
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 8dd0581c-6902-4a9c-8ddd-e11ce7656351
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 1b46cfbb-c65a-4e89-afd3-750e238e31c1
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: SEO
+        sortOrder: 5
+handle: employers
+hasTitleField: true
+name: Employers
+section: d834f44a-1ff7-4e43-88e5-7fb1bf17b13c
+sortOrder: 6
+titleFormat: ''

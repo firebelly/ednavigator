@@ -1,0 +1,17 @@
+contentColumnType: text
+fieldGroup: c07eca58-32d2-42c5-9bc5-0149d5f91a25
+handle: newsOutletName
+instructions: 'The name of the outlet or publication the article appears in.'
+name: 'News Outlet Name'
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 9aec6670-8753-4f2e-91d5-03ff2b4f3ef6
+handle: pageDescription
+instructions: 'A short description of the page displayed on the parent landing page.'
+name: 'Page Description'
+searchable: true
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: '1'
+  placeholder: 'Page description'
+translationKeyFormat: null
+translationMethod: language
+type: craft\fields\PlainText

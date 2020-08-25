@@ -1,0 +1,20 @@
+contentColumnType: string
+fieldGroup: 0200d286-aa37-4a58-9853-7f8a1aeb6cc3
+handle: featuredResourcePost
+instructions: ''
+name: 'Featured Resource Post'
+searchable: false
+settings:
+  allowSelfRelations: ''
+  limit: '1'
+  localizeRelations: ''
+  selectionLabel: 'Choose an entry'
+  source: null
+  sources:
+    - 'section:b04c9ca0-ec19-4957-9463-e561c6cbe987'
+  targetSiteId: null
+  validateRelatedElements: ''
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

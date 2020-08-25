@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: 0200d286-aa37-4a58-9853-7f8a1aeb6cc3
+handle: resourcePostType
+instructions: 'Choose what type of resource this is'
+name: 'Resource Post Type'
+searchable: true
+settings:
+  branchLimit: '1'
+  localizeRelations: false
+  selectionLabel: ''
+  source: 'group:1d85a8c3-3dd3-4d6c-b832-0083e1d95c95'
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Categories

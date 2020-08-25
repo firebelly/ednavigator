@@ -1,0 +1,30 @@
+contentColumnType: string
+fieldGroup: 62d1d9b7-d1f6-4696-b71d-80e0cb0e167d
+handle: postBannerImage
+instructions: ''
+name: 'Post Banner Image'
+searchable: false
+settings:
+  allowedKinds: null
+  defaultUploadLocationSource: 'volume:2cab35ea-e7c6-43b3-824c-befeac13bb2a'
+  defaultUploadLocationSubpath: '{owner.section}/{owner.slug}_{id}'
+  limit: '1'
+  localizeRelations: ''
+  restrictFiles: ''
+  selectionLabel: 'Choose an image'
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  singleUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+  singleUploadLocationSubpath: ''
+  source: null
+  sources:
+    - 'volume:6b3a49f8-4ed5-4a69-86eb-7b2fa0d422f6'
+    - 'volume:1e3bbacb-6818-4f7f-8516-ae22e47c8b82'
+    - 'volume:2cab35ea-e7c6-43b3-824c-befeac13bb2a'
+  targetSiteId: null
+  useSingleFolder: false
+  validateRelatedElements: ''
+  viewMode: large
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

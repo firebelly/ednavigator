@@ -1,0 +1,15 @@
+contentColumnType: text
+fieldGroup: 9aec6670-8753-4f2e-91d5-03ff2b4f3ef6
+handle: videoId
+instructions: 'YouTube video ID (extract from the url, example: in the url ''youtube.com/watch?v=eaIvk1cSyG8'', the id is ''eaIvk1cSyG8'''
+name: 'YouTube Video Id'
+searchable: true
+settings:
+  charLimit: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

@@ -1,0 +1,21 @@
+contentColumnType: string
+fieldGroup: 62d1d9b7-d1f6-4696-b71d-80e0cb0e167d
+handle: contentSync
+instructions: 'This field will be disabled by default. When editing or updating an English post set this field to **Enabled** so that the corresponding fields in the Spanish entry are updated with the new content. When this field is enabled, fields in the Spanish entry that have been manually translated will not be effected.'
+name: 'Content Sync'
+searchable: false
+settings:
+  defaults:
+    __assoc__:
+      -
+        - enabled
+        - ''
+      -
+        - sources
+        - '*'
+      -
+        - overwrite
+        - ''
+translationKeyFormat: null
+translationMethod: none
+type: timkelty\craftcms\sitesync\Field

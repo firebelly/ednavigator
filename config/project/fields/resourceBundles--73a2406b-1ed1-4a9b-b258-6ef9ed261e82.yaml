@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: 0200d286-aa37-4a58-9853-7f8a1aeb6cc3
+handle: resourceBundles
+instructions: 'What resource bundles should the post be included in?'
+name: 'Resource Bundles'
+searchable: true
+settings:
+  branchLimit: ''
+  localizeRelations: false
+  selectionLabel: 'Add to a resource bundle'
+  source: 'group:c6992af6-05f1-4a94-87a2-063dfb5321e6'
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Categories

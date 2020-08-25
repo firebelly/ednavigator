@@ -1,0 +1,18 @@
+contentColumnType: string
+fieldGroup: 5e34300b-f948-4043-8bc5-bc9395fff7d2
+handle: mappedEntry
+instructions: 'Choose the entry to Map to the Navigation'
+name: Entry
+searchable: false
+settings:
+  limit: '1'
+  localizeRelations: ''
+  selectionLabel: 'Choose an entry'
+  source: null
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: ''
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

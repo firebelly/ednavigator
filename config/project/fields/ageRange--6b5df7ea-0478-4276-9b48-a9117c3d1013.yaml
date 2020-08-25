@@ -1,0 +1,17 @@
+contentColumnType: text
+fieldGroup: 0200d286-aa37-4a58-9853-7f8a1aeb6cc3
+handle: ageRange
+instructions: ''
+name: 'Age Range'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: '1'
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: 0-24
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

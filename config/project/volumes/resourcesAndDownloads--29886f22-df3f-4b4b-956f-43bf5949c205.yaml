@@ -1,0 +1,9 @@
+handle: resourcesAndDownloads
+hasUrls: true
+name: 'Resources and Downloads'
+settings:
+  path: downloads/
+  url: /downloads/
+sortOrder: 9
+type: craft\volumes\Local
+url: null

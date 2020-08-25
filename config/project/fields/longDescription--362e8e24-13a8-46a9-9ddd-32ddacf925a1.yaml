@@ -1,0 +1,16 @@
+contentColumnType: string
+fieldGroup: 0200d286-aa37-4a58-9853-7f8a1aeb6cc3
+handle: longDescription
+instructions: "Displayed on the resource bundle page itself —\_this can be a more thorough and lengthy description"
+name: 'Long Description'
+searchable: true
+settings:
+  availableTransforms: ''
+  availableVolumes: ''
+  cleanupHtml: '1'
+  columnType: text
+  configFile: ''
+  purifyHtml: '1'
+translationKeyFormat: null
+translationMethod: site
+type: craft\redactor\Field

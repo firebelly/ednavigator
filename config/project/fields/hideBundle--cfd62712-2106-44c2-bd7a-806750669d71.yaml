@@ -1,0 +1,11 @@
+contentColumnType: boolean
+fieldGroup: 0200d286-aa37-4a58-9853-7f8a1aeb6cc3
+handle: hideBundle
+instructions: 'Should this bundle be hidden?'
+name: 'Hide Bundle?'
+searchable: false
+settings:
+  default: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

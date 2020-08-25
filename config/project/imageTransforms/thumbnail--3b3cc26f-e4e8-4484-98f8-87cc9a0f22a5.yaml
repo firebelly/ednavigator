@@ -1,0 +1,9 @@
+format: jpg
+handle: thumbnail
+height: 300
+interlace: none
+mode: crop
+name: Thumbnail
+position: center-center
+quality: 82
+width: 300

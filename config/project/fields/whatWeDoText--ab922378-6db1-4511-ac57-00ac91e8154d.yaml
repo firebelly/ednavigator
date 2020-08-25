@@ -1,0 +1,17 @@
+contentColumnType: string
+fieldGroup: 906608b2-91ed-4a3f-af22-d10f34202903
+handle: whatWeDoText
+instructions: ''
+name: 'What We Do Text'
+searchable: true
+settings:
+  availableTransforms: ''
+  availableVolumes: ''
+  cleanupHtml: '1'
+  columnType: text
+  configFile: Standard.json
+  purifierConfig: ''
+  purifyHtml: '1'
+translationKeyFormat: null
+translationMethod: site
+type: craft\redactor\Field

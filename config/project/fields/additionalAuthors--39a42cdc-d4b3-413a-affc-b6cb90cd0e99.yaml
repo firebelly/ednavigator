@@ -1,0 +1,18 @@
+contentColumnType: string
+fieldGroup: c07eca58-32d2-42c5-9bc5-0149d5f91a25
+handle: additionalAuthors
+instructions: 'Additional authors the post will be credited to.'
+name: 'Additional Authors'
+searchable: false
+settings:
+  limit: ''
+  localizeRelations: ''
+  selectionLabel: 'Add a user'
+  source: null
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: ''
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Users

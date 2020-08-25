@@ -1,0 +1,24 @@
+contentColumnType: string
+fieldGroup: 9ace857e-959b-4a74-b0e0-42873080c846
+handle: seoImage
+instructions: 'The fallback image used for SEO and sharing when a banner image is not found for the current page'
+name: 'SEO Image'
+searchable: true
+settings:
+  allowedKinds:
+    - image
+  defaultUploadLocationSource: 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
+  defaultUploadLocationSubpath: ''
+  limit: ''
+  localizeRelations: false
+  restrictFiles: '1'
+  selectionLabel: ''
+  singleUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+  singleUploadLocationSubpath: ''
+  sources: '*'
+  targetSiteId: 84ea1cc0-8139-4b33-b94a-1c02700fc1ef
+  useSingleFolder: ''
+  viewMode: list
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Assets

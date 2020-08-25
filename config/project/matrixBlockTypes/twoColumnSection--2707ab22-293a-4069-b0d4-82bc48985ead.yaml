@@ -1,0 +1,198 @@
+field: aec03031-025c-478a-a913-6bbffef82502
+fieldLayouts:
+  5888b2e0-1fa9-411f-b16d-8c88d582f26f:
+    tabs:
+      -
+        fields:
+          169e8376-1dcc-42d2-be25-eaf259903a9c:
+            required: false
+            sortOrder: 3
+          283975ee-33d3-4991-aef0-a103e124f280:
+            required: false
+            sortOrder: 1
+          a1e62961-2af7-4844-ae08-f474fc82235f:
+            required: false
+            sortOrder: 4
+          babbba1c-77a9-411e-9507-e59448ff3110:
+            required: false
+            sortOrder: 5
+          efd94d63-5c0e-4737-a4f2-c03fd53d1a05:
+            required: false
+            sortOrder: 2
+          f441e264-2020-428d-87ae-24f6090e0aad:
+            required: true
+            sortOrder: 6
+        name: Content
+        sortOrder: 1
+fields:
+  169e8376-1dcc-42d2-be25-eaf259903a9c:
+    contentColumnType: text
+    fieldGroup: null
+    handle: leftColumnContent
+    instructions: ''
+    name: 'Left Column Content'
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Simple.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\redactor\Field
+  283975ee-33d3-4991-aef0-a103e124f280:
+    contentColumnType: text
+    fieldGroup: null
+    handle: sectionTitle
+    instructions: 'A title separating this section from others (optional)'
+    name: 'Section Title'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  a1e62961-2af7-4844-ae08-f474fc82235f:
+    contentColumnType: text
+    fieldGroup: null
+    handle: rightColumnTitle
+    instructions: 'Column title (optional)'
+    name: 'Right Column Title'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '1'
+      multiline: '1'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  babbba1c-77a9-411e-9507-e59448ff3110:
+    contentColumnType: text
+    fieldGroup: null
+    handle: rightColumnContent
+    instructions: ''
+    name: 'Right Column Content'
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Simple.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\redactor\Field
+  efd94d63-5c0e-4737-a4f2-c03fd53d1a05:
+    contentColumnType: text
+    fieldGroup: null
+    handle: leftColumnTitle
+    instructions: 'Column title (optional)'
+    name: 'Left Column Title'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '1'
+      multiline: '1'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  f441e264-2020-428d-87ae-24f6090e0aad:
+    contentColumnType: string
+    fieldGroup: null
+    handle: sectionColor
+    instructions: 'The background color of the section'
+    name: 'Section Color'
+    searchable: true
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Offwhite
+            -
+              - value
+              - background-offwhite
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Gray
+            -
+              - value
+              - background-gray
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Blue
+            -
+              - value
+              - background-blue
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Green
+            -
+              - value
+              - background-green
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Yellow
+            -
+              - value
+              - background-yellow
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+handle: twoColumnSection
+name: 'Two-column Section'
+sortOrder: 1

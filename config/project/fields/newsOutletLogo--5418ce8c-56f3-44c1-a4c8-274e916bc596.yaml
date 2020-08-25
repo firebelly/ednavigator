@@ -1,0 +1,28 @@
+contentColumnType: string
+fieldGroup: c07eca58-32d2-42c5-9bc5-0149d5f91a25
+handle: newsOutletLogo
+instructions: 'Upload a logo for the news outlet. Ideally in solid black, the image will be treated to a gray.'
+name: 'News Outlet Logo'
+searchable: false
+settings:
+  allowedKinds:
+    - image
+  defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+  defaultUploadLocationSubpath: ''
+  limit: '1'
+  localizeRelations: ''
+  restrictFiles: '1'
+  selectionLabel: 'Choose a logo'
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  singleUploadLocationSource: 'volume:d50b030c-521f-419d-b31c-0ed39a747450'
+  singleUploadLocationSubpath: ''
+  source: null
+  sources: '*'
+  targetSiteId: null
+  useSingleFolder: true
+  validateRelatedElements: ''
+  viewMode: list
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

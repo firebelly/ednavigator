@@ -1,0 +1,13 @@
+contentColumnType: string
+fieldGroup: 9aec6670-8753-4f2e-91d5-03ff2b4f3ef6
+handle: linkList
+instructions: 'A stacked list of links, either to the sibling pages, or to manually specified urls.'
+name: 'Link List'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_linklist}}'
+  maxBlocks: null
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Matrix

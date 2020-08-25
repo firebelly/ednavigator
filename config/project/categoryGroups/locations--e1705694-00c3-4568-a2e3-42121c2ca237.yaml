@@ -1,0 +1,14 @@
+handle: locations
+name: Locations
+siteSettings:
+  84ea1cc0-8139-4b33-b94a-1c02700fc1ef:
+    hasUrls: true
+    template: ''
+    uriFormat: 'locations/{slug}'
+  ed2e38d9-d86c-40c4-b682-df89fc90f62d:
+    hasUrls: true
+    template: ''
+    uriFormat: 'locations/{slug}'
+structure:
+  maxLevels: 1
+  uid: 57a02549-a05b-4d1d-8988-0230f4825164

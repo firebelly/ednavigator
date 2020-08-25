@@ -1,0 +1,13 @@
+contentColumnType: string
+fieldGroup: 906608b2-91ed-4a3f-af22-d10f34202903
+handle: stats
+instructions: ''
+name: Stats
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_stats}}'
+  maxBlocks: '2'
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Matrix

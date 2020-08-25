@@ -1,0 +1,17 @@
+contentColumnType: string
+fieldGroup: 27f5e5ac-4836-4094-90e2-1fe70b08ff71
+handle: individualMembershipsText
+instructions: 'A paragraph introducing the individual memberships option.'
+name: 'Individual Memberships Text'
+searchable: true
+settings:
+  availableTransforms: ''
+  availableVolumes: ''
+  cleanupHtml: '1'
+  columnType: text
+  configFile: Standard.json
+  purifierConfig: ''
+  purifyHtml: '1'
+translationKeyFormat: null
+translationMethod: site
+type: craft\redactor\Field

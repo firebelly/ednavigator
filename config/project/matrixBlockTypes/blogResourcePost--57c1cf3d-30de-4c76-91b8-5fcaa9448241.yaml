@@ -1,0 +1,32 @@
+field: bb3370b5-8dad-4734-b503-b8b3b1b31338
+fieldLayouts:
+  d0796bb6-7dce-4ebf-a9ee-c940cab77f1a:
+    tabs:
+      -
+        fields:
+          94b44956-821a-4345-b36f-ce83322409fe:
+            required: true
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  94b44956-821a-4345-b36f-ce83322409fe:
+    contentColumnType: string
+    fieldGroup: null
+    handle: postEntry
+    instructions: 'Choose an entry to feature.'
+    name: 'Post Entry'
+    searchable: true
+    settings:
+      limit: '1'
+      localizeRelations: false
+      selectionLabel: 'Choose an Entry'
+      sources:
+        - 'section:524ea879-0552-4149-97b5-1c910292a200'
+        - 'section:b04c9ca0-ec19-4957-9463-e561c6cbe987'
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Entries
+handle: blogResourcePost
+name: 'Blog/Resource Post'
+sortOrder: 1

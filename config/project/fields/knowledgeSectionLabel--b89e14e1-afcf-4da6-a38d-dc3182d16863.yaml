@@ -1,0 +1,15 @@
+contentColumnType: text
+fieldGroup: a6a6a3b2-033c-4402-91de-5001380f4f70
+handle: knowledgeSectionLabel
+instructions: ''
+name: 'Knowledge Section Label'
+searchable: true
+settings:
+  charLimit: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText

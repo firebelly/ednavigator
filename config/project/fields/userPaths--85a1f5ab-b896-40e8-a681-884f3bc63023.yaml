@@ -1,0 +1,13 @@
+contentColumnType: string
+fieldGroup: 906608b2-91ed-4a3f-af22-d10f34202903
+handle: userPaths
+instructions: ''
+name: 'User Paths'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_userpaths}}'
+  maxBlocks: '2'
+  propagationMethod: none
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Matrix

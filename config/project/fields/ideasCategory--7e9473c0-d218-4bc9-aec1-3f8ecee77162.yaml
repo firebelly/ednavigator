@@ -1,0 +1,21 @@
+contentColumnType: string
+fieldGroup: c07eca58-32d2-42c5-9bc5-0149d5f91a25
+handle: ideasCategory
+instructions: ''
+name: 'Ideas Category'
+searchable: true
+settings:
+  allowLimit: false
+  allowMultipleSources: false
+  branchLimit: '1'
+  limit: null
+  localizeRelations: ''
+  selectionLabel: ''
+  source: 'group:c125af50-39b3-40f5-8f0d-178d4dfe0bbb'
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: ''
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Categories

@@ -1,0 +1,121 @@
+fieldLayouts:
+  077a72ed-21b2-4996-9465-e4bc9e6c18c7:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: b0aefac7-6c72-4693-bb5a-2e79c46dd012
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 60fb224d-1163-4fda-8ccc-ec5f35830998
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 61e64fbf-76d0-4008-b09b-94e98cbac5f6
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: fbb9d500-a777-4fc0-bb23-f3863056a4ee
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 32044766-4b09-4e5c-a620-b18d4dbe3ffb
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: b16265b0-cb4e-4558-8cc7-36917aa93b69
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Page Header'
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: de4de851-be5d-4110-a7a0-2ca1a58b6718
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: ab922378-6db1-4511-ac57-00ac91e8154d
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 5caf08d9-f15c-4580-a38d-e3b1c796dac5
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: c95314c3-b3d1-4f5c-9cb8-109f49fdfd68
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'What We Do'
+        sortOrder: 2
+      -
+        elements:
+          -
+            fieldUid: 6ead88fb-e8dd-4483-a356-486e2926724a
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'How We Work'
+        sortOrder: 3
+      -
+        elements:
+          -
+            fieldUid: bf5bde59-82ff-47de-90cf-239d4598dde8
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 4350637b-94b7-4171-a90a-7efedfa228e7
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: f6a72718-2ef1-4c59-88e5-c260f0828863
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Sustainable Results'
+        sortOrder: 4
+      -
+        elements:
+          -
+            fieldUid: 5125ded7-c2b6-4957-9cb0-ebb93b3299d7
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: Stats
+        sortOrder: 5
+      -
+        elements:
+          -
+            fieldUid: 85a1f5ab-b896-40e8-a681-884f3bc63023
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'User Paths'
+        sortOrder: 6
+      -
+        elements:
+          -
+            fieldUid: bb3370b5-8dad-4734-b503-b8b3b1b31338
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Featured Posts and Articles'
+        sortOrder: 7
+      -
+        elements:
+          -
+            fieldUid: 8dd0581c-6902-4a9c-8ddd-e11ce7656351
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 7a978b7f-cab5-448c-88dc-d4e1a9d281cf
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: SEO
+        sortOrder: 8
+handle: homepage
+hasTitleField: true
+name: Homepage
+section: cd633440-efa8-44c2-af6d-c74c19378f79
+sortOrder: 1
+titleFormat: ''

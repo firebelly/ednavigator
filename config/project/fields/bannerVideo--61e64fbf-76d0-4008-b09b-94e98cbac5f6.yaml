@@ -1,0 +1,15 @@
+contentColumnType: text
+fieldGroup: 906608b2-91ed-4a3f-af22-d10f34202903
+handle: bannerVideo
+instructions: 'Optional Banner video. Paste in the id from a vimeo video. Example: for https://vimeo.com/188193893 the id is 188193893'
+name: 'Banner Video'
+searchable: true
+settings:
+  charLimit: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

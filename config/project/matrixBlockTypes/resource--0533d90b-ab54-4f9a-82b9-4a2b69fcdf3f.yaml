@@ -1,0 +1,115 @@
+field: fbd80904-a7d9-456b-8cd7-e08ad76a867f
+fieldLayouts:
+  33bb1f62-daa8-4d15-8d41-e8ac41c44cb7:
+    tabs:
+      -
+        fields:
+          12266636-f6b8-4f3c-aa12-1259b1594558:
+            required: true
+            sortOrder: 1
+          2c048086-0051-42ea-8262-98f3227f5c0b:
+            required: false
+            sortOrder: 3
+          3daa65e4-bc71-48f3-9943-7add8e2ede71:
+            required: false
+            sortOrder: 4
+          a9e49c91-4730-4e8e-8a74-02649559e4ef:
+            required: true
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  12266636-f6b8-4f3c-aa12-1259b1594558:
+    contentColumnType: text
+    fieldGroup: null
+    handle: resourceTitle
+    instructions: ''
+    name: 'Resource Title'
+    searchable: true
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  2c048086-0051-42ea-8262-98f3227f5c0b:
+    contentColumnType: text
+    fieldGroup: null
+    handle: resourceDescription
+    instructions: ''
+    name: 'Resource Description'
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: ''
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\redactor\Field
+  3daa65e4-bc71-48f3-9943-7add8e2ede71:
+    contentColumnType: string
+    fieldGroup: null
+    handle: resourceThumbnail
+    instructions: 'A thumbnail of the pdf or resource (optional)'
+    name: 'Resource Thumbnail'
+    searchable: true
+    settings:
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:29886f22-df3f-4b4b-956f-43bf5949c205'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: 'Add a thumbnail'
+      singleUploadLocationSource: 'volume:29886f22-df3f-4b4b-956f-43bf5949c205'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: '1'
+      validateRelatedElements: ''
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  a9e49c91-4730-4e8e-8a74-02649559e4ef:
+    contentColumnType: string
+    fieldGroup: null
+    handle: resourceFile
+    instructions: 'The downloadable resource file'
+    name: 'Resource File'
+    searchable: false
+    settings:
+      allowedKinds: null
+      defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: ''
+      selectionLabel: 'Add the rousource'
+      singleUploadLocationSource: 'volume:29886f22-df3f-4b4b-956f-43bf5949c205'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: '1'
+      validateRelatedElements: ''
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+handle: resource
+name: Resource
+sortOrder: 1

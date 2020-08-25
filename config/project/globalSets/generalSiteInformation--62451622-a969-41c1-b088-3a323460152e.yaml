@@ -1,0 +1,21 @@
+fieldLayouts:
+  15081019-554d-4f18-8c2f-e552bb7c3d69:
+    tabs:
+      -
+        fields:
+          06cec272-ecfe-49e4-8d41-c1e2bb411838:
+            required: false
+            sortOrder: 1
+          76d5a8a9-fba9-457c-ab56-379dad242837:
+            required: false
+            sortOrder: 2
+          9971101b-a2d6-497e-af1c-b041ad6237f5:
+            required: false
+            sortOrder: 4
+          f91cde1f-acee-45a9-a360-4c5dab922873:
+            required: false
+            sortOrder: 3
+        name: Content
+        sortOrder: 1
+handle: generalSiteInformation
+name: 'General Site Information'

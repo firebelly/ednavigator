@@ -1,0 +1,11 @@
+contentColumnType: boolean
+fieldGroup: b8065821-73bc-41b6-9331-08c71b8228ff
+handle: appInfoVisible
+instructions: 'Should the references and links to the app be visible?'
+name: 'App Info Visible?'
+searchable: true
+settings:
+  default: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

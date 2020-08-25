@@ -1,0 +1,18 @@
+contentColumnType: string
+fieldGroup: 9aec6670-8753-4f2e-91d5-03ff2b4f3ef6
+handle: linkedPage
+instructions: ''
+name: 'Linked Page'
+searchable: true
+settings:
+  limit: '1'
+  localizeRelations: true
+  selectionLabel: ''
+  sources:
+    - 'section:524ea879-0552-4149-97b5-1c910292a200'
+    - 'section:b04c9ca0-ec19-4957-9463-e561c6cbe987'
+    - singles
+    - 'section:bbc987b8-a57f-4ea5-9a26-913ec9199524'
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Entries
