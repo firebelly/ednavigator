@@ -1,4 +1,4 @@
-dateModified: 1598388752
+dateModified: 1598459623
 email:
   fromEmail: support@ednavigator.com
   fromName: EdNavigator
@@ -45,7 +45,7 @@ plugins:
       prependSender: 'On behalf of'
       prependSubject: 'New Get Started form submission'
       successFlashMessage: 'Thank you, your message has been sent!'
-      toEmail: info@ednavigator.com
+      toEmail: 'info@ednavigator.com, tim.daly@ednavigator.com, ari.rozman@ednavigator.com'
   contact-form-extensions:
     edition: standard
     enabled: true
