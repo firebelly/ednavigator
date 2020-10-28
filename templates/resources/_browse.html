@@ -92,7 +92,9 @@
 {% endif %}
 
 {% set results = craft.entries(params).all()|length %}
-{% set params = params|merge({limit: limit}) %}
+{% if baseSlug != 'search' and baseSlug != 'buscar' %}
+  {% set params = params|merge({limit: limit}) %}
+{% endif %}
 
 {% block content %}
 
