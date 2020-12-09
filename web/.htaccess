@@ -10,7 +10,8 @@
     RewriteRule ^(.*)$ https://www.ednavigator.com/$1 [R=301,L]
 
     # Force SSL
-    RewriteCond %{HTTP:X-Forwarded-SSL} !on
+    # RewriteCond %{HTTP:X-Forwarded-SSL} !on
+    RewriteCond %{HTTPS} off
     RewriteCond %{HTTP_HOST} !^ednavigator\.craft [NC]
     RewriteCond %{HTTP_HOST} !^ednavigator\.localhost [NC]
     RewriteCond %{HTTP_HOST} !^ednavigator-3\.localhost [NC]
