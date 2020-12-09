@@ -5,6 +5,7 @@ env.path = '/Users/developer/Sites/ednavigator'
 env.remotepath = '/home/firebelly/apps/ednavigator'
 env.git_branch = 'master'
 env.warn_only = True
+env.forward_agent = True
 
 def staging():
   env.hosts = ['staging.ednavigator.com']
@@ -13,7 +14,7 @@ def staging():
   env.remotepath = '/var/www/ednavigator-staging'
 
 def production():
-  env.hosts = ['www.ednavigator.com']
+  env.hosts = ['134.209.65.171']
   env.user = 'deployer'
   env.remotepath = '/var/www/ednavigator'
 
