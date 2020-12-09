@@ -2,7 +2,7 @@
     RewriteEngine On
 
     # Ensure consistent www URL
-    RewriteCond %{REQUEST_URI} !\.well-known/acme-challenge
+    RewriteCond %{REQUEST_URI} !\.well-known
     RewriteCond %{HTTP_HOST} !^www\.ednavigator\.com [NC]
     RewriteCond %{HTTP_HOST} !^ednavigator\.localhost [NC]
     RewriteCond %{HTTP_HOST} !^ednavigator-3\.localhost [NC]
@@ -12,6 +12,7 @@
     # Force SSL
     # RewriteCond %{HTTP:X-Forwarded-SSL} !on
     RewriteCond %{HTTPS} off
+    RewriteCond %{REQUEST_URI} !\.well-known
     RewriteCond %{HTTP_HOST} !^ednavigator\.craft [NC]
     RewriteCond %{HTTP_HOST} !^ednavigator\.localhost [NC]
     RewriteCond %{HTTP_HOST} !^ednavigator-3\.localhost [NC]
