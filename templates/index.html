@@ -182,9 +182,9 @@
     <h4 class="section-title">Some of our partners</h4>
     <ul class="partners">
       {% for person in partners.all() %}
-        {% set image = person.personImage.one().getUrl() %}
-        {% set transformedImage = craft.imager.transformImage(image, { effects: { colorize: '#a3b0b2' } }) %}
         {% if person.personImage|length %}
+          {% set image = person.personImage.one().getUrl() %}
+          {% set transformedImage = craft.imager.transformImage(image, { effects: { colorize: '#a3b0b2' } }) %}
           <li class="partner">
             <div class="partner-image">
               <img src="{{ transformedImage.getUrl() }}" alt="{{ person.personName }}">
