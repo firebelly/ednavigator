@@ -2,20 +2,21 @@ from fabric.api import *
 import os
 
 env.path = '/Users/developer/Sites/ednavigator'
-env.remotepath = '/home/firebelly/webapps/ednavigator'
+env.remotepath = '/home/firebelly/apps/ednavigator'
 env.git_branch = 'master'
 env.warn_only = True
+env.forward_agent = True
 
 def staging():
-  env.hosts = ['ednavigator.webfactional.com']
-  env.user = 'ednavigator'
-  env.git_branch = '2019-phase2-updates'
-  env.remotepath = '/home/ednavigator/webapps/ednavigator_staging'
+  env.hosts = ['staging.ednavigator.com']
+  env.user = 'deployer'
+  env.git_branch = '2019-updates'
+  env.remotepath = '/var/www/ednavigator-staging'
 
 def production():
-  env.hosts = ['ednavigator.webfactional.com']
-  env.user = 'ednavigator'
-  env.remotepath = '/home/ednavigator/webapps/ednavigator_prod'
+  env.hosts = ['134.209.65.171']
+  env.user = 'deployer'
+  env.remotepath = '/var/www/ednavigator'
 
 def testing():
   env.git_branch = '2019-updates'
@@ -36,4 +37,4 @@ def update():
 
 def composer_install():
   with cd(env.remotepath):
-    run('~/bin/composer.phar install')
+    run('/usr/bin/composer install')
