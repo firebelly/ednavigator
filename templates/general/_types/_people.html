@@ -35,7 +35,7 @@
             {% if person.personImage|length %}
               {% set image = person.personImage.one().getUrl() %}
               {% if 'partners' in bodyId or 'socios-empresariales' in bodyId %}
-                {% set transformedImage = craft.imager.transformImage(image, { effects: { colorize: '#a3b0b2' } }) %}
+                {% set transformedImage = craft.imager.transformImage(image, { effects: { grayscale: true, gamma: 0.2, colorize: '#70797b' } }) %}
               {% else %}
                 {% set transformedImage = craft.imager.transformImage(image, { effects: { grayscale: true, modulate: [120, 90, 0] } }) %}
               {% endif %}
