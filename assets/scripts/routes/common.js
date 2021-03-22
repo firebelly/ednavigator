@@ -637,7 +637,7 @@ export default {
                 container.find('.checkout-feedback').html('<h3>Uh oh!</h3><p>There was a transaction error: ' + response.error + '</p>').slideDown('fast');
               }
             }, 'json').fail(function() {
-              container.find('.checkout-feedback').html('<h3>Uh oh!</h3><p>There was a transaction error. Please contact us at <a href="mailto:info@ednavigator.com?subject=stripe%20error">info@ednavigator.com</a>.</p>').slideDown('fast');
+              container.find('.checkout-feedback').html('<h3>Uh oh!</h3><p>There was a transaction error. Please contact us at <a href="mailto:info@ednavigator.org?subject=stripe%20error">info@ednavigator.org</a>.</p>').slideDown('fast');
           });
           }
         });

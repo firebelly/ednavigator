@@ -8,7 +8,7 @@ env.warn_only = True
 env.forward_agent = True
 
 def staging():
-  env.hosts = ['staging.ednavigator.com']
+  env.hosts = ['staging.ednavigator.org']
   env.user = 'deployer'
   env.git_branch = '2019-updates'
   env.remotepath = '/var/www/ednavigator-staging'

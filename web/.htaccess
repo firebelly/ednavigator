@@ -3,11 +3,11 @@
 
     # Ensure consistent www URL
     RewriteCond %{REQUEST_URI} !\.well-known
-    RewriteCond %{HTTP_HOST} !^www\.ednavigator\.com [NC]
+    RewriteCond %{HTTP_HOST} !^www\.ednavigator\.org [NC]
     RewriteCond %{HTTP_HOST} !^ednavigator\.localhost [NC]
     RewriteCond %{HTTP_HOST} !^ednavigator-3\.localhost [NC]
     RewriteCond %{HTTP_HOST} !^ednavigator\.webfactional\.com [NC]
-    RewriteRule ^(.*)$ https://www.ednavigator.com/$1 [R=301,L]
+    RewriteRule ^(.*)$ https://www.ednavigator.org/$1 [R=301,L]
 
     # Force SSL
     # RewriteCond %{HTTP:X-Forwarded-SSL} !on
@@ -17,7 +17,7 @@
     RewriteCond %{HTTP_HOST} !^ednavigator\.localhost [NC]
     RewriteCond %{HTTP_HOST} !^ednavigator-3\.localhost [NC]
     RewriteCond %{HTTP_HOST} !^ednavigator\.firebelly\.co [NC]
-    RewriteCond %{HTTP_HOST} !^ednavigator\.webfactional\.com [NC]
+    RewriteCond %{HTTP_HOST} !^ednavigator\.webfactional\.org [NC]
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
     # Custom redirects
