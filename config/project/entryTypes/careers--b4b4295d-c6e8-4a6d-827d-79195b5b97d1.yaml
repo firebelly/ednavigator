@@ -20,7 +20,7 @@ fieldLayouts:
             required: false
             type: craft\fieldlayoutelements\CustomField
           -
-            fieldUid: 31e55dcd-fd69-46b4-bc0a-6da055adf5b2
+            fieldUid: 31e55dcd-fd69-46b4-bc0a-6da055adf5b2 # Positions
             required: false
             type: craft\fieldlayoutelements\CustomField
           -

@@ -18,7 +18,22 @@
         <h3 class="headline-rule"><span>Open positions</span></h3>
         <ul class="section-links">
           {% for position in positions.all() %}
-            <li><a href="{{ position.pdf.one().url }}" class="inline-link"><span>{{ position.positionTitle }}</span></a></li>
+            <li>
+              <h4>{{ position.positionTitle }}</h4>
+              {% if position.positionDescription %}
+                <p>{{ position.positionDescription }}</p>
+              {% endif %}
+              {% if position.pdf | length %}
+                <div>
+                  <a href="{{ position.pdf.one().url }}" class="inline-link"><span>Learn More</span></a>
+                </div>
+              {% endif %}
+              {% if position.positionApplicationLink | length %}
+                <div>
+                  <a href="{{ position.positionApplicationLink }}" class="inline-link"><span>Apply Now</span></a>
+                </div>
+              {% endif %}
+            </li>
           {% endfor %}
         </ul>
       </div>

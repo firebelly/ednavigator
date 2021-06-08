@@ -6,8 +6,9 @@ name: Positions
 searchable: true
 settings:
   contentTable: '{{%matrixcontent_positions}}'
-  maxBlocks: null
+  maxBlocks: ''
+  minBlocks: ''
   propagationMethod: none
 translationKeyFormat: null
-translationMethod: none
+translationMethod: site
 type: craft\fields\Matrix

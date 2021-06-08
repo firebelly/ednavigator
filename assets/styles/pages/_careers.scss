@@ -9,7 +9,23 @@ body.page-careers {
     background-color: $yellow;
 
     .headline-rule span {
-      background-color: $yellow; 
+      background-color: $yellow;
+    }
+
+    .section-links li {
+      margin-bottom: $global-spacing * 2;
+
+      h4 {
+        @include headline-two;
+        margin: 0 0 0.5em;
+      }
+    }
+
+    @include media-md {
+      .section-links li {
+        max-width: 50%;
+        margin-bottom: $global-spacing * 3;
+      }
     }
   }
 }

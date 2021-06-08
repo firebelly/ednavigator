@@ -1,19 +1,83 @@
-field: 31e55dcd-fd69-46b4-bc0a-6da055adf5b2
+field: 31e55dcd-fd69-46b4-bc0a-6da055adf5b2 # Positions
 fieldLayouts:
   27449f53-8abb-4801-854c-8c45c5ad8d71:
     tabs:
       -
-        fields:
-          79fb0e67-6609-4ab0-9036-c28f60456501:
+        elements:
+          -
+            fieldUid: 96f036a5-364c-49a0-9c8f-21bbaf59fa83 # Position Title
+            instructions: null
+            label: null
             required: true
-            sortOrder: 2
-          96f036a5-364c-49a0-9c8f-21bbaf59fa83:
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 21ea6328-2e55-45f5-becc-bc1d59eed62d # Position Description
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 79fb0e67-6609-4ab0-9036-c28f60456501 # Position PDF
+            instructions: null
+            label: null
             required: true
-            sortOrder: 1
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
+          -
+            fieldUid: 50fe84eb-371c-437a-bd01-62c4eb842f46 # Position Application Link
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
         name: Content
         sortOrder: 1
 fields:
-  79fb0e67-6609-4ab0-9036-c28f60456501:
+  21ea6328-2e55-45f5-becc-bc1d59eed62d: # Position Description
+    contentColumnType: text
+    fieldGroup: null
+    handle: positionDescription
+    instructions: 'A short introductory description displayed below the title.'
+    name: 'Position Description'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  50fe84eb-371c-437a-bd01-62c4eb842f46: # Position Application Link
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: positionApplicationLink
+    instructions: 'Optional URL that will display a link to the position application. '
+    name: 'Position Application Link'
+    searchable: false
+    settings:
+      maxLength: '255'
+      placeholder: null
+      types:
+        - url
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
+  79fb0e67-6609-4ab0-9036-c28f60456501: # Position PDF
     contentColumnType: string
     fieldGroup: null
     handle: pdf
@@ -21,23 +85,32 @@ fields:
     name: 'Position PDF'
     searchable: true
     settings:
+      allowSelfRelations: false
+      allowUploads: true
       allowedKinds:
         - pdf
       defaultUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
       defaultUploadLocationSubpath: ''
       limit: '1'
       localizeRelations: false
+      previewMode: full
       restrictFiles: '1'
       selectionLabel: 'Add PDF'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
       singleUploadLocationSource: 'volume:2a9541aa-21a4-4bad-990e-f0551e25392b'
       singleUploadLocationSubpath: ''
+      source: null
       sources: '*'
-      useSingleFolder: '1'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
       viewMode: list
     translationKeyFormat: null
-    translationMethod: none
+    translationMethod: site
     type: craft\fields\Assets
-  96f036a5-364c-49a0-9c8f-21bbaf59fa83:
+  96f036a5-364c-49a0-9c8f-21bbaf59fa83: # Position Title
     contentColumnType: text
     fieldGroup: null
     handle: positionTitle
@@ -45,11 +118,14 @@ fields:
     name: 'Position Title'
     searchable: true
     settings:
-      charLimit: ''
+      byteLimit: null
+      charLimit: null
+      code: ''
       columnType: text
       initialRows: '4'
       multiline: ''
-      placeholder: ''
+      placeholder: null
+      uiMode: normal
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
