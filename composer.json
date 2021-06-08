@@ -8,18 +8,18 @@
   "require": {
     "aelvan/imager": "v2.4.0",
     "clubstudioltd/craft-asset-rev": "6.0.2",
-    "craftcms/cms": "3.5.14",
+    "craftcms/cms": "3.6.16",
     "craftcms/contact-form": "2.2.7",
     "craftcms/contact-form-honeypot": "^1.0",
-    "craftcms/redactor": "2.8.3",
+    "craftcms/redactor": "2.8.7",
     "firebelly/ednavstripecheckout": "^1.0",
     "hybridinteractive/craft-contact-form-extensions": "1.2.4",
-    "mmikkel/cp-field-inspect": "1.2.3",
-    "spicyweb/craft-embedded-assets": "2.4.2",
+    "mmikkel/cp-field-inspect": "1.2.5",
+    "spicyweb/craft-embedded-assets": "2.7.0",
     "stripe/stripe-php": "^7.14",
     "timkelty/craftcms-site-sync": "^1.0",
     "vaersaagod/matrixmate": "1.2.7",
-    "verbb/field-manager": "2.2.1",
+    "verbb/field-manager": "2.2.3",
     "vierbeuter/craft-footnotes": "^2.2",
     "vlucas/phpdotenv": "^3.4.0"
   },
@@ -32,7 +32,7 @@
     "sort-packages": true,
     "optimize-autoloader": true,
     "platform": {
-      "php": "7.2"
+      "php": "7.2.5"
     }
   },
   "scripts": {

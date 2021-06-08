@@ -7,15 +7,15 @@ fieldLayouts:
           0a33cf4a-e767-459d-80ad-67047568db1e:
             required: false
             sortOrder: 1
-          32d1563f-f3da-49ce-a3cd-94b7e7315608:
-            required: false
-            sortOrder: 5
           8c2775de-f70f-4f07-b5c3-161c0f83715a:
             required: false
             sortOrder: 3
           8f7d6df0-566a-4c34-b6da-6d9850f19621:
             required: false
             sortOrder: 4
+          32d1563f-f3da-49ce-a3cd-94b7e7315608:
+            required: false
+            sortOrder: 5
           e7d409d4-2f29-4388-9755-f6ab096c7c7f:
             required: false
             sortOrder: 2
@@ -39,28 +39,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
-  32d1563f-f3da-49ce-a3cd-94b7e7315608:
-    contentColumnType: string
-    fieldGroup: null
-    handle: locations
-    instructions: ''
-    name: Locations
-    searchable: false
-    settings:
-      allowLimit: false
-      allowMultipleSources: false
-      branchLimit: ''
-      limit: null
-      localizeRelations: ''
-      selectionLabel: 'Choose a location'
-      source: 'group:e1705694-00c3-4568-a2e3-42121c2ca237'
-      sources: '*'
-      targetSiteId: null
-      validateRelatedElements: ''
-      viewMode: null
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\Categories
   8c2775de-f70f-4f07-b5c3-161c0f83715a:
     contentColumnType: text
     fieldGroup: null
@@ -109,6 +87,28 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
+  32d1563f-f3da-49ce-a3cd-94b7e7315608:
+    contentColumnType: string
+    fieldGroup: null
+    handle: locations
+    instructions: ''
+    name: Locations
+    searchable: false
+    settings:
+      allowLimit: false
+      allowMultipleSources: false
+      branchLimit: ''
+      limit: null
+      localizeRelations: ''
+      selectionLabel: 'Choose a location'
+      source: 'group:e1705694-00c3-4568-a2e3-42121c2ca237'
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: ''
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Categories
   e7d409d4-2f29-4388-9755-f6ab096c7c7f:
     contentColumnType: text
     fieldGroup: null

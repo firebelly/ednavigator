@@ -4,15 +4,15 @@ fieldLayouts:
     tabs:
       -
         fields:
-          2835d461-4382-4264-86d8-58b5365c33f9:
-            required: false
-            sortOrder: 5
-          549cd9a1-1153-4603-bebf-7e01a735f4c7:
-            required: false
-            sortOrder: 2
           81f5de31-56a3-4d15-9468-cb0151c133c3:
             required: false
             sortOrder: 1
+          549cd9a1-1153-4603-bebf-7e01a735f4c7:
+            required: false
+            sortOrder: 2
+          2835d461-4382-4264-86d8-58b5365c33f9:
+            required: false
+            sortOrder: 5
           ad28aae9-24ea-4f7f-ab97-6b0bc9e6ba62:
             required: false
             sortOrder: 4
@@ -22,12 +22,12 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  2835d461-4382-4264-86d8-58b5365c33f9:
+  81f5de31-56a3-4d15-9468-cb0151c133c3:
     contentColumnType: text
     fieldGroup: null
-    handle: actionLinkExternal
-    instructions: 'A link to an external source or email. Enter in the full url, including "http://". If linking to an email, add "mailto:" to the front of the address, example: "mailto:info@ednavigator.com"'
-    name: 'External Action Link'
+    handle: sectionTitle
+    instructions: 'Optional Section Title'
+    name: 'Section Title'
     searchable: true
     settings:
       byteLimit: null
@@ -36,9 +36,9 @@ fields:
       columnType: text
       initialRows: '4'
       multiline: ''
-      placeholder: 'ex: http://website.com'
+      placeholder: ''
     translationKeyFormat: null
-    translationMethod: none
+    translationMethod: language
     type: craft\fields\PlainText
   549cd9a1-1153-4603-bebf-7e01a735f4c7:
     contentColumnType: text
@@ -58,12 +58,12 @@ fields:
     translationKeyFormat: null
     translationMethod: language
     type: craft\fields\PlainText
-  81f5de31-56a3-4d15-9468-cb0151c133c3:
+  2835d461-4382-4264-86d8-58b5365c33f9:
     contentColumnType: text
     fieldGroup: null
-    handle: sectionTitle
-    instructions: 'Optional Section Title'
-    name: 'Section Title'
+    handle: actionLinkExternal
+    instructions: 'A link to an external source or email. Enter in the full url, including "http://". If linking to an email, add "mailto:" to the front of the address, example: "mailto:info@ednavigator.com"'
+    name: 'External Action Link'
     searchable: true
     settings:
       byteLimit: null
@@ -72,9 +72,9 @@ fields:
       columnType: text
       initialRows: '4'
       multiline: ''
-      placeholder: ''
+      placeholder: 'ex: http://website.com'
     translationKeyFormat: null
-    translationMethod: language
+    translationMethod: none
     type: craft\fields\PlainText
   ad28aae9-24ea-4f7f-ab97-6b0bc9e6ba62:
     contentColumnType: string

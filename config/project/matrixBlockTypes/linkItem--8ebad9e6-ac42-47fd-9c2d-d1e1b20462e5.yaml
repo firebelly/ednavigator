@@ -4,21 +4,37 @@ fieldLayouts:
     tabs:
       -
         fields:
+          6db45d10-8fc0-4ba7-83e3-7f21d47762c5:
+            required: true
+            sortOrder: 1
           08c14434-c121-4010-a36c-5f89e2d3bc27:
             required: false
             sortOrder: 2
           33d706e9-3ec6-4463-b2e5-02af632da492:
             required: false
             sortOrder: 3
-          6db45d10-8fc0-4ba7-83e3-7f21d47762c5:
-            required: true
-            sortOrder: 1
           f54dec5e-74bd-4fef-8754-d5b0a8019559:
             required: false
             sortOrder: 4
         name: Content
         sortOrder: 1
 fields:
+  6db45d10-8fc0-4ba7-83e3-7f21d47762c5:
+    contentColumnType: text
+    fieldGroup: null
+    handle: linkLabel
+    instructions: 'The text the visitor will click on'
+    name: 'Link Label'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
   08c14434-c121-4010-a36c-5f89e2d3bc27:
     contentColumnType: string
     fieldGroup: null
@@ -49,22 +65,6 @@ fields:
       placeholder: 'http://external-link.com'
     translationKeyFormat: null
     translationMethod: none
-    type: craft\fields\PlainText
-  6db45d10-8fc0-4ba7-83e3-7f21d47762c5:
-    contentColumnType: text
-    fieldGroup: null
-    handle: linkLabel
-    instructions: 'The text the visitor will click on'
-    name: 'Link Label'
-    searchable: true
-    settings:
-      charLimit: ''
-      columnType: text
-      initialRows: '4'
-      multiline: ''
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: site
     type: craft\fields\PlainText
   f54dec5e-74bd-4fef-8754-d5b0a8019559:
     contentColumnType: string

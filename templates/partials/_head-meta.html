@@ -1,3 +1,6 @@
+{% set SITENAME = getenv('SITENAME') %}
+{% set SITEURL = getenv('SITEURL') %}
+
   {% if excerpt is defined %}
   <meta name="description" content="{{ excerpt }}">
   {% elseif seoDescription is defined %}
@@ -5,11 +8,11 @@
   {% elseif globalSeo.seoDescription|length %}
   <meta name="description" content="{{ globalSeo.seoDescription }}">
   {% endif %}
-  <meta property="og:title" content="{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% else %}{{ siteName }}{% endif %}" />
+  <meta property="og:title" content="{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ SITENAME }}{% else %}{{ SITENAME }}{% endif %}" />
   {% if bannerImage is defined %}
-    <meta property="og:image" content="{{ url(siteUrl ~ bannerImage.getUrl()|trim('/')) }}" />
+    <meta property="og:image" content="{{ url(SITEURL ~ bannerImage.getUrl()|trim('/')) }}" />
   {% elseif globalSeo.seoImage is defined %}
-    <meta property="og:image" content="{{ url(siteUrl ~ globalSeo.seoImage.one().getUrl('hero')|trim('/')) }}" />
+    <meta property="og:image" content="{{ url(SITEURL ~ globalSeo.seoImage.one().getUrl('hero')|trim('/')) }}" />
   {% endif %}
   {% if excerpt is defined %}
   <meta property="og:description" content="{{ excerpt }}">

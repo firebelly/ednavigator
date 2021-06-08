@@ -4,27 +4,15 @@ fieldLayouts:
     tabs:
       -
         fields:
-          86088f94-8014-4bfa-89fb-966ae7cee523:
-            required: false
-            sortOrder: 1
           8d680780-bfde-41eb-a82a-724fa1d17ffa:
             required: false
             sortOrder: 2
+          86088f94-8014-4bfa-89fb-966ae7cee523:
+            required: false
+            sortOrder: 1
         name: Content
         sortOrder: 1
 fields:
-  86088f94-8014-4bfa-89fb-966ae7cee523:
-    contentColumnType: boolean
-    fieldGroup: null
-    handle: expanded
-    instructions: 'Setting this field to "on" will make the video expand outside the content container.'
-    name: 'Expanded?'
-    searchable: true
-    settings:
-      default: ''
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\Lightswitch
   8d680780-bfde-41eb-a82a-724fa1d17ffa:
     contentColumnType: string
     fieldGroup: null
@@ -53,6 +41,18 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
+  86088f94-8014-4bfa-89fb-966ae7cee523:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: expanded
+    instructions: 'Setting this field to "on" will make the video expand outside the content container.'
+    name: 'Expanded?'
+    searchable: true
+    settings:
+      default: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
 handle: video
 name: Video
 sortOrder: 5

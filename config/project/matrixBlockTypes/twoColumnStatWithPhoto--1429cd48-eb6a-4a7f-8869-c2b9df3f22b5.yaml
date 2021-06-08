@@ -7,15 +7,15 @@ fieldLayouts:
           1a85899a-d3b9-4d02-82fe-0570d3050572:
             required: false
             sortOrder: 3
-          20138bb4-f514-4da0-b308-ba923d83ba10:
-            required: false
-            sortOrder: 4
-          660a74a1-b814-457b-b2bb-e0ecc998beca:
-            required: false
-            sortOrder: 2
           74dba5db-cad8-414e-b681-b1b391e267dd:
             required: false
             sortOrder: 5
+          660a74a1-b814-457b-b2bb-e0ecc998beca:
+            required: false
+            sortOrder: 2
+          20138bb4-f514-4da0-b308-ba923d83ba10:
+            required: false
+            sortOrder: 4
           b9c8fea2-5ee3-4d7e-a321-303cf1617778:
             required: false
             sortOrder: 1
@@ -40,12 +40,12 @@ fields:
     translationKeyFormat: null
     translationMethod: language
     type: craft\fields\PlainText
-  20138bb4-f514-4da0-b308-ba923d83ba10:
+  74dba5db-cad8-414e-b681-b1b391e267dd:
     contentColumnType: text
     fieldGroup: null
-    handle: rightColumnStatFigure
+    handle: rightColumnStatDescription
     instructions: ''
-    name: 'Right Column Stat Figure'
+    name: 'Right Column Stat Description'
     searchable: true
     settings:
       byteLimit: null
@@ -56,7 +56,7 @@ fields:
       multiline: ''
       placeholder: ''
     translationKeyFormat: null
-    translationMethod: none
+    translationMethod: language
     type: craft\fields\PlainText
   660a74a1-b814-457b-b2bb-e0ecc998beca:
     contentColumnType: text
@@ -76,12 +76,12 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
-  74dba5db-cad8-414e-b681-b1b391e267dd:
+  20138bb4-f514-4da0-b308-ba923d83ba10:
     contentColumnType: text
     fieldGroup: null
-    handle: rightColumnStatDescription
+    handle: rightColumnStatFigure
     instructions: ''
-    name: 'Right Column Stat Description'
+    name: 'Right Column Stat Figure'
     searchable: true
     settings:
       byteLimit: null
@@ -92,7 +92,7 @@ fields:
       multiline: ''
       placeholder: ''
     translationKeyFormat: null
-    translationMethod: language
+    translationMethod: none
     type: craft\fields\PlainText
   b9c8fea2-5ee3-4d7e-a321-303cf1617778:
     contentColumnType: string

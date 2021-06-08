@@ -7,12 +7,12 @@ fieldLayouts:
           acea4a2a-2af6-4dbd-b3a5-02483fa15b5b:
             required: true
             sortOrder: 3
-          f4615451-cc2a-4eb3-a6fb-cb1bdb8dab2b:
-            required: true
-            sortOrder: 1
           f52c970e-f53a-483e-9eaa-c301582b987a:
             required: true
             sortOrder: 2
+          f4615451-cc2a-4eb3-a6fb-cb1bdb8dab2b:
+            required: true
+            sortOrder: 1
         name: Content
         sortOrder: 1
 fields:
@@ -43,12 +43,12 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
-  f4615451-cc2a-4eb3-a6fb-cb1bdb8dab2b:
+  f52c970e-f53a-483e-9eaa-c301582b987a:
     contentColumnType: text
     fieldGroup: null
-    handle: featureTitle
+    handle: featureDescription
     instructions: ''
-    name: 'Feature Title'
+    name: 'Feature Description'
     searchable: true
     settings:
       charLimit: ''
@@ -60,12 +60,12 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\PlainText
-  f52c970e-f53a-483e-9eaa-c301582b987a:
+  f4615451-cc2a-4eb3-a6fb-cb1bdb8dab2b:
     contentColumnType: text
     fieldGroup: null
-    handle: featureDescription
+    handle: featureTitle
     instructions: ''
-    name: 'Feature Description'
+    name: 'Feature Title'
     searchable: true
     settings:
       charLimit: ''

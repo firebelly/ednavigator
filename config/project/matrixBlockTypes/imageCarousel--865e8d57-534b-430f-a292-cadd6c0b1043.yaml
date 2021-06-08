@@ -4,27 +4,15 @@ fieldLayouts:
     tabs:
       -
         fields:
-          0733f1c9-77e3-477c-ab82-a6944d25734f:
-            required: false
-            sortOrder: 2
           1c248ceb-f84d-4c01-a003-603af9b909d0:
             required: true
             sortOrder: 1
+          0733f1c9-77e3-477c-ab82-a6944d25734f:
+            required: false
+            sortOrder: 2
         name: Content
         sortOrder: 1
 fields:
-  0733f1c9-77e3-477c-ab82-a6944d25734f:
-    contentColumnType: boolean
-    fieldGroup: null
-    handle: expanded
-    instructions: 'Setting this field to "on" will make the image carousel expand outside the content container.'
-    name: 'Expanded?'
-    searchable: false
-    settings:
-      default: ''
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\Lightswitch
   1c248ceb-f84d-4c01-a003-603af9b909d0:
     contentColumnType: string
     fieldGroup: null
@@ -55,6 +43,18 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
+  0733f1c9-77e3-477c-ab82-a6944d25734f:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: expanded
+    instructions: 'Setting this field to "on" will make the image carousel expand outside the content container.'
+    name: 'Expanded?'
+    searchable: false
+    settings:
+      default: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
 handle: imageCarousel
 name: 'Image Carousel'
 sortOrder: 6

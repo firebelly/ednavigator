@@ -7,21 +7,21 @@ fieldLayouts:
           2d242bfb-1cd4-40db-b359-9c0442cde7d5:
             required: true
             sortOrder: 2
-          3459d9c3-35a6-4335-8967-4ae87455f584:
-            required: false
-            sortOrder: 3
           5c0c1ca2-0bdf-4792-903a-67132bcb8de2:
             required: false
             sortOrder: 7
-          80a2f43e-be4c-4565-bfbe-5efdea8aad68:
-            required: true
-            sortOrder: 1
           8ac9d37c-4f05-486a-84e6-2d59838d6ccb:
             required: false
             sortOrder: 6
           9b679f54-11f0-4985-975f-c94a316e3a2a:
             required: false
             sortOrder: 5
+          80a2f43e-be4c-4565-bfbe-5efdea8aad68:
+            required: true
+            sortOrder: 1
+          3459d9c3-35a6-4335-8967-4ae87455f584:
+            required: false
+            sortOrder: 3
           b0cf3b3c-aac9-48d9-8c70-6b77edb044da:
             required: false
             sortOrder: 4
@@ -50,20 +50,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\PlainText
-  3459d9c3-35a6-4335-8967-4ae87455f584:
-    contentColumnType: integer(10)
-    fieldGroup: null
-    handle: monthlyPayment
-    instructions: 'The monthly payment amount'
-    name: 'Monthly Payment'
-    searchable: true
-    settings:
-      decimals: '0'
-      max: ''
-      min: '0'
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\Number
   5c0c1ca2-0bdf-4792-903a-67132bcb8de2:
     contentColumnType: text
     fieldGroup: null
@@ -79,22 +65,6 @@ fields:
       placeholder: ''
     translationKeyFormat: null
     translationMethod: none
-    type: craft\fields\PlainText
-  80a2f43e-be4c-4565-bfbe-5efdea8aad68:
-    contentColumnType: text
-    fieldGroup: null
-    handle: paymentTitle
-    instructions: ''
-    name: Title
-    searchable: true
-    settings:
-      charLimit: ''
-      columnType: text
-      initialRows: '4'
-      multiline: ''
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: site
     type: craft\fields\PlainText
   8ac9d37c-4f05-486a-84e6-2d59838d6ccb:
     contentColumnType: integer(10)
@@ -126,6 +96,36 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\PlainText
+  80a2f43e-be4c-4565-bfbe-5efdea8aad68:
+    contentColumnType: text
+    fieldGroup: null
+    handle: paymentTitle
+    instructions: ''
+    name: Title
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  3459d9c3-35a6-4335-8967-4ae87455f584:
+    contentColumnType: integer(10)
+    fieldGroup: null
+    handle: monthlyPayment
+    instructions: 'The monthly payment amount'
+    name: 'Monthly Payment'
+    searchable: true
+    settings:
+      decimals: '0'
+      max: ''
+      min: '0'
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Number
   b0cf3b3c-aac9-48d9-8c70-6b77edb044da:
     contentColumnType: text
     fieldGroup: null

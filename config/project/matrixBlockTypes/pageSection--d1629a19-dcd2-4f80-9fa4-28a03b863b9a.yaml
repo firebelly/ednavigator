@@ -4,27 +4,43 @@ fieldLayouts:
     tabs:
       -
         fields:
-          05e9eca6-65b2-4480-83d1-7749087481b1:
-            required: true
-            sortOrder: 6
           0b40c815-a2aa-4735-9ed4-9d4aa3c4b607:
             required: false
             sortOrder: 1
-          5199233a-d5b5-493d-af74-c1e7105a289a:
-            required: false
-            sortOrder: 3
+          05e9eca6-65b2-4480-83d1-7749087481b1:
+            required: true
+            sortOrder: 6
           7ff6920a-ec74-4679-a3e3-5de49c962233:
             required: false
             sortOrder: 4
-          94a642d8-2005-4fab-98e4-94735603dc3c:
-            required: false
-            sortOrder: 2
           9f3c7190-2c8d-4b2e-bd3e-5e8ddfa5015f:
             required: false
             sortOrder: 5
+          94a642d8-2005-4fab-98e4-94735603dc3c:
+            required: false
+            sortOrder: 2
+          5199233a-d5b5-493d-af74-c1e7105a289a:
+            required: false
+            sortOrder: 3
         name: Content
         sortOrder: 1
 fields:
+  0b40c815-a2aa-4735-9ed4-9d4aa3c4b607:
+    contentColumnType: text
+    fieldGroup: null
+    handle: sectionTitle
+    instructions: ''
+    name: 'Section Title'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '3'
+      multiline: '1'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
   05e9eca6-65b2-4480-83d1-7749087481b1:
     contentColumnType: string
     fieldGroup: null
@@ -49,38 +65,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Assets
-  0b40c815-a2aa-4735-9ed4-9d4aa3c4b607:
-    contentColumnType: text
-    fieldGroup: null
-    handle: sectionTitle
-    instructions: ''
-    name: 'Section Title'
-    searchable: true
-    settings:
-      charLimit: ''
-      columnType: text
-      initialRows: '3'
-      multiline: '1'
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\PlainText
-  5199233a-d5b5-493d-af74-c1e7105a289a:
-    contentColumnType: text
-    fieldGroup: null
-    handle: sectionText
-    instructions: ''
-    name: 'Section Text'
-    searchable: true
-    settings:
-      charLimit: ''
-      columnType: text
-      initialRows: '4'
-      multiline: '1'
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\PlainText
   7ff6920a-ec74-4679-a3e3-5de49c962233:
     contentColumnType: string
     fieldGroup: null
@@ -99,51 +83,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\redactor\Field
-  94a642d8-2005-4fab-98e4-94735603dc3c:
-    contentColumnType: string
-    fieldGroup: null
-    handle: sectionTitleStyle
-    instructions: ''
-    name: 'Section Title Style'
-    searchable: true
-    settings:
-      options:
-        -
-          __assoc__:
-            -
-              - label
-              - Regular
-            -
-              - value
-              - regular
-            -
-              - default
-              - '1'
-        -
-          __assoc__:
-            -
-              - label
-              - 'Large Numeral'
-            -
-              - value
-              - largeNumeral
-            -
-              - default
-              - ''
-        -
-          __assoc__:
-            -
-              - label
-              - Quote
-            -
-              - value
-              - quote
-            -
-              - default
-              - ''
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\Dropdown
   9f3c7190-2c8d-4b2e-bd3e-5e8ddfa5015f:
     contentColumnType: string
     fieldGroup: null
@@ -200,6 +139,67 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Dropdown
+  94a642d8-2005-4fab-98e4-94735603dc3c:
+    contentColumnType: string
+    fieldGroup: null
+    handle: sectionTitleStyle
+    instructions: ''
+    name: 'Section Title Style'
+    searchable: true
+    settings:
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Regular
+            -
+              - value
+              - regular
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - 'Large Numeral'
+            -
+              - value
+              - largeNumeral
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Quote
+            -
+              - value
+              - quote
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  5199233a-d5b5-493d-af74-c1e7105a289a:
+    contentColumnType: text
+    fieldGroup: null
+    handle: sectionText
+    instructions: ''
+    name: 'Section Text'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '4'
+      multiline: '1'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
 handle: pageSection
 name: 'Page Section'
 sortOrder: 1

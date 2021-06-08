@@ -4,15 +4,31 @@ fieldLayouts:
     tabs:
       -
         fields:
-          758fb4e2-a135-44cf-911e-bb691953d0ad:
-            required: false
-            sortOrder: 2
           8b6e338c-6267-45e7-9523-e319e87213dc:
             required: false
             sortOrder: 1
+          758fb4e2-a135-44cf-911e-bb691953d0ad:
+            required: false
+            sortOrder: 2
         name: Content
         sortOrder: 1
 fields:
+  8b6e338c-6267-45e7-9523-e319e87213dc:
+    contentColumnType: text
+    fieldGroup: null
+    handle: sectionTitle
+    instructions: ''
+    name: 'Section Title'
+    searchable: true
+    settings:
+      charLimit: ''
+      columnType: text
+      initialRows: '2'
+      multiline: '1'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
   758fb4e2-a135-44cf-911e-bb691953d0ad:
     contentColumnType: string
     fieldGroup: null
@@ -30,22 +46,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\redactor\Field
-  8b6e338c-6267-45e7-9523-e319e87213dc:
-    contentColumnType: text
-    fieldGroup: null
-    handle: sectionTitle
-    instructions: ''
-    name: 'Section Title'
-    searchable: true
-    settings:
-      charLimit: ''
-      columnType: text
-      initialRows: '2'
-      multiline: '1'
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\PlainText
 handle: contentSection
 name: 'Content Section'
 sortOrder: 1

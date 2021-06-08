@@ -4,21 +4,21 @@ fieldLayouts:
     tabs:
       -
         fields:
-          069648c0-ede4-4949-8bd2-6014b197d8b9:
-            required: false
-            sortOrder: 5
-          08894b40-1321-470d-8ad1-3b84a9ee3969:
-            required: true
-            sortOrder: 1
           0ba79951-d93e-45e5-917b-974a539fb039:
             required: false
             sortOrder: 3
-          3016ffd0-a3f3-474a-a16b-14503fddf538:
-            required: false
-            sortOrder: 7
           683b1434-a7f7-49f3-836a-5d67b7a849ec:
             required: false
             sortOrder: 6
+          3016ffd0-a3f3-474a-a16b-14503fddf538:
+            required: false
+            sortOrder: 7
+          08894b40-1321-470d-8ad1-3b84a9ee3969:
+            required: true
+            sortOrder: 1
+          069648c0-ede4-4949-8bd2-6014b197d8b9:
+            required: false
+            sortOrder: 5
           bb360f34-1837-4170-9275-b3df0426c21d:
             required: false
             sortOrder: 4
@@ -31,29 +31,60 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  069648c0-ede4-4949-8bd2-6014b197d8b9:
+  0ba79951-d93e-45e5-917b-974a539fb039:
     contentColumnType: text
     fieldGroup: null
-    handle: familyNarrativeCopy
+    handle: asideQuote
     instructions: ''
-    name: 'Narrative Copy'
+    name: Quote
     searchable: true
     settings:
-      availableTransforms: ''
-      availableVolumes: ''
-      cleanupHtml: true
-      columnType: text
-      purifierConfig: ''
-      purifyHtml: '1'
-      redactorConfig: Simple.json
-      removeEmptyTags: '1'
-      removeInlineStyles: '1'
-      removeNbsp: '1'
-      showUnpermittedFiles: false
-      showUnpermittedVolumes: false
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '3'
+      multiline: '1'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  683b1434-a7f7-49f3-836a-5d67b7a849ec:
+    contentColumnType: text
+    fieldGroup: null
+    handle: asideQuoteAttribution
+    instructions: ''
+    name: Attribution
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
     translationKeyFormat: null
     translationMethod: none
-    type: craft\redactor\Field
+    type: craft\fields\PlainText
+  3016ffd0-a3f3-474a-a16b-14503fddf538:
+    contentColumnType: text
+    fieldGroup: null
+    handle: familyNarrativeHeadline
+    instructions: ''
+    name: Heading
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
   08894b40-1321-470d-8ad1-3b84a9ee3969:
     contentColumnType: text
     fieldGroup: null
@@ -77,60 +108,29 @@ fields:
     translationKeyFormat: null
     translationMethod: language
     type: craft\redactor\Field
-  0ba79951-d93e-45e5-917b-974a539fb039:
+  069648c0-ede4-4949-8bd2-6014b197d8b9:
     contentColumnType: text
     fieldGroup: null
-    handle: asideQuote
+    handle: familyNarrativeCopy
     instructions: ''
-    name: Quote
+    name: 'Narrative Copy'
     searchable: true
     settings:
-      byteLimit: null
-      charLimit: null
-      code: ''
-      columnType: null
-      initialRows: '3'
-      multiline: '1'
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: language
-    type: craft\fields\PlainText
-  3016ffd0-a3f3-474a-a16b-14503fddf538:
-    contentColumnType: text
-    fieldGroup: null
-    handle: familyNarrativeHeadline
-    instructions: ''
-    name: Heading
-    searchable: true
-    settings:
-      byteLimit: null
-      charLimit: null
-      code: ''
-      columnType: null
-      initialRows: '4'
-      multiline: ''
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: language
-    type: craft\fields\PlainText
-  683b1434-a7f7-49f3-836a-5d67b7a849ec:
-    contentColumnType: text
-    fieldGroup: null
-    handle: asideQuoteAttribution
-    instructions: ''
-    name: Attribution
-    searchable: true
-    settings:
-      byteLimit: null
-      charLimit: null
-      code: ''
-      columnType: null
-      initialRows: '4'
-      multiline: ''
-      placeholder: ''
+      availableTransforms: ''
+      availableVolumes: ''
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Simple.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
     translationKeyFormat: null
     translationMethod: none
-    type: craft\fields\PlainText
+    type: craft\redactor\Field
   bb360f34-1837-4170-9275-b3df0426c21d:
     contentColumnType: string
     fieldGroup: null

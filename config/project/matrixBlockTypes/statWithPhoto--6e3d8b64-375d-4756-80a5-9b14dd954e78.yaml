@@ -10,15 +10,15 @@ fieldLayouts:
           1f91c866-ffea-4015-a233-23ba20d4edfc:
             required: true
             sortOrder: 8
-          60d8c70b-47f2-41c9-a839-e6bcbc8a41af:
-            required: true
-            sortOrder: 7
           8aa9a934-b4e1-4c3f-ba28-1ac20ad80a59:
             required: false
             sortOrder: 4
           9f973d75-aa1e-4abc-9f4b-b19738072831:
             required: true
             sortOrder: 2
+          60d8c70b-47f2-41c9-a839-e6bcbc8a41af:
+            required: true
+            sortOrder: 7
           b4d95200-bb51-4e6e-888e-dc4ef1ef074b:
             required: false
             sortOrder: 6
@@ -108,36 +108,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Dropdown
-  60d8c70b-47f2-41c9-a839-e6bcbc8a41af:
-    contentColumnType: string
-    fieldGroup: null
-    handle: image
-    instructions: 'Image to be shown next to the stat.'
-    name: Image
-    searchable: true
-    settings:
-      allowSelfRelations: ''
-      allowedKinds:
-        - image
-      defaultUploadLocationSource: 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
-      defaultUploadLocationSubpath: ''
-      limit: '1'
-      localizeRelations: ''
-      restrictFiles: '1'
-      selectionLabel: 'Select an image'
-      showUnpermittedFiles: false
-      showUnpermittedVolumes: true
-      singleUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
-      singleUploadLocationSubpath: ''
-      source: null
-      sources: '*'
-      targetSiteId: null
-      useSingleFolder: false
-      validateRelatedElements: ''
-      viewMode: list
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\Assets
   8aa9a934-b4e1-4c3f-ba28-1ac20ad80a59:
     contentColumnType: text
     fieldGroup: null
@@ -202,6 +172,36 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Dropdown
+  60d8c70b-47f2-41c9-a839-e6bcbc8a41af:
+    contentColumnType: string
+    fieldGroup: null
+    handle: image
+    instructions: 'Image to be shown next to the stat.'
+    name: Image
+    searchable: true
+    settings:
+      allowSelfRelations: ''
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:6c50eae1-ceb0-4b11-8e50-b8544c8cbc69'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: 'Select an image'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:cd389634-6297-4886-ac1a-17f7ff2050c8'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: false
+      validateRelatedElements: ''
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
   b4d95200-bb51-4e6e-888e-dc4ef1ef074b:
     contentColumnType: text
     fieldGroup: null

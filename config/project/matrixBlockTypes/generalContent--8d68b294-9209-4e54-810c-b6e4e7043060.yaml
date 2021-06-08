@@ -4,24 +4,24 @@ fieldLayouts:
     tabs:
       -
         fields:
-          1729e9df-91e2-4a18-b6f4-3c9c00176ca0:
-            required: false
-            sortOrder: 7
           2ac1fac9-c315-4a3e-88b9-e2c5b9f8a372:
             required: false
             sortOrder: 2
-          402c2930-986e-4a1a-b2bf-502a8ec87982:
-            required: true
-            sortOrder: 1
           47f876c0-8679-4a55-b682-09d644b4f863:
             required: false
             sortOrder: 4
+          402c2930-986e-4a1a-b2bf-502a8ec87982:
+            required: true
+            sortOrder: 1
           760fb72b-c9c7-4512-8926-f35c9683a158:
             required: false
             sortOrder: 6
           976ed0f5-599b-4923-8e33-e4ebbdc72eb8:
             required: false
             sortOrder: 3
+          1729e9df-91e2-4a18-b6f4-3c9c00176ca0:
+            required: false
+            sortOrder: 7
           b4aa5cb3-2e30-48d2-be96-9f8a6e1777f9:
             required: false
             sortOrder: 5
@@ -31,24 +31,6 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  1729e9df-91e2-4a18-b6f4-3c9c00176ca0:
-    contentColumnType: string(32)
-    fieldGroup: null
-    handle: asideStatFigure
-    instructions: ''
-    name: Figure
-    searchable: true
-    settings:
-      byteLimit: null
-      charLimit: 8
-      code: ''
-      columnType: null
-      initialRows: '4'
-      multiline: ''
-      placeholder: '99,999'
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\PlainText
   2ac1fac9-c315-4a3e-88b9-e2c5b9f8a372:
     contentColumnType: text
     fieldGroup: null
@@ -67,29 +49,6 @@ fields:
     translationKeyFormat: null
     translationMethod: language
     type: craft\fields\PlainText
-  402c2930-986e-4a1a-b2bf-502a8ec87982:
-    contentColumnType: text
-    fieldGroup: null
-    handle: contentBlock
-    instructions: ''
-    name: Content
-    searchable: true
-    settings:
-      availableTransforms: '*'
-      availableVolumes: '*'
-      cleanupHtml: true
-      columnType: text
-      purifierConfig: ''
-      purifyHtml: '1'
-      redactorConfig: Standard.json
-      removeEmptyTags: '1'
-      removeInlineStyles: '1'
-      removeNbsp: '1'
-      showUnpermittedFiles: false
-      showUnpermittedVolumes: false
-    translationKeyFormat: null
-    translationMethod: language
-    type: craft\redactor\Field
   47f876c0-8679-4a55-b682-09d644b4f863:
     contentColumnType: string
     fieldGroup: null
@@ -120,6 +79,29 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
+  402c2930-986e-4a1a-b2bf-502a8ec87982:
+    contentColumnType: text
+    fieldGroup: null
+    handle: contentBlock
+    instructions: ''
+    name: Content
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Standard.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\redactor\Field
   760fb72b-c9c7-4512-8926-f35c9683a158:
     contentColumnType: text
     fieldGroup: null
@@ -158,6 +140,24 @@ fields:
       initialRows: '4'
       multiline: ''
       placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  1729e9df-91e2-4a18-b6f4-3c9c00176ca0:
+    contentColumnType: string(32)
+    fieldGroup: null
+    handle: asideStatFigure
+    instructions: ''
+    name: Figure
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: 8
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: '99,999'
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText

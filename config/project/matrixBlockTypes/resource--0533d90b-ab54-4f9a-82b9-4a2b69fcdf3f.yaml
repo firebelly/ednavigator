@@ -4,38 +4,21 @@ fieldLayouts:
     tabs:
       -
         fields:
-          12266636-f6b8-4f3c-aa12-1259b1594558:
-            required: true
-            sortOrder: 1
           2c048086-0051-42ea-8262-98f3227f5c0b:
             required: false
             sortOrder: 3
           3daa65e4-bc71-48f3-9943-7add8e2ede71:
             required: false
             sortOrder: 4
+          12266636-f6b8-4f3c-aa12-1259b1594558:
+            required: true
+            sortOrder: 1
           a9e49c91-4730-4e8e-8a74-02649559e4ef:
             required: true
             sortOrder: 2
         name: Content
         sortOrder: 1
 fields:
-  12266636-f6b8-4f3c-aa12-1259b1594558:
-    contentColumnType: text
-    fieldGroup: null
-    handle: resourceTitle
-    instructions: ''
-    name: 'Resource Title'
-    searchable: true
-    settings:
-      charLimit: ''
-      code: ''
-      columnType: text
-      initialRows: '4'
-      multiline: ''
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\PlainText
   2c048086-0051-42ea-8262-98f3227f5c0b:
     contentColumnType: text
     fieldGroup: null
@@ -84,6 +67,23 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
+  12266636-f6b8-4f3c-aa12-1259b1594558:
+    contentColumnType: text
+    fieldGroup: null
+    handle: resourceTitle
+    instructions: ''
+    name: 'Resource Title'
+    searchable: true
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
   a9e49c91-4730-4e8e-8a74-02649559e4ef:
     contentColumnType: string
     fieldGroup: null

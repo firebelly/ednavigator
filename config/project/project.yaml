@@ -1,4 +1,4 @@
-dateModified: 1616446448
+dateModified: 1623169743
 email:
   fromEmail: support@ednavigator.com
   fromName: EdNavigator
@@ -146,7 +146,7 @@ system:
   edition: pro
   live: true
   name: EdNavigator
-  schemaVersion: 3.5.13
+  schemaVersion: 3.6.8
   timeZone: America/Chicago
 users:
   allowPublicRegistration: false

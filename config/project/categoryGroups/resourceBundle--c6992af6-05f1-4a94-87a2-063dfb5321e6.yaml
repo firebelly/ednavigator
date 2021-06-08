@@ -3,12 +3,12 @@ fieldLayouts:
     tabs:
       -
         fields:
-          362e8e24-13a8-46a9-9ddd-32ddacf925a1:
-            required: false
-            sortOrder: 3
           60fb224d-1163-4fda-8ccc-ec5f35830998:
             required: false
             sortOrder: 1
+          362e8e24-13a8-46a9-9ddd-32ddacf925a1:
+            required: false
+            sortOrder: 3
           cfd62712-2106-44c2-bd7a-806750669d71:
             required: false
             sortOrder: 4
