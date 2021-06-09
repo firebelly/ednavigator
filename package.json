@@ -42,7 +42,7 @@
     "flickity-sync": "^2.0.0",
     "imagesloaded": "^4.1.4",
     "inputmask": "^5.0.0",
-    "jquery": "^3.4",
+    "jquery": "^3.5",
     "jquery-bridget": "^2.0.1",
     "jquery-mask-plugin": "^1.14.16",
     "js-dom-router": "^1.0",
